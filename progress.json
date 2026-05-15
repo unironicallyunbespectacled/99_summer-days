@@ -5,16 +5,19 @@
         "water_3": true,
         "water_2": true,
         "main_eat": true,
-        "main_cook": true
+        "main_cook": true,
+        "water_1": true,
+        "eat_bfast": true,
+        "cook_bfast": true
       },
-      "score": 5,
+      "score": 9,
       "catXP": {
-        "body": 60
+        "body": 110
       }
     }
   },
   "catTotals": {
-    "body": 60
+    "body": 110
   },
-  "lastUpdated": "2026-05-15T23:48:15.279Z"
+  "lastUpdated": "2026-05-15T23:48:38.423Z"
 }
