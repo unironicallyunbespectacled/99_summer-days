@@ -1,0 +1,20 @@
+{
+  "days": {
+    "1": {
+      "done": {
+        "water_3": true,
+        "water_2": true,
+        "main_eat": true,
+        "main_cook": true
+      },
+      "score": 5,
+      "catXP": {
+        "body": 60
+      }
+    }
+  },
+  "catTotals": {
+    "body": 60
+  },
+  "lastUpdated": "2026-05-15T23:48:15.279Z"
+}
