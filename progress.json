@@ -13,18 +13,20 @@
         "whatsapp": true,
         "shower_am": true,
         "skincare_am": true,
-        "bible": true
+        "bible": true,
+        "screens_off": true,
+        "sleep": true
       },
-      "score": 15,
+      "score": 21,
       "catXP": {
-        "body": 165,
+        "body": 225,
         "art": 15
       }
     }
   },
   "catTotals": {
-    "body": 165,
+    "body": 225,
     "art": 15
   },
-  "lastUpdated": "2026-05-16T00:11:02.460Z"
+  "lastUpdated": "2026-05-16T00:11:10.039Z"
 }
