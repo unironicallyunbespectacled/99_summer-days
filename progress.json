@@ -10,16 +10,18 @@
         "eat_bfast": true,
         "cook_bfast": true,
         "martial_am": false,
-        "whatsapp": true
+        "whatsapp": true,
+        "shower_am": true,
+        "skincare_am": true
       },
-      "score": 10,
+      "score": 14,
       "catXP": {
-        "body": 120
+        "body": 165
       }
     }
   },
   "catTotals": {
-    "body": 120
+    "body": 165
   },
-  "lastUpdated": "2026-05-16T00:09:10.640Z"
+  "lastUpdated": "2026-05-16T00:09:54.158Z"
 }
