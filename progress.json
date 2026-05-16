@@ -15,18 +15,19 @@
         "skincare_am": true,
         "bible": true,
         "screens_off": false,
-        "sleep": false
+        "sleep": false,
+        "creatine": true
       },
-      "score": 15,
+      "score": 16,
       "catXP": {
-        "body": 165,
+        "body": 175,
         "art": 15
       }
     }
   },
   "catTotals": {
-    "body": 165,
+    "body": 175,
     "art": 15
   },
-  "lastUpdated": "2026-05-16T00:11:24.372Z"
+  "lastUpdated": "2026-05-16T00:43:51.708Z"
 }
