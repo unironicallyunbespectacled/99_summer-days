@@ -8,16 +8,17 @@
         "main_cook": true,
         "water_1": true,
         "eat_bfast": true,
-        "cook_bfast": true
+        "cook_bfast": true,
+        "martial_am": true
       },
-      "score": 9,
+      "score": 14,
       "catXP": {
-        "body": 110
+        "body": 160
       }
     }
   },
   "catTotals": {
-    "body": 110
+    "body": 160
   },
-  "lastUpdated": "2026-05-15T23:48:53.887Z"
+  "lastUpdated": "2026-05-16T00:05:58.229Z"
 }
