@@ -12,16 +12,19 @@
         "martial_am": false,
         "whatsapp": true,
         "shower_am": true,
-        "skincare_am": true
+        "skincare_am": true,
+        "bible": true
       },
-      "score": 14,
+      "score": 15,
       "catXP": {
-        "body": 165
+        "body": 165,
+        "art": 15
       }
     }
   },
   "catTotals": {
-    "body": 165
+    "body": 165,
+    "art": 15
   },
-  "lastUpdated": "2026-05-16T00:09:54.158Z"
+  "lastUpdated": "2026-05-16T00:11:02.460Z"
 }
