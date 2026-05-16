@@ -14,19 +14,19 @@
         "shower_am": true,
         "skincare_am": true,
         "bible": true,
-        "screens_off": true,
-        "sleep": true
+        "screens_off": false,
+        "sleep": false
       },
-      "score": 21,
+      "score": 15,
       "catXP": {
-        "body": 225,
+        "body": 165,
         "art": 15
       }
     }
   },
   "catTotals": {
-    "body": 225,
+    "body": 165,
     "art": 15
   },
-  "lastUpdated": "2026-05-16T00:11:10.039Z"
+  "lastUpdated": "2026-05-16T00:11:24.372Z"
 }
