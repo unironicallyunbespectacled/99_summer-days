@@ -16,18 +16,27 @@
         "bible": true,
         "screens_off": false,
         "sleep": false,
-        "creatine": false
+        "creatine": true
       },
-      "score": 15,
+      "score": 16,
       "catXP": {
-        "body": 165,
+        "body": 175,
         "art": 15
+      }
+    },
+    "2": {
+      "done": {
+        "cook_bfast": true
+      },
+      "score": 2,
+      "catXP": {
+        "body": 20
       }
     }
   },
   "catTotals": {
-    "body": 165,
+    "body": 195,
     "art": 15
   },
-  "lastUpdated": "2026-05-16T00:45:31.570Z"
+  "lastUpdated": "2026-05-16T13:57:23.917Z"
 }
