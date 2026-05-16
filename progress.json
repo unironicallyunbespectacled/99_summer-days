@@ -30,19 +30,20 @@
         "eat_bfast": true,
         "water_1": true,
         "imm2a": true,
-        "imm2b": true
+        "imm2b": true,
+        "creatine": true
       },
-      "score": 11,
+      "score": 12,
       "catXP": {
         "imm": 70,
-        "body": 50
+        "body": 60
       }
     }
   },
   "catTotals": {
-    "body": 225,
+    "body": 235,
     "art": 15,
     "imm": 70
   },
-  "lastUpdated": "2026-05-16T13:57:55.378Z"
+  "lastUpdated": "2026-05-16T13:58:01.396Z"
 }
