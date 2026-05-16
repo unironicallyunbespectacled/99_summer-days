@@ -16,18 +16,18 @@
         "bible": true,
         "screens_off": false,
         "sleep": false,
-        "creatine": true
+        "creatine": false
       },
-      "score": 16,
+      "score": 15,
       "catXP": {
-        "body": 175,
+        "body": 165,
         "art": 15
       }
     }
   },
   "catTotals": {
-    "body": 175,
+    "body": 165,
     "art": 15
   },
-  "lastUpdated": "2026-05-16T00:43:51.708Z"
+  "lastUpdated": "2026-05-16T00:45:31.570Z"
 }
