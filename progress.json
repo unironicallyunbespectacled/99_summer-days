@@ -26,17 +26,19 @@
     },
     "2": {
       "done": {
-        "cook_bfast": true
+        "cook_bfast": true,
+        "eat_bfast": true,
+        "water_1": true
       },
-      "score": 2,
+      "score": 5,
       "catXP": {
-        "body": 20
+        "body": 50
       }
     }
   },
   "catTotals": {
-    "body": 195,
+    "body": 225,
     "art": 15
   },
-  "lastUpdated": "2026-05-16T13:57:23.917Z"
+  "lastUpdated": "2026-05-16T13:57:29.038Z"
 }
