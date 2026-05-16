@@ -29,19 +29,17 @@
         "cook_bfast": true,
         "eat_bfast": true,
         "water_1": true,
-        "imm2a": true
+        "imm2a": false
       },
-      "score": 9,
+      "score": 5,
       "catXP": {
-        "imm": 50,
         "body": 50
       }
     }
   },
   "catTotals": {
     "body": 225,
-    "art": 15,
-    "imm": 50
+    "art": 15
   },
-  "lastUpdated": "2026-05-16T13:57:39.415Z"
+  "lastUpdated": "2026-05-16T13:57:47.093Z"
 }
