@@ -38,12 +38,23 @@
         "imm": 70,
         "body": 60
       }
+    },
+    "3": {
+      "done": {
+        "shower_am": true,
+        "skincare_am": true,
+        "water_1": true
+      },
+      "score": 4,
+      "catXP": {
+        "body": 55
+      }
     }
   },
   "catTotals": {
-    "body": 235,
+    "body": 290,
     "art": 15,
     "imm": 70
   },
-  "lastUpdated": "2026-05-16T13:58:01.396Z"
+  "lastUpdated": "2026-05-17T12:50:27.097Z"
 }
