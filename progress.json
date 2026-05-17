@@ -43,18 +43,20 @@
       "done": {
         "shower_am": true,
         "skincare_am": true,
-        "water_1": true
+        "water_1": true,
+        "bible": true
       },
-      "score": 4,
+      "score": 6,
       "catXP": {
-        "body": 55
+        "body": 55,
+        "art": 15
       }
     }
   },
   "catTotals": {
     "body": 290,
-    "art": 15,
+    "art": 30,
     "imm": 70
   },
-  "lastUpdated": "2026-05-17T12:50:27.097Z"
+  "lastUpdated": "2026-05-17T12:50:54.603Z"
 }
