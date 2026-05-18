@@ -104,11 +104,13 @@
         "violin": true,
         "bible": true,
         "whatsapp": true,
-        "shower_pm": true
+        "shower_pm": true,
+        "skincare_pm": true,
+        "screens_off": true
       },
-      "score": 83,
+      "score": 86,
       "catXP": {
-        "body": 370,
+        "body": 400,
         "en": 15,
         "bonus": 155,
         "jp": 50,
@@ -124,7 +126,7 @@
     }
   },
   "catTotals": {
-    "body": 660,
+    "body": 690,
     "project": 190,
     "art": 70,
     "imm": 70,
@@ -138,5 +140,5 @@
     "tr": 25,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:26:14.574Z"
+  "lastUpdated": "2026-05-18T18:26:18.463Z"
 }
