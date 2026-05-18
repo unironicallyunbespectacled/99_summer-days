@@ -64,22 +64,23 @@
         "cook_bfast": false,
         "eat_bfast": false,
         "imm2a": true,
-        "leetcode": true
+        "leetcode": true,
+        "sleep": true
       },
-      "score": 12,
+      "score": 15,
       "catXP": {
         "imm": 50,
-        "body": 45,
+        "body": 85,
         "mind": 40
       }
     }
   },
   "catTotals": {
-    "body": 335,
+    "body": 375,
     "project": 75,
     "art": 30,
     "imm": 120,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:24:25.096Z"
+  "lastUpdated": "2026-05-18T18:24:28.577Z"
 }
