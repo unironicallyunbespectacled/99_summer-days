@@ -66,12 +66,16 @@
         "imm2a": true,
         "leetcode": true,
         "sleep": true,
-        "ru_main": true
+        "ru_main": true,
+        "es_main": true,
+        "jp_main": true
       },
-      "score": 18,
+      "score": 26,
       "catXP": {
         "imm": 50,
         "body": 85,
+        "jp": 50,
+        "es": 40,
         "ru": 35,
         "mind": 40
       }
@@ -82,8 +86,10 @@
     "project": 75,
     "art": 30,
     "imm": 120,
+    "jp": 50,
+    "es": 40,
     "ru": 35,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:24:34.109Z"
+  "lastUpdated": "2026-05-18T18:24:37.327Z"
 }
