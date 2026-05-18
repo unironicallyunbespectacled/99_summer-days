@@ -106,7 +106,8 @@
         "whatsapp": true,
         "shower_pm": true,
         "skincare_pm": true,
-        "screens_off": true
+        "screens_off": true,
+        "imm2b": false
       },
       "score": 86,
       "catXP": {
@@ -140,5 +141,5 @@
     "tr": 25,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:26:18.463Z"
+  "lastUpdated": "2026-05-18T18:26:27.910Z"
 }
