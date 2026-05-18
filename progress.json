@@ -73,12 +73,14 @@
         "imm3a": true,
         "zh_main": true,
         "app1": true,
-        "book_write": true
+        "book_write": true,
+        "en_bonus": true
       },
-      "score": 44,
+      "score": 46,
       "catXP": {
         "imm": 110,
         "body": 135,
+        "bonus": 20,
         "jp": 50,
         "es": 40,
         "zh": 35,
@@ -93,11 +95,12 @@
     "project": 145,
     "art": 30,
     "imm": 180,
+    "bonus": 20,
     "jp": 50,
     "es": 40,
     "zh": 35,
     "ru": 35,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:25:05.138Z"
+  "lastUpdated": "2026-05-18T18:25:22.343Z"
 }
