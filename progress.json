@@ -95,11 +95,20 @@
         "app3": true,
         "ru_bonus": true,
         "project_bonus": true,
-        "leetcode_bonus": true
+        "leetcode_bonus": true,
+        "nuts": true,
+        "main_cook": true,
+        "main_eat": true,
+        "water_2": true,
+        "water_3": true,
+        "violin": true,
+        "bible": true,
+        "whatsapp": true,
+        "shower_pm": true
       },
-      "score": 71,
+      "score": 83,
       "catXP": {
-        "body": 270,
+        "body": 370,
         "en": 15,
         "bonus": 155,
         "jp": 50,
@@ -109,14 +118,15 @@
         "ru": 35,
         "tr": 25,
         "project": 115,
-        "mind": 40
+        "mind": 40,
+        "art": 40
       }
     }
   },
   "catTotals": {
-    "body": 560,
+    "body": 660,
     "project": 190,
-    "art": 30,
+    "art": 70,
     "imm": 70,
     "en": 15,
     "bonus": 155,
@@ -128,5 +138,5 @@
     "tr": 25,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:26:02.896Z"
+  "lastUpdated": "2026-05-18T18:26:14.574Z"
 }
