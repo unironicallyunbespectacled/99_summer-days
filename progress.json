@@ -92,13 +92,14 @@
         "push4": true,
         "push5": true,
         "app2": true,
-        "app3": true
+        "app3": true,
+        "ru_bonus": true
       },
-      "score": 67,
+      "score": 69,
       "catXP": {
         "body": 270,
         "en": 15,
-        "bonus": 105,
+        "bonus": 125,
         "jp": 50,
         "es": 65,
         "typing": 20,
@@ -116,7 +117,7 @@
     "art": 30,
     "imm": 70,
     "en": 15,
-    "bonus": 105,
+    "bonus": 125,
     "jp": 50,
     "es": 65,
     "typing": 20,
@@ -125,5 +126,5 @@
     "tr": 25,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:25:54.466Z"
+  "lastUpdated": "2026-05-18T18:26:00.410Z"
 }
