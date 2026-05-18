@@ -58,16 +58,23 @@
       }
     },
     "4": {
-      "done": {},
-      "score": 0,
-      "catXP": {}
+      "done": {
+        "shower_am": true,
+        "skincare_am": true,
+        "cook_bfast": true,
+        "eat_bfast": true
+      },
+      "score": 7,
+      "catXP": {
+        "body": 85
+      }
     }
   },
   "catTotals": {
-    "body": 290,
+    "body": 375,
     "project": 75,
     "art": 30,
     "imm": 70
   },
-  "lastUpdated": "2026-05-18T10:36:28.031Z"
+  "lastUpdated": "2026-05-18T18:23:46.206Z"
 }
