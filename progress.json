@@ -68,12 +68,13 @@
         "sleep": true,
         "ru_main": true,
         "es_main": true,
-        "jp_main": true
+        "jp_main": true,
+        "martial_am": true
       },
-      "score": 26,
+      "score": 30,
       "catXP": {
         "imm": 50,
-        "body": 85,
+        "body": 135,
         "jp": 50,
         "es": 40,
         "ru": 35,
@@ -82,7 +83,7 @@
     }
   },
   "catTotals": {
-    "body": 375,
+    "body": 425,
     "project": 75,
     "art": 30,
     "imm": 120,
@@ -91,5 +92,5 @@
     "ru": 35,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:24:37.327Z"
+  "lastUpdated": "2026-05-18T18:24:39.459Z"
 }
