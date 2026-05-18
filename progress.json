@@ -74,15 +74,19 @@
         "zh_main": true,
         "app1": true,
         "book_write": true,
-        "en_bonus": true
+        "en_bonus": true,
+        "jp_bonus": true,
+        "typing_main": true,
+        "typing_bonus": true
       },
-      "score": 46,
+      "score": 51,
       "catXP": {
         "imm": 110,
         "body": 135,
-        "bonus": 20,
+        "bonus": 55,
         "jp": 50,
         "es": 40,
+        "typing": 20,
         "zh": 35,
         "ru": 35,
         "project": 70,
@@ -95,12 +99,13 @@
     "project": 145,
     "art": 30,
     "imm": 180,
-    "bonus": 20,
+    "bonus": 55,
     "jp": 50,
     "es": 40,
+    "typing": 20,
     "zh": 35,
     "ru": 35,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:25:22.343Z"
+  "lastUpdated": "2026-05-18T18:25:27.837Z"
 }
