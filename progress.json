@@ -70,14 +70,16 @@
         "es_main": true,
         "jp_main": true,
         "martial_am": true,
-        "imm3a": true
+        "imm3a": true,
+        "zh_main": true
       },
-      "score": 35,
+      "score": 38,
       "catXP": {
         "imm": 110,
         "body": 135,
         "jp": 50,
         "es": 40,
+        "zh": 35,
         "ru": 35,
         "mind": 40
       }
@@ -90,8 +92,9 @@
     "imm": 180,
     "jp": 50,
     "es": 40,
+    "zh": 35,
     "ru": 35,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:24:46.097Z"
+  "lastUpdated": "2026-05-18T18:24:55.817Z"
 }
