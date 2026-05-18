@@ -61,8 +61,8 @@
       "done": {
         "shower_am": true,
         "skincare_am": true,
-        "cook_bfast": true,
-        "eat_bfast": true,
+        "cook_bfast": false,
+        "eat_bfast": false,
         "imm2a": false,
         "leetcode": true,
         "sleep": true,
@@ -109,9 +109,9 @@
         "screens_off": true,
         "imm2b": false
       },
-      "score": 86,
+      "score": 82,
       "catXP": {
-        "body": 400,
+        "body": 360,
         "en": 15,
         "bonus": 155,
         "jp": 50,
@@ -127,7 +127,7 @@
     }
   },
   "catTotals": {
-    "body": 690,
+    "body": 650,
     "project": 190,
     "art": 70,
     "imm": 70,
@@ -141,5 +141,5 @@
     "tr": 25,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:26:27.910Z"
+  "lastUpdated": "2026-05-18T18:26:31.884Z"
 }
