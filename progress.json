@@ -16,11 +16,16 @@
         "bible": true,
         "screens_off": false,
         "sleep": false,
-        "creatine": true
+        "creatine": true,
+        "legs3": false,
+        "app1": true,
+        "app2": true,
+        "app3": true
       },
-      "score": 16,
+      "score": 23,
       "catXP": {
         "body": 175,
+        "project": 75,
         "art": 15
       }
     },
@@ -51,12 +56,18 @@
         "body": 55,
         "art": 15
       }
+    },
+    "4": {
+      "done": {},
+      "score": 0,
+      "catXP": {}
     }
   },
   "catTotals": {
     "body": 290,
+    "project": 75,
     "art": 30,
     "imm": 70
   },
-  "lastUpdated": "2026-05-17T12:50:54.603Z"
+  "lastUpdated": "2026-05-18T10:36:28.031Z"
 }
