@@ -63,12 +63,14 @@
         "skincare_am": true,
         "cook_bfast": false,
         "eat_bfast": false,
-        "imm2a": true
+        "imm2a": true,
+        "leetcode": true
       },
-      "score": 8,
+      "score": 12,
       "catXP": {
         "imm": 50,
-        "body": 45
+        "body": 45,
+        "mind": 40
       }
     }
   },
@@ -76,7 +78,8 @@
     "body": 335,
     "project": 75,
     "art": 30,
-    "imm": 120
+    "imm": 120,
+    "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:24:14.205Z"
+  "lastUpdated": "2026-05-18T18:24:25.096Z"
 }
