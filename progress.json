@@ -69,11 +69,12 @@
         "ru_main": true,
         "es_main": true,
         "jp_main": true,
-        "martial_am": true
+        "martial_am": true,
+        "imm3a": true
       },
-      "score": 30,
+      "score": 35,
       "catXP": {
-        "imm": 50,
+        "imm": 110,
         "body": 135,
         "jp": 50,
         "es": 40,
@@ -86,11 +87,11 @@
     "body": 425,
     "project": 75,
     "art": 30,
-    "imm": 120,
+    "imm": 180,
     "jp": 50,
     "es": 40,
     "ru": 35,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:24:41.589Z"
+  "lastUpdated": "2026-05-18T18:24:46.097Z"
 }
