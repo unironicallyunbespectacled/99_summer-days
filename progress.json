@@ -65,12 +65,14 @@
         "eat_bfast": false,
         "imm2a": true,
         "leetcode": true,
-        "sleep": true
+        "sleep": true,
+        "ru_main": true
       },
-      "score": 15,
+      "score": 18,
       "catXP": {
         "imm": 50,
         "body": 85,
+        "ru": 35,
         "mind": 40
       }
     }
@@ -80,7 +82,8 @@
     "project": 75,
     "art": 30,
     "imm": 120,
+    "ru": 35,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:24:28.577Z"
+  "lastUpdated": "2026-05-18T18:24:34.109Z"
 }
