@@ -71,9 +71,10 @@
         "jp_main": true,
         "martial_am": true,
         "imm3a": true,
-        "zh_main": true
+        "zh_main": true,
+        "app1": true
       },
-      "score": 38,
+      "score": 41,
       "catXP": {
         "imm": 110,
         "body": 135,
@@ -81,13 +82,14 @@
         "es": 40,
         "zh": 35,
         "ru": 35,
+        "project": 30,
         "mind": 40
       }
     }
   },
   "catTotals": {
     "body": 425,
-    "project": 75,
+    "project": 105,
     "art": 30,
     "imm": 180,
     "jp": 50,
@@ -96,5 +98,5 @@
     "ru": 35,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:24:55.817Z"
+  "lastUpdated": "2026-05-18T18:25:01.041Z"
 }
