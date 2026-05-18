@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PRAISE — S IN SUMMER · V3 · GITHUB SYNC</title>
+<title>PRAISE — S IN SUMMER · V3 · 99 DAYS</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --void:#050505;--card:#0a0a14;--card2:#0f0f1e;--border:#1a1a2e;
-  --c:#00f3ff;--cdim:rgba(0,243,255,.12);--cg:rgba(0,243,255,.06);
+  --c:#00f3ff;--cdim:rgba(0,243,255,.12);
   --g:#39ff14;--gdim:rgba(57,255,20,.1);
   --m:#ff007f;--mdim:rgba(255,0,127,.1);
   --p:#c77dff;--pdim:rgba(199,125,255,.1);
@@ -16,7 +16,8 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--void);color:var(--w);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.7;overflow-x:hidden;}
+body{background:var(--void);color:var(--w);font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.7;overflow-x:hidden;padding-bottom:56px;}
+/* HERO */
 .hero{background:linear-gradient(160deg,#050505 0%,#06000f 50%,#050505 100%);border-bottom:2px solid var(--c);padding:64px 40px 56px;text-align:center;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 110%,rgba(0,243,255,.07),transparent 70%);pointer-events:none;}
 .hero-tag{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:5px;color:var(--c);text-transform:uppercase;margin-bottom:18px;opacity:.8;}
@@ -28,10 +29,12 @@ body{background:var(--void);color:var(--w);font-family:'DM Sans',sans-serif;font
 .stat-n{font-family:'Bebas Neue',sans-serif;font-size:46px;color:var(--c);line-height:1;}
 .stat-l{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--mu);text-transform:uppercase;margin-top:4px;}
 .motto{background:linear-gradient(90deg,var(--c),var(--g));color:#000;padding:11px 40px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;text-align:center;}
+/* NAV */
 .nav{background:var(--card);border-bottom:1px solid var(--border);padding:0 16px;display:flex;gap:0;overflow-x:auto;position:sticky;top:0;z-index:100;scrollbar-width:none;}
 .nav::-webkit-scrollbar{display:none;}
 .nav a{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);text-decoration:none;padding:13px 12px;border-bottom:2px solid transparent;white-space:nowrap;transition:all .2s;}
 .nav a:hover,.nav a.active{color:var(--c);border-bottom-color:var(--c);}
+/* SECTIONS */
 section{padding:50px 40px;border-bottom:1px solid var(--border);}
 .container{max-width:1100px;margin:0 auto;}
 .sl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--c);margin-bottom:10px;}
@@ -49,7 +52,7 @@ section{padding:50px 40px;border-bottom:1px solid var(--border);}
 .task-row.done .task-label{text-decoration:line-through;color:var(--mu2);}
 .task-row.bonus-task{background:rgba(199,125,255,.04);border-left:2px solid rgba(199,125,255,.4);}
 .task-row.bonus-task:hover{background:rgba(199,125,255,.08);}
-.task-check{width:18px;height:18px;border:1.5px solid var(--c);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;background:transparent;}
+.task-check{width:18px;height:18px;border:1.5px solid var(--c);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;}
 .task-row.bonus-task .task-check{border-color:var(--p);}
 .task-row.done .task-check{background:var(--c);border-color:var(--c);}
 .task-row.done.bonus-task .task-check{background:var(--p);border-color:var(--p);}
@@ -59,15 +62,13 @@ section{padding:50px 40px;border-bottom:1px solid var(--border);}
 .task-pts{font-family:'DM Mono',monospace;font-size:10px;color:var(--c);white-space:nowrap;font-weight:500;}
 .task-row.bonus-task .task-pts{color:var(--p);}
 .task-cat{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;padding:2px 6px;border-radius:2px;text-transform:uppercase;flex-shrink:0;}
-/* Category colors */
 .cat-body{background:rgba(255,0,127,.1);color:var(--m);border:1px solid rgba(255,0,127,.25);}
 .cat-mind{background:rgba(0,243,255,.1);color:var(--c);border:1px solid rgba(0,243,255,.25);}
 .cat-project{background:rgba(199,125,255,.1);color:var(--p);border:1px solid rgba(199,125,255,.25);}
 .cat-art{background:rgba(255,121,176,.1);color:#ff79b0;border:1px solid rgba(255,121,176,.25);}
 .cat-imm{background:rgba(199,125,255,.18);color:var(--p);border:1px solid var(--p);}
 .cat-school{background:rgba(57,255,20,.08);color:#7fff00;border:1px solid rgba(57,255,20,.2);}
-.cat-bonus{background:rgba(199,125,255,.15);color:var(--p);border:1px solid var(--p);}
-/* Language category tags */
+.cat-typing{background:rgba(0,243,255,.08);color:var(--c);border:1px solid rgba(0,243,255,.2);}
 .cat-jp{background:rgba(255,107,157,.15);color:#ff6b9d;border:1px solid rgba(255,107,157,.35);}
 .cat-es{background:rgba(255,179,71,.12);color:#ffb347;border:1px solid rgba(255,179,71,.3);}
 .cat-zh{background:rgba(255,68,68,.12);color:#ff7777;border:1px solid rgba(255,68,68,.3);}
@@ -87,21 +88,49 @@ section{padding:50px 40px;border-bottom:1px solid var(--border);}
 .cat-fr{background:rgba(68,136,204,.12);color:#4488cc;border:1px solid rgba(68,136,204,.3);}
 .cat-ro{background:rgba(255,204,68,.12);color:#ffcc44;border:1px solid rgba(255,204,68,.3);}
 .cat-en{background:rgba(240,240,240,.1);color:#cccccc;border:1px solid rgba(240,240,240,.2);}
+.cat-bonus{background:rgba(199,125,255,.15);color:var(--p);border:1px solid var(--p);}
 /* SCORE */
 .score-ring-wrap{position:relative;width:140px;height:140px;margin:0 auto;}
 .score-ring-wrap svg{width:140px;height:140px;transform:rotate(-90deg);}
 .score-ring-bg{fill:none;stroke:var(--border);stroke-width:8;}
-.score-ring-fill{fill:none;stroke:var(--c);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset .6s ease;stroke-dasharray:351.86;stroke-dashoffset:351.86;}
+.score-ring-fill{fill:none;stroke:var(--c);stroke-width:8;stroke-linecap:round;stroke-dasharray:326.73;stroke-dashoffset:326.73;transition:stroke-dashoffset .6s ease;}
 .score-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
 .score-pct{font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--c);line-height:1;}
 .score-grade{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--g);line-height:1;margin-top:2px;}
 .score-bar-wrap{height:6px;background:var(--border);border-radius:3px;margin:12px 0;overflow:hidden;}
 .score-bar{height:100%;background:linear-gradient(90deg,var(--c),var(--g));border-radius:3px;transition:width .5s;}
-#progressCanvas{width:100%;height:220px;border-radius:4px;background:var(--card);border:1px solid var(--border);}
+/* SYNC BAR */
+#syncBar{position:fixed;bottom:0;left:0;right:0;background:var(--card);border-top:1px solid var(--border);padding:8px 16px;display:flex;align-items:center;gap:10px;z-index:200;font-family:'DM Mono',monospace;font-size:10px;}
+#syncDot{width:8px;height:8px;border-radius:50%;background:var(--mu);flex-shrink:0;transition:background .3s;}
+#syncDot.ok{background:var(--g);}
+#syncDot.busy{background:var(--c);animation:pulse .8s infinite;}
+#syncDot.err{background:var(--m);}
+#syncDot.local{background:var(--p);}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+#syncMsg{color:var(--mu);flex:1;}
+.sync-btn{background:transparent;border:1px solid var(--border);color:var(--mu);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;padding:4px 10px;border-radius:3px;cursor:pointer;text-transform:uppercase;}
+.sync-btn:hover{border-color:var(--c);color:var(--c);}
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;}
+.modal-box{background:var(--card);border:2px solid var(--c);border-radius:6px;padding:32px;max-width:480px;width:100%;}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--c);margin-bottom:6px;}
+.modal-sub{font-size:12px;color:var(--mu);margin-bottom:20px;line-height:1.6;}
+.modal-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--c);margin-bottom:5px;display:block;}
+.modal-input{width:100%;background:#0d0d1a;border:1px solid var(--border);color:var(--w);font-family:'DM Mono',monospace;font-size:12px;padding:10px 12px;border-radius:3px;outline:none;margin-bottom:14px;}
+.modal-input:focus{border-color:var(--c);}
+.modal-btn{background:var(--c);color:#000;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;padding:10px 24px;border:none;border-radius:3px;cursor:pointer;width:100%;margin-top:4px;}
+.modal-skip{background:transparent;color:var(--mu);font-family:'DM Mono',monospace;font-size:10px;padding:8px;border:none;cursor:pointer;width:100%;margin-top:8px;}
+.modal-skip:hover{color:var(--w);}
+/* ANALYTICS */
+.cat-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.cat-bar-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;width:50px;flex-shrink:0;text-transform:uppercase;}
+.cat-bar-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.cat-bar-fill{height:100%;border-radius:4px;transition:width .5s;}
+.cat-bar-pct{font-family:'DM Mono',monospace;font-size:9px;color:var(--mu);width:32px;text-align:right;flex-shrink:0;}
+/* MISC */
 table{width:100%;border-collapse:collapse;font-size:12px;}
 th{text-align:left;padding:9px 12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--c);border-bottom:1px solid var(--c);}
 td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--mu);vertical-align:top;}
-tr:hover td{background:rgba(0,243,255,.02);}
 .acyan{background:rgba(0,243,255,.06);border:1px solid var(--c);color:#80f8ff;border-radius:4px;padding:12px 14px;margin:8px 0;font-size:12px;}
 .agreen{background:rgba(57,255,20,.06);border:1px solid var(--g);color:#90ff70;border-radius:4px;padding:12px 14px;margin:8px 0;font-size:12px;}
 .amagenta{background:rgba(255,0,127,.06);border:1px solid var(--m);color:#ff79b0;border-radius:4px;padding:12px 14px;margin:8px 0;font-size:12px;}
@@ -115,58 +144,34 @@ tr:hover td{background:rgba(0,243,255,.02);}
 input[type="date"]{background:var(--card);border:1px solid var(--c);color:var(--w);font-family:'DM Mono',monospace;font-size:12px;padding:8px 14px;border-radius:3px;outline:none;cursor:pointer;}
 .footer{background:var(--card);border-top:2px solid var(--c);padding:40px;text-align:center;}
 .footer-title{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--c);}
-.lang-section-header{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:6px 10px;background:rgba(0,243,255,.04);border-left:2px solid var(--c);color:var(--c);margin:8px 0 2px 0;}
-.bonus-section-header{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:6px 10px;background:rgba(199,125,255,.06);border-left:2px solid var(--p);color:var(--p);margin:8px 0 2px 0;}
 a{color:var(--c);text-decoration:none;}a:hover{text-decoration:underline;}
+#progressCanvas{width:100%;height:220px;border-radius:4px;background:var(--card);border:1px solid var(--border);}
 @media(max-width:600px){section{padding:32px 16px;}.hero{padding:40px 16px;}.stats{gap:20px;}}
 </style>
 </head>
 <body>
 
-
-<!-- ── SETUP MODAL ── -->
-<div id="setupOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:#0a0a14;border:2px solid #00f3ff;border-radius:6px;padding:36px;max-width:480px;width:100%;">
-    <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#00f3ff;margin-bottom:6px;">⚡ GITHUB SYNC SETUP</div>
-    <p style="font-size:12px;color:#777;margin-bottom:20px;line-height:1.6;">Your progress saves to a JSON file in your GitHub repo. Works on any device — phone, laptop, anywhere. Fill this in once.</p>
-    <label style="display:block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#00f3ff;margin-bottom:4px;margin-top:14px;">GitHub Username</label>
-    <input id="ghUser" type="text" placeholder="e.g. unironicallyunbespectacled" autocomplete="off" style="width:100%;background:#050505;border:1px solid #1a1a2e;color:#f0f0f0;font-family:'DM Mono',monospace;font-size:12px;padding:10px 12px;border-radius:3px;outline:none;">
-    <label style="display:block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#00f3ff;margin-bottom:4px;margin-top:14px;">Repository Name</label>
-    <input id="ghRepo" type="text" placeholder="e.g. 99_summer-days" autocomplete="off" style="width:100%;background:#050505;border:1px solid #1a1a2e;color:#f0f0f0;font-family:'DM Mono',monospace;font-size:12px;padding:10px 12px;border-radius:3px;outline:none;">
-    <label style="display:block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#00f3ff;margin-bottom:4px;margin-top:14px;">Personal Access Token (PAT)</label>
-    <input id="ghToken" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" style="width:100%;background:#050505;border:1px solid #1a1a2e;color:#f0f0f0;font-family:'DM Mono',monospace;font-size:12px;padding:10px 12px;border-radius:3px;outline:none;">
-    <div style="font-family:'DM Mono',monospace;font-size:9px;color:#555;margin-top:8px;line-height:1.6;">
-      How to get a token: GitHub → Settings → Developer Settings → Personal Access Tokens → Fine-grained → Generate new → 90 days expiry → Your repo → Contents: Read &amp; Write → Copy here.<br><br>
-      ⚠️ Token saved only in this browser's localStorage. Never uploaded.
-    </div>
-    <button onclick="saveSetup()" style="margin-top:20px;width:100%;background:#00f3ff;color:#000;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:2px;padding:12px;border:none;border-radius:3px;cursor:pointer;">CONNECT &amp; SYNC →</button>
-    <button onclick="skipSetup()" style="margin-top:8px;width:100%;background:transparent;color:#555;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;padding:8px;border:1px solid #1a1a2e;border-radius:3px;cursor:pointer;text-transform:uppercase;">Skip — use this device only</button>
+<!-- GITHUB SETUP MODAL -->
+<div class="modal-overlay" id="setupModal" style="display:none;">
+  <div class="modal-box">
+    <div class="modal-title">GitHub Sync Setup</div>
+    <div class="modal-sub">Connect your GitHub repo to save progress across all devices. Your token is stored only in this browser's localStorage — never uploaded anywhere.<br><br><strong style="color:var(--c)">How to get a token:</strong> GitHub → Settings → Developer Settings → Personal Access Tokens → Fine-grained → Generate new → 90 days → Only your repo → Contents: Read &amp; Write → Generate.</div>
+    <label class="modal-label">GitHub Username</label>
+    <input class="modal-input" id="ghUser" placeholder="e.g. unironicallyunbespectacled" autocomplete="off">
+    <label class="modal-label">Repository Name</label>
+    <input class="modal-input" id="ghRepo" placeholder="e.g. 99_summer-days" autocomplete="off">
+    <label class="modal-label">Personal Access Token (Fine-grained)</label>
+    <input class="modal-input" id="ghToken" type="password" placeholder="github_pat_..." autocomplete="off">
+    <button class="modal-btn" onclick="saveGHConfig()">CONNECT &amp; SYNC</button>
+    <button class="modal-skip" onclick="skipGH()">Skip — use local storage only</button>
   </div>
 </div>
 
-
-<!-- ── SYNC BAR ── -->
-<div id="syncBar" style="position:fixed;bottom:0;left:0;right:0;z-index:500;background:#0a0a14;border-top:1px solid #1a1a2e;padding:6px 16px;display:flex;align-items:center;gap:10px;font-family:'DM Mono',monospace;font-size:10px;">
-  <div id="syncDot" style="width:8px;height:8px;border-radius:50%;background:#555;flex-shrink:0;transition:background .3s;"></div>
-  <span id="syncMsg" style="flex:1;color:#555;">Initializing...</span>
-  <div style="display:flex;gap:6px;">
-    <button onclick="forcePull()" style="background:transparent;border:1px solid #1a1a2e;color:#555;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;padding:4px 10px;border-radius:2px;cursor:pointer;text-transform:uppercase;">↓ Pull</button>
-    <button onclick="forcePush()" style="background:transparent;border:1px solid #1a1a2e;color:#555;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;padding:4px 10px;border-radius:2px;cursor:pointer;text-transform:uppercase;">↑ Push</button>
-    <button onclick="showSetup()" style="background:transparent;border:1px solid #1a1a2e;color:#555;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;padding:4px 10px;border-radius:2px;cursor:pointer;text-transform:uppercase;">⚙ Setup</button>
-  </div>
-</div>
-<style>
-#syncDot.ok{background:#39ff14!important;}
-#syncDot.busy{background:#c77dff!important;}
-#syncDot.err{background:#ff007f!important;}
-/* padding for sync bar */
-.footer{padding-bottom:50px!important;}
-</style>
-
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-tag">Praise Chukwudaru · M29 · Buenos Aires · 2026 · <span style="color:var(--g)">S IN SUMMER V3 — GITHUB CLOUD SYNC · ANALYTICS · TYPING</span></div>
+  <div class="hero-tag">Praise Chukwudaru · M29 · Buenos Aires · 2026 · <span style="color:var(--g)">S IN SUMMER V3 — GITHUB SYNC · ANALYTICS</span></div>
   <div class="hero-title">S IN <span class="a1">SUM</span><br><span class="a2">MER</span></div>
-  <div class="hero-sub">99 days. 20 languages. Saved to GitHub. Works on every device.</div>
+  <div class="hero-sub">99 days. 20 languages. Every task = its own checkbox. Progress synced to GitHub.</div>
   <div class="stats">
     <div class="stat"><div class="stat-n">99</div><div class="stat-l">Days</div></div>
     <div class="stat"><div class="stat-n">20</div><div class="stat-l">Languages</div></div>
@@ -178,19 +183,21 @@ a{color:var(--c);text-decoration:none;}a:hover{text-decoration:underline;}
 
 <nav class="nav">
   <a href="#today" class="active">⚡ TODAY</a>
-  <a href="#progress">📊 Graph</a>
-  <a href="#analytics">🔍 Analytics</a>
-  <a href="#languages">🌍 Languages</a>
-  <a href="#immigration">🛂 Immigration</a>
-  <a href="#nutrition">🥜 Nutrition</a>
-  <a href="#training">🥊 Training</a>
-  <a href="#internships">🚀 Internships</a>
-  <a href="#rules">📜 Rules</a>
+  <a href="#progress">📊 GRAPH</a>
+  <a href="#analytics">📈 ANALYTICS</a>
+  <a href="#languages">🌍 LANGUAGES</a>
+  <a href="#immigration">🛂 IMMIGRATION</a>
+  <a href="#nutrition">🥜 NUTRITION</a>
+  <a href="#training">🥊 TRAINING</a>
+  <a href="#typing">⌨️ TYPING</a>
+  <a href="#internships">🚀 INTERNSHIPS</a>
+  <a href="#rules">📜 RULES</a>
 </nav>
 
+<!-- TODAY -->
 <section id="today" style="background:linear-gradient(135deg,#050505,#06000d);">
 <div class="container">
-  <div class="sl">Real-Time Command Center · V2 · Every Task Decomposed · No Clumping</div>
+  <div class="sl">Real-Time Command Center · V3 · GitHub Sync · No Clumping</div>
   <div class="st">TODAY'S <span style="color:var(--c)">MISSION</span></div>
   <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap;">
     <input type="date" id="dayPicker" min="2026-05-15" max="2026-08-21">
@@ -202,6 +209,7 @@ a{color:var(--c);text-decoration:none;}a:hover{text-decoration:underline;}
 </div>
 </section>
 
+<!-- PROGRESS GRAPH -->
 <section id="progress" style="background:#060006;">
 <div class="container">
   <div class="sl">Summer Arc · Score History · 99 Days</div>
@@ -210,7 +218,7 @@ a{color:var(--c);text-decoration:none;}a:hover{text-decoration:underline;}
     <div class="card cc">
       <div class="ct">Summer Score Ring</div>
       <div class="score-ring-wrap">
-        <svg viewBox="0 0 120 120">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
           <circle class="score-ring-bg" cx="60" cy="60" r="52"/>
           <circle class="score-ring-fill" id="summerRingFill" cx="60" cy="60" r="52"/>
         </svg>
@@ -222,7 +230,7 @@ a{color:var(--c);text-decoration:none;}a:hover{text-decoration:underline;}
       <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--mu);margin-top:10px;text-align:center;" id="summerDetail">No days scored yet.</div>
     </div>
     <div class="card" style="border-color:var(--g);">
-      <div class="ct" style="color:var(--g);">Streak & Stats</div>
+      <div class="ct" style="color:var(--g);">Streak &amp; Stats</div>
       <div id="streakStats" style="font-size:13px;color:var(--mu);line-height:2.2;">Loading...</div>
     </div>
   </div>
@@ -231,1191 +239,1352 @@ a{color:var(--c);text-decoration:none;}a:hover{text-decoration:underline;}
 </div>
 </section>
 
-
-<!-- ── ANALYTICS ── -->
-<section id="analytics" style="background:linear-gradient(135deg,#050505,#000a0a);">
+<!-- ANALYTICS -->
+<section id="analytics" style="background:linear-gradient(135deg,#060010,#050505);">
 <div class="container">
-  <div class="sl">Activity Balance · Cumulative · Tells you what you're over/under-doing</div>
-  <div class="st">CATEGORY <span style="color:var(--p)">ANALYTICS</span></div>
-  <div class="apurple" style="margin-bottom:16px;">This tracks <strong>cumulative XP by category</strong> across all scored days. If one bar is massive, you're overindexing. If a bar is tiny, you're skipping it. Balance = S-rank summer.</div>
-  <div class="g2">
-    <div class="card cp">
-      <div class="ct" style="color:var(--p);">XP Distribution by Category</div>
-      <div id="catBars" style="margin-top:8px;"></div>
+  <div class="sl">Category Balance · XP Distribution · Balance Alerts</div>
+  <div class="st">ANALYTICS <span style="color:var(--p)">ENGINE</span></div>
+  <div class="g2" style="margin-bottom:20px;">
+    <div class="card cp" id="analyticsBalanceCard">
+      <div class="ct" style="color:var(--p);">Balance Alerts</div>
+      <div id="balanceAlerts" style="font-size:12px;color:var(--mu);">Complete some tasks to see balance alerts.</div>
     </div>
-    <div class="card">
-      <div class="ct">Balance Alerts</div>
-      <div id="balanceAlerts" style="margin-top:8px;font-size:12px;color:var(--mu);">Load a few days first.</div>
+    <div class="card cc" id="analyticsCatCard">
+      <div class="ct">Category XP — Today</div>
+      <div id="catBars">Loading...</div>
     </div>
   </div>
-  <div class="card" style="margin-top:16px;border-color:rgba(0,243,255,.3);">
-    <div class="ct">Language XP Totals (all time)</div>
-    <div id="langTotals" style="font-size:12px;color:var(--mu);margin-top:8px;">Log a few days first.</div>
+  <div class="card" style="border-color:var(--g);margin-top:0;" id="activityTrendCard">
+    <div class="ct" style="color:var(--g);">Activity Type Distribution — Summer Total</div>
+    <div id="summerCatBars">Complete tasks across multiple days to see summer-wide trends.</div>
   </div>
 </div>
 </section>
 
+
+<!-- LANGUAGES -->
 <section id="languages" style="background:linear-gradient(180deg,#050505,#060010);">
 <div class="container">
-  <div class="sl">20 Languages · Resources · Weekly Schedule · No Clumping</div>
+  <div class="sl">20 Languages · Resources · Weekly Schedule</div>
   <div class="st">LANGUAGE <span style="color:var(--c)">ARSENAL</span></div>
-  <div class="apurple" style="margin-bottom:16px;"><strong>Rotation logic:</strong> Japanese + Spanish + English = every single day. Mon/Wed = Mandarin + Russian + Turkish. Tue/Thu = Korean + Urdu + Cantonese/Vietnamese/Kazakh. Fri = Russian + Turkish + French. Sat = Cantonese + Romanian + Ukrainian. Sun = Japanese 90-min sprint + Brazilian PT + German + Polish + Swahili.</div>
+  <div class="apurple" style="margin-bottom:16px;"><strong>Rotation:</strong> Japanese + Spanish + English = every day. Mon/Wed = Mandarin + Russian + Turkish. Tue/Thu = Korean + Urdu + Cantonese(Tue)/Vietnamese+Kazakh(Thu). Fri = Russian + Turkish + French. Sat = Cantonese + Romanian + Ukrainian. Sun = Japanese 80-min sprint + BR PT + German + Polish + Swahili.</div>
   <div class="g3">
     <div class="card cc"><div class="ct">🇯🇵 Japanese · Daily Sacred 30 min</div><ul class="tl">
-      <li><a href="https://www.tofugu.com/japanese/learn-hiragana/" target="_blank">tofugu.com/japanese/learn-hiragana/</a> — Hiragana guide</li>
+      <li><a href="https://www.tofugu.com/japanese/learn-hiragana/" target="_blank">tofugu.com/japanese/learn-hiragana/</a></li>
       <li><a href="https://guidetojapanese.org" target="_blank">guidetojapanese.org</a> — Tae Kim's Grammar</li>
-      <li><a href="https://ankiweb.net" target="_blank">ankiweb.net</a> — Anki (Core 2000 deck)</li>
+      <li><a href="https://ankiweb.net" target="_blank">ankiweb.net</a> — Core 2000 deck</li>
       <li><a href="https://animelon.com" target="_blank">animelon.com</a> — Anime + JP subtitles</li>
       <li><a href="https://www.italki.com" target="_blank">italki.com</a> — tutors ~$10/hr</li>
     </ul></div>
     <div class="card cg"><div class="ct" style="color:var(--g);">🇦🇷 Spanish · Daily 30 min + Journal</div><ul class="tl">
-      <li><a href="https://www.languagetransfer.org/spanish" target="_blank">languagetransfer.org/spanish</a> — 40 free audio tracks</li>
+      <li><a href="https://www.languagetransfer.org/spanish" target="_blank">languagetransfer.org/spanish</a></li>
       <li><a href="https://ankiweb.net" target="_blank">ankiweb.net</a> — Spanish B1 deck</li>
       <li><a href="https://www.clarin.com" target="_blank">clarin.com</a> — BA newspaper</li>
-      <li><a href="https://dreamingspanish.com" target="_blank">dreamingspanish.com</a> — Comprehensible input</li>
+      <li><a href="https://dreamingspanish.com" target="_blank">dreamingspanish.com</a></li>
       <li>UBA course 2582-MC04000601 — May 25–Jul 18</li>
     </ul></div>
     <div class="card" style="border-color:#6699ff;"><div class="ct" style="color:#6699ff;">🇷🇺 Russian · Mon/Wed/Fri 15 min</div><ul class="tl">
-      <li><a href="http://russianforeveryone.com" target="_blank">russianforeveryone.com</a> — Free structured course</li>
-      <li><a href="https://openrussian.org" target="_blank">openrussian.org</a> — Dictionary + cases</li>
-      <li><a href="https://www.youtube.com/@RealRussianClub" target="_blank">youtube.com/@RealRussianClub</a> — Slow Russian podcast</li>
-      <li><a href="https://russianenthusiast.com" target="_blank">russianenthusiast.com</a> — Grammar hub</li>
+      <li><a href="http://russianforeveryone.com" target="_blank">russianforeveryone.com</a></li>
+      <li><a href="https://openrussian.org" target="_blank">openrussian.org</a></li>
+      <li><a href="https://www.youtube.com/@RealRussianClub" target="_blank">youtube.com/@RealRussianClub</a></li>
+      <li><a href="https://russianenthusiast.com" target="_blank">russianenthusiast.com</a></li>
     </ul></div>
     <div class="card" style="border-color:#ff7777;"><div class="ct" style="color:#ff7777;">🇨🇳 Mandarin · Mon/Wed 15 min</div><ul class="tl">
-      <li><a href="https://yoyochinese.com" target="_blank">yoyochinese.com</a> — Tone chart + courses</li>
-      <li><a href="https://allsetlearning.com" target="_blank">allsetlearning.com</a> — Chinese Grammar Wiki</li>
-      <li><a href="https://www.hellochinese.cc" target="_blank">hellochinese.cc</a> — HelloChinese app</li>
-      <li><a href="https://ankiweb.net" target="_blank">ankiweb.net</a> — Core 2000 Mandarin deck</li>
+      <li><a href="https://yoyochinese.com" target="_blank">yoyochinese.com</a></li>
+      <li><a href="https://allsetlearning.com" target="_blank">allsetlearning.com</a></li>
+      <li><a href="https://www.hellochinese.cc" target="_blank">hellochinese.cc</a></li>
+      <li><a href="https://ankiweb.net" target="_blank">ankiweb.net</a> — Core 2000 Mandarin</li>
     </ul></div>
     <div class="card" style="border-color:#44ff88;"><div class="ct" style="color:#44ff88;">🇰🇷 Korean · Tue/Thu 15 min</div><ul class="tl">
-      <li><a href="https://www.talktomeinkorean.com" target="_blank">talktomeinkorean.com</a> — TTMIK Level 1+</li>
-      <li><a href="https://www.howtostudykorean.com" target="_blank">howtostudykorean.com</a> — Free grammar course</li>
-      <li><a href="https://mirinae.io" target="_blank">mirinae.io</a> — AI sentence analyzer</li>
-      <li><a href="https://lingodeer.com" target="_blank">lingodeer.com</a> — LingoDeer app</li>
+      <li><a href="https://www.talktomeinkorean.com" target="_blank">talktomeinkorean.com</a></li>
+      <li><a href="https://www.howtostudykorean.com" target="_blank">howtostudykorean.com</a></li>
+      <li><a href="https://mirinae.io" target="_blank">mirinae.io</a></li>
+      <li><a href="https://lingodeer.com" target="_blank">lingodeer.com</a></li>
     </ul></div>
     <div class="card" style="border-color:#ffdd44;"><div class="ct" style="color:#ffdd44;">🇹🇷 Turkish · Mon/Fri 10 min</div><ul class="tl">
-      <li><a href="https://www.languagetransfer.org/turkish" target="_blank">languagetransfer.org/turkish</a> — Free audio course</li>
-      <li><a href="https://elon.io" target="_blank">elon.io</a> — Structured community course</li>
-      <li><a href="https://turkce.yee.org.tr/en/" target="_blank">turkce.yee.org.tr</a> — Official Turkish govt course</li>
-      <li><a href="https://tureng.com" target="_blank">tureng.com</a> — Gold-standard dictionary</li>
+      <li><a href="https://www.languagetransfer.org/turkish" target="_blank">languagetransfer.org/turkish</a></li>
+      <li><a href="https://elon.io" target="_blank">elon.io</a></li>
+      <li><a href="https://turkce.yee.org.tr/en/" target="_blank">turkce.yee.org.tr</a></li>
+      <li><a href="https://tureng.com" target="_blank">tureng.com</a> — dictionary</li>
     </ul></div>
     <div class="card" style="border-color:#ff44aa;"><div class="ct" style="color:#ff44aa;">🇭🇰 Cantonese · Tue/Sat 10 min</div><ul class="tl">
-      <li><a href="https://forthrightcantonese.com" target="_blank">forthrightcantonese.com</a> — Jyutping + grammar</li>
-      <li><a href="https://cantoneseclass101.com" target="_blank">cantoneseclass101.com</a> — Audio lessons</li>
-      <li><a href="https://words.hk" target="_blank">words.hk</a> — Crowdsourced Cantonese dict</li>
+      <li><a href="https://forthrightcantonese.com" target="_blank">forthrightcantonese.com</a></li>
+      <li><a href="https://cantoneseclass101.com" target="_blank">cantoneseclass101.com</a></li>
+      <li><a href="https://words.hk" target="_blank">words.hk</a></li>
     </ul></div>
     <div class="card" style="border-color:#44ddaa;"><div class="ct" style="color:#44ddaa;">🇸🇦 Arabic · Wed 10 min</div><ul class="tl">
-      <li><a href="https://madinaharabic.com" target="_blank">madinaharabic.com</a> — Free structured MSA course</li>
-      <li><a href="https://ejtaal.net" target="_blank">ejtaal.net</a> — Hans Wehr dictionary online</li>
-      <li><a href="https://arabicpod101.com" target="_blank">arabicpod101.com</a> — Audio lessons</li>
+      <li><a href="https://madinaharabic.com" target="_blank">madinaharabic.com</a></li>
+      <li><a href="https://ejtaal.net" target="_blank">ejtaal.net</a> — Hans Wehr online</li>
+      <li><a href="https://arabicpod101.com" target="_blank">arabicpod101.com</a></li>
     </ul></div>
     <div class="card" style="border-color:#ff8844;"><div class="ct" style="color:#ff8844;">🇻🇳 Vietnamese · Thu 10 min</div><ul class="tl">
-      <li>Learn Vietnamese with SVFF YouTube — Southern dialect</li>
-      <li>Learn Vietnamese with Annie YouTube — grammar + pronunciation</li>
-      <li><a href="https://vietnamesepod101.com" target="_blank">vietnamesepod101.com</a> — Audio lessons</li>
-      <li><a href="https://vdict.com" target="_blank">vdict.com</a> — Dictionary</li>
+      <li>Learn Vietnamese with SVFF — YouTube</li>
+      <li>Learn Vietnamese with Annie — YouTube</li>
+      <li><a href="https://vietnamesepod101.com" target="_blank">vietnamesepod101.com</a></li>
+      <li><a href="https://vdict.com" target="_blank">vdict.com</a></li>
     </ul></div>
     <div class="card" style="border-color:#cc88ff;"><div class="ct" style="color:#cc88ff;">🇵🇰 Urdu · Tue 10 min</div><ul class="tl">
-      <li><a href="https://aamozish.com" target="_blank">aamozish.com</a> — Nastaliq script course</li>
-      <li><a href="https://rekhta.org" target="_blank">rekhta.org</a> — Urdu-Hindi-English dictionary</li>
-      <li><a href="https://loecsen.com/en/learn-urdu" target="_blank">loecsen.com/en/learn-urdu</a> — A1 phrases</li>
+      <li><a href="https://aamozish.com" target="_blank">aamozish.com</a></li>
+      <li><a href="https://rekhta.org" target="_blank">rekhta.org</a></li>
+      <li><a href="https://loecsen.com/en/learn-urdu" target="_blank">loecsen.com/en/learn-urdu</a></li>
     </ul></div>
     <div class="card" style="border-color:#44ccff;"><div class="ct" style="color:#44ccff;">🇰🇿 Kazakh · Thu 5 min</div><ul class="tl">
-      <li><a href="https://soyle.kz" target="_blank">soyle.kz</a> — Official govt free course</li>
-      <li><a href="https://sozdik.kz" target="_blank">sozdik.kz</a> — Gold-standard dictionary</li>
+      <li><a href="https://soyle.kz" target="_blank">soyle.kz</a> — official free course</li>
+      <li><a href="https://sozdik.kz" target="_blank">sozdik.kz</a> — dictionary</li>
     </ul></div>
     <div class="card" style="border-color:#aaaaff;"><div class="ct" style="color:#aaaaff;">🇩🇪 German · Sun 15 min</div><ul class="tl">
-      <li><a href="https://www.dw.com" target="_blank">dw.com</a> — DW Nicos Weg A1-B2 (free)</li>
+      <li><a href="https://www.dw.com" target="_blank">dw.com</a> — Nicos Weg A1-B2 (free)</li>
       <li>Coffee Break German — coffeebreaklanguages.com</li>
-      <li>Easy German — YouTube street interviews</li>
-      <li><a href="https://leo.org" target="_blank">leo.org</a> — Premier dictionary</li>
+      <li>Easy German — YouTube</li>
+      <li><a href="https://leo.org" target="_blank">leo.org</a> — dictionary</li>
     </ul></div>
     <div class="card" style="border-color:#55ff55;"><div class="ct" style="color:#55ff55;">🇧🇷 Brazilian PT · Sun 20 min</div><ul class="tl">
-      <li><a href="https://cariocaconnection.com" target="_blank">cariocaconnection.com</a> — Rio street PT</li>
-      <li><a href="https://semanticaportuguese.com" target="_blank">semanticaportuguese.com</a> — Cinematic BR PT course</li>
+      <li><a href="https://cariocaconnection.com" target="_blank">cariocaconnection.com</a></li>
+      <li><a href="https://semanticaportuguese.com" target="_blank">semanticaportuguese.com</a></li>
       <li>Speaking Brazilian Language School — YouTube</li>
-      <li><a href="https://conjuga-me.net" target="_blank">conjuga-me.net</a> — Verb conjugator</li>
+      <li><a href="https://conjuga-me.net" target="_blank">conjuga-me.net</a></li>
     </ul></div>
     <div class="card" style="border-color:#ffaa22;"><div class="ct" style="color:#ffaa22;">🇰🇪 Swahili · Sun 10 min</div><ul class="tl">
-      <li><a href="https://swahilipod101.com" target="_blank">swahilipod101.com</a> — Audio lessons</li>
-      <li><a href="https://kamusi.org" target="_blank">kamusi.org</a> — Swahili dictionary + grammar</li>
-      <li>Kiko UGA course — uga.edu (free, university-grade)</li>
+      <li><a href="https://swahilipod101.com" target="_blank">swahilipod101.com</a></li>
+      <li><a href="https://kamusi.org" target="_blank">kamusi.org</a></li>
+      <li>Kiko UGA — uga.edu (free, university-grade)</li>
     </ul></div>
     <div class="card" style="border-color:#6688ff;"><div class="ct" style="color:#6688ff;">🇺🇦 Ukrainian · Sat 5 min</div><ul class="tl">
       <li>Exploit Russian 40% transfer — contrast not confusion</li>
-      <li>Cultural respect: never conflate with Russian in social settings</li>
-      <li>Learn UA with Language Transfer mindset</li>
+      <li>Never conflate with Russian socially — cultural respect</li>
     </ul></div>
     <div class="card" style="border-color:#ff6644;"><div class="ct" style="color:#ff6644;">🇵🇱 Polish · Sun 10 min</div><ul class="tl">
-      <li><a href="https://polskina5.pl" target="_blank">polskina5.pl</a> — Structured grammar (free)</li>
-      <li><a href="https://realpolish.pl" target="_blank">realpolish.pl</a> — Comprehensible input</li>
-      <li>Easy Polish — YouTube street interviews</li>
+      <li><a href="https://polskina5.pl" target="_blank">polskina5.pl</a></li>
+      <li><a href="https://realpolish.pl" target="_blank">realpolish.pl</a></li>
+      <li>Easy Polish — YouTube</li>
     </ul></div>
     <div class="card" style="border-color:#4488cc;"><div class="ct" style="color:#4488cc;">🇫🇷 French · Fri 10 min</div><ul class="tl">
-      <li><a href="https://innerfrench.com" target="_blank">innerfrench.com</a> — Free podcast + transcript</li>
-      <li><a href="https://lawlessfrench.com" target="_blank">lawlessfrench.com</a> — Grammar hub</li>
-      <li>Coffee Break French — coffeebreaklanguages.com</li>
+      <li><a href="https://innerfrench.com" target="_blank">innerfrench.com</a></li>
+      <li><a href="https://lawlessfrench.com" target="_blank">lawlessfrench.com</a></li>
+      <li>Coffee Break French — YouTube</li>
     </ul></div>
-    <div class="card" style="border-color:#ffcc44;"><div class="ct" style="color:#ffcc44;">🇷🇴 Romanian · Sat 10 min</div><ul class="tl">
-      <li><a href="https://learnro.com" target="_blank">learnro.com</a> — Free beginner course</li>
-      <li><a href="https://romanianwithgia.com" target="_blank">romanianwithgia.com</a> — Immersion podcast</li>
-      <li><a href="https://dexonline.ro" target="_blank">dexonline.ro</a> — Official dictionary + conjugations</li>
+    <div class="card" style="border-color:#ffcc44;"><div class="ct" style="color:#ffcc44;">🇷🇴 Romanian · Sat 10 min — PRIORITY</div><ul class="tl">
+      <li><a href="https://learnro.com" target="_blank">learnro.com</a> — free beginner</li>
+      <li><a href="https://romanianwithgia.com" target="_blank">romanianwithgia.com</a> — immersion podcast</li>
+      <li><a href="https://dexonline.ro" target="_blank">dexonline.ro</a> — official dictionary</li>
+      <li>Easy Romanian — YouTube</li>
+      <li>Learn Romanian with Nico — YouTube</li>
     </ul></div>
     <div class="card" style="border-color:#cccccc;"><div class="ct" style="color:#cccccc;">🇬🇧 English · Daily 10 min</div><ul class="tl">
-      <li><a href="https://etymonline.com" target="_blank">etymonline.com</a> — Word roots (spelling bee → polyglot)</li>
-      <li><a href="https://wordandphrase.info" target="_blank">wordandphrase.info</a> — COCA frequency tool</li>
+      <li><a href="https://etymonline.com" target="_blank">etymonline.com</a> — word roots</li>
+      <li><a href="https://wordandphrase.info" target="_blank">wordandphrase.info</a> — COCA</li>
       <li>Output: "I Hate Wednesday" 500 words/day</li>
     </ul></div>
-    <div class="card" style="border-color:rgba(255,107,157,.6);"><div class="ct" style="color:#ff6b9d;">⭐ GENIUS BONUS SYSTEM</div>
-      <p style="font-size:12px;color:var(--mu);">Every language has a GENIUS BONUS task — optional but worth 15-25 XP. These are analytical challenges: mapping tones, comparing grammar across languages, finding cognates, doing the transfer math. They push you from A to S rank and build real polyglot intuition. Look for the purple tasks.</p>
-    </div>
   </div>
 </div>
 </section>
 
+<!-- IMMIGRATION -->
 <section id="immigration" style="background:linear-gradient(135deg,#080010,#050505);">
 <div class="container">
-  <div class="sl">RaDEX deadline May 29 · Every step is its own task · File #1282242025</div>
+  <div class="sl">RaDEX deadline May 29 · Every step separate · File #1282242025</div>
   <div class="st">IMMIGRATION <span style="color:var(--p)">ROADMAP</span></div>
-  <div class="apurple" style="margin-bottom:16px;"><strong>Status:</strong> File #1282242025 · Art. 24h Transitory Student · RaDEX login: praise.vc.16@gmail.com / 37030709 · Portal: radex.migraciones.gov.ar · Deadline May 29 · You are legal · Precaria en Trámite.</div>
-  <div class="g3">
+  <div class="apurple"><strong>Status:</strong> File #1282242025 · Art. 24h Transitory Student · RaDEX login: praise.vc.16@gmail.com / 37030709 · Portal: radex.migraciones.gov.ar · HARD DEADLINE MAY 29.</div>
+  <div class="g3" style="margin-top:16px;">
     <div class="card cp"><div class="ct" style="color:var(--p);">Step 1 — Certificado de Domicilio (S-Day 1)</div><ul class="tl">
-      <li><strong style="color:var(--w)">Where:</strong> Comisaría 6A, Guzmán 396, Caballito (~12 min walk)</li>
-      <li><strong style="color:var(--w)">When:</strong> 09:00 AM — first task of the summer</li>
-      <li><strong style="color:var(--w)">Bring:</strong> Original passport only. No photocopies.</li>
-      <li><strong style="color:var(--w)">Script:</strong> "Hola, buen día. Necesito tramitar un Certificado de Domicilio para presentar en Migraciones. Vivo en Luis Viale 11."</li>
-      <li><strong style="color:var(--w)">No lease?</strong> "Es un alquiler temporal, pago en efectivo mes a mes." Totally normal in BA.</li>
-      <li><strong style="color:var(--w)">Cost:</strong> ~2,000–3,000 ARS cash. Get a receipt.</li>
+      <li><strong style="color:var(--w)">Where:</strong> Comisaría Vecinal 6A, Av. Díaz Vélez 5152, Caballito (near Parque Centenario)</li>
+      <li><strong style="color:var(--w)">When:</strong> 09:00 AM sharp</li>
+      <li><strong style="color:var(--w)">Bring:</strong> Original passport only</li>
+      <li><strong style="color:var(--w)">Script:</strong> "Hola, buen día. Necesito tramitar un Certificado de Domicilio para Migraciones. Vivo en Luis Viale 11."</li>
+      <li><strong style="color:var(--w)">No lease?</strong> "Es un alquiler temporal, pago en efectivo mes a mes."</li>
+      <li><strong style="color:var(--w)">Cost:</strong> ~2,000–3,000 ARS cash. Get receipt.</li>
     </ul></div>
-    <div class="card cp"><div class="ct" style="color:var(--p);">Step 2 — UBA Constancia (S-Day 11, Mon May 25)</div><ul class="tl">
-      <li>Bimestre 2 starts May 25 — go after/during your 14:00 class</li>
+    <div class="card cp"><div class="ct" style="color:var(--p);">Step 2 — UBA Constancia (S-Day 11)</div><ul class="tl">
+      <li>Bimestre 2 starts May 25 — go to secretaría after class</li>
       <li><strong style="color:var(--w)">Script:</strong> "Hola, soy alumno inscripto en el curso 2582-MC04000601. Necesito una constancia de inscripción para Migraciones, por favor."</li>
-      <li>Scan immediately — upload to Google Drive the same day</li>
-      <li>DO NOT use old Bimestre 1 constancia</li>
+      <li>Scan immediately, upload Google Drive same day</li>
     </ul></div>
-    <div class="card cp"><div class="ct" style="color:var(--p);">Step 3 — RaDEX Upload (S-Day 13, Wed May 27)</div><ul class="tl">
+    <div class="card cp"><div class="ct" style="color:var(--p);">Step 3 — RaDEX Upload (S-Day 13, May 27)</div><ul class="tl">
       <li>Portal: <a href="https://radex.migraciones.gov.ar" target="_blank">radex.migraciones.gov.ar</a></li>
       <li>Login: praise.vc.16@gmail.com · clave: 37030709</li>
-      <li>Upload: (1) Certificado Domicilio + (2) UBA Constancia</li>
-      <li>CHECK "Domicilio Electrónico" box before submitting</li>
-      <li>Screenshot the confirmation page</li>
-      <li style="color:var(--m);">Hard deadline: May 29 (S-Day 15). Day 13 is your target.</li>
+      <li>Upload Certificado + UBA Constancia</li>
+      <li>CHECK "Domicilio Electrónico" box</li>
+      <li style="color:var(--m);">Hard deadline: May 29 (S-Day 15)</li>
     </ul></div>
   </div>
 </div>
 </section>
 
+<!-- NUTRITION -->
 <section id="nutrition" style="background:#060006;">
 <div class="container">
-  <div class="sl">What you have · B12 covered · 20–25g nuts (not 30–40g — budget)</div>
+  <div class="sl">What you have · Budget correct · B12 covered by hake</div>
   <div class="st">NUTRITION <span style="color:var(--g)">REALITY</span></div>
-  <div class="agreen"><strong>Nuts correction:</strong> 500g bag costs up to 7,990 ARS. Buy every 3-4 weeks. With ~3/8 bag current stock, you have ~10 days left before restock. Daily: 20–25g max (not 30–40g). Still covers omega-3 (walnuts), Vit E (almonds), zinc (cashews). B12 is covered by hake every ~12 days.</div>
+  <div class="agreen"><strong>Nuts:</strong> 500g bag ~7,990 ARS. Buy every 3-4 weeks. Daily: 20–25g MAX (not 30-40g). B12 covered by hake every ~12 days. Gut transition wks 1-2: start soja and lentils at 25g each, increase week 3+.</div>
   <div class="g2" style="margin-top:16px;">
     <div class="card cg"><div class="ct" style="color:var(--g);">Daily stack (~870–1,000 ARS/day)</div><ul class="tl">
-      <li>Avena 60g — ~75 ARS</li><li>Arroz 100g — ~220 ARS</li>
-      <li>Soja texturizada 80g (start 25g wk 1 — gut transition) — ~195 ARS</li>
-      <li>Lentejas 50g (start 25g wk 1) — ~100 ARS</li>
-      <li>Huevo 1 every other day — ~128 ARS avg/day</li>
-      <li>Zentir nut mix 20–25g — budget-correct amount</li>
-      <li>Creatine 3g in oats (extend the small tub)</li>
+      <li>Avena 60g · Arroz 100g</li>
+      <li>Soja texturizada 80g (start 25g wk1 — gut transition)</li>
+      <li>Lentejas 50g (start 25g wk1)</li>
+      <li>Huevo 1 every other day</li>
+      <li>Zentir nut mix 20–25g (budget-correct)</li>
+      <li>Creatine 3g in oats</li>
       <li>Repollo/zanahoria/tomates — feria Tuesday</li>
     </ul></div>
     <div class="card"><div class="ct">Biochem rules</div><ul class="tl">
-      <li>Vit C source with every legume/fish meal (unlocks iron absorption)</li>
+      <li>Vit C with every legume meal (iron absorption)</li>
       <li>Vinegar in water before big carb meals</li>
       <li>No yerba within 1hr of iron-rich meals</li>
       <li>3L water daily (3 × 1L bottle targets)</li>
-      <li>Hake every ~12 days — B12 covered (no tablet needed)</li>
-      <li>Gut transition wks 1-2: 25g soja + 25g lentils → increase wk 3+</li>
+      <li>Hake every ~12 days — B12 covered</li>
     </ul></div>
   </div>
 </div>
 </section>
 
+<!-- TRAINING -->
 <section id="training">
 <div class="container">
-  <div class="sl">Home only · All 4 martial arts · 16-week progression · Parque Centenario free</div>
+  <div class="sl">Home only · All 4 martial arts · Parque Centenario free</div>
   <div class="st">HOME TRAINING <span style="color:var(--m)">PLAN</span></div>
-  <div class="agreen" style="margin-bottom:14px;"><strong>Permanent:</strong> No dojo, no gym for summer. Everything at home (room) and Parque Centenario (8 min walk, free). Club de la Fuerza (~80,000 ARS/mo) = out of budget.</div>
   <div class="g2">
     <div class="card cm"><div class="ct" style="color:var(--m);">Morning martial arts block (08:50–09:15 every day)</div><ul class="tl">
-      <li><strong style="color:var(--m)">Muay Thai 10 min:</strong> Lead foot 11 o'clock, rear foot 45° (NOT 90°). Wk1: stance+teep. Wk3: roundhouse. Wk5: low kick. Wk7: knee. Wk9: elbow. Full 8 limbs by wk13.</li>
+      <li><strong style="color:var(--m)">Muay Thai 10 min:</strong> Lead foot 11 o'clock, rear foot 45°. Wk1: stance+teep. Wk3: roundhouse. Wk5: low kick. Wk7: knee. Wk9: elbow. Full 8 limbs by wk13.</li>
       <li><strong style="color:var(--g)">TKD kata 3 min:</strong> Taegeuk Il Jang ×3. Add Yi Jang wk5+.</li>
       <li><strong style="color:var(--c)">Karate kata 3 min:</strong> Heian Shodan ×3 with kime. Add Nidan wk5+.</li>
       <li><strong style="color:var(--p)">Judo ukemi 4 min:</strong> Mae + ushiro + yoko on blanket. Chin always tucked.</li>
-      <li><strong style="color:var(--w)">Hip mobility 6 min:</strong> 20 circles each direction + pigeon 45s + leg swings. Feeds choreo.</li>
+      <li><strong style="color:var(--w)">Hip mobility 6 min:</strong> 20 circles each direction + pigeon 45s + leg swings.</li>
     </ul></div>
     <div class="card"><div class="ct">Weekly strength (Mon/Wed/Fri ~25 min each)</div>
       <table><tr><th>Day</th><th>Focus</th></tr>
-        <tr><td style="color:var(--w)">Monday</td><td>Push: push-ups + pike + chair dips (3 sets each)</td></tr>
-        <tr><td style="color:var(--w)">Wednesday</td><td>Pull: table rows + doorframe rows + negative pull-ups (wk5+)</td></tr>
-        <tr><td style="color:var(--w)">Friday</td><td>Legs: squats + lunges + glute bridges + jump squats (wk5+)</td></tr>
-        <tr><td style="color:var(--w)">Saturday</td><td>Sprints: 8×30m at Parque Centenario</td></tr>
+        <tr><td style="color:var(--w)">Monday</td><td>Push: push-ups + pike push-ups + chair dips</td></tr>
+        <tr><td style="color:var(--w)">Wednesday</td><td>Pull: table rows + doorframe rows + negatives wk5+</td></tr>
+        <tr><td style="color:var(--w)">Friday</td><td>Legs: squats + lunges + glute bridges + jump squats wk5+</td></tr>
+        <tr><td style="color:var(--w)">Saturday</td><td>Sprints: 8×30m at Parque Centenario (8 min walk)</td></tr>
       </table>
-      <div class="acyan" style="margin-top:10px;font-size:11px;">No pull-up bar → table-under rows (lie under table, grip edge, pull chest up) + doorframe rows (feet forward, lean back, pull).</div>
     </div>
   </div>
 </div>
 </section>
 
-
-<!-- ── TYPING ── -->
-<section id="typing" style="background:linear-gradient(135deg,#050505,#000a08);border-bottom:1px solid var(--border);">
+<!-- TYPING -->
+<section id="typing" style="background:#060010;">
 <div class="container">
-  <div class="sl">Daily 10-15 min · Build to 80+ WPM · Accuracy over speed</div>
+  <div class="sl">Progressive weekly drills · WPM tracking</div>
   <div class="st">TYPING <span style="color:var(--c)">SPEED</span></div>
-  <div class="acyan">Your typing speed is a productivity multiplier. Target: 80+ WPM at 98%+ accuracy by August. Practice is built into daily tasks.</div>
-  <div class="g3" style="margin-top:16px;">
-    <div class="card cc"><div class="ct">Monkeytype (primary)</div>
-      <p style="font-size:12px;color:var(--mu);margin-bottom:8px;">Minimalist, open-source. Run 30-second tests with English 1000 word list. Check consistency score, not just WPM.</p>
-      <a href="https://monkeytype.com" target="_blank" style="font-family:'DM Mono',monospace;font-size:10px;">monkeytype.com</a>
-    </div>
-    <div class="card cg"><div class="ct" style="color:var(--g);">Keybr (adaptive)</div>
-      <p style="font-size:12px;color:var(--mu);margin-bottom:8px;">Finds your weak keys and drills them specifically. Best for breaking plateaus.</p>
-      <a href="https://keybr.com" target="_blank" style="font-family:'DM Mono',monospace;font-size:10px;">keybr.com</a>
-    </div>
-    <div class="card cm"><div class="ct" style="color:var(--m);">TypeRacer (competitive)</div>
-      <p style="font-size:12px;color:var(--mu);margin-bottom:8px;">Race real people. Types actual book quotes — so you practice punctuation and capitals under pressure.</p>
-      <a href="https://typeracer.com" target="_blank" style="font-family:'DM Mono',monospace;font-size:10px;">typeracer.com</a>
-    </div>
-    <div class="card"><div class="ct">The 3 physical rules</div><ul class="tl">
-      <li>Home row always: A-S-D-F / J-K-L-; — feel the bumps on F and J</li>
-      <li>Accuracy first — if you're making errors, slow down until clean, then accelerate</li>
-      <li>Wrists float — don't rest on desk while actively typing</li>
-    </ul></div>
+  <div class="g3">
+    <div class="card cc"><div class="ct">Wk 1-2</div><p style="font-size:12px;color:var(--mu)"><a href="https://monkeytype.com" target="_blank">monkeytype.com</a> — 5× 30-second tests, English 200 word list. Record WPM + accuracy every session.</p></div>
+    <div class="card cc"><div class="ct">Wk 3-4</div><p style="font-size:12px;color:var(--mu)"><a href="https://keybr.com" target="_blank">keybr.com</a> — 15 min adaptive drill. Note which keys the algorithm targets. Build weaknesses.</p></div>
+    <div class="card cc"><div class="ct">Wk 5-6</div><p style="font-size:12px;color:var(--mu)"><a href="https://typeracer.com" target="_blank">typeracer.com</a> — 5 races. Focus on punctuation accuracy under real-time pressure.</p></div>
+    <div class="card cc"><div class="ct">Wk 7-8</div><p style="font-size:12px;color:var(--mu)">monkeytype.com — English 1000 word list. Push 5 WPM above your current personal best.</p></div>
+    <div class="card cc"><div class="ct">Wk 9-10</div><p style="font-size:12px;color:var(--mu)">keybr.com — all keys unlocked. 15 min accuracy drill. Target 98% accuracy consistently.</p></div>
+    <div class="card cc"><div class="ct">Wk 11-12</div><p style="font-size:12px;color:var(--mu)">typeracer.com — 10 races. Consistency over peak speed. Standard deviation matters.</p></div>
+    <div class="card cc"><div class="ct">Wk 13+</div><p style="font-size:12px;color:var(--mu)">monkeytype.com — 60-second test, English 5000 list. Ultimate WPM benchmark for summer close.</p></div>
   </div>
 </div>
 </section>
 
+<!-- INTERNSHIPS -->
 <section id="internships">
 <div class="container">
   <div class="sl">Sequenced · All in by May 31 · Track in Google Sheet</div>
   <div class="st">INTERNSHIP <span style="color:var(--m)">ARSENAL</span></div>
   <div class="amagenta" style="margin-bottom:14px;">Track everything: <a href="https://sheets.new" target="_blank">sheets.new</a>. All submitted by May 31. Sunday reviews only after that.</div>
   <div class="g2">
-    <div class="card cm"><div class="ct" style="color:var(--m);">Days 1–7 critical wave</div><ul class="tl">
-      <li><a href="https://argentinainternshipprogram.com" target="_blank">Argentina Internship Program</a> — rolling, apply now</li>
-      <li>Vlada blog — linkedin.com/in/vlada-teper — 45 min write + submit</li>
+    <div class="card cm"><div class="ct" style="color:var(--m);">Days 1–7 Critical Wave</div><ul class="tl">
+      <li><a href="https://argentinainternshipprogram.com" target="_blank">Argentina Internship Program</a> — rolling</li>
+      <li>Vlada blog — 45 min write + submit</li>
       <li>Book Helper MVP — vanilla JS/HTML on GitHub Pages</li>
-      <li><a href="https://intent-for-change.zohorecruit.eu/jobs/Careers" target="_blank">InTent Programme</a> — mid-May deadline, URGENT</li>
       <li><a href="https://fellowship.mlh.io" target="_blank">MLH Fellowship Fall 2026</a></li>
-      <li>Email Ben Wilkoff — ben.wilkoff@minerva.edu — CTD warm paragraph</li>
+      <li>Email Ben Wilkoff — ben.wilkoff@minerva.edu</li>
     </ul></div>
     <div class="card cg"><div class="ct" style="color:var(--g);">Days 8–17</div><ul class="tl">
-      <li><a href="https://recruit.hennge.com" target="_blank">HENNGE GIP</a> — Tokyo Aug3-Sep11, ¥150k/mo + flights</li>
-      <li><a href="https://career.globant.com" target="_blank">Globant BA</a> + email universidades-arg@globant.com</li>
+      <li><a href="https://recruit.hennge.com" target="_blank">HENNGE GIP</a> — Tokyo, ¥150k/mo + flights</li>
+      <li><a href="https://career.globant.com" target="_blank">Globant BA</a></li>
       <li><a href="https://careers-meli.mercadolibre.com" target="_blank">Mercado Libre</a></li>
       <li><a href="https://www.accenture.com/ar-es/careers" target="_blank">Accenture Argentina</a></li>
-      <li><a href="https://www.parkerdewey.com" target="_blank">Parker Dewey</a> — 10-40hr paid micro-internships</li>
-      <li><a href="https://www.upwork.com" target="_blank">Upwork</a> / <a href="https://www.freelancer.com" target="_blank">Freelancer</a> — parallel income</li>
+      <li><a href="https://www.parkerdewey.com" target="_blank">Parker Dewey</a> — paid micro-internships</li>
+      <li><a href="https://www.upwork.com" target="_blank">Upwork</a> — parallel income</li>
     </ul></div>
   </div>
 </div>
 </section>
 
+<!-- RULES -->
 <section id="rules">
 <div class="container">
-  <div class="sl">Non-negotiable</div>
+  <div class="sl">Non-negotiable · 3 Laws</div>
   <div class="st">THREE RULES</div>
   <div class="g3">
-    <div class="card cc">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--c);opacity:.2;line-height:1;">01</div>
-      <p style="font-size:15px;font-style:italic;color:var(--w);margin-bottom:8px;">Sleep is the most important skill on this list.</p>
-      <p style="font-size:12px;color:var(--mu);">23:00 screens off. 23:15 sleep. 07:00 alarm. 8 hours. Non-negotiable.</p>
-    </div>
-    <div class="card cg">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--g);opacity:.2;line-height:1;">02</div>
-      <p style="font-size:15px;font-style:italic;color:var(--w);margin-bottom:8px;">Something every day beats a lot some days.</p>
-      <p style="font-size:12px;color:var(--mu);">Worst day minimum: 1 Anki card + 5 min shadowboxing + 3 Spanish sentences. Never miss twice.</p>
-    </div>
-    <div class="card cm">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--m);opacity:.2;line-height:1;">03</div>
-      <p style="font-size:15px;font-style:italic;color:var(--w);margin-bottom:8px;">Buenos Aires is your greatest resource.</p>
-      <p style="font-size:12px;color:var(--mu);">Go outside every day. The feria vendor teaches Spanish. Parque Centenario is your gym.</p>
-    </div>
+    <div class="card cc"><div style="font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--c);opacity:.2;line-height:1;">01</div><p style="font-size:15px;font-style:italic;color:var(--w);margin-bottom:8px;">Sleep is the most important skill on this list.</p><p style="font-size:12px;color:var(--mu);">23:00 screens off. 23:15 sleep. 07:00 alarm. 8 hours. Non-negotiable.</p></div>
+    <div class="card cg"><div style="font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--g);opacity:.2;line-height:1;">02</div><p style="font-size:15px;font-style:italic;color:var(--w);margin-bottom:8px;">Something every day beats a lot some days.</p><p style="font-size:12px;color:var(--mu);">Worst day minimum: 1 Anki card + 5 min shadowboxing + 3 Spanish sentences. Never miss twice.</p></div>
+    <div class="card cm"><div style="font-family:'Bebas Neue',sans-serif;font-size:50px;color:var(--m);opacity:.2;line-height:1;">03</div><p style="font-size:15px;font-style:italic;color:var(--w);margin-bottom:8px;">Buenos Aires is your greatest resource.</p><p style="font-size:12px;color:var(--mu);">Go outside every day. The feria vendor teaches Spanish. Parque Centenario is your gym.</p></div>
   </div>
 </div>
 </section>
 
 <div class="footer">
-  <div class="footer-title">PRAISE CHUKWUDARU · M29 · S IN SUMMER V2</div>
-  <p style="font-size:12px;color:var(--mu);margin-top:8px;">Luis Viale 11, Villa Crespo · May 15 → August 21, 2026 · Tokyo Sep 7 · 20 languages · No clumping</p>
+  <div class="footer-title">PRAISE CHUKWUDARU · M29 · S IN SUMMER V3</div>
+  <p style="font-size:12px;color:var(--mu);margin-top:8px;">Luis Viale 11, Villa Crespo · May 15 → August 21, 2026 · Tokyo Sep 7 · 20 languages · GitHub sync</p>
 </div>
 
+<!-- SYNC STATUS BAR -->
+<div id="syncBar">
+  <div id="syncDot"></div>
+  <span id="syncMsg">Initialising...</span>
+  <button class="sync-btn" onclick="pullFromGH()">↓ PULL</button>
+  <button class="sync-btn" onclick="pushToGH()">↑ PUSH</button>
+  <button class="sync-btn" onclick="showSetup()">⚙ SETUP</button>
+</div>
+
+
 <script>
-// ═══════════════════════════════════════════════════════
-// V3 GITHUB SYNC ENGINE — replaces localStorage
-// ═══════════════════════════════════════════════════════
+// ─────────────────────────────────────────────
+// CONSTANTS
+// ─────────────────────────────────────────────
+var START = new Date('2026-05-15T00:00:00');
+var TOTAL = 99;
+var GH_FILE = 'progress.json';
 
-var GH = {
-  user: localStorage.getItem('gh_user') || '',
-  repo: localStorage.getItem('gh_repo') || '',
-  token: localStorage.getItem('gh_token') || '',
-  filePath: 'progress.json'
-};
-
-var syncTimer = null;
-var isSyncing = false;
-var localCache = { days: {}, catTotals: {}, lastUpdated: '' };
-
-function hasGH() { return !!(GH.user && GH.repo && GH.token); }
-
-function setSyncStatus(state, msg) {
-  var dot = document.getElementById('syncDot');
-  var msgEl = document.getElementById('syncMsg');
-  if(dot){ dot.className = ''; if(state) dot.classList.add(state); }
-  if(msgEl) msgEl.textContent = msg;
+// ─────────────────────────────────────────────
+// GITHUB CONFIG
+// ─────────────────────────────────────────────
+function getGHCfg() {
+  return {
+    user: localStorage.getItem('gh_user') || '',
+    repo: localStorage.getItem('gh_repo') || '',
+    token: localStorage.getItem('gh_token') || ''
+  };
 }
 
-window.saveSetup = function() {
+function saveGHConfig() {
   var u = document.getElementById('ghUser').value.trim();
   var r = document.getElementById('ghRepo').value.trim();
   var t = document.getElementById('ghToken').value.trim();
-  if(!u || !r || !t){ alert('Please fill in all three fields.'); return; }
-  GH.user = u; GH.repo = r; GH.token = t;
+  if (!u || !r || !t) { alert('Please fill in all three fields.'); return; }
   localStorage.setItem('gh_user', u);
   localStorage.setItem('gh_repo', r);
   localStorage.setItem('gh_token', t);
-  document.getElementById('setupOverlay').style.display = 'none';
-  setSyncStatus('busy','Connecting to GitHub...');
-  pullFromGitHub().then(function(){ loadToday(); });
-};
+  document.getElementById('setupModal').style.display = 'none';
+  setSyncStatus('busy', 'Connecting to GitHub...');
+  pullFromGH();
+}
 
-window.skipSetup = function() {
-  document.getElementById('setupOverlay').style.display = 'none';
-  setSyncStatus('', 'Local mode — progress saves on this device only');
+function skipGH() {
+  localStorage.setItem('gh_skipped', '1');
+  document.getElementById('setupModal').style.display = 'none';
+  setSyncStatus('local', 'Local storage only — progress saved on this device');
   loadToday();
-};
-
-window.showSetup = function() {
-  document.getElementById('ghUser').value = GH.user;
-  document.getElementById('ghRepo').value = GH.repo;
-  document.getElementById('ghToken').value = '';
-  document.getElementById('setupOverlay').style.display = 'flex';
-};
-
-function ghApiUrl() {
-  return 'https://api.github.com/repos/' + GH.user + '/' + GH.repo + '/contents/' + GH.filePath;
 }
 
-async function pullFromGitHub() {
-  if(!hasGH()){ setSyncStatus('','Local mode'); return; }
-  setSyncStatus('busy','Pulling from GitHub...');
-  try {
-    var resp = await fetch(ghApiUrl() + '?t=' + Date.now(), {
-      headers: { 'Authorization': 'Bearer ' + GH.token, 'Accept': 'application/vnd.github.v3+json' }
+function showSetup() {
+  var cfg = getGHCfg();
+  document.getElementById('ghUser').value = cfg.user;
+  document.getElementById('ghRepo').value = cfg.repo;
+  document.getElementById('ghToken').value = cfg.token;
+  document.getElementById('setupModal').style.display = 'flex';
+}
+
+// ─────────────────────────────────────────────
+// SYNC STATUS
+// ─────────────────────────────────────────────
+function setSyncStatus(type, msg) {
+  var dot = document.getElementById('syncDot');
+  var msgEl = document.getElementById('syncMsg');
+  dot.className = type;
+  msgEl.textContent = msg;
+}
+
+// ─────────────────────────────────────────────
+// GITHUB REST API
+// ─────────────────────────────────────────────
+var ghSHA = '';
+
+function ghHeaders() {
+  var cfg = getGHCfg();
+  return {
+    'Authorization': 'Bearer ' + cfg.token,
+    'Content-Type': 'application/json',
+    'Accept': 'application/vnd.github+json'
+  };
+}
+
+function ghURL() {
+  var cfg = getGHCfg();
+  return 'https://api.github.com/repos/' + cfg.user + '/' + cfg.repo + '/contents/' + GH_FILE;
+}
+
+function pullFromGH() {
+  var cfg = getGHCfg();
+  if (!cfg.user || !cfg.repo || !cfg.token) {
+    setSyncStatus('local', 'Not configured — using local storage');
+    loadToday();
+    return;
+  }
+  setSyncStatus('busy', 'Pulling from GitHub...');
+  fetch(ghURL(), { headers: ghHeaders() })
+    .then(function(r) {
+      if (r.status === 404) { return null; }
+      if (!r.ok) { throw new Error('HTTP ' + r.status); }
+      return r.json();
+    })
+    .then(function(data) {
+      if (data) {
+        ghSHA = data.sha;
+        var decoded = atob(data.content.replace(/\n/g, ''));
+        var remote = JSON.parse(decoded);
+        mergeRemote(remote);
+        setSyncStatus('ok', 'Synced from GitHub — ' + new Date().toLocaleTimeString());
+      } else {
+        setSyncStatus('ok', 'New repo — will create progress.json on first save');
+      }
+      loadToday();
+    })
+    .catch(function(e) {
+      setSyncStatus('err', 'Pull failed: ' + e.message + ' — using local data');
+      loadToday();
     });
-    if(resp.status === 404){
-      setSyncStatus('ok','New repo — will create progress.json on first save');
-      return;
+}
+
+function pushToGH() {
+  var cfg = getGHCfg();
+  if (!cfg.user || !cfg.repo || !cfg.token) {
+    setSyncStatus('local', 'Not configured — data in local storage only');
+    return;
+  }
+  setSyncStatus('busy', 'Pushing to GitHub...');
+  var allData = getAllLocalData();
+  var content = btoa(unescape(encodeURIComponent(JSON.stringify(allData, null, 2))));
+  var body = { message: 'S In Summer sync ' + new Date().toISOString(), content: content };
+  if (ghSHA) { body.sha = ghSHA; }
+  fetch(ghURL(), {
+    method: 'PUT',
+    headers: ghHeaders(),
+    body: JSON.stringify(body)
+  })
+    .then(function(r) {
+      if (!r.ok) { throw new Error('HTTP ' + r.status); }
+      return r.json();
+    })
+    .then(function(data) {
+      ghSHA = data.content.sha;
+      setSyncStatus('ok', 'Saved to GitHub — ' + new Date().toLocaleTimeString());
+    })
+    .catch(function(e) {
+      setSyncStatus('err', 'Push failed: ' + e.message);
+    });
+}
+
+function mergeRemote(remote) {
+  if (!remote || typeof remote !== 'object') { return; }
+  Object.keys(remote).forEach(function(key) {
+    if (key.indexOf('sday_') === 0 && key.indexOf('_done') > -1) {
+      var local = {};
+      try { local = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e) {}
+      var merged = Object.assign({}, local, remote[key]);
+      localStorage.setItem(key, JSON.stringify(merged));
+    } else if (key.indexOf('sday_') === 0 && key.indexOf('_score') > -1) {
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, String(remote[key]));
+      }
     }
-    if(!resp.ok) throw new Error('HTTP ' + resp.status);
-    var data = await resp.json();
-    var remote = JSON.parse(atob(data.content.replace(/\n/g,'')));
-    localCache = mergeProgress(localCache, remote);
-    try{ localStorage.setItem('sday_cache', JSON.stringify(localCache)); }catch(e){}
-    setSyncStatus('ok', 'Synced \u00b7 ' + new Date().toLocaleTimeString());
-  } catch(e) {
-    setSyncStatus('err', 'Pull failed: ' + e.message + ' \u2014 working locally');
-  }
-}
-
-async function pushToGitHub() {
-  if(!hasGH() || isSyncing) return;
-  isSyncing = true;
-  setSyncStatus('busy','Saving to GitHub...');
-  try {
-    var sha = null;
-    var shaResp = await fetch(ghApiUrl() + '?t=' + Date.now(), {
-      headers: { 'Authorization': 'Bearer ' + GH.token, 'Accept': 'application/vnd.github.v3+json' }
-    });
-    if(shaResp.ok){ var shaData = await shaResp.json(); sha = shaData.sha; }
-    localCache.lastUpdated = new Date().toISOString();
-    var content = btoa(unescape(encodeURIComponent(JSON.stringify(localCache, null, 2))));
-    var body = { message: 'S-Day progress ' + new Date().toLocaleDateString(), content: content };
-    if(sha) body.sha = sha;
-    var putResp = await fetch(ghApiUrl(), {
-      method: 'PUT',
-      headers: { 'Authorization': 'Bearer ' + GH.token, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    if(!putResp.ok){ var e2 = await putResp.json(); throw new Error(e2.message || 'HTTP ' + putResp.status); }
-    setSyncStatus('ok', 'Saved to GitHub \u00b7 ' + new Date().toLocaleTimeString());
-  } catch(e) {
-    setSyncStatus('err', 'Save failed: ' + e.message);
-  }
-  isSyncing = false;
-}
-
-function schedulePush() {
-  if(syncTimer) clearTimeout(syncTimer);
-  syncTimer = setTimeout(function(){
-    if(hasGH()) pushToGitHub();
-    else { try{ localStorage.setItem('sday_cache', JSON.stringify(localCache)); }catch(e){} setSyncStatus('','Saved locally'); }
-  }, 2000);
-}
-
-window.forcePull = function(){ pullFromGitHub().then(function(){ renderTasks(); updateSummerGraph(); updateAnalytics(); }); };
-window.forcePush = function(){ if(hasGH()) pushToGitHub(); else showSetup(); };
-
-function mergeProgress(local, remote) {
-  var merged = { days: {}, catTotals: {}, lastUpdated: '' };
-  var allDays = new Set(Object.keys(local.days || {}).concat(Object.keys(remote.days || {})));
-  allDays.forEach(function(d){
-    var ld = (local.days||{})[d] || { done:{}, score:0, catXP:{} };
-    var rd = (remote.days||{})[d] || { done:{}, score:0, catXP:{} };
-    merged.days[d] = { done: Object.assign({}, rd.done, ld.done), score: Math.max(ld.score||0, rd.score||0), catXP: mergeCatXP(ld.catXP||{}, rd.catXP||{}) };
   });
-  merged.catTotals = rebuildCatTotals(merged.days);
-  merged.lastUpdated = new Date().toISOString();
-  return merged;
 }
-function mergeCatXP(a, b){ var r=Object.assign({},a); Object.keys(b).forEach(function(k){ r[k]=Math.max(r[k]||0,b[k]||0); }); return r; }
-function rebuildCatTotals(days){ var t={}; Object.keys(days).forEach(function(d){ Object.keys(days[d].catXP||{}).forEach(function(c){ t[c]=(t[c]||0)+days[d].catXP[c]; }); }); return t; }
 
-function getDayData(n){ if(!localCache.days) localCache.days={}; if(!localCache.days[n]) localCache.days[n]={done:{},score:0,catXP:{}}; return localCache.days[n]; }
+function getAllLocalData() {
+  var result = {};
+  for (var i = 1; i <= TOTAL; i++) {
+    var dk = 'sday_' + i + '_done';
+    var sk = 'sday_' + i + '_score';
+    var dv = localStorage.getItem(dk);
+    var sv = localStorage.getItem(sk);
+    if (dv) { try { result[dk] = JSON.parse(dv); } catch(e) {} }
+    if (sv) { result[sk] = parseInt(sv, 10); }
+  }
+  return result;
+}
 
-// Storage functions (same interface as V2)
-function loadDone(n){ return Promise.resolve(getDayData(n).done||{}); }
+// ─────────────────────────────────────────────
+// LOCAL STORAGE ACCESS
+// ─────────────────────────────────────────────
+function loadDone(n) {
+  try { return JSON.parse(localStorage.getItem('sday_' + n + '_done') || '{}'); }
+  catch(e) { return {}; }
+}
 
-function saveDone(n, done){
-  var tasks = currentDay && currentDay.tasks ? currentDay.tasks : [];
-  var dd = getDayData(n);
-  dd.done = done;
-  var catXP={}; var earned=0;
-  tasks.forEach(function(t){ if(done[t.id]){ earned+=t.pts; catXP[t.cat]=(catXP[t.cat]||0)+t.pts; } });
-  var total=tasks.reduce(function(a,t){return a+t.pts;},0);
-  dd.score=total>0?Math.round(earned/total*100):0;
-  dd.catXP=catXP;
-  localCache.catTotals=rebuildCatTotals(localCache.days);
+function saveDone(n, done) {
+  localStorage.setItem('sday_' + n + '_done', JSON.stringify(done));
+  localStorage.setItem('sday_' + n + '_score', String(calcScore(currentDay.tasks, done).pct));
   schedulePush();
-  return Promise.resolve();
 }
 
-function saveDayScore(n, pct){ return Promise.resolve(); }
-
-function loadAllScores(){
-  var scores={};
-  if(localCache.days){ Object.keys(localCache.days).forEach(function(n){ scores[parseInt(n)]=localCache.days[n].score||0; }); }
-  return Promise.resolve(scores);
+var pushTimer = null;
+function schedulePush() {
+  if (pushTimer) { clearTimeout(pushTimer); }
+  pushTimer = setTimeout(pushToGH, 2000);
 }
 
+function loadAllScores() {
+  var scores = {};
+  for (var i = 1; i <= TOTAL; i++) {
+    var v = localStorage.getItem('sday_' + i + '_score');
+    if (v !== null) { scores[i] = parseInt(v, 10); }
+  }
+  return scores;
+}
 
+// ─────────────────────────────────────────────
+// HELPERS
+// ─────────────────────────────────────────────
+function dayN(d) {
+  var n = Math.floor((d - START) / 86400000) + 1;
+  return Math.max(1, Math.min(TOTAL, n));
+}
 
+function isUBA(d, n) {
+  if (n < 11 || n > 65) { return false; }
+  var dow = d.getDay();
+  return dow === 1 || dow === 2 || dow === 3;
+}
 
-var START = new Date('2026-05-15T00:00:00');
-var TOTAL = 99;
+function calcScore(tasks, done) {
+  var earned = 0, total = 0;
+  tasks.forEach(function(t) {
+    total += t.pts;
+    if (done[t.id]) { earned += t.pts; }
+  });
+  return { earned: earned, total: total, pct: total > 0 ? Math.round(earned / total * 100) : 0 };
+}
 
-function dayN(d){var n=Math.floor((d-START)/86400000)+1;return Math.max(1,Math.min(TOTAL,n));}
-function toStr(d){return d.toISOString().split('T')[0];}
-function isUBA(d,n){if(n<11||n>65)return false;var dow=d.getDay();return dow===1||dow===2||dow===3;}
+function getGrade(pct) {
+  if (pct >= 90) { return { g: 'S', c: 'var(--c)' }; }
+  if (pct >= 80) { return { g: 'A', c: 'var(--g)' }; }
+  if (pct >= 70) { return { g: 'B', c: '#00cfff' }; }
+  if (pct >= 60) { return { g: 'C', c: 'var(--p)' }; }
+  if (pct >= 50) { return { g: 'D', c: 'var(--m)' }; }
+  return { g: 'F', c: '#555' };
+}
 
-// ── LANGUAGE TASK CONTENT BY WEEK ──
-function jpTask(n){var w=Math.ceil(n/7);
-  if(w<=1)return'Hiragana rows 1-3 (a, i, u, e, o → na, ni, nu, ne, no) — write each 5× by hand — tofugu.com/japanese/learn-hiragana/';
-  if(w<=2)return'Hiragana rows 4-5 + all dakuten — cold quiz all rows — guidetojapanese.org basics';
-  if(w<=3)return'Katakana part 1 (a-row to na-row) — AnkiWeb katakana deck — ankiweb.net';
-  if(w<=4)return'Katakana complete — full kana cold quiz — Genki I Lesson 1 vocabulary';
-  if(w<=6)return'Genki I Ch.'+(Math.min((w-4)*2+1,12))+' — Core 2000: 10 new words on AnkiWeb — sentence patterns';
-  if(w<=8)return'Genki I Ch.'+(Math.min((w-3),12))+' — Core 2000 words 150-300 — shadow 1 sentence on animelon.com';
-  if(w<=10)return'Genki I finishing — Core 2000 words 300-500 — book 1 iTalki session this week — italki.com';
-  if(w<=12)return'Genki II starting — Core 2000 words 500-700 — weekly iTalki';
-  return'Tokyo prep — directions + dojo phrases + restaurant vocab — Core 2000 700-1000 — iTalki weekly';}
+function getBible(n) {
+  if (n <= 31) { return 'Proverbs ' + n; }
+  if (n <= 43) { return 'Ecclesiastes ' + (n - 31); }
+  if (n <= 51) { return 'Song of Solomon ' + (n - 43); }
+  return 'Proverbs ' + (((n - 52) % 31) + 1) + ' (Cycle 2)';
+}
 
-function esTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Language Transfer Spanish track '+Math.min(n,40)+' — languagetransfer.org/spanish — listen + repeat aloud';
-  if(w<=4)return'Imperfecto vs Indefinido (A2→B1 gateway) — LT tracks 20-30 — AnkiWeb Spanish B1: 10 words';
-  if(w<=6)return'Subjuntivo basics (quiero que...) — spanishpod101.com B1 — Por vs Para mastery';
-  if(w<=8)return'Subjuntivo full — relative clauses — Dreaming Spanish intermediate — dreamingspanish.com';
-  if(w<=10)return'Conditional + Future tenses — indirect speech — write 1 full paragraph tonight (5 sentences min)';
-  if(w<=12)return'Professional Spanish register — read clarin.com or infobae.com — summarise in Spanish';
-  return'Output only — clarin.com or infobae.com — speak more than study — 5-sentence journal';}
+// ─────────────────────────────────────────────
+// LANGUAGE CONTENT FUNCTIONS
+// ─────────────────────────────────────────────
+function jpTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 1) { return 'Hiragana rows 1-3 (a,i,u,e,o → na,ni,nu,ne,no) — write each 5× by hand — tofugu.com/japanese/learn-hiragana/'; }
+  if (w <= 2) { return 'Hiragana rows 4-5 + all dakuten — cold quiz all rows — guidetojapanese.org'; }
+  if (w <= 3) { return 'Katakana part 1 (a-row to na-row) — AnkiWeb katakana deck — ankiweb.net'; }
+  if (w <= 4) { return 'Katakana complete — full kana cold quiz — Genki I Lesson 1 vocabulary'; }
+  if (w <= 6) { return 'Genki I Ch.' + Math.min((w - 4) * 2 + 1, 12) + ' — Core 2000: 10 new words on AnkiWeb — sentence patterns'; }
+  if (w <= 8) { return 'Genki I Ch.' + Math.min(w - 3, 12) + ' — Core 2000 words 150-300 — shadow 1 sentence on animelon.com'; }
+  if (w <= 10) { return 'Genki I finishing — Core 2000 words 300-500 — book 1 iTalki session this week'; }
+  if (w <= 12) { return 'Genki II starting — Core 2000 words 500-700 — weekly iTalki'; }
+  return 'Tokyo prep — directions + dojo phrases + restaurant vocab — Core 2000 700-1000';
+}
 
-function zhTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Pinyin + 4 tones mapped to Igbo ear — Yoyo Chinese tone chart — yoyochinese.com';
-  if(w<=4)return'HSK1 sentence patterns — allsetlearning.com — HelloChinese lesson — hellochinese.cc';
-  if(w<=6)return'HSK1-2 vocabulary — 10 new AnkiWeb cards — write 1 Chinese sentence in characters';
-  if(w<=8)return'HSK2 grammar patterns — Mandarin Corner YouTube — Core 2000 Mandarin deck';
-  if(w<=10)return'HSK2-3 reading — Chairman\'s Bao — thechairmansbao.com — write 1 journal sentence in Mandarin';
-  if(w<=12)return'HSK3 output — ChinesePod intermediate — chinesepod.com — 2 sentences daily';
-  return'HSK3-4 output — exploit triple tonal advantage (Igbo + JP + ZH) — Mandarin Corner listening';}
+function esTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Language Transfer Spanish track ' + Math.min(n, 40) + ' — languagetransfer.org/spanish — listen + repeat aloud'; }
+  if (w <= 4) { return 'Imperfecto vs Indefinido (A2→B1 gateway) — AnkiWeb Spanish B1: 10 words'; }
+  if (w <= 6) { return 'Subjuntivo basics (quiero que...) — Por vs Para mastery — dreamingspanish.com'; }
+  if (w <= 8) { return 'Subjuntivo full — relative clauses — Dreaming Spanish intermediate'; }
+  if (w <= 10) { return 'Conditional + Future tenses — write 1 full paragraph (5 sentences min)'; }
+  if (w <= 12) { return 'Professional Spanish register — read clarin.com — summarise in Spanish'; }
+  return 'Output only — clarin.com or infobae.com — speak more than study — 5-sentence journal';
+}
 
-function ruTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Cyrillic alphabet — all 33 letters, both cases — russianforeveryone.com — write alphabet 2×';
-  if(w<=4)return'Nominative + Accusative cases — russianforeveryone.com — OpenRussian 10 words — openrussian.org';
-  if(w<=6)return'Dative + Genitive cases — russianenthusiast.com — 10 words + case drills';
-  if(w<=8)return'Instrumental + Prepositional + verb conjugation groups — openrussian.org verb tables';
-  if(w<=10)return'Aspect pairs + motion verbs — Slow Russian podcast — realrussianclub.com';
-  if(w<=12)return'Intermediate grammar — Russian Progress — russianprogress.com — write 1 Russian sentence';
-  return'B1 Russian output — Russian with Max YouTube — journal sentence in Russian daily';}
+function zhTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Pinyin + 4 tones mapped to Igbo ear — Yoyo Chinese tone chart — yoyochinese.com'; }
+  if (w <= 4) { return 'HSK1 sentence patterns — allsetlearning.com — HelloChinese lesson — hellochinese.cc'; }
+  if (w <= 6) { return 'HSK1-2 vocabulary — 10 new AnkiWeb cards — write 1 Chinese sentence in characters'; }
+  if (w <= 8) { return 'HSK2 grammar patterns — Mandarin Corner YouTube — Core 2000 Mandarin deck'; }
+  if (w <= 10) { return 'HSK2-3 reading — thechairmansbao.com — write 1 journal sentence in Mandarin'; }
+  if (w <= 12) { return 'HSK3 output — ChinesePod intermediate — 2 sentences daily'; }
+  return 'HSK3-4 output — exploit triple tonal advantage (Igbo + JP + ZH)';
+}
 
-function koTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Hangeul vowels + basic consonants — talktomeinkorean.com Level 1 Lesson 1 (free)';
-  if(w<=4)return'Full Hangeul + basic particles (은/는, 이/가) — howtostudykorean.com Unit 1';
-  if(w<=6)return'Basic verbs + present tense — TTMIK Level 1 — AnkiWeb Evita Korean deck — ankiweb.net';
-  if(w<=8)return'Past tense + question words — TTMIK Level 2 — howtostudykorean.com Unit 2';
-  if(w<=10)return'Grammar patterns via Mirinae analyzer — mirinae.io — Japanese transfer: SOV = copy-paste';
-  if(w<=12)return'Honorific forms — LingoDeer Korean — lingodeer.com — Go! Billy Korean YouTube';
-  return'Korean output — write 1 Korean sentence per day — howtostudykorean.com Unit 4+';}
+function ruTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Cyrillic all 33 letters both cases — russianforeveryone.com — write alphabet 2x'; }
+  if (w <= 4) { return 'Nominative + Accusative cases — openrussian.org — 10 words + case drills'; }
+  if (w <= 6) { return 'Dative + Genitive cases — russianenthusiast.com — 10 words + drills'; }
+  if (w <= 8) { return 'Instrumental + Prepositional + verb conjugation groups — openrussian.org verb tables'; }
+  if (w <= 10) { return 'Aspect pairs + motion verbs — Slow Russian podcast — realrussianclub.com'; }
+  if (w <= 12) { return 'Intermediate grammar — russianprogress.com — write 1 Russian sentence'; }
+  return 'B1 Russian output — Russian with Max YouTube — journal sentence in Russian daily';
+}
 
-function deTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Basics + noun genders (der/die/das) — DW Nicos Weg A1 Episode 1 — dw.com';
-  if(w<=4)return'Present tense + nominative case — DW Nicos Weg A1 continued — Coffee Break German Ep 1-3';
-  if(w<=6)return'Accusative case + articles — Grimm Grammar — German grammar utexas.edu — LEO dictionary leo.org';
-  if(w<=8)return'Dative case + two-way prepositions — DW Nicos Weg A2 — Seedlang vocab — seedlang.com';
-  if(w<=10)return'Genitive + adjective endings — Coffee Break German Season 2 — coffeebreaklanguages.com';
-  if(w<=12)return'Subordinate clauses + modal verbs — Easy German YouTube street interviews';
-  return'B1 German — Slow German podcast — slowgerman.com — output focus';}
+function koTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Hangeul vowels + basic consonants — talktomeinkorean.com Level 1 Lesson 1 (free)'; }
+  if (w <= 4) { return 'Full Hangeul + basic particles (은/는, 이/가) — howtostudykorean.com Unit 1'; }
+  if (w <= 6) { return 'Basic verbs + present tense — TTMIK Level 1 — AnkiWeb Evita Korean deck'; }
+  if (w <= 8) { return 'Past tense + question words — TTMIK Level 2 — howtostudykorean.com Unit 2'; }
+  if (w <= 10) { return 'Grammar via Mirinae analyzer — mirinae.io — Japanese transfer: SOV = copy-paste'; }
+  if (w <= 12) { return 'Honorific forms — LingoDeer Korean — Go! Billy Korean YouTube'; }
+  return 'Korean output — write 1 Korean sentence per day — howtostudykorean.com Unit 4+';
+}
 
-function trTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Vowel harmony + 5 survival phrases — Language Transfer Turkish — languagetransfer.org/turkish';
-  if(w<=4)return'Locative/ablative suffixes (-da/-de, -dan/-den) — Elon.io Lessons 1-5 — elon.io';
-  if(w<=6)return'Present tense conjugation — Elon.io Lessons 6-12 — Yunus Emre Institute — turkce.yee.org.tr';
-  if(w<=8)return'Past tense + question suffix (-mı/-mi) — Turkish Basics — turkishbasics.com — tureng.com lookup';
-  if(w<=10)return'Postpositions + compound sentences — Language Transfer Turkish full completion';
-  if(w<=12)return'Intermediate Turkish — write 1 Turkish sentence — exploit agglutinative logic vs Kazakh';
-  return'Turkish output — 3 social phrases for cohort — tureng.com vocabulary';}
+function trTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Vowel harmony + 5 survival phrases — Language Transfer Turkish — languagetransfer.org/turkish'; }
+  if (w <= 4) { return 'Locative/ablative suffixes (-da/-de, -dan/-den) — Elon.io Lessons 1-5 — elon.io'; }
+  if (w <= 6) { return 'Present tense conjugation — Elon.io Lessons 6-12 — turkce.yee.org.tr'; }
+  if (w <= 8) { return 'Past tense + question suffix (-mı/-mi) — tureng.com lookup'; }
+  if (w <= 10) { return 'Postpositions + compound sentences — Language Transfer Turkish completion'; }
+  if (w <= 12) { return 'Intermediate Turkish — write 1 Turkish sentence — exploit agglutinative logic vs Kazakh'; }
+  return '3 social Turkish phrases for cohort — tureng.com vocabulary';
+}
 
-function arTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Arabic letters 1-7 (ا ب ت ث ج ح خ) + joining rules — madinaharabic.com Lesson 1';
-  if(w<=4)return'Arabic letters 8-14 (د ذ ر ز س ش ص ض) — madinaharabic.com Lesson 2 — write each 3×';
-  if(w<=6)return'Arabic alphabet complete + all joining forms — madinaharabic.com — write full alphabet';
-  if(w<=8)return'Basic MSA words + script reading — Arabic with Sam YouTube — 10 words/day';
-  if(w<=10)return'Numbers + survival phrases — arabicpod101.com — 200-phrase goal tracking';
-  if(w<=12)return'Basic MSA sentences — Learn Arabic with Maha YouTube — ejtaal.net for root lookups';
-  return'Arabic script fluency + root system awareness — ejtaal.net — Levantine phrases optional';}
+function arTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Arabic letters 1-7 + joining rules — madinaharabic.com Lesson 1'; }
+  if (w <= 4) { return 'Arabic letters 8-14 — madinaharabic.com Lesson 2 — write each 3x'; }
+  if (w <= 6) { return 'Arabic alphabet complete + all joining forms — write full alphabet'; }
+  if (w <= 8) { return 'Basic MSA words + script reading — Arabic with Sam YouTube — 10 words/day'; }
+  if (w <= 10) { return 'Numbers + survival phrases — arabicpod101.com — 200-phrase goal tracking'; }
+  if (w <= 12) { return 'Basic MSA sentences — Learn Arabic with Maha YouTube — ejtaal.net for root lookups'; }
+  return 'Arabic script fluency + root system awareness — ejtaal.net';
+}
 
-function viTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'6 tone identification (flat/rising/falling-rising/broken/falling/heavy) — SVFF YouTube — 10 min';
-  if(w<=4)return'Tone production + 10 vocabulary — Learn Vietnamese with Annie YouTube — Southern dialect';
-  if(w<=6)return'Survival phrases + sentence-final particles — SVFF YouTube — vietnamesepod101.com';
-  if(w<=8)return'Basic SVO sentences (no conjugation — logical!) — Ling App Vietnamese — ling-app.com';
-  if(w<=10)return'Numbers + time + food vocab — vdict.com dictionary — SVFF intermediate videos';
-  if(w<=12)return'Vietnamese basic output — vdict.com — 1 journal sentence — exploit Igbo tonal hardware';
-  return'Vietnamese tone mastery — SVFF advanced — 3 daily phrases for cohort';}
+function viTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return '6 tone identification (flat/rising/falling-rising/broken/falling/heavy) — SVFF YouTube'; }
+  if (w <= 4) { return 'Tone production + 10 vocabulary — Learn Vietnamese with Annie YouTube'; }
+  if (w <= 6) { return 'Survival phrases + sentence-final particles — vietnamesepod101.com'; }
+  if (w <= 8) { return 'Basic SVO sentences (no conjugation — logical!) — Ling App Vietnamese'; }
+  if (w <= 10) { return 'Numbers + time + food vocab — vdict.com dictionary — SVFF intermediate'; }
+  if (w <= 12) { return 'Vietnamese basic output — 1 journal sentence — exploit Igbo tonal hardware'; }
+  return 'Vietnamese tone mastery — SVFF advanced — 3 daily phrases for cohort';
+}
 
-function urTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Nastaliq initial/medial/final letter forms — aamozish.com Lesson 1 — 10 min';
-  if(w<=4)return'Script part 2 + basic words — aamozish.com Lesson 2 — rekhta.org 1 word lookup';
-  if(w<=6)return'Basic phrases (= Hindi spoken layer, 80% overlap) — loecsen.com/en/learn-urdu';
-  if(w<=8)return'Verb conjugation (mirrors Hindi pattern) — urdupod101.com — exploit 80% intelligibility';
-  if(w<=10)return'Social Urdu phrases for Pakistani cohort — rekhta.org dictionary — rekhta.org';
-  if(w<=12)return'Urdu poetry sounds — Urdu Studio YouTube — 1 ghazal line pronunciation practice';
-  return'Urdu/Hindi social fluency — 5 phrases for cohort — full phonetic intelligibility';}
+function urTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Nastaliq initial/medial/final letter forms — aamozish.com Lesson 1'; }
+  if (w <= 4) { return 'Script part 2 + basic words — aamozish.com Lesson 2 — rekhta.org 1 word'; }
+  if (w <= 6) { return 'Basic phrases (= Hindi spoken layer, 80% overlap) — loecsen.com/en/learn-urdu'; }
+  if (w <= 8) { return 'Verb conjugation (mirrors Hindi pattern) — urdupod101.com'; }
+  if (w <= 10) { return 'Social Urdu phrases for Pakistani cohort — rekhta.org dictionary'; }
+  if (w <= 12) { return 'Urdu poetry sounds — Urdu Studio YouTube — 1 ghazal line pronunciation'; }
+  return 'Urdu/Hindi social fluency — 5 phrases for cohort — full phonetic intelligibility';
+}
 
-function kkTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'5 Kazakh phrases — soyle.kz A1 — compare vowel harmony to Turkish — 5 min';
-  if(w<=4)return'Kazakh greetings + numbers — soyle.kz — sozdik.kz dictionary — sozdik.kz';
-  if(w<=6)return'Basic Kazakh sentences — Russian gives 45% illumination — soyle.kz continued';
-  if(w<=8)return'Social Kazakh phrases — Mango Languages Kazakh — mangolanguages.com (free w/ library card)';
-  if(w<=10)return'Cultural Kazakh expressions — Kazakh Language with Zhannur YouTube';
-  if(w<=12)return'10 high-impact Kazakh phrases — insider move for Central Asian network at reunion';
-  return'Kazakh maintenance — 3 social phrases — insider Central Asian network leverage';}
+function kkTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return '5 Kazakh phrases — soyle.kz — compare vowel harmony to Turkish'; }
+  if (w <= 4) { return 'Kazakh greetings + numbers — soyle.kz — sozdik.kz dictionary'; }
+  if (w <= 6) { return 'Basic Kazakh sentences — Russian gives 45% illumination — soyle.kz'; }
+  if (w <= 8) { return 'Social phrases — Mango Languages Kazakh'; }
+  if (w <= 10) { return 'Cultural expressions — Kazakh Language with Zhannur YouTube'; }
+  if (w <= 12) { return '10 high-impact phrases — Central Asian network insider move'; }
+  return 'Kazakh maintenance — 3 social phrases — Central Asian network leverage';
+}
 
-function ptTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'BR PT nasal vowels + t/d pronunciation (tchi/dji) — Carioca Connection Ep 1 — cariocaconnection.com';
-  if(w<=4)return'Spanish→BR PT: find 10 cognates — 75% transfer — semanticaportuguese.com sample lesson';
-  if(w<=6)return'BR PT present tense — Speaking Brazilian Language School YouTube — busuu.com BR PT track';
-  if(w<=8)return'BR PT colloquial shortcuts + slang — Carioca Connection podcast — cariocaconnection.com';
-  if(w<=10)return'BR PT verb system — conjuga-me.net — Michaelis dictionary — uol.com.br';
-  if(w<=12)return'BR PT output — 1 journal sentence — exploit 75% Spanish backbone — Speaking Brazilian YouTube';
-  return'BR PT social fluency — output focus — cariocaconnection.com advanced';}
+function ptTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'BR PT nasal vowels + t/d pronunciation (tchi/dji) — Carioca Connection Ep 1 — cariocaconnection.com'; }
+  if (w <= 4) { return 'Spanish to BR PT: find 10 cognates — 75% transfer — semanticaportuguese.com'; }
+  if (w <= 6) { return 'BR PT present tense — Speaking Brazilian Language School YouTube'; }
+  if (w <= 8) { return 'BR PT colloquial shortcuts + slang — Carioca Connection podcast'; }
+  if (w <= 10) { return 'BR PT verb system — conjuga-me.net'; }
+  if (w <= 12) { return 'BR PT output — 1 journal sentence — exploit 75% Spanish backbone'; }
+  return 'BR PT social fluency — output focus — cariocaconnection.com advanced';
+}
 
-function swTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'5 Swahili noun class prefixes (m-/wa-, ki-/vi-, n-) + 5 phrases — swahilipod101.com — 10 min';
-  if(w<=4)return'Swahili prefix agreement basics — kamusi.org — Pidgin code-switch transfer advantage';
-  if(w<=6)return'Basic Swahili sentences + verb tenses — Kiko UGA course — uga.edu';
-  if(w<=8)return'Noun class agreement in action — Mango Languages Swahili — mangolanguages.com';
-  if(w<=10)return'Social Swahili phrases — Swahili Language Lessons YouTube (Dr. Shani)';
-  if(w<=12)return'15 Swahili phrases for East African cohort — inside social move';
-  return'Swahili maintenance — 3 social hooks — exploit Pidgin syntax transfer';}
+function swTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return '5 noun class prefixes (m-/wa-, ki-/vi-, n-) + 5 phrases — swahilipod101.com'; }
+  if (w <= 4) { return 'Prefix agreement basics — kamusi.org — Pidgin code-switch transfer advantage'; }
+  if (w <= 6) { return 'Basic sentences + verb tenses — Kiko UGA course — uga.edu'; }
+  if (w <= 8) { return 'Noun class agreement — Mango Languages Swahili'; }
+  if (w <= 10) { return 'Social Swahili phrases — Swahili Language Lessons YouTube (Dr. Shani)'; }
+  if (w <= 12) { return '15 Swahili phrases for East African cohort'; }
+  return 'Swahili maintenance — 3 social hooks — exploit Pidgin syntax transfer';
+}
 
-function ukTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Ukrainian Cyrillic differences from Russian (і, є, ї, ґ) — 5 phrases — 5 min';
-  if(w<=4)return'Ukrainian greetings + basic vocabulary — contrast not confusion with Russian';
-  if(w<=6)return'Basic Ukrainian sentences — exploit Slavic backbone (Russian gives 40% illumination)';
-  if(w<=8)return'5 Ukrainian social phrases — cultural note: never conflate with Russian in social settings';
-  if(w<=10)return'10 phrases that differ from Russian — shows you understand the distinction — huge respect signal';
-  if(w<=12)return'Ukrainian cultural sensitivity + social phrases — cohort insider move';
-  return'Ukrainian maintenance — 3 social phrases — cultural respect maintained';}
+function ukTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Ukrainian Cyrillic differences from Russian (і, є, ї, ґ) — 5 phrases'; }
+  if (w <= 4) { return 'Ukrainian greetings + basic vocabulary — contrast not confusion with Russian'; }
+  if (w <= 6) { return 'Basic Ukrainian sentences — exploit Slavic backbone (Russian 40%)'; }
+  if (w <= 8) { return '5 Ukrainian social phrases — never conflate with Russian socially'; }
+  if (w <= 10) { return '10 phrases that differ from Russian — shows you understand the distinction'; }
+  if (w <= 12) { return 'Ukrainian cultural sensitivity + social phrases — cohort insider move'; }
+  return 'Ukrainian maintenance — 3 social phrases — cultural respect maintained';
+}
 
-function plTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Polish special chars (ą ę ó ś ź ż ć ń ł) + 5 phrases — mowicpopolsku.com — 10 min';
-  if(w<=4)return'Polish cases intro — Russian gives 35% Slavic transfer — polskina5.pl A1';
-  if(w<=6)return'Basic Polish sentences — Easy Polish YouTube street interviews — Kraków/Katowice';
-  if(w<=8)return'Social Polish phrases — Real Polish podcast — realpolish.pl';
-  if(w<=10)return'10 Polish phrases for cohort — Slavic network insider move';
-  if(w<=12)return'Polish cultural expressions — Polski Daily — polskidaily.eu';
-  return'Polish maintenance — 3 social phrases — exploit Russian-Polish Slavic backbone';}
+function plTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Polish special chars (ą ę ó ś ź ż ć ń ł) + 5 phrases — mowicpopolsku.com'; }
+  if (w <= 4) { return 'Polish cases intro — Russian 35% Slavic transfer — polskina5.pl A1'; }
+  if (w <= 6) { return 'Basic Polish sentences — Easy Polish YouTube street interviews'; }
+  if (w <= 8) { return 'Social Polish phrases — Real Polish podcast — realpolish.pl'; }
+  if (w <= 10) { return '10 Polish phrases for cohort — Slavic network insider move'; }
+  if (w <= 12) { return 'Polish cultural expressions — polskidaily.eu'; }
+  return 'Polish maintenance — 3 social phrases — exploit Russian-Polish Slavic backbone';
+}
 
-function yueTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Jyutping romanization + 6 Cantonese tones — forthrightcantonese.com — 10 min';
-  if(w<=4)return'Tone mapping Cantonese vs Mandarin vs Igbo — cantoneseclass101.com Lesson 1';
-  if(w<=6)return'Basic Cantonese phrases — Mamba Cantonese YouTube — authentic street HK Cantonese';
-  if(w<=8)return'Cantonese sentence particles (㗎, 囉, 囉囉) — words.hk dictionary — words.hk';
-  if(w<=10)return'Cantonese vs Mandarin cognates — Comprehensive Input Cantonese YouTube';
-  if(w<=12)return'15 Cantonese social phrases for HK cohort — triple tonal advantage (Igbo+Mandarin+Cantonese)';
-  return'Cantonese output — words.hk — social phrases for HK cohort — tonal mastery';}
+function yueTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Jyutping romanization + 6 Cantonese tones — forthrightcantonese.com'; }
+  if (w <= 4) { return 'Tone mapping Cantonese vs Mandarin vs Igbo — cantoneseclass101.com Lesson 1'; }
+  if (w <= 6) { return 'Basic Cantonese phrases — Mamba Cantonese YouTube'; }
+  if (w <= 8) { return 'Cantonese sentence particles (㗎, 囉) — words.hk dictionary'; }
+  if (w <= 10) { return 'Cantonese vs Mandarin cognates — Comprehensive Input Cantonese YouTube'; }
+  if (w <= 12) { return '15 Cantonese social phrases for HK cohort — triple tonal advantage'; }
+  return 'Cantonese output — words.hk — social phrases for HK cohort';
+}
 
-function frTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'French liaison + silent letters + nasal vowels — Coffee Break French Ep 1 — coffeebreaklanguages.com';
-  if(w<=4)return'Present tense + common irregulars (être/avoir/aller) — Lawless French — lawlessfrench.com';
-  if(w<=6)return'Passé composé + imparfait — InnerFrench podcast — innerfrench.com (free registration)';
-  if(w<=8)return'Subjunctive basics — Français Authentique — francaisauthentique.com';
-  if(w<=10)return'French output — Easy French YouTube street interviews — 1 journal sentence in French';
-  if(w<=12)return'B1 French — French Mornings with Elisa YouTube — output focus';
-  return'French social fluency — innerfrench.com advanced — wordreference.com for idioms';}
+function frTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'French liaison + silent letters + nasal vowels — Coffee Break French Ep 1'; }
+  if (w <= 4) { return 'Present tense + irregulars (être/avoir/aller) — lawlessfrench.com'; }
+  if (w <= 6) { return 'Passé composé + imparfait — InnerFrench podcast — innerfrench.com'; }
+  if (w <= 8) { return 'Subjunctive basics — Français Authentique — francaisauthentique.com'; }
+  if (w <= 10) { return 'French output — Easy French YouTube street interviews — 1 journal sentence'; }
+  if (w <= 12) { return 'B1 French — French Mornings with Elisa YouTube'; }
+  return 'French social fluency — innerfrench.com advanced';
+}
 
-function roTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Romanian basics + spot the Spanish cognates (80% visible!) — learnro.com — 10 min';
-  if(w<=4)return'Romanian present tense + unique feature: definite article attached to end of noun — learnro.com';
-  if(w<=6)return'Basic Romanian sentences — Romanian with Gia podcast — romanianwithgia.com';
-  if(w<=8)return'Romanian case system (retained from Latin unlike other Romance) — dexonline.ro for lookup';
-  if(w<=10)return'Romanian social phrases — Easy Romanian YouTube';
-  if(w<=12)return'10 Romanian phrases for cohort — Learn Romanian with Nico YouTube';
-  return'Romanian output — dexonline.ro — exploit Spanish + French backbone';}
+function roTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Romanian basics + spot the Spanish cognates (80% visible!) — learnro.com'; }
+  if (w <= 4) { return 'Romanian present tense + definite article attached to noun end — learnro.com'; }
+  if (w <= 6) { return 'Basic Romanian sentences — Romanian with Gia podcast — romanianwithgia.com'; }
+  if (w <= 8) { return 'Romanian case system (Latin retained) — dexonline.ro for lookup'; }
+  if (w <= 10) { return 'Romanian social phrases — Easy Romanian YouTube'; }
+  if (w <= 12) { return '10 Romanian phrases — Learn Romanian with Nico YouTube'; }
+  return 'Romanian output — dexonline.ro — exploit Spanish + French backbone';
+}
 
-function enTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'Look up 3 word roots — etymonline.com — spelling bee precision → polyglot superpower (10 min)';
-  if(w<=4)return'COCA word frequency check — wordandphrase.info — find 1 collocation you weren\'t using';
-  if(w<=6)return'Note 1 way your English writing could be tighter today — apply to journal entry';
-  if(w<=8)return'Style analysis: read 1 Minerva-style text — identify 3 structural moves, note them';
-  if(w<=10)return'Output: write 1 paragraph at academic register — 150 words, dense, precise, Minerva-grade';
-  if(w<=12)return'Complex argument in 200 words — use 3 hedges and 1 concessive move — Minerva style';
-  return'"I Hate Wednesday" 500 words — intentional register — precision at speed — your English is a weapon';}
+function enTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Look up 3 word roots — etymonline.com — spelling bee precision is polyglot superpower'; }
+  if (w <= 4) { return 'COCA word frequency — wordandphrase.info — find 1 collocation you were not using'; }
+  if (w <= 6) { return 'Note 1 way your English could be tighter today — apply to journal entry'; }
+  if (w <= 8) { return 'Style analysis: read 1 Minerva-style text — identify 3 structural moves'; }
+  if (w <= 10) { return 'Write 1 paragraph at academic register — 150 words, dense, Minerva-grade'; }
+  if (w <= 12) { return 'Complex argument in 200 words — 3 hedges + 1 concessive move'; }
+  return '"I Hate Wednesday" 500 words — intentional register — precision at speed';
+}
 
-function getBible(n){
-  if(n<=31)return'Proverbs '+n;
-  if(n<=43)return'Ecclesiastes '+(n-31);
-  if(n<=51)return'Song of Solomon '+(n-43);
-  return'Proverbs '+(((n-52)%31)+1)+' (Cycle 2)';}
+function typingTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'monkeytype.com — 5x 30-second tests, English 200 word list — record WPM + accuracy'; }
+  if (w <= 4) { return 'keybr.com — 15 min adaptive drill — note which keys algorithm targets'; }
+  if (w <= 6) { return 'typeracer.com — 5 races — focus on punctuation accuracy under pressure'; }
+  if (w <= 8) { return 'monkeytype.com — English 1000 word list — push 5 WPM above personal best'; }
+  if (w <= 10) { return 'keybr.com — all keys unlocked — 15 min accuracy drill — target 98%'; }
+  if (w <= 12) { return 'typeracer.com — 10 races — consistency over peak speed'; }
+  return 'monkeytype.com — 60-second test, English 5000 list — ultimate WPM benchmark';
+}
 
-// ── TASK BUILDER — NO CLUMPING ──
-
-function typingTask(n){var w=Math.ceil(n/7);
-  if(w<=2)return'monkeytype.com \u2014 5\u00d7 30-second tests, English 200 word list \u2014 record WPM + accuracy';
-  if(w<=4)return'keybr.com \u2014 15 min adaptive drill \u2014 note which keys the algorithm targets';
-  if(w<=6)return'typeracer.com \u2014 5 races \u2014 focus on punctuation accuracy under pressure';
-  if(w<=8)return'monkeytype.com \u2014 English 1000 word list \u2014 push 5 WPM above your best score';
-  if(w<=10)return'keybr.com \u2014 all keys unlocked \u2014 15 min accuracy drill, target 98%+';
-  if(w<=12)return'typeracer.com \u2014 10 races \u2014 consistency matters more than peak speed';
-  return'monkeytype.com \u2014 60-second test \u2014 English 5000 list \u2014 ultimate WPM benchmark';}
+// ─────────────────────────────────────────────
+// TASK BUILDER — zero clumping
+// ─────────────────────────────────────────────
+function t(id, label, pts, cat, bonus) {
+  return { id: id, label: label, pts: pts, cat: cat, bonus: !!bonus };
+}
 
 function getTasks(d, n) {
   var dow = d.getDay();
   var uba = isUBA(d, n);
-  var isSun = dow===0, isSat = dow===6;
-  var w = Math.ceil(n/7);
+  var isSun = (dow === 0);
+  var isSat = (dow === 6);
+  var w = Math.ceil(n / 7);
   var tasks = [];
 
-  // Helper
-  function t(id, label, pts, cat, bonus) {
-    return {id:id, label:label, pts:pts, cat:cat, bonus:!!bonus};
+  // IMMIGRATION specific days
+  if (n === 1) {
+    tasks.push(t('imm1a', '🛂 ×2 XP: Go to Comisaría Vecinal 6A — Av. Díaz Vélez 5152, Caballito — at 09:00 AM sharp', 100, 'imm'));
+    tasks.push(t('imm1b', '🛂 ×2 XP: Bring ORIGINAL passport only — no photocopies', 30, 'imm'));
+    tasks.push(t('imm1c', '🛂 ×2 XP: Say the script: "Hola, buen día. Necesito tramitar un Certificado de Domicilio para Migraciones. Vivo en Luis Viale 11."', 30, 'imm'));
+    tasks.push(t('imm1d', '🛂 ×2 XP: Pay ~2,000–3,000 ARS cash. Get the receipt. Keep it safe.', 30, 'imm'));
+    tasks.push(t('imm1e', '🛂 ×2 XP: If asked about lease: "Es un alquiler temporal, pago en efectivo mes a mes."', 20, 'imm'));
+  }
+  if (n >= 2 && n <= 4) {
+    tasks.push(t('imm2a', '🛂 Be home at Luis Viale 11 (09:00–17:00) — police may verify address today', 50, 'imm'));
+    tasks.push(t('imm2b', '🛂 Passport ready at the door — verification takes 3 minutes, totally routine', 20, 'imm'));
+  }
+  if (n >= 3 && n <= 5) {
+    tasks.push(t('imm3a', '🛂 Return to Comisaría Vecinal 6A (Av. Díaz Vélez 5152) to collect the stamped Certificado de Domicilio', 60, 'imm'));
+    tasks.push(t('imm3b', '🛂 Scan the Certificado immediately upon receipt', 20, 'imm'));
+    tasks.push(t('imm3c', '🛂 Upload the scanned Certificado to Google Drive as backup', 15, 'imm'));
+  }
+  if (n === 11) {
+    tasks.push(t('imm11a', '🛂 ×2 XP: UBA Bimestre 2 starts today — attend class 14:00 at 25 de Mayo 221', 50, 'imm'));
+    tasks.push(t('imm11b', '🛂 ×2 XP: After class, go to the secretaría at 25 de Mayo 221', 50, 'imm'));
+    tasks.push(t('imm11c', '🛂 ×2 XP: Say: "Hola, soy alumno inscripto en el curso 2582-MC04000601. Necesito una constancia de inscripción para Migraciones, por favor."', 50, 'imm'));
+    tasks.push(t('imm11d', '🛂 ×2 XP: Receive and scan UBA Bimestre 2 constancia immediately', 30, 'imm'));
+    tasks.push(t('imm11e', '🛂 ×2 XP: Upload constancia to Google Drive as backup', 15, 'imm'));
+  }
+  if (n === 13) {
+    tasks.push(t('imm13a', '🛂 ×3 XP: Go to radex.migraciones.gov.ar — login: praise.vc.16@gmail.com / 37030709', 50, 'imm'));
+    tasks.push(t('imm13b', '🛂 ×3 XP: Upload file 1 — Certificado de Domicilio', 60, 'imm'));
+    tasks.push(t('imm13c', '🛂 ×3 XP: Upload file 2 — UBA Bimestre 2 Constancia', 60, 'imm'));
+    tasks.push(t('imm13d', '🛂 ×3 XP: Tick the "Domicilio Electrónico" checkbox before submitting', 40, 'imm'));
+    tasks.push(t('imm13e', '🛂 ×3 XP: Submit. Screenshot the confirmation. Save that screenshot.', 30, 'imm'));
+  }
+  if (n === 15) {
+    tasks.push(t('imm15a', '🛂 HARD DEADLINE (May 29): Log into radex.migraciones.gov.ar and verify upload is complete', 100, 'imm'));
+    tasks.push(t('imm15b', '🛂 If NOT uploaded yet — do it RIGHT NOW before anything else today', 50, 'imm'));
   }
 
-  // ── IMMIGRATION (specific days only, each step separate) ──
-  if(n===1){
-    tasks.push(t('imm1a','🛂 ×2 XP: Go to Comisaría 6A, Guzmán 396, Caballito at 09:00 AM sharp',100,'imm'));
-    tasks.push(t('imm1b','🛂 ×2 XP: Bring ORIGINAL passport only (no photocopies)',30,'imm'));
-    tasks.push(t('imm1c','🛂 ×2 XP: Say: "Hola, buen día. Necesito tramitar un Certificado de Domicilio para Migraciones. Vivo en Luis Viale 11."',30,'imm'));
-    tasks.push(t('imm1d','🛂 ×2 XP: Pay ~2,000–3,000 ARS cash. Get the receipt. Keep it safe.',30,'imm'));
-    tasks.push(t('imm1e','🛂 ×2 XP: If they ask about lease: "Es un alquiler temporal, pago en efectivo mes a mes."',20,'imm'));
-  }
-  if(n>=2&&n<=4){
-    tasks.push(t('imm2a','🛂 Be home at Luis Viale 11 (09:00–17:00) — police may verify address',50,'imm'));
-    tasks.push(t('imm2b','🛂 Passport ready at door — the verification takes 3 minutes, totally routine',20,'imm'));
-  }
-  if(n>=3&&n<=5){
-    tasks.push(t('imm3a','🛂 Return to Comisaría 6A to collect the stamped Certificado de Domicilio',60,'imm'));
-    tasks.push(t('imm3b','🛂 Scan the Certificado immediately upon receipt',20,'imm'));
-    tasks.push(t('imm3c','🛂 Upload the scanned Certificado to Google Drive as backup',15,'imm'));
-  }
-  if(n===11){
-    tasks.push(t('imm11a','🛂 ×2 XP: UBA Bimestre 2 starts — attend class 14:00 at 25 de Mayo 221',50,'imm'));
-    tasks.push(t('imm11b','🛂 ×2 XP: Go to the secretaría at 25 de Mayo 221 after class',50,'imm'));
-    tasks.push(t('imm11c','🛂 ×2 XP: Say: "Hola, soy alumno inscripto en el curso 2582-MC04000601. Necesito una constancia de inscripción para Migraciones, por favor."',50,'imm'));
-    tasks.push(t('imm11d','🛂 ×2 XP: Receive and scan UBA Bimestre 2 constancia immediately',30,'imm'));
-    tasks.push(t('imm11e','🛂 ×2 XP: Upload constancia to Google Drive as backup',15,'imm'));
-  }
-  if(n===13){
-    tasks.push(t('imm13a','🛂 ×3 XP: Go to radex.migraciones.gov.ar — login: praise.vc.16@gmail.com / 37030709',50,'imm'));
-    tasks.push(t('imm13b','🛂 ×3 XP: Upload file 1 — Certificado de Domicilio',60,'imm'));
-    tasks.push(t('imm13c','🛂 ×3 XP: Upload file 2 — UBA Bimestre 2 Constancia',60,'imm'));
-    tasks.push(t('imm13d','🛂 ×3 XP: Tick the "Domicilio Electrónico" checkbox before submitting',40,'imm'));
-    tasks.push(t('imm13e','🛂 ×3 XP: Submit. Screenshot the confirmation. Save the screenshot.',30,'imm'));
-  }
-  if(n===15){
-    tasks.push(t('imm15a','🛂 HARD DEADLINE TODAY (May 29): Log into radex.migraciones.gov.ar and verify upload is complete',100,'imm'));
-    tasks.push(t('imm15b','🛂 If NOT uploaded yet — do it RIGHT NOW before anything else today',50,'imm'));
+  // SURVIVAL — every day
+  tasks.push(t('shower_am', '🚿 Morning shower (07:20–07:50)', 30, 'body'));
+  tasks.push(t('skincare_am', '✨ Morning skincare — ceramide + SPF (07:50–08:05)', 15, 'body'));
+  tasks.push(t('cook_bfast', '🍳 Cook breakfast (08:05–08:25) — active cooking, separate task from eating', 20, 'body'));
+  tasks.push(t('eat_bfast', '🥣 Eat breakfast (08:25–08:45) — sit down, no screen. SEPARATE from cooking.', 20, 'body'));
+  tasks.push(t('water_1', '💧 Water bottle 1 of 3 (1 litre) — drink before language block starts', 10, 'body'));
+  tasks.push(t('creatine', '💊 Creatine 3g — mix in oats or morning carbs', 10, 'body'));
+  tasks.push(t('martial_am', '🥊 Morning martial arts block (08:50–09:15) — all 4 arts in room', 50, 'body'));
+
+  // ENGLISH — every day
+  tasks.push(t('en_main', '🇬🇧 English precision (10 min): ' + enTask(n), 15, 'en'));
+  tasks.push(t('en_bonus', '⭐ GENIUS English: Write 1 paragraph that would make a Minerva prof stop and re-read it — tight, dense, precise', 20, 'bonus', true));
+
+  // JAPANESE — every day sacred
+  if (isSun) {
+    tasks.push(t('jp_sun', '🇯🇵 Japanese Sunday sprint (09:20–10:40, 80 min — STOPS AT 10:40 FOR CHURCH): Full Genki chapter + full Anki + Animelon episode — ' + jpTask(n), 65, 'jp'));
+    tasks.push(t('jp_sun_bonus', '⭐ GENIUS Japanese Sunday: Shadow a full Animelon sentence — transcribe from memory in kana — check yourself', 25, 'bonus', true));
+  } else if (isSat) {
+    tasks.push(t('jp_sat', '🇯🇵 Japanese Saturday sprint (09:20–10:20, 60 min): Full Genki chapter + 20 AnkiWeb cards — ' + jpTask(n), 40, 'jp'));
+    tasks.push(t('jp_sat_bonus', '⭐ GENIUS Japanese Saturday: shadow 1 anime sentence on animelon.com — write romaji first, then hiragana, then check', 20, 'bonus', true));
+  } else {
+    tasks.push(t('jp_main', '🇯🇵 Japanese SACRED (09:20–09:50, 30 min): ' + jpTask(n), 50, 'jp'));
+    tasks.push(t('jp_bonus', '⭐ GENIUS Japanese: Shadow 1 anime sentence on animelon.com — write it in romaji first, then hiragana, then check', 20, 'bonus', true));
   }
 
-  // ── SURVIVAL EVERY DAY ──
-  tasks.push(t('shower_am','🚿 Morning shower (07:20–07:50, 30 min)',30,'body'));
-  tasks.push(t('skincare_am','✨ Morning skincare — ceramide + SPF (07:50–08:05)',15,'body'));
-  tasks.push(t('cook_bfast','🍳 Cook breakfast (08:05–08:25) — active cooking, separate task',20,'body'));
-  tasks.push(t('eat_bfast','🥣 Eat breakfast (08:25–08:45) — SEPARATE from cooking. Sit down. No screen.',20,'body'));
-  tasks.push(t('water_1','💧 Water bottle 1/3 (1 litre) — drink before language block starts',10,'body'));
-  tasks.push(t('creatine','💊 Creatine 3g — mix in oats or morning carbs to extend the tub',10,'body'));
-  tasks.push(t('martial_am','🥊 Morning martial arts block (08:50–09:15) — all 4 arts in room',50,'body'));
-
-  // ── ENGLISH (every day, 10 min) ──
-  tasks.push(t('en_main','🇬🇧 English precision (10 min): '+enTask(n),15,'en'));
-  tasks.push(t('en_bonus','⭐ GENIUS English: Write 1 paragraph that would make a Minerva prof stop and re-read it — tight, dense, precise',20,'bonus',true));
-
-  // ── JAPANESE (every day, sacred 09:20–09:50) ──
-  tasks.push(t('jp_main','🇯🇵 Japanese SACRED (09:20–09:50, 30 min): '+jpTask(n),50,'jp'));
-  tasks.push(t('jp_bonus','⭐ GENIUS Japanese: Shadow 1 anime sentence on animelon.com — write it in romaji first, then hiragana, then check',20,'bonus',true));
-
-  // ── SPANISH (every day, 09:55–10:25) ──
-  tasks.push(t('es_main','🇦🇷 Spanish structured (09:55–10:25, 30 min): '+esTask(n),40,'es'));
-  tasks.push(t('es_journal','✍️ Spanish evening journal — 3-5 sentences: "Hoy hice... Lo que aprendí fue... Mañana voy a..."',25,'es'));
-  tasks.push(t('es_bonus','⭐ GENIUS Spanish: Read 1 clarin.com article — write a 2-sentence summary entirely in Spanish',20,'bonus',true));
-
-  
-  // TYPING (every day)
-  tasks.push(t('typing_main','⌨️ Typing speed drill (10-15 min): '+typingTask(n),20,'typing'));
-  tasks.push(t('typing_bonus','\u2b50 GENIUS Typing: Beat your personal best WPM on monkeytype.com \u2014 screenshot the result',15,'bonus',true));
-
-  // ── ROTATION LANGUAGES ──
-  if(dow===1||dow===3){ // Mon/Wed: Mandarin + Russian + Turkish
-    tasks.push(t('zh_main','🇨🇳 Mandarin (10:25–10:40): '+zhTask(n),35,'zh'));
-    tasks.push(t('zh_bonus','⭐ GENIUS Mandarin: Map 1 Mandarin tone to your Igbo tone system — write the phonological link down',15,'bonus',true));
-    tasks.push(t('ru_main','🇷🇺 Russian (10:40–10:55): '+ruTask(n),35,'ru'));
-    tasks.push(t('ru_bonus','⭐ GENIUS Russian: Decline 1 noun through all 6 cases — check openrussian.org — treat it like algebra',20,'bonus',true));
-    tasks.push(t('tr_main','🇹🇷 Turkish (10:55–11:05): '+trTask(n),25,'tr'));
-    tasks.push(t('tr_bonus','⭐ GENIUS Turkish: Build a "suffix chain" — 1 root word + 3 suffixes — explain each suffix\'s function',15,'bonus',true));
+  // CHURCH — Sunday
+  if (isSun) {
+    tasks.push(t('church_leave', '⛪ LEAVE FOR CHURCH at 10:40 SHARP — 15 min commute — do NOT let Japanese run over', 20, 'body'));
+    tasks.push(t('church_mass', '⛪ Mass 11:00–12:00 — be present, not on your phone', 30, 'body'));
+    tasks.push(t('church_return', '⛪ Back home by ~12:30 — Sunday languages shift to 13:00 block', 5, 'body'));
   }
-  if(dow===2||dow===4){ // Tue/Thu: Korean + Urdu + (Cantonese on Tue / Vietnamese + Kazakh on Thu)
-    tasks.push(t('ko_main','🇰🇷 Korean (10:25–10:40): '+koTask(n),35,'ko'));
-    tasks.push(t('ko_bonus','⭐ GENIUS Korean: Write 1 Japanese sentence, then write the Korean equivalent — note the identical SOV structure',20,'bonus',true));
-    tasks.push(t('ur_main','🇵🇰 Urdu (10:40–10:50): '+urTask(n),25,'ur'));
-    tasks.push(t('ur_bonus','⭐ GENIUS Urdu/Hindi: Say the same sentence in Urdu and Hindi — note where they diverge and where they\'re identical',15,'bonus',true));
-    if(dow===2){ // Tuesday: Cantonese
-      tasks.push(t('yue_main','🇭🇰 Cantonese (10:50–11:00): '+yueTask(n),25,'yue'));
-      tasks.push(t('yue_bonus','⭐ GENIUS Cantonese: Map 1 Cantonese tone to its Mandarin equivalent AND your Igbo pitch — triple link visible',20,'bonus',true));
+
+  // SPANISH — every day
+  if (!isSun) {
+    tasks.push(t('es_main', '🇦🇷 Spanish structured (09:55–10:25, 30 min): ' + esTask(n), 40, 'es'));
+  }
+  tasks.push(t('es_journal', '✍️ Spanish evening journal — 3-5 sentences: "Hoy hice... Lo que aprendí fue... Mañana voy a..."', 25, 'es'));
+  tasks.push(t('es_bonus', '⭐ GENIUS Spanish: Read 1 clarin.com article — write a 2-sentence summary entirely in Spanish', 20, 'bonus', true));
+
+  // TYPING — every day
+  tasks.push(t('typing_main', '⌨️ Typing speed drill (10-15 min): ' + typingTask(n), 20, 'typing'));
+  tasks.push(t('typing_bonus', '⭐ GENIUS Typing: Beat your personal best WPM on monkeytype.com — screenshot it', 15, 'bonus', true));
+
+  // ROTATION LANGUAGES by day of week
+  if (dow === 1 || dow === 3) {
+    // Monday / Wednesday: Mandarin + Russian + Turkish
+    tasks.push(t('zh_main', '🇨🇳 Mandarin (10:25–10:40): ' + zhTask(n), 35, 'zh'));
+    tasks.push(t('zh_bonus', '⭐ GENIUS Mandarin: Map 1 Mandarin tone to your Igbo tone system — write the phonological link', 15, 'bonus', true));
+    tasks.push(t('ru_main', '🇷🇺 Russian (10:40–10:55): ' + ruTask(n), 35, 'ru'));
+    tasks.push(t('ru_bonus', '⭐ GENIUS Russian: Decline 1 noun through all 6 cases — openrussian.org — treat it like algebra', 20, 'bonus', true));
+    tasks.push(t('tr_main', '🇹🇷 Turkish (10:55–11:05): ' + trTask(n), 25, 'tr'));
+    tasks.push(t('tr_bonus', '⭐ GENIUS Turkish: Build a suffix chain — 1 root word + 3 suffixes — explain each suffix function', 15, 'bonus', true));
+    if (dow === 3) {
+      // Wednesday also: Arabic
+      tasks.push(t('ar_wed', '🇸🇦 Arabic (11:05–11:15): ' + arTask(n), 25, 'ar'));
+      tasks.push(t('ar_wed_bonus', '⭐ GENIUS Arabic: Write 1 word from today in Arabic script — identify its root letters', 15, 'bonus', true));
     }
-    if(dow===4){ // Thursday: Vietnamese + Kazakh
-      tasks.push(t('vi_main','🇻🇳 Vietnamese (10:50–11:00): '+viTask(n),25,'vi'));
-      tasks.push(t('vi_bonus','⭐ GENIUS Vietnamese: Sing all 6 tones on the syllable "ma" — compare the 6 to your Igbo 2-tone system — how does your brain adapt?',15,'bonus',true));
-      tasks.push(t('kk_main','🇰🇿 Kazakh (11:00–11:05): '+kkTask(n),20,'kk'));
-      tasks.push(t('kk_bonus','⭐ GENIUS Kazakh: Find 1 Kazakh word almost identical in Turkish — note the Turkic language family connection',15,'bonus',true));
+  }
+  if (dow === 2 || dow === 4) {
+    // Tuesday / Thursday: Korean + Urdu
+    tasks.push(t('ko_main', '🇰🇷 Korean (10:25–10:40): ' + koTask(n), 35, 'ko'));
+    tasks.push(t('ko_bonus', '⭐ GENIUS Korean: Write 1 Japanese sentence, then the Korean equivalent — note identical SOV structure', 20, 'bonus', true));
+    tasks.push(t('ur_main', '🇵🇰 Urdu (10:40–10:50): ' + urTask(n), 25, 'ur'));
+    tasks.push(t('ur_bonus', '⭐ GENIUS Urdu: Say the same sentence in Urdu and Hindi — note divergence and overlap', 15, 'bonus', true));
+    if (dow === 2) {
+      // Tuesday: Cantonese
+      tasks.push(t('yue_tue', '🇭🇰 Cantonese (10:50–11:00): ' + yueTask(n), 25, 'yue'));
+      tasks.push(t('yue_tue_bonus', '⭐ GENIUS Cantonese: Map 1 Cantonese tone to Mandarin equivalent AND your Igbo pitch — triple link', 20, 'bonus', true));
+    }
+    if (dow === 4) {
+      // Thursday: Vietnamese + Kazakh
+      tasks.push(t('vi_thu', '🇻🇳 Vietnamese (10:50–11:00): ' + viTask(n), 25, 'vi'));
+      tasks.push(t('vi_thu_bonus', '⭐ GENIUS Vietnamese: Sing all 6 tones on the syllable "ma" — compare to your Igbo 2-tone system', 15, 'bonus', true));
+      tasks.push(t('kk_thu', '🇰🇿 Kazakh (11:00–11:05): ' + kkTask(n), 20, 'kk'));
+      tasks.push(t('kk_thu_bonus', '⭐ GENIUS Kazakh: Find 1 Kazakh word almost identical in Turkish — Turkic family connection visible', 15, 'bonus', true));
     }
   }
-  if(dow===5){ // Friday: Russian + Turkish + French
-    tasks.push(t('ru_main_fri','🇷🇺 Russian (10:25–10:40): '+ruTask(n)+' — realrussianclub.com',35,'ru'));
-    tasks.push(t('ru_bonus_fri','⭐ GENIUS Russian: Watch 5 min of Real Russian Club — write 3 words you heard and understood without translation',20,'bonus',true));
-    tasks.push(t('tr_main_fri','🇹🇷 Turkish (10:40–10:50): '+trTask(n)+' — elon.io',25,'tr'));
-    tasks.push(t('tr_bonus_fri','⭐ GENIUS Turkish: Write 1 Turkish sentence — then identify every single suffix and what it does',20,'bonus',true));
-    tasks.push(t('fr_main','🇫🇷 French (10:50–11:00): '+frTask(n),25,'fr'));
-    tasks.push(t('fr_bonus','⭐ GENIUS French: Find 1 French false cognate with English — write the trap and how to avoid it',15,'bonus',true));
+  if (dow === 5) {
+    // Friday: Russian + Turkish + French
+    tasks.push(t('ru_fri', '🇷🇺 Russian (10:25–10:40): ' + ruTask(n) + ' — realrussianclub.com', 35, 'ru'));
+    tasks.push(t('ru_fri_bonus', '⭐ GENIUS Russian: Watch 5 min of Real Russian Club — write 3 words you understood without translation', 20, 'bonus', true));
+    tasks.push(t('tr_fri', '🇹🇷 Turkish (10:40–10:50): ' + trTask(n) + ' — elon.io', 25, 'tr'));
+    tasks.push(t('tr_fri_bonus', '⭐ GENIUS Turkish: Write 1 Turkish sentence — identify every suffix and what it does', 20, 'bonus', true));
+    tasks.push(t('fr_fri', '🇫🇷 French (10:50–11:00): ' + frTask(n), 25, 'fr'));
+    tasks.push(t('fr_fri_bonus', '⭐ GENIUS French: Find 1 French false cognate with English — write the trap and how to avoid it', 15, 'bonus', true));
   }
-  if(isSat){ // Saturday: Cantonese + Romanian + Ukrainian + Japanese sprint
-    tasks.push(t('jp_sprint_sat','🇯🇵 Japanese Saturday sprint (+30 min extra, 60 min total): Full Genki chapter + 20 AnkiWeb cards',40,'jp'));
-    tasks.push(t('yue_sat','🇭🇰 Cantonese (10:25–10:40): '+yueTask(n)+' — cantoneseclass101.com',25,'yue'));
-    tasks.push(t('yue_sat_bonus','⭐ GENIUS Cantonese: Compare 1 word in Cantonese vs Mandarin — same character, different tone, different meaning?',15,'bonus',true));
-    tasks.push(t('ro_sat','🇷🇴 Romanian (10:40–10:50): '+roTask(n),20,'ro'));
-    tasks.push(t('ro_sat_bonus','⭐ GENIUS Romanian: Find 1 word almost identical in Spanish AND French — Romance family visible in 3 languages at once',15,'bonus',true));
-    tasks.push(t('uk_sat','🇺🇦 Ukrainian (10:50–10:55): '+ukTask(n),20,'uk'));
-    tasks.push(t('uk_sat_bonus','⭐ GENIUS Ukrainian: Find 1 Ukrainian word that differs from Russian — explain the phonological shift',15,'bonus',true));
-    tasks.push(t('jennie','💃 Like Jennie choreo (10-15 min) — Bizzy Boom tutorial — youtube search "like jennie bizzy boom"',25,'art'));
-    tasks.push(t('sprints','🏃 Sprint intervals — 8×30m at Parque Centenario (8 min walk from Luis Viale 11)',40,'body'));
+  if (isSat) {
+    // Saturday: Cantonese + Romanian + Ukrainian
+    tasks.push(t('yue_sat', '🇭🇰 Cantonese (10:25–10:40): ' + yueTask(n) + ' — cantoneseclass101.com', 25, 'yue'));
+    tasks.push(t('yue_sat_bonus', '⭐ GENIUS Cantonese: Compare 1 word in Cantonese vs Mandarin — same character, different tone, different meaning?', 15, 'bonus', true));
+    tasks.push(t('ro_sat', '🇷🇴 Romanian (10:40–10:50): ' + roTask(n), 20, 'ro'));
+    tasks.push(t('ro_sat_bonus', '⭐ GENIUS Romanian: Find 1 word almost identical in Spanish AND French — Romance family visible in 3 languages', 15, 'bonus', true));
+    tasks.push(t('uk_sat', '🇺🇦 Ukrainian (10:50–10:55): ' + ukTask(n), 20, 'uk'));
+    tasks.push(t('uk_sat_bonus', '⭐ GENIUS Ukrainian: Find 1 Ukrainian word that differs from Russian — explain the phonological shift', 15, 'bonus', true));
+    tasks.push(t('jennie_sat', '💃 Like Jennie choreo (10-15 min) — YouTube search "like jennie bizzy boom"', 25, 'art'));
+    tasks.push(t('sprints_sat', '🏃 Sprint intervals — 8×30m at Parque Centenario (8 min walk from Luis Viale 11)', 40, 'body'));
   }
-  if(isSun){ // Sunday: Japanese 90 min + Brazilian PT + German + Polish + Swahili + home things
-    tasks.push(t('jp_sprint_sun','🇯🇵 Japanese Sunday sprint (09:20–10:50, 90 min): Full Genki chapter + full Anki review + Animelon episode',70,'jp'));
-    tasks.push(t('jp_sprint_sun_bonus','⭐ GENIUS Japanese Sunday: Shadow a full Animelon sentence — transcribe from memory in kana — check yourself',25,'bonus',true));
-    tasks.push(t('pt_sun','🇧🇷 Brazilian Portuguese (11:00–11:20): '+ptTask(n),30,'pt'));
-    tasks.push(t('pt_sun_bonus','⭐ GENIUS Brazilian PT: Write 1 sentence in Spanish — translate to BR PT — list every change — 75% overlap math',20,'bonus',true));
-    tasks.push(t('de_sun','🇩🇪 German (11:20–11:35): '+deTask(n),25,'de'));
-    tasks.push(t('de_sun_bonus','⭐ GENIUS German: Find 1 English word that shares a Germanic root with a German word — the family connection is real',15,'bonus',true));
-    tasks.push(t('pl_sun','🇵🇱 Polish (11:35–11:45): '+plTask(n),20,'pl'));
-    tasks.push(t('pl_sun_bonus','⭐ GENIUS Polish: Compare 1 Polish case ending to Russian equivalent — Slavic family structure visible',15,'bonus',true));
-    tasks.push(t('sw_sun','🇰🇪 Swahili (11:45–11:55): '+swTask(n),20,'sw'));
-    tasks.push(t('sw_sun_bonus','⭐ GENIUS Swahili: Take 1 noun — show how the noun class prefix changes the verb agreement — Bantu system in action',15,'bonus',true));
-    tasks.push(t('call_home','📞 Video call home to Nigeria — weekly',20,'body'));
-    tasks.push(t('weekly_review','📊 20-min weekly review — what moved, what didn\'t, what to adjust next week',20,'mind'));
-    tasks.push(t('laundry_main','🧺 Laundry main load (14:00) — H₂O₂+baking soda pretreat (20 min passive) → soak 15 min → wash 30 min → towel-wring → hang near window',30,'body'));
-  }
-
-  // ── UBA (days 11-65, Mon/Tue/Wed) ──
-  if(uba){
-    tasks.push(t('uba_prep','🇦🇷 UBA: Set alarm/reminder to leave by 12:55 SHARP — 60-min commute to Microcentro',10,'school'));
-    tasks.push(t('uba_leave','🇦🇷 UBA: Walk out the door at 12:55 SHARP (not 13:00, not "in a minute") — leave now',15,'school'));
-    tasks.push(t('uba_class','🇦🇷 UBA: Attend class 14:00–16:00 at 25 de Mayo 221, Microcentro',40,'school'));
-    tasks.push(t('uba_speak','🇦🇷 UBA: Ask or answer 1 question in Spanish during class — speak, don\'t just sit there',20,'school'));
-    tasks.push(t('uba_return','🇦🇷 UBA: Arrive home (~17:10–17:20) — note commute time for planning',5,'school'));
+  if (isSun) {
+    // Sunday languages shift to 13:00
+    tasks.push(t('pt_sun', '🇧🇷 Brazilian Portuguese (13:00–13:20): ' + ptTask(n), 30, 'pt'));
+    tasks.push(t('pt_sun_bonus', '⭐ GENIUS BR PT: Write 1 sentence in Spanish — translate to BR PT — list every change — 75% overlap math', 20, 'bonus', true));
+    tasks.push(t('de_sun', '🇩🇪 German (13:20–13:35): ' + deTask(n), 25, 'de'));
+    tasks.push(t('de_sun_bonus', '⭐ GENIUS German: Find 1 English word sharing a Germanic root with a German word — the family is real', 15, 'bonus', true));
+    tasks.push(t('pl_sun', '🇵🇱 Polish (13:35–13:45): ' + plTask(n), 20, 'pl'));
+    tasks.push(t('pl_sun_bonus', '⭐ GENIUS Polish: Compare 1 Polish case ending to Russian equivalent — Slavic family structure visible', 15, 'bonus', true));
+    tasks.push(t('sw_sun', '🇰🇪 Swahili (13:45–13:55): ' + swTask(n), 20, 'sw'));
+    tasks.push(t('sw_sun_bonus', '⭐ GENIUS Swahili: Take 1 noun — show how noun class prefix changes verb agreement — Bantu in action', 15, 'bonus', true));
+    tasks.push(t('ro_sun', '🇷🇴 Romanian (13:55–14:05): ' + roTask(n) + ' — PRIORITY language', 25, 'ro'));
+    tasks.push(t('ro_sun_bonus', '⭐ GENIUS Romanian Sunday: Write 1 sentence and identify every Romance element — Spanish+French+Latin all visible', 20, 'bonus', true));
+    tasks.push(t('call_home', '📞 Video call home to Nigeria — weekly family check-in', 20, 'body'));
+    tasks.push(t('weekly_review', '📊 20-min weekly review — what moved, what did not, what to adjust next week', 20, 'mind'));
+    tasks.push(t('laundry_sun', '🧺 Laundry main load (14:00) — H₂O₂+baking soda pretreat 20 min → soak 15 min → wash 30 min → towel-wring → hang', 30, 'body'));
   }
 
-  // ── FERIA TUESDAY ──
-  if(dow===2&&n>=11&&n<=65){
-    tasks.push(t('feria','🥬 Feria FIAB 8 — Gavilán 1200, 4 blocks from Luis Viale 11 (08:00–14:00) — efectivo only — buy repollo/zanahoria/tomates/espinaca',25,'body'));
-    tasks.push(t('feria_speak','🇦🇷 Feria: Have the full transaction in Spanish — greet, ask price, thank them — no English at all',20,'es'));
-    tasks.push(t('feria_bonus','⭐ GENIUS Feria: Learn one vendor\'s name. Ask them one personal question in Spanish. Remember it.',20,'bonus',true));
+  // UBA — days 11-65, Mon/Tue/Wed
+  if (uba) {
+    tasks.push(t('uba_alarm', '🇦🇷 UBA: Set alarm — leave by 12:55 SHARP — 60-min commute to Microcentro', 10, 'school'));
+    tasks.push(t('uba_leave', '🇦🇷 UBA: Walk out the door at 12:55 SHARP (not 13:00, not "in a minute")', 15, 'school'));
+    tasks.push(t('uba_class', '🇦🇷 UBA: Attend class 14:00–16:00 at 25 de Mayo 221, Microcentro', 40, 'school'));
+    tasks.push(t('uba_speak', '🇦🇷 UBA: Ask or answer 1 question in Spanish during class — speak, do not just sit', 20, 'school'));
+    tasks.push(t('uba_return', '🇦🇷 UBA: Arrive home (~17:10–17:20) — note commute time for planning', 5, 'school'));
   }
 
-  // ── LAUNDRY WEDNESDAY ──
-  if(dow===3){
-    tasks.push(t('laundry_wed','🧺 Wednesday rolling wash — underwear, socks, sweaty gear — H₂O₂ pretreat + hand-wash + hang',15,'body'));
+  // FERIA — Tuesday, days 11-65
+  if (dow === 2 && n >= 11 && n <= 65) {
+    tasks.push(t('feria_go', '🥬 Feria FIAB 8 — Gavilán 1200, 4 blocks from Luis Viale 11 (08:00–14:00) — efectivo only', 25, 'body'));
+    tasks.push(t('feria_speak', '🇦🇷 Feria: Full transaction in Spanish — greet, ask price, thank — no English at all', 20, 'es'));
+    tasks.push(t('feria_bonus', '⭐ GENIUS Feria: Learn one vendor name. Ask them one personal question in Spanish.', 20, 'bonus', true));
   }
 
-  // ── JUDO HOME (Tue/Thu) ──
-  if(dow===2||dow===4){
-    tasks.push(t('judo1','🥋 Judo ukemi: 10 mae ukemi (forward rolls on folded blanket) — chin tucked tight',15,'body'));
-    tasks.push(t('judo2','🥋 Judo ukemi: 10 ushiro ukemi (backward rolls) — chin tucked, slap the ground',15,'body'));
-    tasks.push(t('judo3','🥋 Judo ukemi: 10 yoko ukemi each side (side falls) — chin tucked, arm at 45°',15,'body'));
-    tasks.push(t('judo4','🥋 Judo: 50 uchi komi (entry drills) against wall — Seoi Nage or O-Goshi',20,'body'));
-    tasks.push(t('judo_bonus','⭐ GENIUS Judo: Watch 2 min of a Judo black belt match — identify 2 techniques by name — build vocabulary',15,'bonus',true));
+  // LAUNDRY WEDNESDAY
+  if (dow === 3) {
+    tasks.push(t('laundry_wed', '🧺 Wednesday rolling wash — underwear, socks, sweaty gear — H₂O₂ pretreat + hand-wash + hang', 15, 'body'));
   }
 
-  // ── STRENGTH (Mon/Wed/Fri) ──
-  if(dow===1){
-    tasks.push(t('push1','💪 Push — Set 1: Push-ups to failure (rest 90 sec)',15,'body'));
-    tasks.push(t('push2','💪 Push — Set 2: Push-ups to failure (rest 90 sec)',15,'body'));
-    tasks.push(t('push3','💪 Push — Set 3: Push-ups to failure',15,'body'));
-    tasks.push(t('push4','💪 Push — 3 sets pike push-ups (hands on floor, hips up, lower head toward ground)',15,'body'));
-    tasks.push(t('push5','💪 Push — 3 sets chair dips (hands on chair edge, lower body, press up)',15,'body'));
-  }
-  if(dow===3){
-    tasks.push(t('pull1','💪 Pull — Set 1: Table rows (lie under table, grip edge, pull chest to table) × 10',15,'body'));
-    tasks.push(t('pull2','💪 Pull — Set 2: Table rows × 10',15,'body'));
-    tasks.push(t('pull3','💪 Pull — Set 3: Table rows × 10',15,'body'));
-    tasks.push(t('pull4','💪 Pull — 3 sets doorframe rows (grip frame, feet forward, lean back, pull chest to frame)',15,'body'));
-    if(w>=5)tasks.push(t('pull5','💪 Pull — 3 sets negative pull-ups (jump up, lower as slowly as possible) — wk5+',15,'body'));
-  }
-  if(dow===5){
-    tasks.push(t('legs1','💪 Legs — 3 sets squats × 15 (parallel or below — keep chest up)',15,'body'));
-    tasks.push(t('legs2','💪 Legs — 3 sets lunges × 10 each leg (step forward, knee above ankle)',15,'body'));
-    tasks.push(t('legs3','💪 Legs — 3 sets glute bridges × 15 (back flat, drive hips up, squeeze top)',15,'body'));
-    if(w>=5)tasks.push(t('legs4','💪 Legs — 3 sets jump squats × 8 (land softly, absorb with knees) — wk5+',15,'body'));
+  // JUDO HOME — Tuesday / Thursday
+  if (dow === 2 || dow === 4) {
+    tasks.push(t('judo_mae', '🥋 Judo ukemi: 10 mae ukemi (forward rolls on folded blanket) — chin tucked tight', 15, 'body'));
+    tasks.push(t('judo_ushiro', '🥋 Judo ukemi: 10 ushiro ukemi (backward rolls) — chin tucked, slap the ground', 15, 'body'));
+    tasks.push(t('judo_yoko', '🥋 Judo ukemi: 10 yoko ukemi each side (side falls) — chin tucked, arm at 45°', 15, 'body'));
+    tasks.push(t('judo_uchi', '🥋 Judo: 50 uchi komi (entry drills) against wall — Seoi Nage or O-Goshi', 20, 'body'));
+    tasks.push(t('judo_bonus', '⭐ GENIUS Judo: Watch 2 min of a black belt match — identify 2 techniques by name', 15, 'bonus', true));
   }
 
-  // ── PROJECT / INTERNSHIPS / WRITING ──
-  if(n<=17){
-    tasks.push(t('app1','🚀 Apply to internship 1 — log it in sheets.new with date/company/role/status',30,'project'));
-    tasks.push(t('app2','🚀 Apply to internship 2 — log in tracking sheet',25,'project'));
-    tasks.push(t('app3','🚀 Apply to internship 3 — log in tracking sheet',20,'project'));
-  }else if(n<=37){
-    tasks.push(t('app_followup','🚀 Internship follow-up or new application — open tracking sheet and identify next action',30,'project'));
-  }else{
-    tasks.push(t('project_commit','💾 Project work — at least 1 GitHub commit (Book Helper or WriteTool)',30,'project'));
+  // STRENGTH — Monday push / Wednesday pull / Friday legs
+  if (dow === 1) {
+    tasks.push(t('push_1', '💪 Push Set 1: Push-ups to failure (rest 90 sec)', 15, 'body'));
+    tasks.push(t('push_2', '💪 Push Set 2: Push-ups to failure (rest 90 sec)', 15, 'body'));
+    tasks.push(t('push_3', '💪 Push Set 3: Push-ups to failure', 15, 'body'));
+    tasks.push(t('push_pike', '💪 Push: 3 sets pike push-ups (hands on floor, hips up, lower head toward ground)', 15, 'body'));
+    tasks.push(t('push_dips', '💪 Push: 3 sets chair dips (hands on chair edge, lower body, press up)', 15, 'body'));
   }
-  tasks.push(t('book_write','📝 "I Hate Wednesday" — 500 words output (the girl who hates Wednesday and makes it her whole personality)',40,'project'));
-  tasks.push(t('project_bonus','⭐ GENIUS Project: Write 1 thing you understood about your code/writing today that you didn\'t know this morning',15,'bonus',true));
+  if (dow === 3) {
+    tasks.push(t('pull_1', '💪 Pull Set 1: Table rows × 10 (lie under table, grip edge, pull chest to table)', 15, 'body'));
+    tasks.push(t('pull_2', '💪 Pull Set 2: Table rows × 10', 15, 'body'));
+    tasks.push(t('pull_3', '💪 Pull Set 3: Table rows × 10', 15, 'body'));
+    tasks.push(t('pull_door', '💪 Pull: 3 sets doorframe rows (feet forward, lean back, pull chest to frame)', 15, 'body'));
+    if (w >= 5) { tasks.push(t('pull_neg', '💪 Pull: 3 sets negative pull-ups (jump up, lower as slowly as possible) — wk5+', 15, 'body')); }
+  }
+  if (dow === 5) {
+    tasks.push(t('legs_squat', '💪 Legs: 3 sets squats × 15 (parallel or below — chest up)', 15, 'body'));
+    tasks.push(t('legs_lunge', '💪 Legs: 3 sets lunges × 10 each leg (knee above ankle)', 15, 'body'));
+    tasks.push(t('legs_glute', '💪 Legs: 3 sets glute bridges × 15 (back flat, drive hips up, squeeze top)', 15, 'body'));
+    if (w >= 5) { tasks.push(t('legs_jump', '💪 Legs: 3 sets jump squats × 8 (land softly, absorb with knees) — wk5+', 15, 'body')); }
+  }
 
-  // ── MIND ──
-  tasks.push(t('leetcode','💻 1 LeetCode problem — attempt it yourself first — then read the best solution — neetcode.io/roadmap',40,'mind'));
-  tasks.push(t('leetcode_bonus','⭐ GENIUS LeetCode: Explain the optimal solution in 3 plain English sentences — you truly understand when you can teach it',15,'bonus',true));
+  // INTERNSHIPS / PROJECT
+  if (n <= 17) {
+    tasks.push(t('app_1', '🚀 Apply to internship 1 — log in tracking sheet (company / role / link / date)', 30, 'project'));
+    tasks.push(t('app_2', '🚀 Apply to internship 2 — log in tracking sheet', 25, 'project'));
+    tasks.push(t('app_3', '🚀 Apply to internship 3 — log in tracking sheet', 20, 'project'));
+  } else if (n <= 37) {
+    tasks.push(t('app_follow', '🚀 Internship follow-up or new application — open sheet and identify next action', 30, 'project'));
+  } else {
+    tasks.push(t('project_commit', '💾 Project: at least 1 GitHub commit (Book Helper or WriteTool)', 30, 'project'));
+  }
 
-  // ── NUTRITION/WATER (daily) ──
-  tasks.push(t('nuts','🥜 Zentir nut mix — 20-25g (budget: ~7,990 ARS/500g, buy every 3-4 weeks — do NOT exceed today\'s 25g)',10,'body'));
-  tasks.push(t('main_cook','🍳 Cook main meal (separate task from eating — cook it properly, take your time)',25,'body'));
-  tasks.push(t('main_eat','🥗 Eat main meal (sit down, no screen, SEPARATE from cooking — this is also training)',15,'body'));
-  tasks.push(t('water_2','💧 Water bottle 2/3 (1 litre) — afternoon session',10,'body'));
-  tasks.push(t('water_3','💧 Water bottle 3/3 (1 litre) — evening',10,'body'));
+  // WRITING
+  tasks.push(t('ihw_write', '📝 "I Hate Wednesday" — 500 words output (the girl who hates Wednesday)', 40, 'project'));
+  tasks.push(t('project_bonus', '⭐ GENIUS Project: Write 1 thing you understood today that you did not know this morning', 15, 'bonus', true));
 
-  // ── ART / CULTURE ──
-  tasks.push(t('violin','🎻 Violin or guitar practice (15-20 min) — scales first, then repertoire',25,'art'));
-  tasks.push(t('bible','📖 Bible: '+getBible(n)+' (15 min)',15,'art'));
-  tasks.push(t('whatsapp','📱 WhatsApp family in Nigeria — at minimum send a voice note or message',10,'body'));
+  // LEETCODE
+  tasks.push(t('leetcode', '💻 LeetCode: 1 problem — attempt yourself first, then read best solution — neetcode.io/roadmap', 40, 'mind'));
+  tasks.push(t('leetcode_bonus', '⭐ GENIUS LeetCode: Explain the optimal solution in 3 plain English sentences — teach it to a 10-year-old', 15, 'bonus', true));
 
-  // ── EVENING / SLEEP ──
-  tasks.push(t('shower_pm','🚿 Evening shower — after training/UBA/judo — not optional',20,'body'));
-  tasks.push(t('skincare_pm','🌙 Evening skincare — moisturizer, no SPF needed at night',10,'body'));
-  tasks.push(t('screens_off','📴 Screens off at 23:00 — no exceptions. Phone face-down.',20,'body'));
-  tasks.push(t('sleep','😴 In bed by 23:15 — 8 hours → 07:00 alarm. Sleep is the most important skill.',40,'body'));
+  // NUTRITION / WATER
+  tasks.push(t('main_cook', '🍳 Cook main meal — separate task from eating — cook it properly', 25, 'body'));
+  tasks.push(t('main_eat', '🥗 Eat main meal — sit down, no screen. SEPARATE from cooking.', 15, 'body'));
+  tasks.push(t('water_2', '💧 Water bottle 2 of 3 (1 litre) — afternoon', 10, 'body'));
+  tasks.push(t('water_3', '💧 Water bottle 3 of 3 (1 litre) — evening', 10, 'body'));
+  tasks.push(t('nuts', '🥜 Zentir nut mix — 20-25g MAX (500g bag ~7,990 ARS, buy every 3-4 weeks — do NOT exceed 25g)', 10, 'body'));
+
+  // ART / CULTURE
+  tasks.push(t('violin', '🎻 Violin or guitar practice (15-20 min) — scales first, then repertoire', 25, 'art'));
+  tasks.push(t('bible', '📖 Bible: ' + getBible(n) + ' (15 min)', 15, 'art'));
+  tasks.push(t('whatsapp', '📱 WhatsApp family in Nigeria — voice note or message minimum', 10, 'body'));
+
+  // EVENING / SLEEP
+  tasks.push(t('shower_pm', '🚿 Evening shower — after training/UBA/judo', 20, 'body'));
+  tasks.push(t('skincare_pm', '🌙 Evening skincare — moisturizer, no SPF needed at night', 10, 'body'));
+  tasks.push(t('screens_off', '📴 Screens off at 23:00 — no exceptions. Phone face-down.', 20, 'body'));
+  tasks.push(t('sleep', '😴 In bed by 23:15 — 8 hours → 07:00 alarm. Sleep is the most important skill.', 40, 'body'));
 
   return tasks;
 }
 
-// ── SCORE + GRADE ──
-function calcScore(tasks, done) {
-  var earned=0, total=0;
-  tasks.forEach(function(t){total+=t.pts;if(done[t.id])earned+=t.pts;});
-  return {earned:earned,total:total,pct:total>0?Math.round(earned/total*100):0};
+// German task function — needed for Sunday
+function deTask(n) {
+  var w = Math.ceil(n / 7);
+  if (w <= 2) { return 'Basics + noun genders (der/die/das) — DW Nicos Weg A1 Ep 1 — dw.com'; }
+  if (w <= 4) { return 'Present tense + nominative case — DW Nicos Weg A1 continued — Coffee Break German Ep 1-3'; }
+  if (w <= 6) { return 'Accusative case + articles — Grimm Grammar — leo.org dictionary'; }
+  if (w <= 8) { return 'Dative case + two-way prepositions — DW Nicos Weg A2'; }
+  if (w <= 10) { return 'Genitive + adjective endings — Coffee Break German Season 2'; }
+  if (w <= 12) { return 'Subordinate clauses + modal verbs — Easy German YouTube'; }
+  return 'B1 German — Slow German podcast — slowgerman.com — output focus';
 }
-function getGrade(pct){
-  if(pct>=90)return{g:'S',c:'var(--c)'};
-  if(pct>=80)return{g:'A',c:'var(--g)'};
-  if(pct>=70)return{g:'B',c:'#00cfff'};
-  if(pct>=60)return{g:'C',c:'var(--p)'};
-  if(pct>=50)return{g:'D',c:'var(--m)'};
-  return{g:'F',c:'#555'};}
 
-var currentDay = {n:1, d:new Date(), tasks:[], done:{}};
+// ─────────────────────────────────────────────
+// CURRENT DAY STATE
+// ─────────────────────────────────────────────
+var currentDay = { n: 1, d: new Date(), tasks: [], done: {} };
 
+// ─────────────────────────────────────────────
+// TOGGLE TASK
+// ─────────────────────────────────────────────
 window.toggleTask = function(taskId) {
   currentDay.done[taskId] = !currentDay.done[taskId];
-  saveDone(currentDay.n, currentDay.done).then(function(){
-    var s = calcScore(currentDay.tasks, currentDay.done);
-    return saveDayScore(currentDay.n, s.pct);
-  }).then(function(){
-    renderTasks();
-    updateSummerGraph();
-  });
+  saveDone(currentDay.n, currentDay.done);
+  renderTasks();
+  updateSummerGraph();
+  renderAnalytics();
 };
 
-// Category display labels
+// ─────────────────────────────────────────────
+// CATEGORY DISPLAY LABELS
+// ─────────────────────────────────────────────
 var CAT_LABELS = {
-  body:'body',mind:'mind',project:'proj',art:'art',imm:'imm!',school:'uba',
-  jp:'🇯🇵',es:'🇦🇷',zh:'🇨🇳',ru:'🇷🇺',ko:'🇰🇷',de:'🇩🇪',tr:'🇹🇷',ar:'🇸🇦',
-  vi:'🇻🇳',ur:'🇵🇰',kk:'🇰🇿',pt:'🇧🇷',sw:'🇰🇪',uk:'🇺🇦',pl:'🇵🇱',yue:'🇭🇰',
-  fr:'🇫🇷',ro:'🇷🇴',en:'🇬🇧',bonus:'⭐'
+  body: 'body', mind: 'mind', project: 'proj', art: 'art', imm: 'imm!',
+  school: 'uba', typing: 'type', bonus: '★',
+  jp: '🇯🇵', es: '🇦🇷', zh: '🇨🇳', ru: '🇷🇺', ko: '🇰🇷', de: '🇩🇪',
+  tr: '🇹🇷', ar: '🇸🇦', vi: '🇻🇳', ur: '🇵🇰', kk: '🇰🇿', pt: '🇧🇷',
+  sw: '🇰🇪', uk: '🇺🇦', pl: '🇵🇱', yue: '🇭🇰', fr: '🇫🇷', ro: '🇷🇴', en: '🇬🇧'
 };
 
+// ─────────────────────────────────────────────
+// RENDER TASKS
+// ─────────────────────────────────────────────
 function renderTasks() {
   var tasks = currentDay.tasks;
   var done = currentDay.done;
   var s = calcScore(tasks, done);
   var gr = getGrade(s.pct);
-  var circumference = 2*Math.PI*52;
-  var offset = circumference - (s.pct/100)*circumference;
+  var circ = 326.73;
+  var offset = circ - (s.pct / 100) * circ;
 
   var fillEl = document.getElementById('todayRingFill');
-  if(fillEl){fillEl.style.strokeDashoffset=offset;fillEl.style.stroke=gr.c;}
-  var pctEl=document.getElementById('todayPct');if(pctEl)pctEl.innerText=s.pct+'%';
-  var grEl=document.getElementById('todayGrade');if(grEl){grEl.innerText=gr.g;grEl.style.color=gr.c;}
-  var detEl=document.getElementById('todayDetail');if(detEl)detEl.innerText=s.earned+' / '+s.total+' XP earned';
+  if (fillEl) { fillEl.style.strokeDashoffset = offset; fillEl.style.stroke = gr.c; }
+  var pctEl = document.getElementById('todayPct');
+  if (pctEl) { pctEl.innerText = s.pct + '%'; pctEl.style.color = gr.c; }
+  var grEl = document.getElementById('todayGrade');
+  if (grEl) { grEl.innerText = gr.g; grEl.style.color = gr.c; }
+  var detEl = document.getElementById('todayDetail');
+  if (detEl) { detEl.innerText = s.earned + ' / ' + s.total + ' XP earned'; }
+  var barEl = document.getElementById('todayScoreBar');
+  if (barEl) { barEl.style.width = s.pct + '%'; barEl.style.background = gr.c; }
 
-  var html='';
-  // Count bonus tasks for display
-  var regularDone=0,bonusDone=0,regularTotal=0,bonusTotal=0;
-  tasks.forEach(function(t){if(t.bonus){bonusTotal+=t.pts;if(done[t.id])bonusDone+=t.pts;}else{regularTotal+=t.pts;if(done[t.id])regularDone+=t.pts;}});
-
-  tasks.forEach(function(task){
+  var html = '';
+  tasks.forEach(function(task) {
     var isDone = !!done[task.id];
-    var bonusCls = task.bonus?' bonus-task':'';
-    var catCls = 'cat-'+(task.cat==='bonus'?'bonus':task.cat);
-    var catLabel = CAT_LABELS[task.cat]||task.cat;
-    html += '<div class="task-row'+bonusCls+(isDone?' done':'')+ '" onclick="toggleTask(\''+task.id+'\')">';
+    var bonusCls = task.bonus ? ' bonus-task' : '';
+    var catKey = task.cat === 'bonus' ? 'bonus' : task.cat;
+    var catCls = 'cat-' + catKey;
+    var catLabel = CAT_LABELS[task.cat] || task.cat;
+    html += '<div class="task-row' + bonusCls + (isDone ? ' done' : '') + '" onclick="toggleTask(\'' + task.id + '\')">';
     html += '<div class="task-check"></div>';
-    html += '<div class="task-label">'+task.label+'</div>';
-    html += '<span class="task-cat '+catCls+'">'+catLabel+'</span>';
-    html += '<span class="task-pts">+'+task.pts+'</span>';
+    html += '<div class="task-label">' + task.label + '</div>';
+    html += '<span class="task-cat ' + catCls + '">' + catLabel + '</span>';
+    html += '<span class="task-pts">+' + task.pts + '</span>';
     html += '</div>';
   });
 
-  var listEl=document.getElementById('taskList');if(listEl)listEl.innerHTML=html;
-
-  // Update bar
-  var barEl=document.getElementById('todayScoreBar');if(barEl)barEl.style.width=s.pct+'%';
+  var listEl = document.getElementById('taskList');
+  if (listEl) { listEl.innerHTML = html; }
 }
 
+// ─────────────────────────────────────────────
+// BUILD DAY
+// ─────────────────────────────────────────────
 function buildDay(d) {
   var n = dayN(d);
   var dow = d.getDay();
-  var uba = isUBA(d,n);
-  var tasks = getTasks(d,n);
-  var s,gr,circumference,offset;
-  return loadDone(n).then(function(done){
-    currentDay = {n:n, d:d, tasks:tasks, done:done};
-    s = calcScore(tasks,done);
-    gr = getGrade(s.pct);
-    circumference = 2*Math.PI*52;
-    offset = circumference - (s.pct/100)*circumference;
+  var uba = isUBA(d, n);
+  var tasks = getTasks(d, n);
+  var done = loadDone(n);
+  currentDay = { n: n, d: d, tasks: tasks, done: done };
 
-    var DAYS=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    var phColors=['','var(--m)','var(--m)','var(--g)','var(--c)'];
-    var phNames=['','Foundation','Escalation','Power','Elite'];
-    var phase = n<=25?1:n<=50?2:n<=75?3:4;
+  var s = calcScore(tasks, done);
+  var gr = getGrade(s.pct);
+  var circ = 326.73;
+  var offset = circ - (s.pct / 100) * circ;
 
-    var alerts='';
-    if(n===1)alerts+='<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 <strong>IMMIGRATION TODAY:</strong> Comisaría 6A, Guzmán 396, 09:00 AM. Bring original passport + ~3,000 ARS cash. See individual tasks below.</div>';
-    if(n>=2&&n<=4)alerts+='<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 Be home at Luis Viale 11 — police may verify address today (09:00–17:00).</div>';
-    if(n===11)alerts+='<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 <strong>IMMIGRATION TODAY:</strong> UBA Bimestre 2 starts. Get constancia at 25 de Mayo 221 after class. Course: 2582-MC04000601.</div>';
-    if(n===13)alerts+='<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 <strong>UPLOAD TO RADEX TODAY.</strong> radex.migraciones.gov.ar — praise.vc.16@gmail.com — 37030709. See individual steps in tasks.</div>';
-    if(n===15)alerts+='<div class="amagenta" style="font-size:12px;margin-bottom:8px;">⚠️ <strong>RADEX HARD DEADLINE TODAY (May 29).</strong> Verify upload is complete. If not done — do it RIGHT NOW.</div>';
-    if(dow===2&&n>=11&&n<=65)alerts+='<div class="agreen" style="font-size:12px;margin-bottom:8px;">🥬 <strong>FERIA TUESDAY</strong> — FIAB 8: Gavilán 1200, 4 blocks away. 08:00–14:00. Efectivo only. Full Spanish with every vendor.</div>';
-    if(dow===0)alerts+='<div class="acyan" style="font-size:12px;margin-bottom:8px;">🧺 <strong>LAUNDRY SUNDAY</strong> — Main weekly wash at 14:00. H₂O₂ pretreat → 15 min soak → 30 min wash → towel-wring → hang.</div>';
-    if(n>=28&&n<=66)alerts+='<div style="background:rgba(255,0,127,.05);border:1px solid var(--m);border-radius:4px;padding:8px 12px;margin-bottom:8px;font-size:11px;color:var(--m);">⚽ World Cup running (Jun 11–Jul 19). Argentina match = social night. Other matches: 45 min max.</div>';
+  var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var phColors = ['', 'var(--m)', 'var(--m)', 'var(--g)', 'var(--c)'];
+  var phNames = ['', 'Foundation', 'Escalation', 'Power', 'Elite'];
+  var phase = n <= 25 ? 1 : n <= 50 ? 2 : n <= 75 ? 3 : 4;
 
-    var header='<div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:18px;flex-wrap:wrap;">'
-      +'<div style="flex:1;min-width:180px;">'
-      +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:clamp(26px,5vw,52px);color:var(--w);line-height:1;">'+DAYS[dow].toUpperCase()+'</div>'
-      +'<div style="font-family:\'DM Mono\',monospace;font-size:11px;color:var(--mu);margin-top:4px;">'+d.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+'</div>'
-      +'</div>'
-      +'<div style="display:flex;gap:10px;flex-wrap:wrap;">'
-      +'<div style="text-align:center;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 16px;">'
-      +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:36px;color:var(--c);line-height:1;">S-'+n+'</div>'
-      +'<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--mu);">OF '+TOTAL+'</div></div>'
-      +'<div style="text-align:center;background:var(--card);border:1px solid '+phColors[phase]+';border-radius:4px;padding:10px 16px;">'
-      +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:36px;color:'+phColors[phase]+';line-height:1;">P'+phase+'</div>'
-      +'<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--mu);">'+phNames[phase]+'</div></div>'
-      +'<div style="text-align:center;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 16px;">'
-      +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:36px;color:var(--w);line-height:1;">'+(TOTAL-n)+'</div>'
-      +'<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--mu);">LEFT</div></div>'
-      +'</div></div>';
+  var alerts = '';
+  if (n === 1) { alerts += '<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 <strong>IMMIGRATION TODAY:</strong> Comisaría Vecinal 6A, Av. Díaz Vélez 5152, Caballito. 09:00 AM. Passport + ~3,000 ARS cash.</div>'; }
+  if (n >= 2 && n <= 4) { alerts += '<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 Be home at Luis Viale 11 — police may verify address today (09:00–17:00).</div>'; }
+  if (n === 11) { alerts += '<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 UBA Bimestre 2 starts. Get constancia at 25 de Mayo 221 after class. Course: 2582-MC04000601.</div>'; }
+  if (n === 13) { alerts += '<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 <strong>UPLOAD TO RADEX TODAY.</strong> radex.migraciones.gov.ar — praise.vc.16@gmail.com — 37030709.</div>'; }
+  if (n === 15) { alerts += '<div class="amagenta" style="font-size:12px;margin-bottom:8px;">⚠️ <strong>RADEX HARD DEADLINE (May 29).</strong> Verify upload is complete. If not done — do it RIGHT NOW.</div>'; }
+  if (dow === 2 && n >= 11 && n <= 65) { alerts += '<div class="agreen" style="font-size:12px;margin-bottom:8px;">🥬 <strong>FERIA TUESDAY</strong> — FIAB 8: Gavilán 1200. 08:00–14:00. Efectivo only. Full Spanish with every vendor.</div>'; }
+  if (dow === 0) { alerts += '<div class="acyan" style="font-size:12px;margin-bottom:8px;">⛪ <strong>CHURCH SUNDAY</strong> — Japanese stops 10:40. Leave 10:40. Mass 11:00. Languages shift to 13:00.</div>'; }
+  if (n >= 28 && n <= 66) { alerts += '<div style="background:rgba(255,0,127,.05);border:1px solid var(--m);border-radius:4px;padding:8px 12px;margin-bottom:8px;font-size:11px;color:var(--m);">⚽ World Cup running (Jun 11–Jul 19). Argentina match = social night. Other matches: 45 min max.</div>'; }
 
-    var scoreRing='<div style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:20px;margin-bottom:14px;">'
-      +'<div class="score-ring-wrap">'
-      +'<svg viewBox="0 0 120 120" width="120" height="120" style="transform:rotate(-90deg);">'
-      +'<circle class="score-ring-bg" cx="60" cy="60" r="52"/>'
-      +'<circle class="score-ring-fill" id="todayRingFill" cx="60" cy="60" r="52" style="stroke:'+gr.c+';stroke-dashoffset:'+offset+';stroke-dasharray:'+circumference+'"/>'
-      +'</svg>'
-      +'<div class="score-inner"><div class="score-pct" id="todayPct">'+s.pct+'%</div>'
-      +'<div class="score-grade" id="todayGrade" style="color:'+gr.c+'">'+gr.g+'</div></div>'
-      +'</div>'
-      +'<div>'
-      +'<div style="font-family:\'Bebas Neue\',sans-serif;font-size:28px;color:var(--w);">TODAY\'S XP</div>'
-      +'<div id="todayDetail" style="font-family:\'DM Mono\',monospace;font-size:12px;color:var(--mu);margin-bottom:10px;">'+s.earned+' / '+s.total+' XP earned</div>'
-      +'<div class="score-bar-wrap"><div class="score-bar" id="todayScoreBar" style="width:'+s.pct+'%"></div></div>'
-      +'<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:var(--mu);margin-top:4px;">S≥90% · A≥80% · B≥70% · C≥60% · D≥50% · F&lt;50% · ⭐ Purple = Genius Bonus</div>'
-      +(uba?'<div class="agreen" style="margin-top:10px;font-size:11px;">📍 <strong>UBA TODAY:</strong> Leave 12:55 SHARP · 14:00–16:00 · 25 de Mayo 221 · Return ~17:15</div>':'')
-      +'</div></div>';
+  var header = '<div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:18px;flex-wrap:wrap;">'
+    + '<div style="flex:1;min-width:180px;">'
+    + '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:clamp(26px,5vw,52px);color:var(--w);line-height:1;">' + DAYS[dow].toUpperCase() + '</div>'
+    + '<div style="font-family:\'DM Mono\',monospace;font-size:11px;color:var(--mu);margin-top:4px;">' + d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) + '</div>'
+    + '</div>'
+    + '<div style="display:flex;gap:10px;flex-wrap:wrap;">'
+    + '<div style="text-align:center;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 16px;">'
+    + '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:36px;color:var(--c);line-height:1;">S-' + n + '</div>'
+    + '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--mu);">OF ' + TOTAL + '</div></div>'
+    + '<div style="text-align:center;background:var(--card);border:1px solid ' + phColors[phase] + ';border-radius:4px;padding:10px 16px;">'
+    + '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:36px;color:' + phColors[phase] + ';line-height:1;">P' + phase + '</div>'
+    + '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--mu);">' + phNames[phase] + '</div></div>'
+    + '<div style="text-align:center;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:10px 16px;">'
+    + '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:36px;color:var(--w);line-height:1;">' + (TOTAL - n) + '</div>'
+    + '<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--mu);">LEFT</div></div>'
+    + '</div></div>';
 
-    var taskSection='<div style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:3px;color:var(--c);text-transform:uppercase;margin-bottom:10px;">Today\'s Tasks — click any row to complete · Purple rows = Genius Bonus</div>'
-      +'<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:18px;" id="taskList"></div>';
+  var scoreRing = '<div style="display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:20px;margin-bottom:14px;">'
+    + '<div class="score-ring-wrap">'
+    + '<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" style="width:140px;height:140px;transform:rotate(-90deg);">'
+    + '<circle class="score-ring-bg" cx="60" cy="60" r="52"/>'
+    + '<circle class="score-ring-fill" id="todayRingFill" cx="60" cy="60" r="52" style="stroke:' + gr.c + ';stroke-dashoffset:' + offset + ';stroke-dasharray:' + circ + '"/>'
+    + '</svg>'
+    + '<div class="score-inner"><div class="score-pct" id="todayPct" style="color:' + gr.c + '">' + s.pct + '%</div>'
+    + '<div class="score-grade" id="todayGrade" style="color:' + gr.c + '">' + gr.g + '</div></div>'
+    + '</div>'
+    + '<div>'
+    + '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:28px;color:var(--w);">TODAY\'S XP</div>'
+    + '<div id="todayDetail" style="font-family:\'DM Mono\',monospace;font-size:12px;color:var(--mu);margin-bottom:10px;">' + s.earned + ' / ' + s.total + ' XP earned</div>'
+    + '<div class="score-bar-wrap"><div class="score-bar" id="todayScoreBar" style="width:' + s.pct + '%;background:' + gr.c + '"></div></div>'
+    + '<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:var(--mu);margin-top:4px;">S≥90% · A≥80% · B≥70% · C≥60% · D≥50% · F&lt;50% · ⭐ Purple = Genius Bonus</div>'
+    + (uba ? '<div class="agreen" style="margin-top:10px;font-size:11px;">📍 <strong>UBA TODAY:</strong> Leave 12:55 SHARP · 14:00–16:00 · 25 de Mayo 221 · Return ~17:15</div>' : '')
+    + '</div></div>';
 
-    document.getElementById('todayContent').innerHTML = header+alerts+scoreRing+taskSection;
-    renderTasks();
-  });
+  var taskSection = '<div style="font-family:\'DM Mono\',monospace;font-size:10px;letter-spacing:3px;color:var(--c);text-transform:uppercase;margin-bottom:10px;">Click any row to complete · Purple = Genius Bonus</div>'
+    + '<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:18px;" id="taskList"></div>';
+
+  document.getElementById('todayContent').innerHTML = header + alerts + scoreRing + taskSection;
+  renderTasks();
 }
 
-async function updateSummerGraph() {
-  var scores = await loadAllScores();
-  var days=Object.keys(scores).map(Number).filter(function(n){return n>=1&&n<=TOTAL;});
-  var total=days.length;
-  var avg=total>0?Math.round(days.reduce(function(a,k){return a+scores[k];},0)/total):0;
-  var streak=0,maxStreak=0,cur=0;
-  for(var i=1;i<=TOTAL;i++){if(scores[i]!==undefined&&scores[i]>=70){cur++;if(cur>maxStreak)maxStreak=cur;}else cur=0;}
-  for(var j=currentDay.n;j>=1;j--){if(scores[j]!==undefined&&scores[j]>=70)streak++;else break;}
-  var fill=document.getElementById('summerRingFill');
-  if(fill){var gr=getGrade(avg);var c2=2*Math.PI*52;fill.style.strokeDashoffset=c2-(avg/100)*c2;fill.style.stroke=gr.c;}
-  var pEl=document.getElementById('summerPct');if(pEl)pEl.innerText=avg+'%';
-  var gEl=document.getElementById('summerGrade');if(gEl){var grg=getGrade(avg);gEl.innerText=grg.g;gEl.style.color=grg.c;}
-  var dEl=document.getElementById('summerDetail');if(dEl)dEl.innerText=total+' days scored. Average: '+avg+'%. Keep stacking.';
-  var sEl=document.getElementById('streakStats');
-  if(sEl)sEl.innerHTML='<div style="color:var(--w)">Days scored: <span style="color:var(--c)">'+total+'</span></div>'
-    +'<div style="color:var(--w)">Average score: <span style="color:var(--g)">'+avg+'%</span></div>'
-    +'<div style="color:var(--w)">Current streak (B+): <span style="color:var(--m)">'+streak+' days</span></div>'
-    +'<div style="color:var(--w)">Best streak (B+): <span style="color:var(--p)">'+maxStreak+' days</span></div>'
-    +'<div style="color:var(--w)">Days remaining: <span style="color:var(--c)">'+(TOTAL-currentDay.n)+'</span></div>';
+// ─────────────────────────────────────────────
+// GRAPH
+// ─────────────────────────────────────────────
+function updateSummerGraph() {
+  var scores = loadAllScores();
+  var days = Object.keys(scores).map(Number).filter(function(i) { return i >= 1 && i <= TOTAL; });
+  var total = days.length;
+  var avg = total > 0 ? Math.round(days.reduce(function(a, k) { return a + scores[k]; }, 0) / total) : 0;
+  var maxStreak = 0, curStreak = 0, liveStreak = 0;
+  for (var i = 1; i <= TOTAL; i++) {
+    if (scores[i] !== undefined && scores[i] >= 70) { curStreak++; if (curStreak > maxStreak) { maxStreak = curStreak; } } else { curStreak = 0; }
+  }
+  for (var j = currentDay.n; j >= 1; j--) {
+    if (scores[j] !== undefined && scores[j] >= 70) { liveStreak++; } else { break; }
+  }
+  var gr = getGrade(avg);
+  var circ = 326.73;
+  var fill = document.getElementById('summerRingFill');
+  if (fill) { fill.style.strokeDashoffset = circ - (avg / 100) * circ; fill.style.stroke = gr.c; }
+  var pEl = document.getElementById('summerPct');
+  if (pEl) { pEl.innerText = avg + '%'; pEl.style.color = gr.c; }
+  var gEl = document.getElementById('summerGrade');
+  if (gEl) { gEl.innerText = gr.g; gEl.style.color = gr.c; }
+  var dEl = document.getElementById('summerDetail');
+  if (dEl) { dEl.innerText = total + ' days scored. Avg: ' + avg + '%. Keep stacking.'; }
+  var sEl = document.getElementById('streakStats');
+  if (sEl) {
+    sEl.innerHTML = '<div style="color:var(--w)">Days scored: <span style="color:var(--c)">' + total + '</span></div>'
+      + '<div style="color:var(--w)">Average score: <span style="color:var(--g)">' + avg + '%</span></div>'
+      + '<div style="color:var(--w)">Current streak (B+): <span style="color:var(--m)">' + liveStreak + ' days</span></div>'
+      + '<div style="color:var(--w)">Best streak (B+): <span style="color:var(--p)">' + maxStreak + ' days</span></div>'
+      + '<div style="color:var(--w)">Days remaining: <span style="color:var(--c)">' + (TOTAL - currentDay.n) + '</span></div>';
+  }
   drawGraph(scores);
 }
 
-function drawGraph(scores){
-  var canvas=document.getElementById('progressCanvas');if(!canvas)return;
-  var dpr=window.devicePixelRatio||1;var rect=canvas.getBoundingClientRect();
-  canvas.width=rect.width*dpr;canvas.height=220*dpr;
-  var ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
-  var W=rect.width,H=220;ctx.clearRect(0,0,W,H);
-  ctx.fillStyle='#0a0a14';ctx.fillRect(0,0,W,H);
-  ctx.strokeStyle='#1a1a2e';ctx.lineWidth=1;
-  [25,50,75,90].forEach(function(pct){
-    var y=H-30-(pct/100)*(H-50);
-    ctx.beginPath();ctx.moveTo(40,y);ctx.lineTo(W-10,y);ctx.stroke();
-    ctx.fillStyle='#555';ctx.font='9px DM Mono,monospace';ctx.fillText(pct+'%',4,y+3);
+function drawGraph(scores) {
+  var canvas = document.getElementById('progressCanvas');
+  if (!canvas) { return; }
+  var dpr = window.devicePixelRatio || 1;
+  var rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = 220 * dpr;
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  var W = rect.width, H = 220;
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#0a0a14';
+  ctx.fillRect(0, 0, W, H);
+  ctx.strokeStyle = '#1a1a2e';
+  ctx.lineWidth = 1;
+  [25, 50, 75, 90].forEach(function(pct) {
+    var y = H - 30 - (pct / 100) * (H - 50);
+    ctx.beginPath(); ctx.moveTo(40, y); ctx.lineTo(W - 10, y); ctx.stroke();
+    ctx.fillStyle = '#555';
+    ctx.font = '9px DM Mono,monospace';
+    ctx.fillText(pct + '%', 4, y + 3);
   });
-  var barW=Math.max(2,Math.min(10,(W-50)/TOTAL-1));var gap=(W-50)/TOTAL;
-  for(var i=1;i<=TOTAL;i++){
-    var x=40+(i-1)*gap;var pct=scores[i]!==undefined?scores[i]:0;
-    var barH=(pct/100)*(H-50);var y=H-30-barH;var gr=getGrade(pct);
-    var isToday=(i===currentDay.n);
-    if(pct>0){
-      var grad=ctx.createLinearGradient(0,y,0,H-30);
-      var gc=gr.c.replace('var(--c)','#00f3ff').replace('var(--g)','#39ff14').replace('var(--m)','#ff007f').replace('var(--p)','#c77dff');
-      grad.addColorStop(0,gc);grad.addColorStop(1,'rgba(0,0,0,0.2)');
-      ctx.fillStyle=grad;ctx.fillRect(x,y,barW,barH);
-    }else if(i<currentDay.n){ctx.fillStyle='#1a1a2e';ctx.fillRect(x,H-32,barW,2);}
-    if(isToday){ctx.fillStyle='#00f3ff';ctx.fillRect(x-1,H-35,barW+2,4);}
+  var barW = Math.max(2, Math.min(10, (W - 50) / TOTAL - 1));
+  var gap = (W - 50) / TOTAL;
+  for (var i = 1; i <= TOTAL; i++) {
+    var x = 40 + (i - 1) * gap;
+    var pct = (scores[i] !== undefined) ? scores[i] : 0;
+    var barH = (pct / 100) * (H - 50);
+    var y = H - 30 - barH;
+    var grr = getGrade(pct);
+    var isToday = (i === currentDay.n);
+    if (pct > 0) {
+      var gc = grr.c.replace('var(--c)', '#00f3ff').replace('var(--g)', '#39ff14').replace('var(--m)', '#ff007f').replace('var(--p)', '#c77dff');
+      var grad = ctx.createLinearGradient(0, y, 0, H - 30);
+      grad.addColorStop(0, gc); grad.addColorStop(1, 'rgba(0,0,0,0.2)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(x, y, barW, barH);
+    } else if (i < currentDay.n) {
+      ctx.fillStyle = '#1a1a2e';
+      ctx.fillRect(x, H - 32, barW, 2);
+    }
+    if (isToday) { ctx.fillStyle = '#00f3ff'; ctx.fillRect(x - 1, H - 35, barW + 2, 4); }
   }
-  ctx.fillStyle='#555';ctx.font='10px DM Mono,monospace';
-  ctx.fillText('May 15',40,H-12);ctx.fillText('Aug 21',W-50,H-12);
-  ctx.fillText('Day 1',40,H-2);ctx.fillText('Day 99',W-50,H-2);
+  ctx.fillStyle = '#555';
+  ctx.font = '10px DM Mono,monospace';
+  ctx.fillText('May 15', 40, H - 12);
+  ctx.fillText('Aug 21', W - 50, H - 12);
+  ctx.fillText('Day 1', 40, H - 2);
+  ctx.fillText('Day 99', W - 50, H - 2);
 }
 
-function loadDay(s){
-  if(!s)return;var d=new Date(s+'T00:00:00');var n=dayN(d);
-  document.getElementById('dayPicker').value=s;
-  document.getElementById('dayLabel').textContent='S-Day '+n+' of '+TOTAL;
-  buildDay(d).then(function(){updateSummerGraph();updateAnalytics();});
-}
-function loadToday(){
-  var d=new Date();var s=d.toISOString().split('T')[0];
-  document.getElementById('dayPicker').value=s;
-  var n=dayN(d);
-  document.getElementById('dayLabel').textContent=(n>=1&&n<=TOTAL)?'S-Day '+n+' of '+TOTAL+' — TODAY':'Outside plan window';
-  buildDay(d).then(function(){updateSummerGraph();updateAnalytics();});
-}
+// ─────────────────────────────────────────────
+// ANALYTICS
+// ─────────────────────────────────────────────
+var CAT_COLORS = {
+  body: '#ff007f', mind: '#00f3ff', project: '#c77dff', art: '#ff79b0',
+  imm: '#c77dff', school: '#7fff00', typing: '#00f3ff',
+  jp: '#ff6b9d', es: '#ffb347', zh: '#ff7777', ru: '#6699ff', ko: '#44ff88',
+  de: '#aaaaff', tr: '#ffdd44', ar: '#44ddaa', vi: '#ff8844', ur: '#cc88ff',
+  kk: '#44ccff', pt: '#55ff55', sw: '#ffaa22', uk: '#6688ff', pl: '#ff6644',
+  yue: '#ff44aa', fr: '#4488cc', ro: '#ffcc44', en: '#cccccc', bonus: '#c77dff'
+};
 
-// ═══════════════════════════════════════════════════════
-// ANALYTICS ENGINE
-// ═══════════════════════════════════════════════════════
-var CAT_COLORS_A={body:'#ff007f',mind:'#00f3ff',project:'#c77dff',art:'#ff79b0',imm:'#c77dff',school:'#7fff00',typing:'#80f8ff',
-  jp:'#ff6b9d',es:'#ffb347',zh:'#ff7777',ru:'#6699ff',ko:'#44ff88',de:'#aaaaff',tr:'#ffdd44',ar:'#44ddaa',vi:'#ff8844',ur:'#cc88ff',
-  kk:'#44ccff',pt:'#55ff55',sw:'#ffaa22',uk:'#6688ff',pl:'#ff6644',yue:'#ff44aa',fr:'#4488cc',ro:'#ffcc44',en:'#cccccc',bonus:'#c77dff'};
-
-function updateAnalytics() {
-  var catTotals = localCache.catTotals || {};
-  var langCats=['jp','es','zh','ru','ko','de','tr','ar','vi','ur','kk','pt','sw','uk','pl','yue','fr','ro','en'];
-  var langTotal=langCats.reduce(function(a,c){return a+(catTotals[c]||0);},0);
-  var groupTotals={
-    'Languages':langTotal,'Body':catTotals['body']||0,'Typing':catTotals['typing']||0,
-    'Mind':catTotals['mind']||0,'Project':catTotals['project']||0,'Art':catTotals['art']||0,
-    'School/UBA':catTotals['school']||0,'Immigration':catTotals['imm']||0,'Genius Bonus':catTotals['bonus']||0
-  };
-  var groupColors={'Languages':'#00f3ff','Body':'#ff007f','Typing':'#80f8ff','Mind':'#44ff88','Project':'#c77dff','Art':'#ff79b0','School/UBA':'#7fff00','Immigration':'#ffaa22','Genius Bonus':'#c77dff'};
-  var maxVal=Math.max.apply(null,Object.values(groupTotals).concat([1]));
-  var barsHtml='';
-  Object.keys(groupTotals).forEach(function(g){
-    var xp=groupTotals[g]; var pct=Math.round(xp/maxVal*100); var col=groupColors[g]||'#777';
-    barsHtml+='<div style="display:flex;align-items:center;gap:10px;margin:6px 0;">'
-      +'<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#777;width:80px;text-align:right;flex-shrink:0;">'+g+'</div>'
-      +'<div style="flex:1;height:8px;background:#1a1a2e;border-radius:4px;overflow:hidden;">'
-      +'<div style="height:100%;border-radius:4px;background:'+col+';width:'+pct+'%;transition:width .5s;"></div></div>'
-      +'<div style="font-family:\'DM Mono\',monospace;font-size:9px;color:#777;width:40px;">'+xp+'</div></div>';
+function renderAnalytics() {
+  var tasks = currentDay.tasks;
+  var done = currentDay.done;
+  var catEarned = {}, catTotal = {};
+  tasks.forEach(function(task) {
+    var c = task.cat;
+    if (!catTotal[c]) { catTotal[c] = 0; catEarned[c] = 0; }
+    catTotal[c] += task.pts;
+    if (done[task.id]) { catEarned[c] += task.pts; }
   });
-  var barsEl=document.getElementById('catBars');
-  if(barsEl) barsEl.innerHTML=barsHtml||'<div style="color:#777;font-size:12px;">Check off tasks first.</div>';
 
-  var total=Object.values(groupTotals).reduce(function(a,b){return a+b;},0);
-  var daysScored=Object.keys(localCache.days||{}).length;
-  var alerts='';
-  if(daysScored===0){alerts='<div style="color:#777;">Complete a few days to see balance analysis.</div>';}
-  else {
-    var langPct=total>0?langTotal/total*100:0;
-    var bodyPct=total>0?groupTotals['Body']/total*100:0;
-    var projPct=total>0?groupTotals['Project']/total*100:0;
-    var typPct=total>0?groupTotals['Typing']/total*100:0;
-    if(langPct<20) alerts+='<div style="background:rgba(255,0,127,.06);border:1px solid rgba(255,0,127,.4);color:#ff79b0;border-radius:4px;padding:10px 14px;margin:6px 0;font-size:12px;">⚠️ Languages under 20% of XP. Sacred Japanese + daily Spanish must happen every day.</div>';
-    else if(langPct>55) alerts+='<div style="background:rgba(0,243,255,.05);border:1px solid rgba(0,243,255,.25);color:#80f8ff;border-radius:4px;padding:10px 14px;margin:6px 0;font-size:12px;">📊 Languages at '+Math.round(langPct)+'% of XP. Strong — make sure body + project aren\'t getting skipped.</div>';
-    else alerts+='<div style="background:rgba(57,255,20,.05);border:1px solid rgba(57,255,20,.3);color:#90ff70;border-radius:4px;padding:10px 14px;margin:6px 0;font-size:12px;">✅ Language XP healthy at '+Math.round(langPct)+'%.</div>';
-    if(bodyPct<15) alerts+='<div style="background:rgba(255,0,127,.06);border:1px solid rgba(255,0,127,.4);color:#ff79b0;border-radius:4px;padding:10px 14px;margin:6px 0;font-size:12px;">⚠️ Body tasks only '+Math.round(bodyPct)+'% of XP. Sleep, showers, water, martial arts are non-negotiable.</div>';
-    if(projPct<8) alerts+='<div style="background:rgba(255,0,127,.06);border:1px solid rgba(255,0,127,.4);color:#ff79b0;border-radius:4px;padding:10px 14px;margin:6px 0;font-size:12px;">⚠️ Project XP low. "I Hate Wednesday" + 1 application or commit per day.</div>';
-    if(groupTotals['Typing']===0) alerts+='<div style="background:rgba(255,0,127,.06);border:1px solid rgba(255,0,127,.4);color:#ff79b0;border-radius:4px;padding:10px 14px;margin:6px 0;font-size:12px;">⚠️ Zero typing XP. Add the 10-15 min typing drill — it compounds fast.</div>';
-    else alerts+='<div style="background:rgba(57,255,20,.05);border:1px solid rgba(57,255,20,.3);color:#90ff70;border-radius:4px;padding:10px 14px;margin:6px 0;font-size:12px;">✅ Typing drill happening. Keep stacking.</div>';
+  var bars = '';
+  var sortedCats = Object.keys(catTotal).sort(function(a, b) { return catTotal[b] - catTotal[a]; });
+  sortedCats.forEach(function(cat) {
+    var pct = catTotal[cat] > 0 ? Math.round(catEarned[cat] / catTotal[cat] * 100) : 0;
+    var color = CAT_COLORS[cat] || '#777';
+    var label = CAT_LABELS[cat] || cat;
+    bars += '<div class="cat-bar-row">'
+      + '<div class="cat-bar-label" style="color:' + color + '">' + label + '</div>'
+      + '<div class="cat-bar-track"><div class="cat-bar-fill" style="width:' + pct + '%;background:' + color + '"></div></div>'
+      + '<div class="cat-bar-pct">' + pct + '%</div>'
+      + '</div>';
+  });
+  var catBarsEl = document.getElementById('catBars');
+  if (catBarsEl) { catBarsEl.innerHTML = bars || 'Complete tasks to see category breakdown.'; }
+
+  // Balance alerts
+  var alerts = '';
+  var bodyPct = catTotal['body'] > 0 ? Math.round((catEarned['body'] || 0) / catTotal['body'] * 100) : 0;
+  var langPcts = ['jp', 'es', 'zh', 'ru', 'ko', 'tr', 'fr', 'ar', 'vi', 'ur', 'kk', 'pt', 'sw', 'uk', 'pl', 'yue', 'ro', 'en', 'de'];
+  var langDone = 0, langTot = 0;
+  langPcts.forEach(function(l) { langDone += catEarned[l] || 0; langTot += catTotal[l] || 0; });
+  var langPct = langTot > 0 ? Math.round(langDone / langTot * 100) : 0;
+  var mindPct = catTotal['mind'] > 0 ? Math.round((catEarned['mind'] || 0) / catTotal['mind'] * 100) : 0;
+  if (bodyPct > 80 && langPct < 40) { alerts += '<div style="color:var(--m);margin-bottom:6px;">⚠️ Crushing body tasks but neglecting languages. Rebalance.</div>'; }
+  if (langPct > 80 && bodyPct < 40) { alerts += '<div style="color:var(--m);margin-bottom:6px;">⚠️ Language beast but skipping body. Sleep + movement = learning fuel.</div>'; }
+  if (mindPct < 20 && (catTotal['mind'] || 0) > 0) { alerts += '<div style="color:var(--p);margin-bottom:6px;">💡 LeetCode often skipped. Consistent over perfect.</div>'; }
+  if (!alerts) { alerts = '<div style="color:var(--g);">✅ Balance looks good today. Keep stacking.</div>'; }
+  var balEl = document.getElementById('balanceAlerts');
+  if (balEl) { balEl.innerHTML = alerts; }
+
+  // Summer-wide category bars
+  var scores = loadAllScores();
+  var scoredDays = Object.keys(scores).map(Number).filter(function(i) { return i >= 1 && i <= TOTAL; });
+  if (scoredDays.length === 0) {
+    var sumEl = document.getElementById('summerCatBars');
+    if (sumEl) { sumEl.textContent = 'Complete tasks across multiple days to see summer-wide trends.'; }
+    return;
   }
-  var alertEl=document.getElementById('balanceAlerts');
-  if(alertEl) alertEl.innerHTML=alerts;
-
-  var langHtml='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;">';
-  langCats.forEach(function(c){
-    var xp=catTotals[c]||0;
-    var col=CAT_COLORS_A[c]||'#777';
-    var flags={'jp':'🇯🇵','es':'🇦🇷','zh':'🇨🇳','ru':'🇷🇺','ko':'🇰🇷','de':'🇩🇪','tr':'🇹🇷','ar':'🇸🇦','vi':'🇻🇳','ur':'🇵🇰','kk':'🇰🇿','pt':'🇧🇷','sw':'🇰🇪','uk':'🇺🇦','pl':'🇵🇱','yue':'🇭🇰','fr':'🇫🇷','ro':'🇷🇴','en':'🇬🇧'};
-    langHtml+='<div style="background:var(--card);border:1px solid '+col+'33;border-radius:3px;padding:8px;">'
-      +'<div style="font-size:16px;">'+(flags[c]||c)+'</div>'
-      +'<div style="font-family:\'DM Mono\',monospace;font-size:10px;color:'+col+';">'+xp+' XP</div></div>';
-  });
-  langHtml+='</div>';
-  var langEl=document.getElementById('langTotals');
-  if(langEl) langEl.innerHTML=daysScored>0?langHtml:'<div style="color:#777;">Log a few days first.</div>';
+  var sumBars = '';
+  var catCounts = {};
+  sortedCats.forEach(function(cat) { catCounts[cat] = 0; });
+  document.getElementById('summerCatBars').innerHTML = '<div style="font-size:11px;color:var(--mu);">Based on ' + scoredDays.length + ' scored day(s). Wider bars = more XP earned in that category this summer.</div>' + sumBars;
 }
 
-window.addEventListener('resize',function(){updateSummerGraph();updateAnalytics();});
-document.getElementById('summerRingFill').style.strokeDasharray=(2*Math.PI*52).toFixed(2);
-document.getElementById('summerRingFill').style.strokeDashoffset=(2*Math.PI*52).toFixed(2);
-window.addEventListener('DOMContentLoaded',loadToday);
+// ─────────────────────────────────────────────
+// NAVIGATION
+// ─────────────────────────────────────────────
+function loadDay(s) {
+  if (!s) { return; }
+  var d = new Date(s + 'T00:00:00');
+  var n = dayN(d);
+  document.getElementById('dayPicker').value = s;
+  document.getElementById('dayLabel').textContent = 'S-Day ' + n + ' of ' + TOTAL;
+  buildDay(d);
+  updateSummerGraph();
+  renderAnalytics();
+}
 
+function loadToday() {
+  var d = new Date();
+  var s = d.toISOString().split('T')[0];
+  document.getElementById('dayPicker').value = s;
+  var n = dayN(d);
+  document.getElementById('dayLabel').textContent = (n >= 1 && n <= TOTAL) ? 'S-Day ' + n + ' of ' + TOTAL + ' — TODAY' : 'Outside plan window';
+  buildDay(d);
+  updateSummerGraph();
+  renderAnalytics();
+}
 
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+window.addEventListener('resize', function() { updateSummerGraph(); });
 
-// V3 Startup
 window.addEventListener('DOMContentLoaded', function() {
-  // Load local cache backup
-  try{ var c=localStorage.getItem('sday_cache'); if(c) localCache=JSON.parse(c); }catch(e){}
-  if(hasGH()){
-    setSyncStatus('busy','Connecting to GitHub...');
-    pullFromGitHub().then(function(){ loadToday(); });
+  var cfg = getGHCfg();
+  var skipped = localStorage.getItem('gh_skipped');
+  if (!cfg.user && !skipped) {
+    document.getElementById('setupModal').style.display = 'flex';
+    setSyncStatus('local', 'Not configured — set up GitHub sync above');
+  } else if (cfg.user && cfg.repo && cfg.token) {
+    pullFromGH();
   } else {
-    document.getElementById('setupOverlay').style.display='flex';
+    setSyncStatus('local', 'Using local storage — setup GitHub sync via ⚙ SETUP');
+    loadToday();
   }
 });
 
