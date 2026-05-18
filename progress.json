@@ -82,36 +82,48 @@
         "creatine": true,
         "en_main": true,
         "es_journal": true,
-        "es_bonus": true
+        "es_bonus": true,
+        "zh_bonus": true,
+        "tr_main": true,
+        "tr_bonus": true,
+        "push1": true,
+        "push2": true,
+        "push3": true,
+        "push4": true,
+        "push5": true,
+        "app2": true,
+        "app3": true
       },
-      "score": 52,
+      "score": 67,
       "catXP": {
-        "body": 195,
+        "body": 270,
         "en": 15,
-        "bonus": 75,
+        "bonus": 105,
         "jp": 50,
         "es": 65,
         "typing": 20,
         "zh": 35,
         "ru": 35,
-        "project": 70,
+        "tr": 25,
+        "project": 115,
         "mind": 40
       }
     }
   },
   "catTotals": {
-    "body": 485,
-    "project": 145,
+    "body": 560,
+    "project": 190,
     "art": 30,
     "imm": 70,
     "en": 15,
-    "bonus": 75,
+    "bonus": 105,
     "jp": 50,
     "es": 65,
     "typing": 20,
     "zh": 35,
     "ru": 35,
+    "tr": 25,
     "mind": 40
   },
-  "lastUpdated": "2026-05-18T18:25:40.980Z"
+  "lastUpdated": "2026-05-18T18:25:54.466Z"
 }
