@@ -31,5 +31,10 @@
     "main_eat": true,
     "main_cook": true
   },
-  "sday_3_score": 8
+  "sday_3_score": 8,
+  "sday_4_done": {
+    "shower_am": true,
+    "skincare_am": true
+  },
+  "sday_4_score": 4
 }
