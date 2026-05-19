@@ -22,5 +22,10 @@
     "app_1": true,
     "app_2": true
   },
-  "sday_2_score": 15
+  "sday_2_score": 15,
+  "sday_3_done": {
+    "shower_am": true,
+    "skincare_am": true
+  },
+  "sday_3_score": 4
 }
