@@ -34,7 +34,9 @@
   "sday_3_score": 8,
   "sday_4_done": {
     "shower_am": true,
-    "skincare_am": true
+    "skincare_am": true,
+    "water_1": true,
+    "creatine": true
   },
-  "sday_4_score": 4
+  "sday_4_score": 6
 }
