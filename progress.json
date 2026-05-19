@@ -44,7 +44,8 @@
     "nuts": true,
     "whatsapp": true,
     "screens_off": true,
-    "sleep": true
+    "sleep": true,
+    "zh_main": false
   },
   "sday_4_score": 17
 }
