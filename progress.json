@@ -42,7 +42,9 @@
     "main_eat": true,
     "water_3": true,
     "nuts": true,
-    "whatsapp": true
+    "whatsapp": true,
+    "screens_off": true,
+    "sleep": true
   },
-  "sday_4_score": 13
+  "sday_4_score": 17
 }
