@@ -45,7 +45,8 @@
     "whatsapp": true,
     "screens_off": true,
     "sleep": true,
-    "zh_main": false
+    "zh_main": false,
+    "typing_main": true
   },
-  "sday_4_score": 17
+  "sday_4_score": 19
 }
