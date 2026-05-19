@@ -19,7 +19,8 @@
     "cook_bfast": true,
     "eat_bfast": true,
     "water_1": true,
-    "app_1": true
+    "app_1": true,
+    "app_2": true
   },
-  "sday_2_score": 12
+  "sday_2_score": 15
 }
