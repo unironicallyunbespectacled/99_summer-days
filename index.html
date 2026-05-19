@@ -1013,6 +1013,24 @@ function getTasks(d, n) {
     tasks.push(t('imm3b', '🛂 Scan the Certificado immediately upon receipt', 20, 'imm'));
     tasks.push(t('imm3c', '🛂 Upload the scanned Certificado to Google Drive as backup', 15, 'imm'));
   }
+  // S-Day 5 (May 19, TODAY): prep for tomorrow's Migraciones appointment + UBA correspondence
+  if (n === 5) {
+    tasks.push(t('imm5a', '🛂 ×3 XP URGENT: Email or WhatsApp UBA Laboratorio de Idiomas — request an official constancia proving you registered for the May–July course. Say you need it for Migraciones. Send today before 17:00.', 100, 'imm'));
+    tasks.push(t('imm5b', '🛂 ×3 XP: Gather ALL documents for tomorrow — original passport, any existing Certificado de Domicilio, any UBA receipt or enrolment proof you have, file number 1282242025', 60, 'imm'));
+    tasks.push(t('imm5c', '🛂 ×3 XP: Set alarm for 06:30 tomorrow — appointment is 08:00–09:00, location is Av. Antártida Argentina 1355, Retiro (~40-60 min commute). Leave by 07:00 to be safe.', 40, 'imm'));
+    tasks.push(t('imm5d', '🛂 ×3 XP: Resolve proof of address — options: (A) Comisaría Vecinal 6A Av. Díaz Vélez 5152 for Certificado de Domicilio, OR (B) Town Hall (Comuna 6, Av. Rivadavia 4050) for padron municipal. Go TODAY before 14:00 close.', 80, 'imm'));
+  }
+  // S-Day 6 (May 20, Wednesday): The actual Migraciones appointment
+  if (n === 6) {
+    tasks.push(t('imm6a', '🛂 ×3 XP TODAY IS YOUR MIGRACIONES APPOINTMENT: Leave home by 07:00 AM — Av. Antártida Argentina 1355, Retiro — appointment 08:00–09:00', 100, 'imm'));
+    tasks.push(t('imm6b', '🛂 ×3 XP: Bring ORIGINAL passport (B03577890) — they will check this', 50, 'imm'));
+    tasks.push(t('imm6c', '🛂 ×3 XP: Bring Certificado de Domicilio (original + scan)', 50, 'imm'));
+    tasks.push(t('imm6d', '🛂 ×3 XP: Bring UBA proof of registration — constancia or enrolment receipt for course 2582-MC04000601', 50, 'imm'));
+    tasks.push(t('imm6e', '🛂 ×3 XP: Bring any other documents you digitized in your original RaDEX application', 40, 'imm'));
+    tasks.push(t('imm6f', '🛂 ×3 XP: At appointment — they will issue your Certificado de Residencia Precaria. Receive it, check your name is spelled correctly, ask for any next steps.', 60, 'imm'));
+    tasks.push(t('imm6g', '🛂 ×3 XP: Scan the Precaria Certificado immediately. Upload to Google Drive. Note the expiry date.', 30, 'imm'));
+    tasks.push(t('imm6h', '🛂 ×3 XP: After appointment — WhatsApp Ben Wilkoff or Minerva admin with update if required. File number: 1282242025.', 20, 'imm'));
+  }
   if (n === 11) {
     tasks.push(t('imm11a', '🛂 ×2 XP: UBA Bimestre 2 starts today — attend class 14:00 at 25 de Mayo 221', 50, 'imm'));
     tasks.push(t('imm11b', '🛂 ×2 XP: After class, go to the secretaría at 25 de Mayo 221', 50, 'imm'));
@@ -1039,23 +1057,55 @@ function getTasks(d, n) {
   tasks.push(t('eat_bfast', '🥣 Eat breakfast (08:25–08:45) — sit down, no screen. SEPARATE from cooking.', 20, 'body'));
   tasks.push(t('water_1', '💧 Water bottle 1 of 3 (1 litre) — drink before language block starts', 10, 'body'));
   tasks.push(t('creatine', '💊 Creatine 3g — mix in oats or morning carbs', 10, 'body'));
-  tasks.push(t('ma_muaythai', '🥊 Muay Thai (08:50–09:00, 10 min) — lead foot 11 o\'clock, rear 45°. Wk1-2: stance + teep. Wk3-4: roundhouse. Wk5-6: low kick. Wk7-8: knee. Wk9-10: elbow. Wk11+: chain combinations', 20, 'body'));
-  tasks.push(t('ma_tkd', '🦵 Taekwondo kata (09:00–09:03, 3 min) — Taegeuk Il Jang ×3 with full snap and kihap. Add Yi Jang wk5+. Full power every rep.', 10, 'body'));
-  tasks.push(t('ma_karate', '✊ Karate kata (09:03–09:06, 3 min) — Heian Shodan ×3 with kime on every technique. Add Nidan wk5+. Slow on chamber, explosive on strike.', 10, 'body'));
-  tasks.push(t('ma_ukemi', '🥋 Judo morning ukemi (09:06–09:10, 4 min) — 5 mae ukemi + 5 ushiro ukemi + 5 yoko ukemi each side on blanket. Chin ALWAYS tucked.', 10, 'body'));
-  tasks.push(t('ma_mobility', '🌀 Hip mobility (09:10–09:15, 5 min) — 20 hip circles each direction + pigeon stretch 30s each side + leg swings 10 each. Feeds choreo.', 10, 'body'));
-  // Martial arts GENIUS bonuses — day-specific
-  if (dow === 3) { // Wednesday: shadowbox genius
-    tasks.push(t('ma_bonus_wed', '⭐ GENIUS Striking: 3×1 min shadow rounds — Round 1: hands only (jab/cross/hook/uppercut). Round 2: legs only (teep/roundhouse/low kick). Round 3: elbows + knees only. 30 sec rest between rounds.', 15, 'bonus', true));
+  // ── MARTIAL ARTS BLOCK (08:50–09:15) ──
+  // PLAN: TKD daily as base. Judo Tue/Thu only (ukemi-focused, no partner needed).
+  // Muay Thai + Karate BENCHED until late August (wk11+). No clumping — each action separate.
+  if (n < 6) {
+    // Days 1-5: old plan (don't touch already-completed days)
+    tasks.push(t('ma_muaythai', '🥊 Muay Thai (08:50–09:00, 10 min) — stance + footwork + teep drill', 20, 'body'));
+    tasks.push(t('ma_tkd_old', '🦵 TKD: Taegeuk Il Jang ×3 (09:00–09:03)', 10, 'body'));
+    tasks.push(t('ma_karate_old', '✊ Karate: Heian Shodan ×3 (09:03–09:06)', 10, 'body'));
+    tasks.push(t('ma_ukemi_old', '🥋 Judo morning ukemi 4 min (09:06–09:10)', 10, 'body'));
+    tasks.push(t('ma_mobility_old', '🌀 Hip mobility 5 min (09:10–09:15)', 10, 'body'));
+  } else if (w >= 11) {
+    // Week 11+ (late August): Muay Thai + Karate come off the bench
+    tasks.push(t('ma_tkd_1', '🦵 TKD (08:50–08:54): Taegeuk Il Jang — Rep 1 SLOW, walk every movement with full focus on stance', 10, 'body'));
+    tasks.push(t('ma_tkd_2', '🦵 TKD (08:54–08:57): Taegeuk Il Jang — Rep 2 MEDIUM speed, snap on every technique', 10, 'body'));
+    tasks.push(t('ma_tkd_3', '🦵 TKD (08:57–09:00): Taegeuk Il Jang — Rep 3 FULL POWER with kihap on moves 8, 12, 18', 15, 'body'));
+    tasks.push(t('ma_hip_1', '🌀 Hip mobility (09:00–09:02): 20 hip circles clockwise', 5, 'body'));
+    tasks.push(t('ma_hip_2', '🌀 Hip mobility (09:02–09:04): 20 hip circles counter-clockwise', 5, 'body'));
+    tasks.push(t('ma_hip_3', '🌀 Hip mobility (09:04–09:06): pigeon stretch 30s left side', 5, 'body'));
+    tasks.push(t('ma_hip_4', '🌀 Hip mobility (09:06–09:08): pigeon stretch 30s right side', 5, 'body'));
+    tasks.push(t('ma_hip_5', '🌀 Hip mobility (09:08–09:10): lateral leg swings 10 each side', 5, 'body'));
+    tasks.push(t('ma_mt_late', '🥊 Muay Thai (09:10–09:13, wk11+): 3 min shadowboxing — full 8 limbs, chain combinations', 15, 'body'));
+    tasks.push(t('ma_karate_late', '✊ Karate (09:13–09:15, wk11+): Heian Shodan ×2 with full kime and kiai', 10, 'body'));
+  } else {
+    // Days 6-77 (wk1-10): TKD daily + hip mobility. Muay Thai + Karate benched.
+    tasks.push(t('ma_tkd_1', '🦵 TKD (08:50–08:54): Taegeuk Il Jang — Rep 1 SLOW, walk every movement with full focus on stance width and arm chamber', 10, 'body'));
+    tasks.push(t('ma_tkd_2', '🦵 TKD (08:54–08:57): Taegeuk Il Jang — Rep 2 MEDIUM speed, snap on every block and punch', 10, 'body'));
+    tasks.push(t('ma_tkd_3', '🦵 TKD (08:57–09:00): Taegeuk Il Jang — Rep 3 FULL POWER with kihap on moves 8, 12, 18. ' + (w >= 5 ? 'Add Yi Jang after: 1 slow run' : 'Wk5+ adds Yi Jang'), 15, 'body'));
+    tasks.push(t('ma_hip_1', '🌀 Hip mobility (09:00–09:02): 20 hip circles clockwise — slow and deliberate, full range', 5, 'body'));
+    tasks.push(t('ma_hip_2', '🌀 Hip mobility (09:02–09:04): 20 hip circles counter-clockwise', 5, 'body'));
+    tasks.push(t('ma_hip_3', '🌀 Hip mobility (09:04–09:06): pigeon stretch 30s left side — hold, breathe, don\'t bounce', 5, 'body'));
+    tasks.push(t('ma_hip_4', '🌀 Hip mobility (09:06–09:08): pigeon stretch 30s right side', 5, 'body'));
+    tasks.push(t('ma_hip_5', '🌀 Hip mobility (09:08–09:10): lateral leg swings 10 each side — controlled, not wild', 5, 'body'));
+    tasks.push(t('ma_stretch_1', '🧘 Full body stretch (09:10–09:13): forward fold 30s + standing quad stretch 20s each leg', 5, 'body'));
+    tasks.push(t('ma_stretch_2', '🧘 Full body stretch (09:13–09:15): shoulder cross-arm stretch 15s each + neck rolls 5 each direction', 5, 'body'));
   }
-  if (isSat) { // Saturday: film yourself
-    tasks.push(t('ma_bonus_sat', '⭐ GENIUS Muay Thai: Shadowbox a full 3-minute round — film it on your phone — watch it back and write down 1 technical flaw you see. Fix it in your head before tomorrow.', 20, 'bonus', true));
-  }
-  if (isSun) { // Sunday: kata chain from memory
-    tasks.push(t('ma_bonus_sun', '⭐ GENIUS Kata: Perform Heian Shodan (Karate) + Taegeuk Il Jang (TKD) back to back from pure memory — no pauses, no resets. Both arts. One flow.', 20, 'bonus', true));
-  }
-  if (dow === 1) { // Monday: technique focus
-    tasks.push(t('ma_bonus_mon', '⭐ GENIUS Muay Thai Monday: Pick 1 technique you did this morning — drill it 50 reps in slow motion focusing only on correct form. Speed comes after structure.', 15, 'bonus', true));
+  // TKD GENIUS bonuses — day-specific, wk1-10 only
+  if (n >= 6 && w < 11) {
+    if (dow === 1) { // Monday: technique isolation
+      tasks.push(t('ma_bonus_mon', '⭐ GENIUS TKD Monday: Pick the weakest move from your Rep 3 this morning — drill it 20 reps in slow motion. Form before speed.', 15, 'bonus', true));
+    }
+    if (dow === 3) { // Wednesday: kicks focus
+      tasks.push(t('ma_bonus_wed', '⭐ GENIUS TKD Wednesday: 10 front kicks each leg in slow motion — hold the chamber position for 2 seconds before extending. Balance drill.', 15, 'bonus', true));
+    }
+    if (isSat) { // Saturday: film kata
+      tasks.push(t('ma_bonus_sat', '⭐ GENIUS TKD Saturday: Film your Rep 3 on your phone — watch it back and write down 1 technical flaw. Fix it in your head before tomorrow.', 20, 'bonus', true));
+    }
+    if (isSun) { // Sunday: kata from memory no warm-up
+      tasks.push(t('ma_bonus_sun', '⭐ GENIUS TKD Sunday: Perform Taegeuk Il Jang cold — no warm-up, no rehearsal. First move to last. This is your real level.', 20, 'bonus', true));
+    }
   }
 
   // ENGLISH — every day
@@ -1184,13 +1234,39 @@ function getTasks(d, n) {
     tasks.push(t('laundry_wed', '🧺 Wednesday rolling wash — underwear, socks, sweaty gear — H₂O₂ pretreat + hand-wash + hang', 15, 'body'));
   }
 
-  // JUDO HOME — Tuesday / Thursday
+  // JUDO HOME — Tuesday / Thursday only (no partner, blanket mat)
+  // Phase 1 wk1-6: ukemi only. Phase 2 wk7-12: ukemi + O-Goshi uchikomi. Phase 3 wk13+: full solo.
   if (dow === 2 || dow === 4) {
-    tasks.push(t('judo_mae', '🥋 Judo ukemi: 10 mae ukemi (forward rolls on folded blanket) — chin tucked tight', 15, 'body'));
-    tasks.push(t('judo_ushiro', '🥋 Judo ukemi: 10 ushiro ukemi (backward rolls) — chin tucked, slap the ground', 15, 'body'));
-    tasks.push(t('judo_yoko', '🥋 Judo ukemi: 10 yoko ukemi each side (side falls) — chin tucked, arm at 45°', 15, 'body'));
-    tasks.push(t('judo_uchi', '🥋 Judo: 50 uchi komi (entry drills) against wall — Seoi Nage or O-Goshi', 20, 'body'));
-    tasks.push(t('judo_bonus', '⭐ GENIUS Judo: Watch 2 min of a black belt match — identify 2 techniques by name', 15, 'bonus', true));
+    if (w <= 6) {
+      // PHASE 1: Ukemi only — sitting → squatting → standing progression
+      var judoStage = w <= 2 ? 'from SITTING (Stage A)' : w <= 4 ? 'from SQUATTING (Stage B)' : 'from STANDING (Stage C)';
+      tasks.push(t('judo_ushiro', '🥋 Judo Phase 1 — Ushiro Ukemi ' + judoStage + ': 10 reps — chin to chest BEFORE moving, cross arms, rock back, BOTH arms slap at 45° simultaneously. Head never touches floor.', 15, 'body'));
+      tasks.push(t('judo_yoko_l', '🥋 Judo Phase 1 — Yoko Ukemi left side ' + judoStage + ': 10 reps — tip left, left arm slaps at 45° palm down, head stays up', 15, 'body'));
+      tasks.push(t('judo_yoko_r', '🥋 Judo Phase 1 — Yoko Ukemi right side ' + judoStage + ': 10 reps — tip right, right arm slaps at 45°, head stays up', 15, 'body'));
+      if (w >= 2) {
+        tasks.push(t('judo_mae', '🥋 Judo Phase 1 — Mae Ukemi ' + (w <= 3 ? 'from KNEELING' : w <= 5 ? 'from SQUATTING' : 'from STANDING') + ': 8 reps — fall forward, FOREARMS land (not hands, not elbows — FOREARMS flat), stomach off floor, goalpost arm shape (elbows wide, wrists slightly inward)', 15, 'body'));
+      }
+      if (w >= 3) {
+        tasks.push(t('judo_mawari', '🥋 Judo Phase 1 — Mae Mawari Ukemi (forward roll) ' + (w <= 4 ? 'from KNEELING' : w <= 5 ? 'from SQUATTING' : 'from STANDING') + ': 5 reps each side — step right foot, hands inside right foot, tuck chin, roll diagonally over RIGHT shoulder, left arm slaps on finish', 15, 'body'));
+      }
+      tasks.push(t('judo_bonus_ph1', '⭐ GENIUS Judo: Watch 2 min of a Judo black belt match — identify 2 ukemi you see and name them (mae/ushiro/yoko)', 15, 'bonus', true));
+    } else if (w <= 12) {
+      // PHASE 2: Ukemi circuit + O-Goshi air uchikomi
+      tasks.push(t('judo_circuit', '🥋 Judo Phase 2 — Ukemi circuit from STANDING (5 min): ushiro ×8 + yoko left ×8 + yoko right ×8 + mae ×6 + mae mawari ×5 each side. Non-stop.', 20, 'body'));
+      tasks.push(t('judo_ogoshi_r', '🥋 Judo Phase 2 — O-Goshi air uchikomi RIGHT side: ' + (w <= 8 ? '20 reps SLOW' : '30 reps building speed') + ' — step right foot in, pivot left foot around, back faces front, right arm wraps waist, right hip LOWER than imaginary partner\'s hip, feet shoulder-width. Entry only — no throw.', 20, 'body'));
+      tasks.push(t('judo_ogoshi_l', '🥋 Judo Phase 2 — O-Goshi air uchikomi LEFT side: 20 reps — mirror of right. Hip placement is everything.', 15, 'body'));
+      if (w >= 11) {
+        tasks.push(t('judo_osoto', '🥋 Judo Phase 2 — Osoto Gari intro: 10 reps each side — step in beside imaginary partner, sweep big leg motion backward. Entry only, no throw.', 15, 'body'));
+      }
+      tasks.push(t('judo_bonus_ph2', '⭐ GENIUS Judo: Watch 2 min O-Goshi match footage — note which direction they enter and how the hip drops below uke\'s. Compare to your drill this morning.', 15, 'bonus', true));
+    } else {
+      // PHASE 3: Full solo practice
+      tasks.push(t('judo_circuit_adv', '🥋 Judo Phase 3 — Standing ukemi circuit (4 min): ushiro ×8 + yoko ×8 each side + mae ×6 + mae mawari ×5 each side', 15, 'body'));
+      tasks.push(t('judo_ogoshi_full', '🥋 Judo Phase 3 — O-Goshi uchikomi: 30 reps right + 20 reps left — explosive entries, check hip height every 10 reps', 20, 'body'));
+      tasks.push(t('judo_osoto_full', '🥋 Judo Phase 3 — Osoto Gari uchikomi: 20 reps each side — fully committed entry motion', 15, 'body'));
+      tasks.push(t('judo_footwork', '🥋 Judo Phase 3 — Footwork randori (3 min): move in natural Judo stance, practice kuzushi motions pulling imaginary partner off balance', 10, 'body'));
+      tasks.push(t('judo_bonus_ph3', '⭐ GENIUS Judo: Watch 5 min of Judo randori — identify 1 moment of kuzushi (off-balance), 1 tsukuri (entry), 1 kake (throw). Name each.', 20, 'bonus', true));
+    }
   }
 
   // STRENGTH — Monday push / Wednesday pull / Friday legs
@@ -1233,6 +1309,48 @@ function getTasks(d, n) {
   // LEETCODE
   tasks.push(t('leetcode', '💻 LeetCode: 1 problem — attempt yourself first, then read best solution — neetcode.io/roadmap', 40, 'mind'));
   tasks.push(t('leetcode_bonus', '⭐ GENIUS LeetCode: Explain the optimal solution in 3 plain English sentences — teach it to a 10-year-old', 15, 'bonus', true));
+
+  // CHESS — starts S-Day 18 (June 1, Week 3 onward). Research basis: 90% of sub-1000 games decided by
+  // tactical mistakes (ChessMood/Grigoryan). Tactics daily is the #1 lever. Puzzles before games = pattern loading.
+  // 800→1000 ELO is a shift from "blunder harvesting" to "pattern recognition". 30 min/day is proven optimal.
+  // Starts after first two weeks so immigration + UBA + plan foundation settle first.
+  // Bonus (analysis board) added Week 5 (S-Day 29+) — not before, needs game sense to benefit from it.
+  if (n >= 18) {
+    tasks.push(t('chess_puzzles', '♟️ Chess Tactics (20:00–20:10, 10 min): 5 puzzles on lichess.org/puzzles — DO NOT move until you see the full sequence. Wrong = replay from start. Accuracy over speed. Pattern: fork, pin, skewer, back-rank.', 25, 'mind'));
+    tasks.push(t('chess_game', '♟️ Chess Game (20:10–20:25, 15 min): 1 rapid game (10+0) on lichess.org — ' + (w <= 6 ? 'White: e4. Black: respond e5. No theory — just development: knights before bishops, castle early, control center.' : w <= 10 ? 'White: e4. Black: Caro-Kann (c6 then d5). Learn the ONE pawn structure that comes from your chosen opening.' : '1 rapid game — your opening repertoire. Play what you studied. Note deviations.') + ' After game: find the move where your position went from equal to losing. Just that 1 move.', 25, 'mind'));
+    if (n >= 29) { // Week 5+ — analysis bonus
+      tasks.push(t('chess_analysis', '⭐ GENIUS Chess: Open the game in lichess.org analysis board. Find the computer\'s top suggestion on your worst move. Read WHY it was best — is it a fork? A defense? A tempo gain? Write the pattern name down.', 20, 'bonus', true));
+    }
+  }
+
+  // EVENING STRETCH — daily (separate from morning hip mobility).
+  // Research basis (HeyDojo/YOGABODY/backsavvy): 15 min daily is optimal. Passive static holds 30-45s minimum
+  // to overcome stretch reflex and stimulate range-of-motion gains. Dynamic before training, static after.
+  // Progressive: weeks 1-4 = basic holds. Weeks 5-8 = add butterfly + pike. Weeks 9+ = front split prep, deep hip.
+  // Every stretch is its own task because you asked. Each takes ~2 min. Total = 12-15 min.
+  // All named precisely, with duration, technique cue, and WHY it matters for TKD/Judo.
+  if (w <= 4) {
+    tasks.push(t('str_hamstring', '🧘 Stretch (21:30, 2 min): Standing hamstring — right leg forward, hinge from hips, flat back, hands on shin. Hold 45s. Switch legs 45s. Key: hinge from HIPS not waist. Tight hamstrings = limited TKD kick height.', 5, 'body'));
+    tasks.push(t('str_hip_flex', '🧘 Stretch (21:32, 2 min): Hip flexor lunge — right knee down, push hips FORWARD not down. Hold 45s each side. Key: squeeze glute of back leg to deepen the stretch. Feeds front kick range.', 5, 'body'));
+    tasks.push(t('str_pigeon', '🧘 Stretch (21:34, 2 min): Pigeon pose — right shin horizontal, lean forward with arms extended. Hold 45s each side. Breathe into the tightest point. Do not rush this one.', 5, 'body'));
+    tasks.push(t('str_quad', '🧘 Stretch (21:36, 1.5 min): Standing quad — grab ankle behind, pull heel to glute, stand tall. Hold 30s each leg. Balance challenge = bonus proprioception for TKD stance.', 5, 'body'));
+    tasks.push(t('str_spinal', '🧘 Stretch (21:37, 2 min): Supine spinal twist — lie on back, one knee across body, look opposite way. Hold 45s each side. Releases the lower back from sitting + Judo ukemi impact.', 5, 'body'));
+    tasks.push(t('str_shoulder', '🧘 Stretch (21:39, 2 min): Cross-arm shoulder 20s each + overhead tricep 20s each. Slow, deliberate. Not rushed. Shoulders carry TKD blocks and Judo grip.', 5, 'body'));
+  } else if (w <= 8) {
+    tasks.push(t('str_hamstring', '🧘 Stretch (21:30, 2 min): Standing hamstring — right leg forward, flat back hinge, 45s each. PROGRESSION from wk1-4: try to get forehead closer to knee than before. Track progress.', 5, 'body'));
+    tasks.push(t('str_hip_flex', '🧘 Stretch (21:32, 2 min): Deep hip flexor lunge — knee down, push hips forward, now also reach same-side arm overhead and lean AWAY from the kneeling side. 45s each. Bigger hip flexor stretch.', 5, 'body'));
+    tasks.push(t('str_butterfly', '🧘 Stretch (21:34, 2 min): Butterfly — sit, soles of feet together, knees drop out, lean forward from hips. Hold 60s. PROGRESSION: use elbows on inner thighs to gently press knees down. Groin flexibility for TKD side kicks.', 5, 'body'));
+    tasks.push(t('str_pike', '🧘 Stretch (21:36, 2 min): Seated pike — legs straight out, hinge forward from hips, hands reach toward feet. Hold 60s. Back flat. NOT rounded. Hamstrings + lower back compound.', 5, 'body'));
+    tasks.push(t('str_spinal', '🧘 Stretch (21:38, 1.5 min): Supine spinal twist — 45s each side. PROGRESSION: see if lower shoulder now stays flat on the ground where it was lifting before.', 5, 'body'));
+    tasks.push(t('str_shoulder', '🧘 Stretch (21:39, 1.5 min): Cross-arm 20s each + overhead tricep 20s each + chest opener (hands clasped behind back, lift) 20s. Complete shoulder circuit.', 5, 'body'));
+  } else {
+    tasks.push(t('str_hamstring', '🧘 Stretch (21:30, 2 min): Standing hamstring 45s each — test: can you now touch your shin? Ankle? Floor? Note your progress marker weekly.', 5, 'body'));
+    tasks.push(t('str_hip_flex', '🧘 Stretch (21:32, 2 min): Advanced hip flexor — kneeling lunge, back foot elevated on chair. Push hips forward 45s each side. Elevated foot = deeper hip flexor isolation.', 5, 'body'));
+    tasks.push(t('str_butterfly', '🧘 Stretch (21:34, 2 min): Butterfly 60s. PROGRESSION wk9+: lie back flat while butterfly — gravity assists the groin opening passively. Hold 60s flat.', 5, 'body'));
+    tasks.push(t('str_split_prep', '🧘 Stretch (21:36, 2 min): Front split prep — wide lunge, back knee down, slide front foot forward to edge of comfort. Hold 60s each side. NOT a split yet — just finding the limit and breathing into it.', 5, 'body'));
+    tasks.push(t('str_pike', '🧘 Stretch (21:38, 2 min): Seated pike 60s — PROGRESSION: place a book under each heel to tilt hamstrings. Increases difficulty significantly.', 5, 'body'));
+    tasks.push(t('str_spinal', '🧘 Stretch (21:40, 1.5 min): Supine spinal twist 45s each — by wk9 the lower shoulder should be flat. If not, note it as the point of resistance and breathe into it.', 5, 'body'));
+  }
 
   // NUTRITION / WATER
   tasks.push(t('main_cook', '🍳 Cook main meal — separate task from eating — cook it properly', 25, 'body'));
@@ -1359,6 +1477,8 @@ function buildDay(d) {
   var alerts = '';
   if (n === 1) { alerts += '<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 <strong>IMMIGRATION TODAY:</strong> Comisaría Vecinal 6A, Av. Díaz Vélez 5152, Caballito. 09:00 AM. Passport + ~3,000 ARS cash.</div>'; }
   if (n >= 2 && n <= 4) { alerts += '<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 Be home at Luis Viale 11 — police may verify address today (09:00–17:00).</div>'; }
+  if (n === 5) { alerts += '<div class="amagenta" style="font-size:12px;margin-bottom:8px;">🛂 <strong>URGENT TODAY (May 19):</strong> Email UBA for constancia. Gather all docs. Resolve proof of address before 14:00. Appointment TOMORROW 08:00 at Retiro. Leave by 07:00.</div>'; }
+  if (n === 6) { alerts += '<div class="amagenta" style="font-size:12px;margin-bottom:8px;">🛂 <strong>MIGRACIONES APPOINTMENT TODAY (May 20):</strong> Av. Antártida Argentina 1355, Retiro. 08:00–09:00. Leave home by 07:00. Bring passport + Certificado + UBA proof. They issue your Precaria today.</div>'; }
   if (n === 11) { alerts += '<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 UBA Bimestre 2 starts. Get constancia at 25 de Mayo 221 after class. Course: 2582-MC04000601.</div>'; }
   if (n === 13) { alerts += '<div class="apurple" style="font-size:12px;margin-bottom:8px;">🛂 <strong>UPLOAD TO RADEX TODAY.</strong> radex.migraciones.gov.ar — praise.vc.16@gmail.com — 37030709.</div>'; }
   if (n === 15) { alerts += '<div class="amagenta" style="font-size:12px;margin-bottom:8px;">⚠️ <strong>RADEX HARD DEADLINE (May 29).</strong> Verify upload is complete. If not done — do it RIGHT NOW.</div>'; }
