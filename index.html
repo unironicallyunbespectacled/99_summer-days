@@ -1310,47 +1310,16 @@ function getTasks(d, n) {
   tasks.push(t('leetcode', '💻 LeetCode: 1 problem — attempt yourself first, then read best solution — neetcode.io/roadmap', 40, 'mind'));
   tasks.push(t('leetcode_bonus', '⭐ GENIUS LeetCode: Explain the optimal solution in 3 plain English sentences — teach it to a 10-year-old', 15, 'bonus', true));
 
-  // CHESS — starts S-Day 18 (June 1, Week 3 onward). Research basis: 90% of sub-1000 games decided by
-  // tactical mistakes (ChessMood/Grigoryan). Tactics daily is the #1 lever. Puzzles before games = pattern loading.
-  // 800→1000 ELO is a shift from "blunder harvesting" to "pattern recognition". 30 min/day is proven optimal.
-  // Starts after first two weeks so immigration + UBA + plan foundation settle first.
-  // Bonus (analysis board) added Week 5 (S-Day 29+) — not before, needs game sense to benefit from it.
-  if (n >= 18) {
-    tasks.push(t('chess_puzzles', '♟️ Chess Tactics (20:00–20:10, 10 min): 5 puzzles on lichess.org/puzzles — DO NOT move until you see the full sequence. Wrong = replay from start. Accuracy over speed. Pattern: fork, pin, skewer, back-rank.', 25, 'mind'));
-    tasks.push(t('chess_game', '♟️ Chess Game (20:10–20:25, 15 min): 1 rapid game (10+0) on lichess.org — ' + (w <= 6 ? 'White: e4. Black: respond e5. No theory — just development: knights before bishops, castle early, control center.' : w <= 10 ? 'White: e4. Black: Caro-Kann (c6 then d5). Learn the ONE pawn structure that comes from your chosen opening.' : '1 rapid game — your opening repertoire. Play what you studied. Note deviations.') + ' After game: find the move where your position went from equal to losing. Just that 1 move.', 25, 'mind'));
-    if (n >= 29) { // Week 5+ — analysis bonus
-      tasks.push(t('chess_analysis', '⭐ GENIUS Chess: Open the game in lichess.org analysis board. Find the computer\'s top suggestion on your worst move. Read WHY it was best — is it a fork? A defense? A tempo gain? Write the pattern name down.', 20, 'bonus', true));
-    }
-  }
+  // CHESS — daily
+  tasks.push(t('chess_puzzle', '♟️ Chess puzzle (chess.com/puzzles, 10 min): 1 puzzle minimum — do not move until you have a plan. Think before you click.', 20, 'mind'));
+  tasks.push(t('chess_game', '♟️ Chess: 1 rapid game (10+0) on chess.com — after the game, identify the move where the position changed most. Write it down.', 20, 'mind'));
+  tasks.push(t('chess_bonus', '⭐ GENIUS Chess: Run your game through analysis board on chess.com — find the best move you missed and understand WHY it was the best move', 15, 'bonus', true));
 
-  // EVENING STRETCH — daily (separate from morning hip mobility).
-  // Research basis (HeyDojo/YOGABODY/backsavvy): 15 min daily is optimal. Passive static holds 30-45s minimum
-  // to overcome stretch reflex and stimulate range-of-motion gains. Dynamic before training, static after.
-  // Progressive: weeks 1-4 = basic holds. Weeks 5-8 = add butterfly + pike. Weeks 9+ = front split prep, deep hip.
-  // Every stretch is its own task because you asked. Each takes ~2 min. Total = 12-15 min.
-  // All named precisely, with duration, technique cue, and WHY it matters for TKD/Judo.
-  if (w <= 4) {
-    tasks.push(t('str_hamstring', '🧘 Stretch (21:30, 2 min): Standing hamstring — right leg forward, hinge from hips, flat back, hands on shin. Hold 45s. Switch legs 45s. Key: hinge from HIPS not waist. Tight hamstrings = limited TKD kick height.', 5, 'body'));
-    tasks.push(t('str_hip_flex', '🧘 Stretch (21:32, 2 min): Hip flexor lunge — right knee down, push hips FORWARD not down. Hold 45s each side. Key: squeeze glute of back leg to deepen the stretch. Feeds front kick range.', 5, 'body'));
-    tasks.push(t('str_pigeon', '🧘 Stretch (21:34, 2 min): Pigeon pose — right shin horizontal, lean forward with arms extended. Hold 45s each side. Breathe into the tightest point. Do not rush this one.', 5, 'body'));
-    tasks.push(t('str_quad', '🧘 Stretch (21:36, 1.5 min): Standing quad — grab ankle behind, pull heel to glute, stand tall. Hold 30s each leg. Balance challenge = bonus proprioception for TKD stance.', 5, 'body'));
-    tasks.push(t('str_spinal', '🧘 Stretch (21:37, 2 min): Supine spinal twist — lie on back, one knee across body, look opposite way. Hold 45s each side. Releases the lower back from sitting + Judo ukemi impact.', 5, 'body'));
-    tasks.push(t('str_shoulder', '🧘 Stretch (21:39, 2 min): Cross-arm shoulder 20s each + overhead tricep 20s each. Slow, deliberate. Not rushed. Shoulders carry TKD blocks and Judo grip.', 5, 'body'));
-  } else if (w <= 8) {
-    tasks.push(t('str_hamstring', '🧘 Stretch (21:30, 2 min): Standing hamstring — right leg forward, flat back hinge, 45s each. PROGRESSION from wk1-4: try to get forehead closer to knee than before. Track progress.', 5, 'body'));
-    tasks.push(t('str_hip_flex', '🧘 Stretch (21:32, 2 min): Deep hip flexor lunge — knee down, push hips forward, now also reach same-side arm overhead and lean AWAY from the kneeling side. 45s each. Bigger hip flexor stretch.', 5, 'body'));
-    tasks.push(t('str_butterfly', '🧘 Stretch (21:34, 2 min): Butterfly — sit, soles of feet together, knees drop out, lean forward from hips. Hold 60s. PROGRESSION: use elbows on inner thighs to gently press knees down. Groin flexibility for TKD side kicks.', 5, 'body'));
-    tasks.push(t('str_pike', '🧘 Stretch (21:36, 2 min): Seated pike — legs straight out, hinge forward from hips, hands reach toward feet. Hold 60s. Back flat. NOT rounded. Hamstrings + lower back compound.', 5, 'body'));
-    tasks.push(t('str_spinal', '🧘 Stretch (21:38, 1.5 min): Supine spinal twist — 45s each side. PROGRESSION: see if lower shoulder now stays flat on the ground where it was lifting before.', 5, 'body'));
-    tasks.push(t('str_shoulder', '🧘 Stretch (21:39, 1.5 min): Cross-arm 20s each + overhead tricep 20s each + chest opener (hands clasped behind back, lift) 20s. Complete shoulder circuit.', 5, 'body'));
-  } else {
-    tasks.push(t('str_hamstring', '🧘 Stretch (21:30, 2 min): Standing hamstring 45s each — test: can you now touch your shin? Ankle? Floor? Note your progress marker weekly.', 5, 'body'));
-    tasks.push(t('str_hip_flex', '🧘 Stretch (21:32, 2 min): Advanced hip flexor — kneeling lunge, back foot elevated on chair. Push hips forward 45s each side. Elevated foot = deeper hip flexor isolation.', 5, 'body'));
-    tasks.push(t('str_butterfly', '🧘 Stretch (21:34, 2 min): Butterfly 60s. PROGRESSION wk9+: lie back flat while butterfly — gravity assists the groin opening passively. Hold 60s flat.', 5, 'body'));
-    tasks.push(t('str_split_prep', '🧘 Stretch (21:36, 2 min): Front split prep — wide lunge, back knee down, slide front foot forward to edge of comfort. Hold 60s each side. NOT a split yet — just finding the limit and breathing into it.', 5, 'body'));
-    tasks.push(t('str_pike', '🧘 Stretch (21:38, 2 min): Seated pike 60s — PROGRESSION: place a book under each heel to tilt hamstrings. Increases difficulty significantly.', 5, 'body'));
-    tasks.push(t('str_spinal', '🧘 Stretch (21:40, 1.5 min): Supine spinal twist 45s each — by wk9 the lower shoulder should be flat. If not, note it as the point of resistance and breathe into it.', 5, 'body'));
-  }
+  // EVENING STRETCH — daily (separate from morning hip mobility)
+  tasks.push(t('stretch_hamstring', '🧘 Evening stretch: hamstring forward fold — 45s hold, breathe into it, do not bounce', 5, 'body'));
+  tasks.push(t('stretch_hip_flexor', '🧘 Evening stretch: hip flexor lunge stretch — 30s each side (tight from kicks + sitting all day)', 5, 'body'));
+  tasks.push(t('stretch_shoulder', '🧘 Evening stretch: cross-arm shoulder stretch 20s each side + overhead tricep 15s each', 5, 'body'));
+  tasks.push(t('stretch_spine', '🧘 Evening stretch: supine spinal twist on the floor — 30s each side. Do this before bed, not after screens.', 5, 'body'));
 
   // NUTRITION / WATER
   tasks.push(t('main_cook', '🍳 Cook main meal — separate task from eating — cook it properly', 25, 'body'));
