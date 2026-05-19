@@ -36,7 +36,10 @@
     "shower_am": true,
     "skincare_am": true,
     "water_1": true,
-    "creatine": true
+    "creatine": true,
+    "water_2": true,
+    "main_cook": true,
+    "main_eat": true
   },
-  "sday_4_score": 6
+  "sday_4_score": 10
 }
