@@ -39,7 +39,8 @@
     "creatine": true,
     "water_2": true,
     "main_cook": true,
-    "main_eat": true
+    "main_eat": true,
+    "water_3": true
   },
-  "sday_4_score": 10
+  "sday_4_score": 11
 }
