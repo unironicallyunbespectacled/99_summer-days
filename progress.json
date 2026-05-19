@@ -27,7 +27,8 @@
     "shower_am": true,
     "skincare_am": true,
     "cook_bfast": false,
-    "water_1": true
+    "water_1": true,
+    "main_eat": true
   },
-  "sday_3_score": 4
+  "sday_3_score": 6
 }
