@@ -1,125 +1,21 @@
 {
-  "days": {
-    "1": {
-      "done": {
-        "water_3": true,
-        "water_2": true,
-        "main_eat": true,
-        "main_cook": true,
-        "water_1": true,
-        "eat_bfast": true,
-        "cook_bfast": true,
-        "martial_am": false,
-        "whatsapp": true,
-        "shower_am": true,
-        "skincare_am": true,
-        "bible": true,
-        "screens_off": false,
-        "sleep": false,
-        "creatine": true,
-        "legs3": false,
-        "app1": true,
-        "app2": true,
-        "app3": true
-      },
-      "score": 23,
-      "catXP": {
-        "body": 175,
-        "project": 75,
-        "art": 15
-      }
-    },
-    "2": {
-      "done": {
-        "cook_bfast": true,
-        "eat_bfast": true,
-        "water_1": true,
-        "imm2a": true,
-        "imm2b": true,
-        "creatine": true
-      },
-      "score": 12,
-      "catXP": {
-        "imm": 70,
-        "body": 60
-      }
-    },
-    "3": {
-      "done": {
-        "shower_am": true,
-        "skincare_am": true,
-        "water_1": true,
-        "bible": true
-      },
-      "score": 6,
-      "catXP": {
-        "body": 55,
-        "art": 15
-      }
-    },
-    "4": {
-      "done": {
-        "shower_am": true,
-        "skincare_am": true,
-        "cook_bfast": false,
-        "eat_bfast": false,
-        "imm2a": false,
-        "leetcode": false,
-        "sleep": false,
-        "ru_main": false,
-        "es_main": false,
-        "jp_main": false,
-        "martial_am": false,
-        "imm3a": false,
-        "zh_main": false,
-        "app1": false,
-        "book_write": false,
-        "en_bonus": false,
-        "jp_bonus": false,
-        "typing_main": false,
-        "typing_bonus": false,
-        "water_1": false,
-        "creatine": false,
-        "en_main": false,
-        "es_journal": false,
-        "es_bonus": false,
-        "zh_bonus": false,
-        "tr_main": false,
-        "tr_bonus": false,
-        "push1": false,
-        "push2": false,
-        "push3": false,
-        "push4": false,
-        "push5": false,
-        "app2": false,
-        "app3": false,
-        "ru_bonus": false,
-        "project_bonus": false,
-        "leetcode_bonus": false,
-        "nuts": false,
-        "main_cook": false,
-        "main_eat": false,
-        "water_2": false,
-        "water_3": false,
-        "violin": false,
-        "bible": false,
-        "whatsapp": false,
-        "shower_pm": false,
-        "skincare_pm": false,
-        "screens_off": false,
-        "imm2b": false
-      },
-      "score": 4,
-      "catXP": {
-        "body": 45
-      }
-    }
+  "sday_1_done": {
+    "shower_am": true,
+    "skincare_am": true,
+    "cook_bfast": true,
+    "eat_bfast": true,
+    "water_1": true,
+    "main_cook": true,
+    "main_eat": true,
+    "water_2": true,
+    "imm1a": false,
+    "imm1c": false,
+    "jp_bonus": false
   },
-  "catTotals": {
-    "body": 335,
-    "project": 75,
-    "art": 30,
-    "imm": 70
+  "sday_1_score": 13,
+  "sday_2_done": {
+    "shower_am": true,
+    "skincare_am": true
   },
-  "lastUpdated": "2026-05-18T18:27:28.511Z"
+  "sday_2_score": 4
 }
