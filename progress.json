@@ -51,7 +51,9 @@
   "sday_4_score": 19,
   "sday_5_done": {
     "shower_am": true,
-    "skincare_am": true
+    "skincare_am": true,
+    "ma_tkd": true,
+    "ma_ukemi": true
   },
-  "sday_5_score": 4
+  "sday_5_score": 6
 }
