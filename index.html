@@ -1039,7 +1039,24 @@ function getTasks(d, n) {
   tasks.push(t('eat_bfast', '🥣 Eat breakfast (08:25–08:45) — sit down, no screen. SEPARATE from cooking.', 20, 'body'));
   tasks.push(t('water_1', '💧 Water bottle 1 of 3 (1 litre) — drink before language block starts', 10, 'body'));
   tasks.push(t('creatine', '💊 Creatine 3g — mix in oats or morning carbs', 10, 'body'));
-  tasks.push(t('martial_am', '🥊 Morning martial arts block (08:50–09:15) — all 4 arts in room', 50, 'body'));
+  tasks.push(t('ma_muaythai', '🥊 Muay Thai (08:50–09:00, 10 min) — lead foot 11 o\'clock, rear 45°. Wk1-2: stance + teep. Wk3-4: roundhouse. Wk5-6: low kick. Wk7-8: knee. Wk9-10: elbow. Wk11+: chain combinations', 20, 'body'));
+  tasks.push(t('ma_tkd', '🦵 Taekwondo kata (09:00–09:03, 3 min) — Taegeuk Il Jang ×3 with full snap and kihap. Add Yi Jang wk5+. Full power every rep.', 10, 'body'));
+  tasks.push(t('ma_karate', '✊ Karate kata (09:03–09:06, 3 min) — Heian Shodan ×3 with kime on every technique. Add Nidan wk5+. Slow on chamber, explosive on strike.', 10, 'body'));
+  tasks.push(t('ma_ukemi', '🥋 Judo morning ukemi (09:06–09:10, 4 min) — 5 mae ukemi + 5 ushiro ukemi + 5 yoko ukemi each side on blanket. Chin ALWAYS tucked.', 10, 'body'));
+  tasks.push(t('ma_mobility', '🌀 Hip mobility (09:10–09:15, 5 min) — 20 hip circles each direction + pigeon stretch 30s each side + leg swings 10 each. Feeds choreo.', 10, 'body'));
+  // Martial arts GENIUS bonuses — day-specific
+  if (dow === 3) { // Wednesday: shadowbox genius
+    tasks.push(t('ma_bonus_wed', '⭐ GENIUS Striking: 3×1 min shadow rounds — Round 1: hands only (jab/cross/hook/uppercut). Round 2: legs only (teep/roundhouse/low kick). Round 3: elbows + knees only. 30 sec rest between rounds.', 15, 'bonus', true));
+  }
+  if (isSat) { // Saturday: film yourself
+    tasks.push(t('ma_bonus_sat', '⭐ GENIUS Muay Thai: Shadowbox a full 3-minute round — film it on your phone — watch it back and write down 1 technical flaw you see. Fix it in your head before tomorrow.', 20, 'bonus', true));
+  }
+  if (isSun) { // Sunday: kata chain from memory
+    tasks.push(t('ma_bonus_sun', '⭐ GENIUS Kata: Perform Heian Shodan (Karate) + Taegeuk Il Jang (TKD) back to back from pure memory — no pauses, no resets. Both arts. One flow.', 20, 'bonus', true));
+  }
+  if (dow === 1) { // Monday: technique focus
+    tasks.push(t('ma_bonus_mon', '⭐ GENIUS Muay Thai Monday: Pick 1 technique you did this morning — drill it 50 reps in slow motion focusing only on correct form. Speed comes after structure.', 15, 'bonus', true));
+  }
 
   // ENGLISH — every day
   tasks.push(t('en_main', '🇬🇧 English precision (10 min): ' + enTask(n), 15, 'en'));
