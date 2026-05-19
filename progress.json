@@ -26,7 +26,7 @@
   "sday_3_done": {
     "shower_am": true,
     "skincare_am": true,
-    "cook_bfast": true
+    "cook_bfast": false
   },
-  "sday_3_score": 5
+  "sday_3_score": 4
 }
