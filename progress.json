@@ -48,5 +48,10 @@
     "zh_main": false,
     "typing_main": true
   },
-  "sday_4_score": 19
+  "sday_4_score": 19,
+  "sday_5_done": {
+    "shower_am": true,
+    "skincare_am": true
+  },
+  "sday_5_score": 4
 }
