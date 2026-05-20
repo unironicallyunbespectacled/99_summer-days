@@ -76,5 +76,9 @@
     "screens_off": true,
     "sleep": true
   },
-  "sday_5_score": 43
+  "sday_5_score": 43,
+  "sday_6_done": {
+    "imm6a": true
+  },
+  "sday_6_score": 7
 }
