@@ -69,7 +69,9 @@
     "judo_yoko_l": true,
     "judo_yoko_r": true,
     "water_2": true,
-    "water_3": true
+    "water_3": true,
+    "main_cook": true,
+    "main_eat": true
   },
-  "sday_5_score": 35
+  "sday_5_score": 38
 }
