@@ -58,7 +58,8 @@
     "imm5b": true,
     "imm5d": true,
     "imm5c": true,
-    "imm5e": true
+    "imm5e": true,
+    "imm5f": true
   },
-  "sday_5_score": 24
+  "sday_5_score": 26
 }
