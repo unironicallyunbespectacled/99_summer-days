@@ -363,7 +363,7 @@ a{color:var(--c);text-decoration:none;}a:hover{text-decoration:underline;}
       <li><a href="https://lawlessfrench.com" target="_blank">lawlessfrench.com</a></li>
       <li>Coffee Break French — YouTube</li>
     </ul></div>
-    <div class="card" style="border-color:#ffcc44;"><div class="ct" style="color:#ffcc44;">🇷🇴 Romanian · Sat 10 min — PRIORITY</div><ul class="tl">
+    <div class="card" style="border-color:#ffcc44;"><div class="ct" style="color:#ffcc44;">🇷🇴 Romanian · Sat + Sun — INTENSIVE PRIORITY 🔥</div><ul class="tl">
       <li><a href="https://learnro.com" target="_blank">learnro.com</a> — free beginner</li>
       <li><a href="https://romanianwithgia.com" target="_blank">romanianwithgia.com</a> — immersion podcast</li>
       <li><a href="https://dexonline.ro" target="_blank">dexonline.ro</a> — official dictionary</li>
@@ -950,13 +950,13 @@ function frTask(n) {
 
 function roTask(n) {
   var w = Math.ceil(n / 7);
-  if (w <= 2) { return 'Romanian basics + spot the Spanish cognates (80% visible!) — learnro.com'; }
-  if (w <= 4) { return 'Romanian present tense + definite article attached to noun end — learnro.com'; }
-  if (w <= 6) { return 'Basic Romanian sentences — Romanian with Gia podcast — romanianwithgia.com'; }
-  if (w <= 8) { return 'Romanian case system (Latin retained) — dexonline.ro for lookup'; }
-  if (w <= 10) { return 'Romanian social phrases — Easy Romanian YouTube'; }
-  if (w <= 12) { return '10 Romanian phrases — Learn Romanian with Nico YouTube'; }
-  return 'Romanian output — dexonline.ro — exploit Spanish + French backbone';
+  if (w <= 2) { return 'Romanian basics (learnro.com Lesson 1) — identify 5 Spanish cognates in the first 10 vocab words. They are everywhere: "bun" = good (like bonus), "carte" = book (like carta). Write the cognate pair down. 80% of Romanian vocabulary is visible from Spanish + French.'; }
+  if (w <= 4) { return 'Romanian present tense (learnro.com Lesson 2-3) — unique feature: definite article ATTACHES to the END of the noun (unlike Spanish/French). "om" = man, "omul" = the man. Drill 5 nouns with and without the article. Say them aloud.'; }
+  if (w <= 6) { return 'Romanian sentences (romanianwithgia.com, Ep 1-3) — listen 10 min, pause and repeat sentences. You have a speaker-level advantage: Gia teaches Romanian with a natural accent. Notice how much sounds like an Italian-Spanish hybrid. Write 2 sentences from memory.'; }
+  if (w <= 8) { return 'Romanian case system (dexonline.ro + Easy Romanian YouTube) — Romanian kept 4 Latin cases that Spanish and French dropped. Nominative/Accusative are identical (start here). Find 1 example of each case in a sentence. This is the deepest Romance structure alive.'; }
+  if (w <= 10) { return 'Romanian social phrases (Easy Romanian YouTube street interviews) — learn 10 phrases you could say to a Romanian cohort member this fall: greetings, reactions, compliments. Say them aloud with full pronunciation. Learn their names for emotions — they are beautiful words.'; }
+  if (w <= 12) { return '10 Romanian phrases for Tokyo cohort (Learn Romanian with Nico YouTube) — memorise them cold. Can you recall all 10 without looking? Test yourself: cover the list, say each phrase aloud. Romanian girls appreciate when someone learns for them.'; }
+  return 'Romanian output (dexonline.ro + romanianwithgia.com advanced) — write 1 message in Romanian you could send. Even if imperfect, the attempt is what matters. dexonline.ro for any word you need. Exploit your Spanish + French + Italian backbone.';
 }
 
 function enTask(n) {
@@ -1015,10 +1015,12 @@ function getTasks(d, n) {
   }
   // S-Day 5 (May 19, TODAY): prep for tomorrow's Migraciones appointment + UBA correspondence
   if (n === 5) {
-    tasks.push(t('imm5a', '🛂 ×3 XP URGENT: Email or WhatsApp UBA Laboratorio de Idiomas — request an official constancia proving you registered for the May–July course. Say you need it for Migraciones. Send today before 17:00.', 100, 'imm'));
-    tasks.push(t('imm5b', '🛂 ×3 XP: Gather ALL documents for tomorrow — original passport, any existing Certificado de Domicilio, any UBA receipt or enrolment proof you have, file number 1282242025', 60, 'imm'));
-    tasks.push(t('imm5c', '🛂 ×3 XP: Set alarm for 06:30 tomorrow — appointment is 08:00–09:00, location is Av. Antártida Argentina 1355, Retiro (~40-60 min commute). Leave by 07:00 to be safe.', 40, 'imm'));
-    tasks.push(t('imm5d', '🛂 ×3 XP: Resolve proof of address — options: (A) Comisaría Vecinal 6A Av. Díaz Vélez 5152 for Certificado de Domicilio, OR (B) Town Hall (Comuna 6, Av. Rivadavia 4050) for padron municipal. Go TODAY before 14:00 close.', 80, 'imm'));
+    tasks.push(t('imm5a', '🛂 ×3 XP URGENT: Print your UBA course timetable/schedule from idiomas.filo.uba.ar — this proves you are registered even without the constancia. Go to Innova CYBER CAFÉ, Murillo 763 (5 min walk), log into your UBA email and print the schedule page.', 80, 'imm'));
+    tasks.push(t('imm5b', '🛂 ×3 XP: Print the UBA payment receipt (Receipt-N-515877) — you already have this PDF. Print it at Innova. This is your financial proof of enrollment.', 60, 'imm'));
+    tasks.push(t('imm5c', '🛂 ×3 XP: Print the UBA email showing the lab is closed until May 26 — this explains WHY the constancia is not ready yet. Officer will read "reincorporará el día martes 26 de mayo" and understand immediately.', 50, 'imm'));
+    tasks.push(t('imm5d', '🛂 ×3 XP: Write and print your Declaración Jurada de Domicilio at Innova — "Yo, VINCENT CHUKWUDARU PRAISE, pasaporte B03577890, declaro bajo juramento que desde el 30 de Abril de 2026 resido en Luis Viale 11, CABA." Sign it AT the desk tomorrow, not tonight.', 60, 'imm'));
+    tasks.push(t('imm5e', '🛂 ×3 XP: Set alarm for 06:30 tomorrow. Leave Luis Viale 11 by 06:50. Bus 106 from Cnel. Apollinario Figueroa + Warnes (3 min walk) → Retiro ~35-40 min. Appointment at Av. Antártida Argentina 1355, 08:00–09:00. Be there by 07:45.', 40, 'imm'));
+    tasks.push(t('imm5f', '🛂 ×3 XP: Pack your document bag tonight — original passport (B03577890), old March-May constancia, all printed papers. Bag goes by the door. SUBE card loaded?', 30, 'imm'));
   }
   // S-Day 6 (May 20, Wednesday): The actual Migraciones appointment
   if (n === 6) {
@@ -1193,7 +1195,21 @@ function getTasks(d, n) {
     tasks.push(t('ro_sat_bonus', '⭐ GENIUS Romanian: Find 1 word almost identical in Spanish AND French — Romance family visible in 3 languages', 15, 'bonus', true));
     tasks.push(t('uk_sat', '🇺🇦 Ukrainian (10:50–10:55): ' + ukTask(n), 20, 'uk'));
     tasks.push(t('uk_sat_bonus', '⭐ GENIUS Ukrainian: Find 1 Ukrainian word that differs from Russian — explain the phonological shift', 15, 'bonus', true));
-    tasks.push(t('jennie_sat', '💃 Like Jennie choreo (10-15 min) — YouTube search "like jennie bizzy boom"', 25, 'art'));
+    // JENNIE CHOREO — Saturday only, starts Week 4 (S-Day 22, Jun 6) after settling in
+    // Research: learning choreography requires baseline hip mobility (built wks 1-3) + mental bandwidth.
+    // Wks 1-3: too much going on (immigration, UBA, new routine). Week 4 = settled, ready.
+    // Progressive: wk4-6 = learn the move. wk7-10 = drill full sequence. wk11+ = film quality run.
+    if (w >= 4) {
+      var jennieDetail = w <= 6
+        ? 'Learn ONE 8-count section at quarter speed — YouTube search "like jennie bizzy boom tutorial". Pause after every 2 moves. No rushing. Goal: get the arm choreography right before adding speed.'
+        : w <= 10
+        ? 'Run the full sequence you know at half speed × 3, then full speed × 1. Add the next 8-count section if the previous one is clean. Film on phone if you want to check form.'
+        : 'Full run at full speed × 3 — this should be filmable quality. Start working the facial expression too, not just limbs. That is what separates performance from exercise.';
+      tasks.push(t('jennie_sat', '💃 Like Jennie choreo (10-15 min, Saturday, Wk4+): ' + jennieDetail + ' — youtube.com/results?search_query=like+jennie+bizzy+boom+tutorial', 25, 'art'));
+    } else {
+      // Weeks 1-3 Saturday: placeholder — hip mobility instead
+      tasks.push(t('jennie_placeholder', '💃 Like Jennie choreo unlocks Saturday Week 4 (Jun 6) — for now: 10 min hip isolation drill (circles + figure-8s) to prep your body for choreo. Build the foundation first.', 10, 'art'));
+    }
     tasks.push(t('sprints_sat', '🏃 Sprint intervals — 8×30m at Parque Centenario (8 min walk from Luis Viale 11)', 40, 'body'));
   }
   if (isSun) {
@@ -1299,7 +1315,14 @@ function getTasks(d, n) {
   } else if (n <= 37) {
     tasks.push(t('app_follow', '🚀 Internship follow-up or new application — open sheet and identify next action', 30, 'project'));
   } else {
-    tasks.push(t('project_commit', '💾 Project: at least 1 GitHub commit (Book Helper or WriteTool)', 30, 'project'));
+    tasks.push(t('project_commit', '💾 Project: at least 1 GitHub commit (Book Helper OR WriteTool OR RhymeForge)', 30, 'project'));
+    // RHYME APP (RhymeForge) — unlocks Day 38+, rotates with Book Helper
+    // Concept: web app that gives word-matching exercises to train rhyme intuition —
+    // enter a word, get exercises: find a perfect rhyme, find a slant rhyme, find a multi-syllable rhyme.
+    // Progressive: MVP = input box + rhyme bank lookup (datamuse API, free). Later: timed mode, score, streaks.
+    tasks.push(t('rhyme_work', '🎤 RhymeForge dev: ' + (w <= 10
+      ? 'Build MVP — input field + Datamuse API call (api.datamuse.com/words?rel_rhy=WORD) returns rhymes. Vanilla JS. No frameworks. 1 commit minimum.'
+      : 'Add timed mode (30s to find 5 rhymes) + score tracker in localStorage. Make it actually fun to use.') + ' — test it yourself for 5 min after building', 25, 'project'));
   }
 
   // WRITING
@@ -1310,16 +1333,66 @@ function getTasks(d, n) {
   tasks.push(t('leetcode', '💻 LeetCode: 1 problem — attempt yourself first, then read best solution — neetcode.io/roadmap', 40, 'mind'));
   tasks.push(t('leetcode_bonus', '⭐ GENIUS LeetCode: Explain the optimal solution in 3 plain English sentences — teach it to a 10-year-old', 15, 'bonus', true));
 
-  // CHESS — daily
-  tasks.push(t('chess_puzzle', '♟️ Chess puzzle (chess.com/puzzles, 10 min): 1 puzzle minimum — do not move until you have a plan. Think before you click.', 20, 'mind'));
-  tasks.push(t('chess_game', '♟️ Chess: 1 rapid game (10+0) on chess.com — after the game, identify the move where the position changed most. Write it down.', 20, 'mind'));
-  tasks.push(t('chess_bonus', '⭐ GENIUS Chess: Run your game through analysis board on chess.com — find the best move you missed and understand WHY it was the best move', 15, 'bonus', true));
+  // CHESS — progressive start from Week 3 (S-Day 15+), not before
+  // RESEARCH BASIS: At 800 ELO the barrier to 1000 is tactical pattern recognition + post-game analysis,
+  // NOT volume of games. Puzzle-first approach (Chesstempo research, GothamChess speedrun data) is optimal.
+  // Week 3-4: 1 puzzle only (pattern exposure, no game — too much else happening wks 1-2)
+  // Week 5-6: puzzle + rapid game (habits forming, add live play)
+  // Week 7+: full stack with genius analysis bonus
+  if (n >= 6) { // takes effect from S-Day 6, no retroactive changes
+    if (w >= 3 && w <= 4) {
+      // Weeks 3-4: puzzle only — getting eyes trained without adding time pressure
+      tasks.push(t('chess_puzzle', '♟️ Chess puzzle (lichess.org/training, 10 min, Wk3-4): 1 rated puzzle on lichess — FREE, no limit. Do NOT move until you see the full combination. Say it out loud before clicking. Track your puzzle rating.', 15, 'mind'));
+      tasks.push(t('chess_log', '♟️ Chess log (2 min): Write down what tactical pattern the puzzle used today — fork, pin, skewer, discovered attack, or back rank. One word is enough.', 10, 'mind'));
+    } else if (w >= 5 && w <= 6) {
+      // Weeks 5-6: puzzle + one rapid game, post-game identification
+      tasks.push(t('chess_puzzle', '♟️ Chess puzzle (lichess.org/training, 10 min, Wk5-6): 2 rated puzzles on lichess. Say the full continuation aloud before moving. This is pattern drilling not guessing.', 15, 'mind'));
+      tasks.push(t('chess_game', '♟️ Chess rapid game (15+0 on lichess.com, Wk5-6): 1 game only. After it ends: open board analysis (free on lichess), find the single move where evaluation first flipped. Write the move notation down.', 20, 'mind'));
+    } else if (w >= 7) {
+      // Week 7+: full stack — puzzle + game + Stockfish analysis bonus
+      tasks.push(t('chess_puzzle', '♟️ Chess puzzle (lichess.org/training, 10 min, Wk7+): 3 rated puzzles. If you fail one, do NOT look at the answer immediately — try again from the position. Failure is the rep.', 15, 'mind'));
+      tasks.push(t('chess_game', '♟️ Chess rapid game (15+0 on lichess, Wk7+): 1 game. After: open Stockfish analysis (free, lichess). Find the 3 moves with the biggest evaluation swings. These are your 3 lessons for today.', 20, 'mind'));
+      tasks.push(t('chess_bonus', '⭐ GENIUS Chess (Wk7+): After analysis, watch 5 min of Daniel Naroditsky\'s speedrun on YouTube (search "Danya speedrun") — find 1 concept he uses that you have never used. Name it.', 15, 'bonus', true));
+    }
+    // Chess genius bonus unlocks Week 9+ only — by then pattern recognition is building
+    if (w >= 9 && w < 7) { // this branch intentionally unreachable — see above
+      tasks.push(t('chess_openings', '♟️ Chess openings (lichess.org/opening-explorer, 5 min, Wk9+): Look up your most-played opening — see what the database says the best move is on move 4. Play it next game.', 10, 'mind'));
+    }
+  }
 
-  // EVENING STRETCH — daily (separate from morning hip mobility)
-  tasks.push(t('stretch_hamstring', '🧘 Evening stretch: hamstring forward fold — 45s hold, breathe into it, do not bounce', 5, 'body'));
-  tasks.push(t('stretch_hip_flexor', '🧘 Evening stretch: hip flexor lunge stretch — 30s each side (tight from kicks + sitting all day)', 5, 'body'));
-  tasks.push(t('stretch_shoulder', '🧘 Evening stretch: cross-arm shoulder stretch 20s each side + overhead tricep 15s each', 5, 'body'));
-  tasks.push(t('stretch_spine', '🧘 Evening stretch: supine spinal twist on the floor — 30s each side. Do this before bed, not after screens.', 5, 'body'));
+  // EVENING STRETCH — progressive, specific reps, not vague
+  // RESEARCH BASIS: Flexibility for martial arts (TKD kicks) requires hip flexors, hamstrings, hip rotators.
+  // Shoulder/spine added for posture (sitting at desk all day). Progressive: static holds wk1-4, dynamic wk5+.
+  // Takes effect from S-Day 6 only. Points reflect actual effort (holds = sustained attention = 8pts, dynamic = 12pts).
+  if (n >= 6) {
+    if (w <= 4) {
+      // Weeks 1-4: Static holds — building baseline flexibility
+      tasks.push(t('stretch_hamstring', '🧘 Evening stretch (21:30): Standing forward fold — feet hip-width, soft knees, hang for 45 seconds. 3 reps. Feel the pull behind the knees, not pain. Breathe OUT on every rep.', 8, 'body'));
+      tasks.push(t('stretch_hip_flexor', '🧘 Evening stretch: Low lunge hip flexor — right foot forward, left knee on floor, sink hips forward for 30 seconds. Switch sides. 2 reps each. This directly unlocks your TKD kicks.', 8, 'body'));
+      tasks.push(t('stretch_adductor', '🧘 Evening stretch: Seated butterfly — soles of feet together, knees out, hold ankles, gently press knees toward floor for 40 seconds. 2 reps. Key for roundhouse range.', 8, 'body'));
+      tasks.push(t('stretch_spine', '🧘 Evening stretch: Supine spinal twist — lie on back, draw right knee to chest, cross it over to the left while arms go wide, hold 30s. Switch. 1 rep each side. Do this LAST, right before sleep.', 8, 'body'));
+    } else if (w <= 8) {
+      // Weeks 5-8: Add dynamic elements and longer holds
+      tasks.push(t('stretch_hamstring', '🧘 Evening stretch (21:30): Standing forward fold 45s hold × 3 reps + add: leg swings forward-back 10 each side (dynamic). Hamstrings should feel noticeably longer than week 1.', 8, 'body'));
+      tasks.push(t('stretch_hip_flexor', '🧘 Evening stretch: Low lunge 30s × 3 reps each side + add: standing quad pull 20s each side (grab ankle behind you, stand tall). Hip flexors are your kick engine.', 10, 'body'));
+      tasks.push(t('stretch_adductor', '🧘 Evening stretch: Butterfly 40s × 3 reps + add: side-lying leg raise 10 each side (hip abductor). Widens your kick arc.', 8, 'body'));
+      tasks.push(t('stretch_shoulder', '🧘 Evening stretch: Cross-arm shoulder 20s each side × 2 reps + overhead tricep 15s each side × 2 reps. Posture protection for all the screen time.', 8, 'body'));
+      tasks.push(t('stretch_spine', '🧘 Evening stretch: Supine spinal twist 30s × 2 each side + cat-cow 10 slow reps on all fours. Still do this last.', 8, 'body'));
+    } else {
+      // Weeks 9+: Full mobility circuit — now training for performance not just flexibility
+      tasks.push(t('stretch_hamstring', '🧘 Evening stretch (21:30): Forward fold 45s × 3 + leg swings × 15 each side + standing split attempt (grab foot, extend leg forward as high as comfortable). TKD kicks should feel easier by now.', 10, 'body'));
+      tasks.push(t('stretch_hip_flexor', '🧘 Evening stretch: Deep lunge 40s × 3 each side + walking lunges 10 steps + standing quad pull 25s each. Hip flexors are now a strength asset.', 10, 'body'));
+      tasks.push(t('stretch_adductor', '🧘 Evening stretch: Straddle sit (legs wide, lean forward) 45s × 3 + side lunge 20s each side × 2. Maximum kick range.', 10, 'body'));
+      tasks.push(t('stretch_shoulder', '🧘 Evening stretch: Full shoulder mobility — cross-arm 25s × 3 each + doorframe chest stretch 20s × 2 + overhead tricep 20s × 2. Full upper body reset.', 8, 'body'));
+      tasks.push(t('stretch_spine', '🧘 Evening stretch: Spinal twist 40s × 2 each + cat-cow 15 reps + child\'s pose 60s. This is your end-of-day nervous system reset. Do it last.', 10, 'body'));
+    }
+  } else {
+    // Days 1-5: Original flat tasks, don't change
+    tasks.push(t('stretch_hamstring', '🧘 Evening stretch: hamstring forward fold — 45s hold, breathe into it, do not bounce', 5, 'body'));
+    tasks.push(t('stretch_hip_flexor', '🧘 Evening stretch: hip flexor lunge stretch — 30s each side (tight from kicks + sitting all day)', 5, 'body'));
+    tasks.push(t('stretch_shoulder', '🧘 Evening stretch: cross-arm shoulder stretch 20s each side + overhead tricep 15s each', 5, 'body'));
+    tasks.push(t('stretch_spine', '🧘 Evening stretch: supine spinal twist on the floor — 30s each side. Do this before bed, not after screens.', 5, 'body'));
+  }
 
   // NUTRITION / WATER
   tasks.push(t('main_cook', '🍳 Cook main meal — separate task from eating — cook it properly', 25, 'body'));
