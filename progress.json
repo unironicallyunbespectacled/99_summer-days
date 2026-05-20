@@ -96,7 +96,9 @@
     "water_2": true,
     "pull_1": false,
     "main_cook": true,
-    "main_eat": true
+    "main_eat": true,
+    "jp_main": false,
+    "jp_bonus": false
   },
   "sday_6_score": 37
 }
