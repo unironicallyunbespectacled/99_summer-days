@@ -87,7 +87,10 @@
     "imm6g": true,
     "imm6h": true,
     "shower_am": true,
-    "skincare_am": true
+    "skincare_am": true,
+    "cook_bfast": true,
+    "eat_bfast": true,
+    "water_1": true
   },
-  "sday_6_score": 30
+  "sday_6_score": 33
 }
