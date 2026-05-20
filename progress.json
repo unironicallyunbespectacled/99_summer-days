@@ -72,7 +72,9 @@
     "water_3": true,
     "main_cook": true,
     "main_eat": true,
-    "nuts": true
+    "nuts": true,
+    "screens_off": true,
+    "sleep": true
   },
-  "sday_5_score": 39
+  "sday_5_score": 43
 }
