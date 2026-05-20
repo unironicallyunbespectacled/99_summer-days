@@ -80,7 +80,12 @@
   "sday_6_done": {
     "imm6a": true,
     "imm6b": true,
-    "imm6d": false
+    "imm6d": true,
+    "imm6c": true,
+    "imm6e": true,
+    "imm6f": true,
+    "imm6g": true,
+    "imm6h": true
   },
-  "sday_6_score": 10
+  "sday_6_score": 27
 }
