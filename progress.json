@@ -85,7 +85,8 @@
     "imm6e": true,
     "imm6f": true,
     "imm6g": true,
-    "imm6h": true
+    "imm6h": true,
+    "shower_am": true
   },
-  "sday_6_score": 27
+  "sday_6_score": 29
 }
