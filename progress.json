@@ -94,7 +94,9 @@
     "creatine": true,
     "stretch_adductor": false,
     "water_2": true,
-    "pull_1": false
+    "pull_1": false,
+    "main_cook": true,
+    "main_eat": true
   },
-  "sday_6_score": 34
+  "sday_6_score": 37
 }
