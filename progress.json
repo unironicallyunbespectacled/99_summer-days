@@ -78,7 +78,8 @@
   },
   "sday_5_score": 43,
   "sday_6_done": {
-    "imm6a": true
+    "imm6a": true,
+    "imm6b": true
   },
-  "sday_6_score": 7
+  "sday_6_score": 10
 }
