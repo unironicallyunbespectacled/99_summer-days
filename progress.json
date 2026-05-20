@@ -79,7 +79,8 @@
   "sday_5_score": 43,
   "sday_6_done": {
     "imm6a": true,
-    "imm6b": true
+    "imm6b": true,
+    "imm6d": false
   },
   "sday_6_score": 10
 }
