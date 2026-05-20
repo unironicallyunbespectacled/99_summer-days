@@ -59,7 +59,11 @@
     "imm5d": true,
     "imm5c": true,
     "imm5e": true,
-    "imm5f": true
+    "imm5f": true,
+    "cook_bfast": true,
+    "eat_bfast": true,
+    "water_1": true,
+    "creatine": true
   },
-  "sday_5_score": 26
+  "sday_5_score": 30
 }
