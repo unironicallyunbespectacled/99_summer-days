@@ -106,7 +106,8 @@
     "water_2": true,
     "cook_bfast": true,
     "eat_bfast": true,
-    "water_1": true
+    "water_1": true,
+    "jp_bonus": true
   },
-  "sday_7_score": 7
+  "sday_7_score": 9
 }
