@@ -103,7 +103,10 @@
   "sday_6_score": 40,
   "sday_7_done": {
     "nuts": true,
-    "water_2": true
+    "water_2": true,
+    "cook_bfast": true,
+    "eat_bfast": true,
+    "water_1": true
   },
-  "sday_7_score": 2
+  "sday_7_score": 7
 }
