@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broke Warrior — Nutrient Tracker</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --bg: #0D0D0D;
+    --surface: #161616;
+    --surface2: #1E1E1E;
+    --surface3: #252525;
+    --gold: #C9933A;
+    --gold-light: #E8B85C;
+    --green: #4A9A35;
+    --green-bright: #5DBF44;
+    --red: #D64045;
+    --text: #F0EDE8;
+    --text-dim: #8A8680;
+    --text-dimmer: #555;
+    --border: #2A2A2A;
+    --border-glow: #3A3A3A;
+    --mono: 'Space Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #0D0D0D 0%, #1A1208 50%, #0D0D0D 100%);
+    border-bottom: 1px solid var(--gold);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .logo span { color: var(--text-dim); }
+
+  .header-stats {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .header-stat {
+    text-align: center;
+  }
+
+  .header-stat .val {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .header-stat .lbl {
+    font-size: 9px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── LAYOUT ── */
+  .app {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    min-height: calc(100vh - 73px);
+  }
+
+  /* ── LEFT PANEL ── */
+  .left-panel {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    max-height: calc(100vh - 73px);
+    position: sticky;
+    top: 73px;
+  }
+
+  .panel-header {
+    padding: 20px 24px 12px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+  }
+
+  .panel-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .search-box {
+    width: 100%;
+    background: var(--surface3);
+    border: 1px solid var(--border-glow);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 13px;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-box:focus { border-color: var(--gold); }
+  .search-box::placeholder { color: var(--text-dimmer); }
+
+  /* Category filter */
+  .cat-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 12px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cat-btn {
+    background: var(--surface3);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 10px;
+    font-family: var(--mono);
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .cat-btn:hover, .cat-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: #000;
+  }
+
+  /* Ingredient list */
+  .ingredient-list {
+    padding: 8px 0;
+  }
+
+  .ingredient-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: background 0.1s;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .ingredient-item:hover { background: var(--surface2); }
+  .ingredient-item.selected { background: rgba(201,147,58,0.1); border-left: 2px solid var(--gold); }
+
+  .ing-emoji { font-size: 18px; width: 28px; text-align: center; flex-shrink: 0; }
+
+  .ing-info { flex: 1; min-width: 0; }
+
+  .ing-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ing-meta {
+    font-size: 10px;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    margin-top: 1px;
+  }
+
+  .ing-protein {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── RIGHT PANEL ── */
+  .right-panel {
+    overflow-y: auto;
+    padding: 28px 32px;
+    max-height: calc(100vh - 73px);
+  }
+
+  /* Selected meal */
+  .meal-area {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+
+  .meal-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .clear-btn {
+    background: none;
+    border: 1px solid var(--red);
+    color: var(--red);
+    font-size: 10px;
+    font-family: var(--mono);
+    padding: 3px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .clear-btn:hover { background: var(--red); color: white; }
+
+  .selected-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    min-height: 48px;
+  }
+
+  .empty-state {
+    color: var(--text-dimmer);
+    font-size: 13px;
+    font-style: italic;
+    padding: 8px 0;
+  }
+
+  .selected-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface2);
+    border: 1px solid var(--border-glow);
+    border-radius: 8px;
+    padding: 6px 12px 6px 10px;
+    font-size: 12px;
+  }
+
+  .chip-emoji { font-size: 14px; }
+
+  .chip-name { color: var(--text); }
+
+  .chip-qty {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 4px;
+  }
+
+  .chip-qty input {
+    width: 52px;
+    background: var(--surface3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--gold);
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 2px 6px;
+    text-align: center;
+    outline: none;
+  }
+
+  .chip-qty input:focus { border-color: var(--gold); }
+
+  .chip-unit { font-size: 10px; color: var(--text-dim); font-family: var(--mono); }
+
+  .chip-remove {
+    color: var(--text-dimmer);
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    padding: 0 0 0 4px;
+    transition: color 0.1s;
+  }
+
+  .chip-remove:hover { color: var(--red); }
+
+  /* ── MACRO SUMMARY ── */
+  .macro-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .macro-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 14px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .macro-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--border);
+  }
+
+  .macro-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 3px;
+    background: var(--gold);
+    transition: width 0.5s cubic-bezier(.4,0,.2,1);
+    width: var(--pct, 0%);
+  }
+
+  .macro-val {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .macro-label {
+    font-size: 9px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .macro-target {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text-dimmer);
+  }
+
+  /* ── NUTRIENT GRID ── */
+  .section-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title .count {
+    background: var(--gold);
+    color: #000;
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 10px;
+  }
+
+  .nutrient-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .nutrient-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    transition: border-color 0.2s, transform 0.15s;
+    cursor: default;
+    position: relative;
+  }
+
+  .nutrient-card:hover {
+    border-color: var(--border-glow);
+    transform: translateY(-1px);
+  }
+
+  .nutrient-card.smashed { border-color: rgba(93,191,68,0.3); }
+  .nutrient-card.solid { border-color: rgba(201,147,58,0.3); }
+  .nutrient-card.low { border-color: rgba(214,64,69,0.2); }
+
+  .nut-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .nut-name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .nut-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-left: 6px;
+  }
+
+  .badge-smashed { background: rgba(93,191,68,0.15); color: #5DBF44; }
+  .badge-solid   { background: rgba(201,147,58,0.15); color: var(--gold); }
+  .badge-low     { background: rgba(214,64,69,0.12); color: var(--red); }
+
+  .nut-values {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+
+  .nut-amount {
+    font-family: var(--mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  .nut-pct {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  .nut-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+
+  .nut-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(.4,0,.2,1);
+    max-width: 100%;
+  }
+
+  .fill-smashed { background: linear-gradient(90deg, #3E8A2A, #5DBF44); }
+  .fill-solid   { background: linear-gradient(90deg, #8B5E1A, #C9933A); }
+  .fill-low     { background: linear-gradient(90deg, #8B1E20, #D64045); }
+
+  .nut-remark {
+    font-size: 9.5px;
+    color: var(--text-dim);
+    line-height: 1.4;
+    margin-top: 4px;
+    display: none;
+  }
+
+  .nutrient-card:hover .nut-remark { display: block; }
+
+  /* ── RECIPE QUICK-ADD ── */
+  .recipes-section {
+    margin-bottom: 28px;
+  }
+
+  .recipe-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+
+  .recipe-quick-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .recipe-quick-card:hover {
+    border-color: var(--gold);
+    background: rgba(201,147,58,0.05);
+  }
+
+  .rq-emoji { font-size: 20px; display: block; margin-bottom: 6px; }
+  .rq-name { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 4px; line-height: 1.3; }
+  .rq-macros { font-family: var(--mono); font-size: 9px; color: var(--text-dim); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border-glow); border-radius: 3px; }
+
+  /* Tooltip */
+  .tooltip-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tooltip-overlay.show { display: flex; }
+
+  .tooltip-box {
+    background: var(--surface2);
+    border: 1px solid var(--gold);
+    border-radius: 12px;
+    padding: 28px 32px;
+    max-width: 480px;
+    width: 90%;
+  }
+
+  .tt-name { font-family: var(--mono); font-size: 14px; color: var(--gold); margin-bottom: 4px; }
+  .tt-amount { font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+  .tt-pct { font-family: var(--mono); font-size: 13px; color: var(--text-dim); margin-bottom: 16px; }
+  .tt-remark { font-size: 13px; color: var(--text); line-height: 1.6; }
+  .tt-close { margin-top: 20px; text-align: right; }
+  .tt-close button {
+    background: var(--gold);
+    color: #000;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  @media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .left-panel { max-height: 350px; position: relative; top: 0; }
+    .macro-bar { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">BROKE WARRIOR <span>/ Nutrient Tracker</span></div>
+  <div class="header-stats">
+    <div class="header-stat">
+      <span class="val" id="hdr-kcal">0</span>
+      <span class="lbl">kcal / 1700</span>
+    </div>
+    <div class="header-stat">
+      <span class="val" id="hdr-prot">0g</span>
+      <span class="lbl">protein / 140g</span>
+    </div>
+    <div class="header-stat">
+      <span class="val" id="hdr-score">—</span>
+      <span class="lbl">targets hit</span>
+    </div>
+  </div>
+</header>
+
+<div class="app">
+  <!-- LEFT: INGREDIENT SELECTOR -->
+  <div class="left-panel">
+    <div class="panel-header">
+      <div class="panel-title">Select Ingredients / Recipes</div>
+      <input type="text" class="search-box" id="searchBox" placeholder="Search ingredients..." oninput="filterIngredients()">
+    </div>
+    <div class="cat-filters" id="catFilters"></div>
+    <div class="ingredient-list" id="ingredientList"></div>
+  </div>
+
+  <!-- RIGHT: TRACKER -->
+  <div class="right-panel">
+
+    <!-- MEAL AREA -->
+    <div class="meal-area">
+      <div class="meal-title">
+        Today's Food Log
+        <button class="clear-btn" onclick="clearAll()">Clear All</button>
+      </div>
+      <div class="selected-items" id="selectedItems">
+        <span class="empty-state">Click ingredients on the left to add them →</span>
+      </div>
+    </div>
+
+    <!-- MACRO BAR -->
+    <div class="macro-bar" id="macroBar">
+      <div class="macro-card">
+        <span class="macro-label">Calories</span>
+        <span class="macro-val" id="m-kcal">0</span>
+        <span class="macro-target">/ 1,700 kcal</span>
+      </div>
+      <div class="macro-card">
+        <span class="macro-label">Protein</span>
+        <span class="macro-val" id="m-protein">0g</span>
+        <span class="macro-target">/ 140g</span>
+      </div>
+      <div class="macro-card">
+        <span class="macro-label">Carbs</span>
+        <span class="macro-val" id="m-carbs">0g</span>
+        <span class="macro-target">/ 160g</span>
+      </div>
+      <div class="macro-card">
+        <span class="macro-label">Fat</span>
+        <span class="macro-val" id="m-fat">0g</span>
+        <span class="macro-target">/ 56g</span>
+      </div>
+      <div class="macro-card">
+        <span class="macro-label">Fiber</span>
+        <span class="macro-val" id="m-fiber">0g</span>
+        <span class="macro-target">/ 38g</span>
+      </div>
+    </div>
+
+    <!-- NUTRIENT BREAKDOWN -->
+    <div class="section-title">
+      Full Nutrient Breakdown
+      <span class="count" id="targetsHit">0 / 35 targets hit</span>
+    </div>
+    <div class="nutrient-grid" id="nutrientGrid"></div>
+
+    <!-- QUICK RECIPE ADD -->
+    <div class="recipes-section">
+      <div class="section-title">Quick-Add Recipes</div>
+      <div class="recipe-cards" id="recipeCards"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLTIP -->
+<div class="tooltip-overlay" id="tooltip" onclick="closeTooltip(event)">
+  <div class="tooltip-box">
+    <div class="tt-name" id="tt-name"></div>
+    <div class="tt-amount" id="tt-amount"></div>
+    <div class="tt-pct" id="tt-pct"></div>
+    <div class="tt-remark" id="tt-remark"></div>
+    <div class="tt-close"><button onclick="document.getElementById('tooltip').classList.remove('show')">Close</button></div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════════════
+// DAILY TARGETS
+// ══════════════════════════════════════════════════════════
+const TARGETS = {
+  kcal:     { val: 1700,  unit: "kcal", label: "Calories",       remark: "Your cutting target. Stay within 100kcal of this. Going below 1,500 risks muscle catabolism — your Type II fibres will be consumed for fuel." },
+  protein:  { val: 140,   unit: "g",    label: "Protein",         remark: "1.65g/kg at 85kg. Non-negotiable during a cut. Every gram you miss means slightly less muscle retained. Your sprint power lives in your muscle." },
+  carbs:    { val: 160,   unit: "g",    label: "Carbohydrates",   remark: "Fast-twitch muscle fibres (your 72-78% Type II profile) run EXCLUSIVELY on glycogen from carbs during explosive sprints. NEVER go keto — you will lose sprint speed immediately." },
+  fat:      { val: 56,    unit: "g",    label: "Total Fat",       remark: "Essential for testosterone at age 18, absorption of fat-soluble vitamins (A,D,E,K), and brain structure (60% of brain is fat). Don't go below 40g." },
+  fiber:    { val: 38,    unit: "g",    label: "Dietary Fiber",   remark: "Keeps you full for 4-6 hours preventing overeating. Feeds gut bacteria that produce short-chain fatty acids protecting your colon. Your legume-based diet should hit this easily." },
+  satFat:   { val: 16,    unit: "g",    label: "Saturated Fat",   remark: "Upper limit. Saturated fat from animal products raises LDL cholesterol over time. Your plant-based diet naturally keeps this low." },
+  omega3ala:{ val: 1.6,   unit: "g",    label: "Omega-3 ALA",     remark: "Plant omega-3 from walnuts. Converts to EPA/DHA at only 5-15% efficiency in the body, so this is a partial solution. Sardines give the real deal." },
+  omega3dha:{ val: 0.5,   unit: "g",    label: "Omega-3 EPA+DHA", remark: "CRITICAL for brain development. EPA and DHA are literally built into brain cell membranes. Higher DHA = faster synaptic transmission = faster thinking and learning. Sardines are your ONLY budget source." },
+  sodium:   { val: 1500,  unit: "mg",   label: "Sodium",          remark: "Keep at the lower end because your soy sauce and bouillon already add significant sodium. High sodium over time raises blood pressure and causes water retention that masks your muscle definition." },
+  calcium:  { val: 1300,  unit: "mg",   label: "Calcium",         remark: "MOST CRITICAL mineral at age 18. Peak bone density builds until 25. Whatever density you build NOW is what you have for the next 70 years. Low calcium at your age = osteoporosis at 40. Fortified milk + sardines bones close this." },
+  phosphorus:{ val: 1250, unit: "mg",   label: "Phosphorus",      remark: "Works with calcium to build bones. Also the backbone of ATP — the actual energy currency in every muscle cell. Without enough phosphorus your explosive power is literally limited." },
+  magnesium:{ val: 410,   unit: "mg",   label: "Magnesium",       remark: "Over 300 enzyme reactions. Regulates GABA receptors for sleep quality. Low magnesium = poor sleep = poor growth hormone secretion = slower muscle building. Your soja and lentils cover most of this." },
+  potassium:{ val: 3400,  unit: "mg",   label: "Potassium",       remark: "Counteracts sodium's blood pressure effects. Every single muscle contraction and nerve signal requires potassium. Cabbage and acelga push this to target." },
+  iron:     { val: 11,    unit: "mg",   label: "Iron",            remark: "Carries oxygen in red blood cells to every muscle and organ. Low iron = slower oxygen delivery = slower sprint times = fatigue. Your soja+lentils combination already exceeds this target." },
+  zinc:     { val: 11,    unit: "mg",   label: "Zinc",            remark: "Directly controls testosterone production at 18. Also essential for immune function, wound healing after training, and protein synthesis efficiency. Chicken hearts are the cheapest zinc source near you." },
+  copper:   { val: 0.89,  unit: "mg",   label: "Copper",          remark: "Required for iron to be properly incorporated into hemoglobin. Without enough copper, eating high iron foods still results in anemia. Your lentils and split peas cover this well." },
+  manganese:{ val: 2.2,   unit: "mg",   label: "Manganese",       remark: "Produces superoxide dismutase — your primary cellular antioxidant enzyme. Also required for bone formation. Your spice rack (curry powder especially) provides meaningful manganese." },
+  selenium: { val: 55,    unit: "mcg",  label: "Selenium",        remark: "Protects your thyroid gland from oxidative damage. Your thyroid controls your entire metabolic rate — a damaged thyroid makes fat loss nearly impossible. Eggs and sardines are your main sources." },
+  iodine:   { val: 150,   unit: "mcg",  label: "Iodine",          remark: "Thyroid hormones (T3, T4) require iodine as their core component. Without enough iodine your thyroid produces less hormone, slowing metabolism, reducing cognitive function, and impairing growth. Fortified milk closes this gap." },
+  chromium: { val: 35,    unit: "mcg",  label: "Chromium",        remark: "Enhances insulin sensitivity — helps cells absorb glucose more efficiently. More efficient insulin = better glycogen loading before sprints. Found in oats and lentils." },
+  vitA:     { val: 900,   unit: "mcg",  label: "Vitamin A",       remark: "Vision, immune function, skin cell renewal. UPPER LIMIT from animal sources (preformed retinol) is 3,000mcg — chicken liver at 150g/week is safe. Plant beta-carotene (acelga, paprika) cannot accumulate to toxic levels." },
+  vitC:     { val: 90,    unit: "mg",   label: "Vitamin C",       remark: "YOUR #1 GAP. Humans cannot synthesize Vitamin C — we lost that genetic ability in evolution. Every other mammal still makes their own. Without it, collagen breaks down (wounds don't heal), iron absorption drops by 70%, and immune function collapses. One head of cabbage closes this gap completely." },
+  vitD:     { val: 15,    unit: "mcg",  label: "Vitamin D",       remark: "Controls calcium absorption — without Vitamin D, eating 1,300mg calcium daily still gives you bone problems because almost none absorbs. Also regulates testosterone, immune function, and mood. Indoor Buenos Aires autumn = you're not making enough from sunlight. Sardines are your main dietary source." },
+  vitE:     { val: 15,    unit: "mg",   label: "Vitamin E",       remark: "Primary fat-soluble antioxidant — protects cell membranes from oxidative damage during exercise. Protects omega-3 fatty acids from going rancid inside your body. Your sunflower oil provides substantial amounts." },
+  vitK:     { val: 120,   unit: "mcg",  label: "Vitamin K",       remark: "Blood clotting AND bone mineralization. Works synergistically with Vitamin D and calcium — all three are needed together for bones to properly mineralize. Acelga provides 667%+ DV in one serving." },
+  vitB1:    { val: 1.2,   unit: "mg",   label: "Vitamin B1 (Thiamin)", remark: "Converts carbohydrates into ATP — the direct energy that makes your muscles contract. Without B1, even eating enough carbs results in impaired energy production. Levadura nutricional provides 400%+ of your daily need." },
+  vitB2:    { val: 1.3,   unit: "mg",   label: "Vitamin B2 (Riboflavin)", remark: "Converts B6 and folate into their active forms — meaning without B2, those vitamins don't work properly even if you consume them. Also essential for cell growth and energy. Levadura and milk cover this well." },
+  vitB3:    { val: 16,    unit: "mg",   label: "Vitamin B3 (Niacin)", remark: "Repairs DNA damage from exercise and UV exposure. Regulates the production of sex hormones including testosterone. Involved in cholesterol metabolism. Levadura provides 300%+ DV." },
+  vitB5:    { val: 5,     unit: "mg",   label: "Vitamin B5 (Pantothenic)", remark: "Required to make Coenzyme A — the molecule that starts fat metabolism. Without B5 your body cannot efficiently burn fat for fuel, making cutting harder. Eggs, legumes, and milk all contribute." },
+  vitB6:    { val: 1.3,   unit: "mg",   label: "Vitamin B6 (Pyridoxine)", remark: "Over 100 enzyme reactions — primarily amino acid metabolism. Without B6 protein is less efficiently converted into muscle. Also produces serotonin and dopamine — your mood and motivation neurotransmitters. Levadura provides 400%+." },
+  vitB7:    { val: 30,    unit: "mcg",  label: "Vitamin B7 (Biotin)", remark: "Fat and carbohydrate metabolism. Also maintains hair and nail integrity. Eggs are your primary source. Raw egg whites contain avidin which blocks biotin absorption — always eat cooked eggs." },
+  vitB9:    { val: 400,   unit: "mcg",  label: "Vitamin B9 (Folate)", remark: "DNA synthesis and repair during every cell division. When you train and muscle fibres are damaged, folate enables the cellular repair process. Also makes red blood cells. Lentils, acelga, and soja are rich sources." },
+  vitB12:   { val: 2.4,   unit: "mcg",  label: "Vitamin B12 (Cobalamin)", remark: "Myelin sheath production — the protective coating around every nerve in your body. Without B12, nerve signals misfire and degrade. Found almost exclusively in animal products. FORTIFIED levadura nutricional is your primary non-animal source. Deficiency causes irreversible nerve damage if untreated." },
+  choline:  { val: 550,   unit: "mg",   label: "Choline",         remark: "Produces acetylcholine — the primary neurotransmitter for memory, muscle control, and learning. Your brain requires choline to form new memories and consolidate learning from Minerva coursework. Eggs are by far the best source (390mg from 3 eggs)." },
+};
+
+// ══════════════════════════════════════════════════════════
+// INGREDIENT DATABASE (per 100g unless noted)
+// ══════════════════════════════════════════════════════════
+const INGREDIENTS = [
+  {
+    id: "soja", name: "Soja Texturizada (dry)", emoji: "🫘", cat: "PROTEIN",
+    unit: "g", defaultQty: 60,
+    per100: { kcal:366, protein:51, carbs:33, fat:3.3, fiber:17.5, satFat:0.5,
+      omega3ala:0.3, omega3dha:0, sodium:20, calcium:280, phosphorus:690,
+      magnesium:260, potassium:2480, iron:8.5, zinc:4.2, copper:1.0,
+      manganese:2.4, selenium:37, iodine:5, chromium:10, vitA:2, vitC:0,
+      vitD:0, vitE:0.5, vitK:9, vitB1:0.7, vitB2:0.4, vitB3:8.5,
+      vitB5:0.8, vitB6:0.8, vitB7:4, vitB9:370, vitB12:0, choline:180 }
+  },
+  {
+    id: "lentils", name: "Lentils (dry)", emoji: "🫘", cat: "PROTEIN",
+    unit: "g", defaultQty: 40,
+    per100: { kcal:352, protein:25, carbs:60, fat:1.1, fiber:15.6, satFat:0.2,
+      omega3ala:0.1, omega3dha:0, sodium:6, calcium:56, phosphorus:454,
+      magnesium:122, potassium:955, iron:6.5, zinc:3.3, copper:0.9,
+      manganese:1.4, selenium:8.3, iodine:5, chromium:9, vitA:1, vitC:4.4,
+      vitD:0, vitE:0.5, vitK:5, vitB1:0.9, vitB2:0.2, vitB3:2.6,
+      vitB5:2.1, vitB6:0.5, vitB7:7, vitB9:479, vitB12:0, choline:96 }
+  },
+  {
+    id: "arvejas", name: "Arvejas Partidas (split peas, dry)", emoji: "🟢", cat: "PROTEIN",
+    unit: "g", defaultQty: 30,
+    per100: { kcal:341, protein:24, carbs:60, fat:1.1, fiber:26, satFat:0.2,
+      omega3ala:0.1, omega3dha:0, sodium:15, calcium:55, phosphorus:366,
+      magnesium:115, potassium:981, iron:5.1, zinc:3.0, copper:0.8,
+      manganese:1.2, selenium:8, iodine:4, chromium:8, vitA:2, vitC:1.8,
+      vitD:0, vitE:0.1, vitK:24, vitB1:0.8, vitB2:0.2, vitB3:3.2,
+      vitB5:1.8, vitB6:0.2, vitB7:5, vitB9:274, vitB12:0, choline:65 }
+  },
+  {
+    id: "eggs", name: "Eggs (whole, large)", emoji: "🥚", cat: "PROTEIN",
+    unit: "eggs", defaultQty: 3,
+    per100: { kcal:155, protein:13, carbs:1.1, fat:10.6, fiber:0, satFat:3.3,
+      omega3ala:0.04, omega3dha:0.19, sodium:124, calcium:50, phosphorus:172,
+      magnesium:10, potassium:126, iron:1.8, zinc:1.1, copper:0.07,
+      manganese:0.04, selenium:30, iodine:53, chromium:5, vitA:160, vitC:0,
+      vitD:2.0, vitE:1.1, vitK:0.3, vitB1:0.04, vitB2:0.46, vitB3:0.07,
+      vitB5:1.4, vitB6:0.17, vitB7:25, vitB9:47, vitB12:1.1, choline:294 },
+    gramsPerUnit: 60  // 1 large egg = 60g
+  },
+  {
+    id: "sardines", name: "Sardines in oil (drained)", emoji: "🐟", cat: "PROTEIN",
+    unit: "g", defaultQty: 120,
+    per100: { kcal:208, protein:24.6, carbs:0, fat:11.5, fiber:0, satFat:1.5,
+      omega3ala:0.1, omega3dha:1.5, sodium:505, calcium:382, phosphorus:490,
+      magnesium:39, potassium:397, iron:2.9, zinc:1.7, copper:0.19,
+      manganese:0.11, selenium:52, iodine:67, chromium:5, vitA:54, vitC:0,
+      vitD:10.0, vitE:2.0, vitK:2.6, vitB1:0.1, vitB2:0.23, vitB3:5.2,
+      vitB5:0.7, vitB6:0.2, vitB7:3, vitB9:11, vitB12:8.9, choline:75 }
+  },
+  {
+    id: "chicken_liver", name: "Chicken Liver (cooked)", emoji: "🍖", cat: "PROTEIN",
+    unit: "g", defaultQty: 100,
+    per100: { kcal:172, protein:27.4, carbs:0.9, fat:6.3, fiber:0, satFat:2.0,
+      omega3ala:0.02, omega3dha:0.2, sodium:71, calcium:11, phosphorus:297,
+      magnesium:25, potassium:230, iron:11.1, zinc:3.9, copper:4.0,
+      manganese:0.36, selenium:63, iodine:12, chromium:10, vitA:3296, vitC:15,
+      vitD:1.3, vitE:0.5, vitK:13, vitB1:0.25, vitB2:2.5, vitB3:9.7,
+      vitB5:5.8, vitB6:0.8, vitB7:196, vitB9:590, vitB12:16.6, choline:290 }
+  },
+  {
+    id: "chicken_hearts", name: "Chicken Hearts (cooked)", emoji: "❤️", cat: "PROTEIN",
+    unit: "g", defaultQty: 100,
+    per100: { kcal:185, protein:26.4, carbs:0.1, fat:8.6, fiber:0, satFat:2.6,
+      omega3ala:0.04, omega3dha:0.18, sodium:79, calcium:12, phosphorus:240,
+      magnesium:21, potassium:218, iron:6.2, zinc:7.3, copper:0.4,
+      manganese:0.05, selenium:36, iodine:10, chromium:5, vitA:18, vitC:2,
+      vitD:0.5, vitE:0.2, vitK:0, vitB1:0.15, vitB2:0.8, vitB3:4.2,
+      vitB5:3.1, vitB6:0.2, vitB7:10, vitB9:23, vitB12:7.3, choline:188 }
+  },
+  {
+    id: "hake", name: "Hake / Merluza (raw fillet)", emoji: "🐠", cat: "PROTEIN",
+    unit: "g", defaultQty: 150,
+    per100: { kcal:90, protein:18.5, carbs:0, fat:1.3, fiber:0, satFat:0.2,
+      omega3ala:0.05, omega3dha:0.2, sodium:72, calcium:34, phosphorus:214,
+      magnesium:35, potassium:432, iron:0.9, zinc:0.5, copper:0.03,
+      manganese:0.02, selenium:36, iodine:50, chromium:3, vitA:16, vitC:0,
+      vitD:5.4, vitE:0.4, vitK:0, vitB1:0.08, vitB2:0.12, vitB3:2.7,
+      vitB5:0.3, vitB6:0.4, vitB7:2, vitB9:11, vitB12:1.5, choline:65 }
+  },
+  {
+    id: "levadura", name: "Levadura Nutricional (fortified)", emoji: "🟡", cat: "PROTEIN",
+    unit: "tbsp", defaultQty: 2,
+    per100: { kcal:325, protein:50, carbs:29, fat:5.8, fiber:24, satFat:0.8,
+      omega3ala:0.1, omega3dha:0, sodium:100, calcium:30, phosphorus:810,
+      magnesium:231, potassium:1557, iron:8.0, zinc:9.4, copper:0.5,
+      manganese:0.7, selenium:106, iodine:10, chromium:15, vitA:0, vitC:0,
+      vitD:0, vitE:0.1, vitK:0.5, vitB1:10.4, vitB2:7.1, vitB3:39.8,
+      vitB5:5.5, vitB6:9.7, vitB7:15, vitB9:2350, vitB12:90, choline:60 },
+    gramsPerUnit: 8  // 1 tablespoon = ~8g
+  },
+  {
+    id: "oats_instant", name: "Instant Oats (avena instantánea)", emoji: "🥣", cat: "GRAINS",
+    unit: "g", defaultQty: 60,
+    per100: { kcal:371, protein:13.2, carbs:67.7, fat:7.0, fiber:10.1, satFat:1.3,
+      omega3ala:0.11, omega3dha:0, sodium:49, calcium:52, phosphorus:410,
+      magnesium:138, potassium:429, iron:4.7, zinc:4.0, copper:0.4,
+      manganese:4.9, selenium:28, iodine:8, chromium:20, vitA:0, vitC:0,
+      vitD:0, vitE:0.7, vitK:2, vitB1:0.6, vitB2:0.14, vitB3:0.96,
+      vitB5:1.35, vitB6:0.1, vitB7:24, vitB9:32, vitB12:0, choline:40 }
+  },
+  {
+    id: "oat_bran", name: "Oat Bran (salvado de avena)", emoji: "🌾", cat: "GRAINS",
+    unit: "g", defaultQty: 50,
+    per100: { kcal:246, protein:17.3, carbs:66.2, fat:7.0, fiber:15.4, satFat:1.3,
+      omega3ala:0.11, omega3dha:0, sodium:4, calcium:58, phosphorus:734,
+      magnesium:235, potassium:566, iron:5.4, zinc:3.1, copper:0.3,
+      manganese:5.6, selenium:45, iodine:6, chromium:22, vitA:0, vitC:0,
+      vitD:0, vitE:1.7, vitK:3, vitB1:1.17, vitB2:0.22, vitB3:4.0,
+      vitB5:2.0, vitB6:0.21, vitB7:18, vitB9:52, vitB12:0, choline:32 }
+  },
+  {
+    id: "rice_white", name: "White Rice (dry)", emoji: "🍚", cat: "GRAINS",
+    unit: "g", defaultQty: 75,
+    per100: { kcal:360, protein:6.7, carbs:79.3, fat:0.6, fiber:2.8, satFat:0.2,
+      omega3ala:0.02, omega3dha:0, sodium:5, calcium:28, phosphorus:115,
+      magnesium:35, potassium:115, iron:4.3, zinc:1.1, copper:0.2,
+      manganese:1.5, selenium:15, iodine:2, chromium:5, vitA:0, vitC:0,
+      vitD:0, vitE:0.1, vitK:0.4, vitB1:0.58, vitB2:0.05, vitB3:5.2,
+      vitB5:1.6, vitB6:0.16, vitB7:6, vitB9:8, vitB12:0, choline:16 }
+  },
+  {
+    id: "cabbage", name: "Cabbage / Repollo (raw)", emoji: "🥬", cat: "VEGETABLES",
+    unit: "g", defaultQty: 150,
+    per100: { kcal:25, protein:1.3, carbs:5.8, fat:0.1, fiber:2.5, satFat:0,
+      omega3ala:0.02, omega3dha:0, sodium:18, calcium:40, phosphorus:26,
+      magnesium:12, potassium:170, iron:0.5, zinc:0.2, copper:0.02,
+      manganese:0.16, selenium:0.3, iodine:1, chromium:2, vitA:5, vitC:36.6,
+      vitD:0, vitE:0.15, vitK:76, vitB1:0.06, vitB2:0.04, vitB3:0.23,
+      vitB5:0.21, vitB6:0.12, vitB7:1, vitB9:53, vitB12:0, choline:10 }
+  },
+  {
+    id: "acelga", name: "Acelga / Swiss Chard (raw)", emoji: "🌿", cat: "VEGETABLES",
+    unit: "g", defaultQty: 150,
+    per100: { kcal:19, protein:1.8, carbs:3.7, fat:0.2, fiber:1.6, satFat:0,
+      omega3ala:0.09, omega3dha:0, sodium:213, calcium:51, phosphorus:46,
+      magnesium:81, potassium:549, iron:1.8, zinc:0.4, copper:0.18,
+      manganese:0.37, selenium:0.9, iodine:5, chromium:1, vitA:306, vitC:30,
+      vitD:0, vitE:1.9, vitK:830, vitB1:0.04, vitB2:0.09, vitB3:0.4,
+      vitB5:0.17, vitB6:0.1, vitB7:2, vitB9:14, vitB12:0, choline:18 }
+  },
+  {
+    id: "milk_liquid", name: "Whole Liquid Milk", emoji: "🥛", cat: "DAIRY",
+    unit: "ml", defaultQty: 250,
+    per100: { kcal:61, protein:3.2, carbs:4.8, fat:3.3, fiber:0, satFat:2.1,
+      omega3ala:0.04, omega3dha:0.06, sodium:44, calcium:113, phosphorus:84,
+      magnesium:11, potassium:150, iron:0.05, zinc:0.4, copper:0.01,
+      manganese:0.003, selenium:3.7, iodine:18, chromium:1, vitA:46, vitC:0.9,
+      vitD:0.8, vitE:0.07, vitK:0.3, vitB1:0.04, vitB2:0.18, vitB3:0.09,
+      vitB5:0.35, vitB6:0.04, vitB7:3, vitB9:5, vitB12:0.45, choline:16 }
+  },
+  {
+    id: "milk_powder", name: "Skimmed Milk Powder", emoji: "🫙", cat: "DAIRY",
+    unit: "tbsp", defaultQty: 2,
+    per100: { kcal:357, protein:35, carbs:54.5, fat:0.8, fiber:0, satFat:0.5,
+      omega3ala:0, omega3dha:0, sodium:540, calcium:1280, phosphorus:1030,
+      magnesium:110, potassium:1700, iron:0.5, zinc:4.1, copper:0.05,
+      manganese:0.03, selenium:30, iodine:430, chromium:8, vitA:270, vitC:8,
+      vitD:0, vitE:0.1, vitK:1, vitB1:0.35, vitB2:1.25, vitB3:0.8,
+      vitB5:3.5, vitB6:0.4, vitB7:15, vitB9:50, vitB12:3.8, choline:160 },
+    gramsPerUnit: 8
+  },
+  {
+    id: "peanuts", name: "Peanuts (maní)", emoji: "🥜", cat: "NUTS",
+    unit: "g", defaultQty: 25,
+    per100: { kcal:567, protein:25.8, carbs:16.1, fat:49.2, fiber:8.5, satFat:6.8,
+      omega3ala:0.003, omega3dha:0, sodium:18, calcium:92, phosphorus:376,
+      magnesium:168, potassium:705, iron:4.6, zinc:3.3, copper:1.1,
+      manganese:1.93, selenium:7.2, iodine:5, chromium:12, vitA:0, vitC:0,
+      vitD:0, vitE:8.3, vitK:0, vitB1:0.64, vitB2:0.14, vitB3:12.1,
+      vitB5:1.77, vitB6:0.35, vitB7:34, vitB9:240, vitB12:0, choline:52 }
+  },
+  {
+    id: "walnuts", name: "Walnuts (nueces)", emoji: "🪨", cat: "NUTS",
+    unit: "g", defaultQty: 15,
+    per100: { kcal:654, protein:15.2, carbs:13.7, fat:65.2, fiber:6.7, satFat:6.1,
+      omega3ala:9.1, omega3dha:0, sodium:2, calcium:98, phosphorus:346,
+      magnesium:158, potassium:441, iron:2.9, zinc:3.1, copper:1.6,
+      manganese:3.4, selenium:4.9, iodine:2, chromium:8, vitA:1, vitC:1.3,
+      vitD:0, vitE:0.7, vitK:2.7, vitB1:0.34, vitB2:0.15, vitB3:1.1,
+      vitB5:0.57, vitB6:0.54, vitB7:6, vitB9:98, vitB12:0, choline:39 }
+  },
+  {
+    id: "raisins", name: "Raisins (pasas)", emoji: "🍇", cat: "NUTS",
+    unit: "g", defaultQty: 15,
+    per100: { kcal:299, protein:3.1, carbs:79.2, fat:0.5, fiber:3.7, satFat:0.1,
+      omega3ala:0.01, omega3dha:0, sodium:11, calcium:50, phosphorus:101,
+      magnesium:32, potassium:749, iron:1.9, zinc:0.2, copper:0.3,
+      manganese:0.3, selenium:0.6, iodine:5, chromium:3, vitA:0, vitC:2.3,
+      vitD:0, vitE:0.1, vitK:3.5, vitB1:0.1, vitB2:0.12, vitB3:0.77,
+      vitB5:0.1, vitB6:0.17, vitB7:2, vitB9:5, vitB12:0, choline:11 }
+  },
+  {
+    id: "peanut_butter", name: "Peanut Butter", emoji: "🫙", cat: "NUTS",
+    unit: "tbsp", defaultQty: 1,
+    per100: { kcal:588, protein:25, carbs:20, fat:50, fiber:5, satFat:10,
+      omega3ala:0.003, omega3dha:0, sodium:429, calcium:43, phosphorus:338,
+      magnesium:154, potassium:558, iron:1.9, zinc:2.5, copper:0.44,
+      manganese:1.9, selenium:4.1, iodine:4, chromium:10, vitA:0, vitC:0,
+      vitD:0, vitE:6.3, vitK:0.3, vitB1:0.15, vitB2:0.11, vitB3:13.7,
+      vitB5:1.2, vitB6:0.2, vitB7:38, vitB9:87, vitB12:0, choline:52 },
+    gramsPerUnit: 16
+  },
+  {
+    id: "oil_blend", name: "Oil Blend (olive/sunflower)", emoji: "🫙", cat: "FATS",
+    unit: "tbsp", defaultQty: 1.5,
+    per100: { kcal:884, protein:0, carbs:0, fat:100, fiber:0, satFat:14,
+      omega3ala:0.7, omega3dha:0, sodium:0, calcium:1, phosphorus:2,
+      magnesium:0, potassium:1, iron:0.1, zinc:0, copper:0,
+      manganese:0, selenium:0, iodine:0, chromium:0, vitA:0, vitC:0,
+      vitD:0, vitE:9.1, vitK:60, vitB1:0, vitB2:0, vitB3:0,
+      vitB5:0, vitB6:0, vitB7:0, vitB9:0, vitB12:0, choline:0 },
+    gramsPerUnit: 14
+  },
+  {
+    id: "soy_sauce", name: "Soy Sauce (Menoyo)", emoji: "🍶", cat: "CONDIMENTS",
+    unit: "tbsp", defaultQty: 1,
+    per100: { kcal:60, protein:10, carbs:5.6, fat:0.1, fiber:0.8, satFat:0,
+      omega3ala:0, omega3dha:0, sodium:5493, calcium:19, phosphorus:130,
+      magnesium:40, potassium:435, iron:2.4, zinc:0.5, copper:0.08,
+      manganese:0.5, selenium:1, iodine:2, chromium:2, vitA:0, vitC:0,
+      vitD:0, vitE:0, vitK:0, vitB1:0.04, vitB2:0.12, vitB3:0.5,
+      vitB5:0.2, vitB6:0.2, vitB7:0, vitB9:20, vitB12:0, choline:5 },
+    gramsPerUnit: 15
+  },
+  {
+    id: "tomato_sauce", name: "Tomato Sauce", emoji: "🍅", cat: "CONDIMENTS",
+    unit: "tbsp", defaultQty: 3,
+    per100: { kcal:29, protein:1.5, carbs:6.0, fat:0.3, fiber:1.5, satFat:0.04,
+      omega3ala:0.01, omega3dha:0, sodium:380, calcium:18, phosphorus:32,
+      magnesium:16, potassium:380, iron:0.7, zinc:0.3, copper:0.12,
+      manganese:0.15, selenium:0.5, iodine:2, chromium:2, vitA:28, vitC:14,
+      vitD:0, vitE:0.4, vitK:5, vitB1:0.04, vitB2:0.04, vitB3:1.2,
+      vitB5:0.22, vitB6:0.1, vitB7:1, vitB9:16, vitB12:0, choline:10 },
+    gramsPerUnit: 15
+  },
+  {
+    id: "honey", name: "Honey", emoji: "🍯", cat: "CONDIMENTS",
+    unit: "tsp", defaultQty: 1,
+    per100: { kcal:304, protein:0.3, carbs:82.4, fat:0, fiber:0.2, satFat:0,
+      omega3ala:0, omega3dha:0, sodium:4, calcium:6, phosphorus:4,
+      magnesium:2, potassium:52, iron:0.4, zinc:0.2, copper:0.04,
+      manganese:0.08, selenium:0.8, iodine:1, chromium:0, vitA:0, vitC:0.5,
+      vitD:0, vitE:0, vitK:0, vitB1:0, vitB2:0.04, vitB3:0.1,
+      vitB5:0.07, vitB6:0.02, vitB7:0, vitB9:2, vitB12:0, choline:2 },
+    gramsPerUnit: 7
+  },
+  {
+    id: "creatine", name: "Creatine Monohydrate", emoji: "💊", cat: "SUPPLEMENTS",
+    unit: "g", defaultQty: 5,
+    per100: { kcal:0, protein:0, carbs:0, fat:0, fiber:0, satFat:0,
+      omega3ala:0, omega3dha:0, sodium:0, calcium:0, phosphorus:0,
+      magnesium:0, potassium:0, iron:0, zinc:0, copper:0,
+      manganese:0, selenium:0, iodine:0, chromium:0, vitA:0, vitC:0,
+      vitD:0, vitE:0, vitK:0, vitB1:0, vitB2:0, vitB3:0,
+      vitB5:0, vitB6:0, vitB7:0, vitB9:0, vitB12:0, choline:0,
+      // Special: creatine increases IGF-1 by 30% in studies
+      creatineNote: "5g creatine daily: Shown to increase IGF-1 expression by 30% (Willoughby & Rosene, 2001). IGF-1 = primary mediator of muscle growth after training. Also provides neuroprotection and rapid ATP regeneration for sprint recovery. Take post-workout." }
+  },
+];
+
+// ══════════════════════════════════════════════════════════
+// QUICK RECIPES
+// ══════════════════════════════════════════════════════════
+const QUICK_RECIPES = [
+  {
+    name: "Warrior Bowl (Main)", emoji: "⚔️",
+    macros: "760kcal · 82g protein",
+    ingredients: [
+      { id: "soja", qty: 60 },
+      { id: "lentils", qty: 40 },
+      { id: "arvejas", qty: 25 },
+      { id: "oil_blend", qty: 1.5 },
+      { id: "soy_sauce", qty: 1 },
+      { id: "levadura", qty: 2 },
+    ]
+  },
+  {
+    name: "Sardine Power Bowl", emoji: "🐟",
+    macros: "680kcal · 78g protein",
+    ingredients: [
+      { id: "sardines", qty: 120 },
+      { id: "lentils", qty: 50 },
+      { id: "oil_blend", qty: 1 },
+      { id: "soy_sauce", qty: 1 },
+      { id: "levadura", qty: 2 },
+    ]
+  },
+  {
+    name: "Savory Oat Breakfast", emoji: "🥣",
+    macros: "490kcal · 32g protein",
+    ingredients: [
+      { id: "oats_instant", qty: 60 },
+      { id: "eggs", qty: 2 },
+      { id: "oil_blend", qty: 0.5 },
+      { id: "levadura", qty: 2 },
+    ]
+  },
+  {
+    name: "Sweet Oats + Nuts", emoji: "🌰",
+    macros: "560kcal · 22g protein",
+    ingredients: [
+      { id: "oats_instant", qty: 60 },
+      { id: "milk_liquid", qty: 200 },
+      { id: "milk_powder", qty: 2 },
+      { id: "peanuts", qty: 15 },
+      { id: "walnuts", qty: 10 },
+      { id: "raisins", qty: 10 },
+    ]
+  },
+  {
+    name: "3 Eggs Evening Seal", emoji: "🌙",
+    macros: "290kcal · 27g protein",
+    ingredients: [
+      { id: "eggs", qty: 3 },
+      { id: "levadura", qty: 2 },
+    ]
+  },
+  {
+    name: "Fortified Milk Glass", emoji: "🥛",
+    macros: "210kcal · 13.6g protein",
+    ingredients: [
+      { id: "milk_liquid", qty: 250 },
+      { id: "milk_powder", qty: 2 },
+    ]
+  },
+  {
+    name: "Full Warrior Day", emoji: "🏆",
+    macros: "1680kcal · 145g protein",
+    ingredients: [
+      { id: "oats_instant", qty: 60 },
+      { id: "eggs", qty: 6 },
+      { id: "soja", qty: 60 },
+      { id: "sardines", qty: 120 },
+      { id: "lentils", qty: 50 },
+      { id: "milk_liquid", qty: 250 },
+      { id: "milk_powder", qty: 2 },
+      { id: "levadura", qty: 6 },
+      { id: "peanuts", qty: 15 },
+      { id: "walnuts", qty: 10 },
+      { id: "creatine", qty: 5 },
+    ]
+  },
+  {
+    name: "Nut Mix Snack", emoji: "🥜",
+    macros: "380kcal · 12g protein",
+    ingredients: [
+      { id: "peanuts", qty: 20 },
+      { id: "walnuts", qty: 15 },
+      { id: "raisins", qty: 10 },
+    ]
+  },
+];
+
+// ══════════════════════════════════════════════════════════
+// STATE & LOGIC
+// ══════════════════════════════════════════════════════════
+let selectedItems = {}; // id -> qty
+let activeCategory = "ALL";
+
+function getGrams(ing, qty) {
+  if (ing.unit === "g" || ing.unit === "ml") return qty;
+  if (ing.gramsPerUnit) return qty * ing.gramsPerUnit;
+  return qty * 15; // fallback tbsp
+}
+
+function calcTotals() {
+  const totals = {};
+  Object.keys(TARGETS).forEach(k => totals[k] = 0);
+  totals.kcal = 0; totals.protein = 0; totals.carbs = 0;
+  totals.fat = 0; totals.fiber = 0; totals.satFat = 0;
+
+  Object.entries(selectedItems).forEach(([id, qty]) => {
+    const ing = INGREDIENTS.find(i => i.id === id);
+    if (!ing) return;
+    const grams = getGrams(ing, qty);
+    const factor = grams / 100;
+    Object.entries(ing.per100).forEach(([nutrient, val]) => {
+      if (typeof val === 'number') {
+        if (totals[nutrient] !== undefined) {
+          totals[nutrient] += val * factor;
+        } else {
+          totals[nutrient] = (totals[nutrient] || 0) + val * factor;
+        }
+      }
+    });
+  });
+  return totals;
+}
+
+function updateUI() {
+  const totals = calcTotals();
+
+  // Header
+  document.getElementById('hdr-kcal').textContent = Math.round(totals.kcal);
+  document.getElementById('hdr-prot').textContent = Math.round(totals.protein) + 'g';
+
+  // Macro cards
+  const macroKeys = [
+    { id: 'm-kcal', key: 'kcal', target: 1700, suffix: '' },
+    { id: 'm-protein', key: 'protein', target: 140, suffix: 'g' },
+    { id: 'm-carbs', key: 'carbs', target: 160, suffix: 'g' },
+    { id: 'm-fat', key: 'fat', target: 56, suffix: 'g' },
+    { id: 'm-fiber', key: 'fiber', target: 38, suffix: 'g' },
+  ];
+
+  macroKeys.forEach(({ id, key, target, suffix }) => {
+    const val = Math.round(totals[key] * 10) / 10;
+    document.getElementById(id).textContent = val + suffix;
+    const card = document.getElementById(id).closest('.macro-card');
+    const pct = Math.min(100, (val / target * 100));
+    card.style.setProperty('--pct', pct + '%');
+  });
+
+  // Nutrient grid
+  const grid = document.getElementById('nutrientGrid');
+  grid.innerHTML = '';
+  let targetsHit = 0;
+  let totalTargets = 0;
+
+  Object.entries(TARGETS).forEach(([key, target]) => {
+    const val = totals[key] || 0;
+    const pct = (val / target.val) * 100;
+    totalTargets++;
+    if (pct >= 100) targetsHit++;
+
+    const status = pct >= 100 ? 'smashed' : pct >= 50 ? 'solid' : 'low';
+    const badgeClass = `badge-${status}`;
+    const fillClass = `fill-${status}`;
+    const badge = pct >= 100 ? '✓ HIT' : pct >= 50 ? '~ SOLID' : '! LOW';
+
+    const displayVal = val >= 1 ? (Math.round(val * 10) / 10) : (Math.round(val * 100) / 100);
+
+    const card = document.createElement('div');
+    card.className = `nutrient-card ${status}`;
+    card.onclick = () => showTooltip(key, displayVal, target, pct);
+
+    card.innerHTML = `
+      <div class="nut-header">
+        <div class="nut-name">${target.label}</div>
+        <span class="nut-badge ${badgeClass}">${badge}</span>
+      </div>
+      <div class="nut-values">
+        <span class="nut-amount">${displayVal}${target.unit}</span>
+        <span class="nut-pct">${Math.round(pct)}% DV</span>
+      </div>
+      <div class="nut-bar">
+        <div class="nut-bar-fill ${fillClass}" style="width:${Math.min(100,pct)}%"></div>
+      </div>
+      <div class="nut-remark">${target.remark.substring(0, 120)}...</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  document.getElementById('targetsHit').textContent = `${targetsHit} / ${totalTargets} targets hit`;
+  document.getElementById('hdr-score').textContent = `${targetsHit}/${totalTargets}`;
+
+  // Selected chips
+  renderSelectedItems();
+}
+
+function showTooltip(key, val, target, pct) {
+  const status = pct >= 100 ? 'smashed' : pct >= 50 ? 'solid' : 'low';
+  const emoji = pct >= 100 ? '✅' : pct >= 50 ? '🟡' : '⚠️';
+
+  document.getElementById('tt-name').textContent = target.label;
+  document.getElementById('tt-amount').textContent = `${val} ${target.unit}`;
+  document.getElementById('tt-pct').textContent = `${Math.round(pct)}% of daily target (${target.val}${target.unit}) ${emoji}`;
+  document.getElementById('tt-remark').textContent = target.remark;
+  document.getElementById('tooltip').classList.add('show');
+}
+
+function closeTooltip(e) {
+  if (e.target === document.getElementById('tooltip')) {
+    document.getElementById('tooltip').classList.remove('show');
+  }
+}
+
+function renderSelectedItems() {
+  const container = document.getElementById('selectedItems');
+  if (Object.keys(selectedItems).length === 0) {
+    container.innerHTML = '<span class="empty-state">Click ingredients on the left to add them →</span>';
+    return;
+  }
+
+  container.innerHTML = '';
+  Object.entries(selectedItems).forEach(([id, qty]) => {
+    const ing = INGREDIENTS.find(i => i.id === id);
+    if (!ing) return;
+
+    const chip = document.createElement('div');
+    chip.className = 'selected-chip';
+    chip.innerHTML = `
+      <span class="chip-emoji">${ing.emoji}</span>
+      <span class="chip-name">${ing.name.split(' (')[0]}</span>
+      <div class="chip-qty">
+        <input type="number" value="${qty}" min="0" step="${ing.unit === 'g' || ing.unit === 'ml' ? 10 : 0.5}"
+          onchange="updateQty('${id}', parseFloat(this.value))" onclick="event.stopPropagation()">
+        <span class="chip-unit">${ing.unit}</span>
+      </div>
+      <span class="chip-remove" onclick="removeItem('${id}')">×</span>
+    `;
+    container.appendChild(chip);
+  });
+}
+
+function toggleItem(id) {
+  if (selectedItems[id] !== undefined) {
+    removeItem(id);
+  } else {
+    const ing = INGREDIENTS.find(i => i.id === id);
+    selectedItems[id] = ing.defaultQty;
+    document.querySelector(`[data-id="${id}"]`).classList.add('selected');
+    updateUI();
+  }
+}
+
+function updateQty(id, qty) {
+  if (qty <= 0) {
+    removeItem(id);
+    return;
+  }
+  selectedItems[id] = qty;
+  updateUI();
+}
+
+function removeItem(id) {
+  delete selectedItems[id];
+  const el = document.querySelector(`[data-id="${id}"]`);
+  if (el) el.classList.remove('selected');
+  updateUI();
+}
+
+function clearAll() {
+  selectedItems = {};
+  document.querySelectorAll('.ingredient-item.selected').forEach(el => el.classList.remove('selected'));
+  updateUI();
+}
+
+function addRecipe(recipe) {
+  recipe.ingredients.forEach(({ id, qty }) => {
+    if (selectedItems[id]) {
+      selectedItems[id] += qty;
+    } else {
+      selectedItems[id] = qty;
+      const el = document.querySelector(`[data-id="${id}"]`);
+      if (el) el.classList.add('selected');
+    }
+  });
+  updateUI();
+}
+
+// ── RENDER INGREDIENTS ──────────────────────────────────────────────────────
+function filterIngredients() {
+  const search = document.getElementById('searchBox').value.toLowerCase();
+  const list = document.getElementById('ingredientList');
+  list.innerHTML = '';
+
+  INGREDIENTS.filter(ing => {
+    const matchSearch = ing.name.toLowerCase().includes(search);
+    const matchCat = activeCategory === 'ALL' || ing.cat === activeCategory;
+    return matchSearch && matchCat;
+  }).forEach(ing => {
+    const isSelected = selectedItems[ing.id] !== undefined;
+    const item = document.createElement('div');
+    item.className = `ingredient-item${isSelected ? ' selected' : ''}`;
+    item.dataset.id = ing.id;
+    item.onclick = () => toggleItem(ing.id);
+    item.innerHTML = `
+      <span class="ing-emoji">${ing.emoji}</span>
+      <div class="ing-info">
+        <div class="ing-name">${ing.name}</div>
+        <div class="ing-meta">${ing.defaultQty}${ing.unit} default · ${ing.cat}</div>
+      </div>
+      <span class="ing-protein">${ing.per100.protein}g/100g</span>
+    `;
+    list.appendChild(item);
+  });
+}
+
+function setCategory(cat) {
+  activeCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`[data-cat="${cat}"]`).classList.add('active');
+  filterIngredients();
+}
+
+// ── RENDER CATEGORY FILTERS ──────────────────────────────────────────────────
+function renderFilters() {
+  const cats = ['ALL', ...new Set(INGREDIENTS.map(i => i.cat))];
+  const container = document.getElementById('catFilters');
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = `cat-btn${cat === 'ALL' ? ' active' : ''}`;
+    btn.textContent = cat;
+    btn.dataset.cat = cat;
+    btn.onclick = () => setCategory(cat);
+    container.appendChild(btn);
+  });
+}
+
+// ── RENDER RECIPE CARDS ──────────────────────────────────────────────────────
+function renderRecipeCards() {
+  const container = document.getElementById('recipeCards');
+  QUICK_RECIPES.forEach(recipe => {
+    const card = document.createElement('div');
+    card.className = 'recipe-quick-card';
+    card.onclick = () => addRecipe(recipe);
+    card.innerHTML = `
+      <span class="rq-emoji">${recipe.emoji}</span>
+      <div class="rq-name">${recipe.name}</div>
+      <div class="rq-macros">${recipe.macros}</div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+renderFilters();
+filterIngredients();
+renderRecipeCards();
+updateUI();
+</script>
+</body>
+</html>
