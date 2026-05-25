@@ -119,7 +119,9 @@
     "cook_bfast": true,
     "eat_bfast": true,
     "water_1": true,
-    "creatine": true
+    "creatine": true,
+    "sleep": true,
+    "screens_off": true
   },
-  "sday_10_score": 13
+  "sday_10_score": 19
 }
