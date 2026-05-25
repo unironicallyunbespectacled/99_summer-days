@@ -129,7 +129,8 @@
     "shower_pm": true,
     "skincare_pm": true,
     "main_eat": true,
-    "main_cook": true
+    "main_cook": true,
+    "call_home": true
   },
-  "sday_10_score": 28
+  "sday_10_score": 30
 }
