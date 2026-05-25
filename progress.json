@@ -127,7 +127,9 @@
     "nuts": true,
     "whatsapp": true,
     "shower_pm": true,
-    "skincare_pm": true
+    "skincare_pm": true,
+    "main_eat": true,
+    "main_cook": true
   },
-  "sday_10_score": 25
+  "sday_10_score": 28
 }
