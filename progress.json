@@ -124,7 +124,10 @@
     "screens_off": true,
     "water_2": true,
     "water_3": true,
-    "nuts": true
+    "nuts": true,
+    "whatsapp": true,
+    "shower_pm": true,
+    "skincare_pm": true
   },
-  "sday_10_score": 21
+  "sday_10_score": 25
 }
