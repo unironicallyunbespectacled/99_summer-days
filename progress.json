@@ -48,7 +48,7 @@
     "zh_main": false,
     "typing_main": true
   },
-  "sday_4_score": 17,
+  "sday_4_score": 19,
   "sday_5_done": {
     "shower_am": true,
     "skincare_am": true,
@@ -76,7 +76,7 @@
     "screens_off": true,
     "sleep": true
   },
-  "sday_5_score": 43,
+  "sday_5_score": 6,
   "sday_6_done": {
     "imm6a": true,
     "imm6b": true,
@@ -110,5 +110,10 @@
     "jp_bonus": true,
     "whatsapp": true
   },
-  "sday_7_score": 9
+  "sday_7_score": 9,
+  "sday_10_done": {
+    "church_mass": true,
+    "church_leave": true
+  },
+  "sday_10_score": 4
 }
