@@ -121,7 +121,10 @@
     "water_1": true,
     "creatine": true,
     "sleep": true,
-    "screens_off": true
+    "screens_off": true,
+    "water_2": true,
+    "water_3": true,
+    "nuts": true
   },
-  "sday_10_score": 19
+  "sday_10_score": 21
 }
