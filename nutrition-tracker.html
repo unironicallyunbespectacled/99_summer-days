@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Broke Warrior — Nutrient Tracker v4 (Master CABA Database)</title>
+<title>Broke Warrior — Nutrient Tracker v5 (The Masterpiece)</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 :root {
@@ -16,16 +16,16 @@
 body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; overflow-x: hidden; }
 
 /* ── HEADER ── */
-header { background: linear-gradient(135deg, #0D0D0D, #1A1208 50%, #0D0D0D); border-bottom: 1px solid var(--gold); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-.logo { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; }
+header { background: linear-gradient(135deg, #0D0D0D, #1A1208 50%, #0D0D0D); border-bottom: 1px solid var(--gold); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; gap: 12px; }
+.logo { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; line-height: 1.4; }
 .logo span { color: var(--dim); }
 .db-badge { background: var(--gold); color: #000; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
-.hstats { display: flex; gap: 18px; }
+.hstats { display: flex; gap: 18px; flex-wrap: wrap; }
 .hstat .v { font-family: var(--mono); font-size: 16px; font-weight: 700; color: var(--gold); display: block; }
 .hstat .l { font-size: 8px; color: var(--dim); text-transform: uppercase; letter-spacing: 1px; }
 
 /* ── LAYOUT ── */
-.app { display: grid; grid-template-columns: 360px 1fr; min-height: calc(100vh - 57px); }
+.app { display: grid; grid-template-columns: 380px 1fr; min-height: calc(100vh - 57px); }
 
 /* ── LEFT PANEL (DATABASE) ── */
 .left { background: var(--surface); border-right: 1px solid var(--border); overflow-y: auto; max-height: calc(100vh - 57px); position: sticky; top: 57px; }
@@ -36,28 +36,34 @@ header { background: linear-gradient(135deg, #0D0D0D, #1A1208 50%, #0D0D0D); bor
 .cats { display: flex; flex-wrap: wrap; gap: 4px; padding: 8px 14px; border-bottom: 1px solid var(--border); }
 .cb { background: var(--surface3); border: 1px solid var(--border); color: var(--dim); font-size: 8px; font-family: var(--mono); padding: 3px 8px; border-radius: 4px; cursor: pointer; transition: all .15s; text-transform: uppercase; }
 .cb:hover, .cb.on { background: var(--gold); border-color: var(--gold); color: #000; }
+
+/* ── LIST ITEMS & WRAP TEXT MAGIC ── */
 .ilist { padding: 4px 0; }
-.iitem { display: flex; align-items: center; gap: 9px; padding: 8px 18px; cursor: pointer; transition: background .1s; border-bottom: 1px solid rgba(255,255,255,.03); }
+.iitem { display: flex; align-items: flex-start; gap: 10px; padding: 10px 18px; cursor: pointer; transition: background .1s; border-bottom: 1px solid rgba(255,255,255,.03); }
 .iitem:hover { background: var(--surface2); }
 .iitem.sel { background: rgba(201,147,58,.1); border-left: 2px solid var(--gold); }
-.iem { font-size: 16px; width: 24px; text-align: center; flex-shrink: 0; }
-.iin { flex: 1; min-width: 0; }
-.iname { font-size: 11px; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.imeta { font-size: 8px; color: var(--dim); font-family: var(--mono); margin-top: 1px; }
+.iem { font-size: 18px; width: 24px; text-align: center; flex-shrink: 0; line-height: 1.2; }
+.iin { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.iname { font-size: 12px; font-weight: 600; color: var(--text); white-space: normal; line-height: 1.3; word-break: break-word; }
+.imeta { font-size: 9px; color: var(--dim); font-family: var(--mono); white-space: normal; line-height: 1.3; }
+.iprot { font-family: var(--mono); font-size: 10px; color: var(--gold); flex-shrink: 0; font-weight: bold; margin-top: 2px; }
 
 /* ── RIGHT PANEL (TRACKER) ── */
 .right { overflow-y: auto; padding: 20px 24px; max-height: calc(100vh - 57px); }
 .meal { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 20px; }
 .mtitle { font-family: var(--mono); font-size: 8px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
-.clrbtn { background: none; border: 1px solid var(--red); color: var(--red); font-size: 8px; font-family: var(--mono); padding: 3px 8px; border-radius: 4px; cursor: pointer; }
+.clrbtn { background: none; border: 1px solid var(--red); color: var(--red); font-size: 8px; font-family: var(--mono); padding: 3px 8px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
 .clrbtn:hover { background: var(--red); color: #fff; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; min-height: 40px; }
-.empty { color: var(--dimmer); font-size: 12px; font-style: italic; }
-.chip { display: flex; align-items: center; gap: 6px; background: var(--surface2); border: 1px solid var(--glow); border-radius: 7px; padding: 4px 9px 4px 8px; font-size: 11px; }
-.chip input { width: 46px; background: var(--surface3); border: 1px solid var(--border); border-radius: 4px; color: var(--gold); font-family: var(--mono); font-size: 10px; padding: 2px 4px; text-align: center; outline: none; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; min-height: 40px; }
+.empty { color: var(--dimmer); font-size: 12px; font-style: italic; align-self: center; }
+
+/* ── WRAPPING CHIPS ── */
+.chip { display: flex; align-items: center; gap: 6px; background: var(--surface2); border: 1px solid var(--glow); border-radius: 7px; padding: 6px 10px; font-size: 11px; height: auto; min-height: 34px; flex-wrap: wrap; }
+.chip span:nth-child(2) { white-space: normal; line-height: 1.2; max-width: 140px; word-break: break-word; }
+.chip input { width: 50px; background: var(--surface3); border: 1px solid var(--border); border-radius: 4px; color: var(--gold); font-family: var(--mono); font-size: 11px; padding: 3px 5px; text-align: center; outline: none; }
 .chip input:focus { border-color: var(--gold); }
-.cunit { font-size: 8px; color: var(--dim); font-family: var(--mono); }
-.crm { color: var(--dimmer); cursor: pointer; font-size: 12px; padding-left: 3px; }
+.cunit { font-size: 9px; color: var(--dim); font-family: var(--mono); }
+.crm { color: var(--dimmer); cursor: pointer; font-size: 14px; padding-left: 4px; transition: color 0.2s; }
 .crm:hover { color: var(--red); }
 
 /* ── MACRO BAR & NUTRIENT GRID ── */
@@ -83,11 +89,20 @@ header { background: linear-gradient(135deg, #0D0D0D, #1A1208 50%, #0D0D0D); bor
 .fl { background: linear-gradient(90deg, #8B1E20, #D64045); }
 
 /* ── RECIPE CARDS ── */
-.rcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 8px; margin-bottom: 20px; }
-.rcard { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px; cursor: pointer; transition: all .15s; }
-.rcard:hover { border-color: var(--gold); background: rgba(201,147,58,.05); }
-.rem { font-size: 18px; display: block; margin-bottom: 4px; }
-.rname { font-size: 10px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.rcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; margin-bottom: 30px; }
+.rcard { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 12px; cursor: pointer; transition: all .15s; }
+.rcard:hover { border-color: var(--gold); background: rgba(201,147,58,.05); transform: translateY(-2px); }
+.rem { font-size: 22px; display: block; margin-bottom: 6px; }
+.rname { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+.rmac { font-family: var(--mono); font-size: 8px; color: var(--dim); line-height: 1.3;}
+
+/* ── RESPONSIVE MEDIA QUERIES ── */
+@media (max-width: 900px) {
+  .app { grid-template-columns: 1fr; }
+  .left { max-height: 350px; position: relative; top: 0; z-index: 50; }
+  .mbar { grid-template-columns: repeat(3, 1fr); }
+  .mbar .mcard:nth-child(4), .mbar .mcard:nth-child(5) { grid-column: span 1.5; }
+}
 
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -97,7 +112,7 @@ header { background: linear-gradient(135deg, #0D0D0D, #1A1208 50%, #0D0D0D); bor
 <body>
 
 <header>
-  <div class="logo">BROKE WARRIOR <span>/ v4 Master DB — <span id="db-count" class="db-badge">0</span> Items Verified</span></div>
+  <div class="logo">BROKE WARRIOR <span>/ v5 Master DB — <span id="db-count" class="db-badge">0</span> Items Active</span></div>
   <div class="hstats">
     <div class="hstat"><span class="v" id="hk">0</span><span class="l">kcal/1700</span></div>
     <div class="hstat"><span class="v" id="hp">0g</span><span class="l">prot/140g</span></div>
@@ -130,446 +145,419 @@ header { background: linear-gradient(135deg, #0D0D0D, #1A1208 50%, #0D0D0D); bor
     <div class="stitle">Full Micro & Macro Array <span class="badge" id="nhit">0 / 35</span></div>
     <div class="ngrid" id="ngrid"></div>
 
-    <div class="stitle">Cookbook Deployments</div>
+    <div class="stitle">MemoryPalace Cookbook Deployments</div>
     <div class="rcards" id="rcards"></div>
   </div>
 </div>
 
 <script>
+// ── LOCAL STORAGE ENGINE ──
+function saveLoadout() { localStorage.setItem('bw_loadout_v5', JSON.stringify(selected)); }
+function loadLoadout() { const saved = localStorage.getItem('bw_loadout_v5'); if(saved) { selected = JSON.parse(saved); } }
+
 const TARGETS = {
-  kcal:{val:1700,unit:"kcal",label:"Calories"},
-  protein:{val:140,unit:"g",label:"Protein"},
-  carbs:{val:160,unit:"g",label:"Carbohydrates"},
-  fat:{val:56,unit:"g",label:"Total Fat"},
-  fiber:{val:38,unit:"g",label:"Dietary Fiber"},
-  satFat:{val:16,unit:"g",label:"Saturated Fat"},
-  omega3ala:{val:1.6,unit:"g",label:"Omega-3 ALA"},
-  omega3dha:{val:0.5,unit:"g",label:"Omega-3 DHA/EPA"},
-  sodium:{val:1500,unit:"mg",label:"Sodium"},
-  calcium:{val:1300,unit:"mg",label:"Calcium"},
-  phosphorus:{val:1250,unit:"mg",label:"Phosphorus"},
-  magnesium:{val:410,unit:"mg",label:"Magnesium"},
-  potassium:{val:3400,unit:"mg",label:"Potassium"},
-  iron:{val:11,unit:"mg",label:"Iron"},
-  zinc:{val:11,unit:"mg",label:"Zinc"},
-  vitA:{val:900,unit:"mcg",label:"Vitamin A"},
-  vitC:{val:90,unit:"mg",label:"Vitamin C"},
-  vitD:{val:15,unit:"mcg",label:"Vitamin D"},
-  vitB12:{val:2.4,unit:"mcg",label:"Vitamin B12"},
-  choline:{val:550,unit:"mg",label:"Choline"}
+  kcal:{val:1700,unit:"kcal",label:"Calories"}, protein:{val:140,unit:"g",label:"Protein"},
+  carbs:{val:160,unit:"g",label:"Carbohydrates"}, fat:{val:56,unit:"g",label:"Total Fat"},
+  fiber:{val:38,unit:"g",label:"Dietary Fiber"}, satFat:{val:16,unit:"g",label:"Saturated Fat"},
+  omega3ala:{val:1.6,unit:"g",label:"Omega-3 ALA"}, omega3dha:{val:0.5,unit:"g",label:"Omega-3 DHA/EPA"},
+  sodium:{val:1500,unit:"mg",label:"Sodium"}, calcium:{val:1300,unit:"mg",label:"Calcium"},
+  phosphorus:{val:1250,unit:"mg",label:"Phosphorus"}, magnesium:{val:410,unit:"mg",label:"Magnesium"},
+  potassium:{val:3400,unit:"mg",label:"Potassium"}, iron:{val:11,unit:"mg",label:"Iron"},
+  zinc:{val:11,unit:"mg",label:"Zinc"}, copper:{val:0.89,unit:"mg",label:"Copper"},
+  manganese:{val:2.2,unit:"mg",label:"Manganese"}, selenium:{val:55,unit:"mcg",label:"Selenium"},
+  iodine:{val:150,unit:"mcg",label:"Iodine"}, chromium:{val:35,unit:"mcg",label:"Chromium"},
+  vitA:{val:900,unit:"mcg",label:"Vitamin A"}, vitC:{val:90,unit:"mg",label:"Vitamin C"},
+  vitD:{val:15,unit:"mcg",label:"Vitamin D"}, vitE:{val:15,unit:"mg",label:"Vitamin E"},
+  vitK:{val:120,unit:"mcg",label:"Vitamin K"}, vitB1:{val:1.2,unit:"mg",label:"B1 Thiamin"},
+  vitB2:{val:1.3,unit:"mg",label:"B2 Riboflavin"}, vitB3:{val:16,unit:"mg",label:"B3 Niacin"},
+  vitB5:{val:5,unit:"mg",label:"B5 Pantothenic"}, vitB6:{val:1.3,unit:"mg",label:"B6 Pyridoxine"},
+  vitB7:{val:30,unit:"mcg",label:"B7 Biotin"}, vitB9:{val:400,unit:"mcg",label:"B9 Folate"},
+  vitB12:{val:2.4,unit:"mcg",label:"B12 Cobalamin"}, choline:{val:550,unit:"mg",label:"Choline"}
 };
 
-// ── THE FULL 300+ ITEM BILINGUAL DATABASE ──
+// ── THE COMPLETE 316-ITEM DATABASE (BILINGUAL & VERIFIED) ──
 const INGREDIENTS = [
-  // 1. RAW MEAT & POULTRY (CARNICERÍA)
-  { id: "chicken_breast_raw", name: "Pechuga sin Piel / Skinless Chicken Breast (raw)", emoji: "🍗", cat: "POULTRY", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 120, protein: 22.5, carbs: 0, fat: 2.6, fiber: 0, satFat: 0.6, sodium: 45, calcium: 5, iron: 0.4, zinc: 0.8, vitB12: 0.3, choline: 85 } },
-  { id: "chicken_breast_skin", name: "Pechuga con Piel / Chicken Breast w/ Skin (raw)", emoji: "🍗", cat: "POULTRY", unit: "g", defaultQty: 200, gramsPerUnit: 250, per100: { kcal: 172, protein: 21.0, carbs: 0, fat: 9.2, fiber: 0, satFat: 2.6, sodium: 48, calcium: 6, iron: 0.5, zinc: 0.8, vitB12: 0.3, choline: 78 } },
-  { id: "chicken_thigh_raw", name: "Pata-Muslo sin Piel / Skinless Chicken Thigh (raw)", emoji: "🍗", cat: "POULTRY", unit: "g", defaultQty: 200, gramsPerUnit: 150, per100: { kcal: 121, protein: 19.2, carbs: 0, fat: 4.5, fiber: 0, satFat: 1.2, sodium: 75, calcium: 9, iron: 1.1, zinc: 1.9, vitB12: 0.5, choline: 68 } },
-  { id: "chicken_leg_skin", name: "Pata con Piel / Drumstick w/ Skin (raw edible)", emoji: "🍗", cat: "POULTRY", unit: "unit", defaultQty: 2, gramsPerUnit: 100, per100: { kcal: 161, protein: 18.5, carbs: 0, fat: 9.0, fiber: 0, satFat: 2.4, sodium: 78, calcium: 11, iron: 1.0, zinc: 1.7, vitB12: 0.5, choline: 62 } },
-  { id: "chicken_wings_skin", name: "Alitas de Pollo / Chicken Wings w/ Skin (raw edible)", emoji: "🪽", cat: "POULTRY", unit: "unit", defaultQty: 4, gramsPerUnit: 40, per100: { kcal: 191, protein: 17.5, carbs: 0, fat: 13.5, fiber: 0, satFat: 3.8, sodium: 70, calcium: 13, iron: 0.9, zinc: 1.3, vitB12: 0.4, choline: 58 } },
-  { id: "chicken_carcass", name: "Carcasa de Pollo / Chicken Carcass (raw broth base)", emoji: "🥣", cat: "POULTRY", unit: "g", defaultQty: 500, gramsPerUnit: 500, per100: { kcal: 95, protein: 12.0, carbs: 0, fat: 5.2, fiber: 0, satFat: 1.4, sodium: 65, calcium: 42, iron: 0.8, zinc: 0.9, vitB12: 0.2, choline: 30 } },
-  { id: "chicken_liver", name: "Hígado de Pollo / Chicken Liver (cooked)", emoji: "🍖", cat: "OFFAL", unit: "g", defaultQty: 100, gramsPerUnit: 100, per100: { kcal: 172, protein: 27.4, carbs: 0.9, fat: 6.3, fiber: 0, satFat: 2.0, sodium: 71, calcium: 11, iron: 11.1, zinc: 3.9, vitA: 3296, vitC: 15, vitB12: 16.6, choline: 290 } },
-  { id: "chicken_hearts", name: "Corazones de Pollo / Chicken Hearts (cooked)", emoji: "❤️", cat: "OFFAL", unit: "g", defaultQty: 100, gramsPerUnit: 100, per100: { kcal: 185, protein: 26.4, carbs: 0.1, fat: 8.6, fiber: 0, satFat: 2.6, sodium: 79, calcium: 12, iron: 6.2, zinc: 7.3, vitA: 18, vitC: 2, vitB12: 7.3, choline: 188 } },
-  { id: "turkey_breast_raw", name: "Suprema de Pavita / Turkey Breast (raw)", emoji: "🦃", cat: "POULTRY", unit: "g", defaultQty: 200, gramsPerUnit: 250, per100: { kcal: 105, protein: 24.0, carbs: 0, fat: 1.0, fiber: 0, satFat: 0.3, sodium: 50, calcium: 12, iron: 1.1, zinc: 1.5, vitB12: 0.4, choline: 75 } },
+  // --- DRY PROTEINS, LEGUMES & SUPPLEMENTS ---
+  {id:"soja",name:"Soja Texturizada / Textured Soy Protein (dry)",emoji:"🫘",cat:"PROTEIN",unit:"g",defaultQty:60,gramsPerUnit:1,per100:{kcal:366,protein:51,carbs:33,fat:3.3,fiber:17.5,satFat:0.5,omega3ala:0.3,omega3dha:0,sodium:20,calcium:280,phosphorus:690,magnesium:260,potassium:2480,iron:8.5,zinc:4.2,copper:1.0,manganese:2.4,selenium:37,iodine:5,chromium:10,vitA:2,vitC:0,vitD:0,vitE:0.5,vitK:9,vitB1:0.7,vitB2:0.4,vitB3:8.5,vitB5:0.8,vitB6:0.8,vitB7:4,vitB9:370,vitB12:0,choline:180}},
+  {id:"lentils",name:"Lentejas / Lentils (dry)",emoji:"🫘",cat:"PROTEIN",unit:"g",defaultQty:40,gramsPerUnit:1,per100:{kcal:352,protein:25,carbs:60,fat:1.1,fiber:15.6,satFat:0.2,omega3ala:0.1,omega3dha:0,sodium:6,calcium:56,phosphorus:454,magnesium:122,potassium:955,iron:6.5,zinc:3.3,copper:0.9,manganese:1.4,selenium:8.3,iodine:5,chromium:9,vitA:1,vitC:4.4,vitD:0,vitE:0.5,vitK:5,vitB1:0.9,vitB2:0.2,vitB3:2.6,vitB5:2.1,vitB6:0.5,vitB7:7,vitB9:479,vitB12:0,choline:96}},
+  {id:"arvejas",name:"Arvejas Partidas / Split Peas (dry)",emoji:"🟢",cat:"PROTEIN",unit:"g",defaultQty:30,gramsPerUnit:1,per100:{kcal:341,protein:24,carbs:60,fat:1.1,fiber:26,satFat:0.2,omega3ala:0.1,omega3dha:0,sodium:15,calcium:55,phosphorus:366,magnesium:115,potassium:981,iron:5.1,zinc:3.0,copper:0.8,manganese:1.2,selenium:8,iodine:4,chromium:8,vitA:2,vitC:1.8,vitD:0,vitE:0.1,vitK:24,vitB1:0.8,vitB2:0.2,vitB3:3.2,vitB5:1.8,vitB6:0.2,vitB7:5,vitB9:274,vitB12:0,choline:65}},
+  {id:"levadura",name:"Levadura Nutricional / Nutritional Yeast (fortified)",emoji:"🟡",cat:"PROTEIN",unit:"tbsp",defaultQty:2,gramsPerUnit:8,per100:{kcal:368,protein:50,carbs:29,fat:5.8,fiber:24,satFat:0.8,omega3ala:0.1,omega3dha:0,sodium:100,calcium:30,phosphorus:810,magnesium:231,potassium:1557,iron:8.0,zinc:9.4,copper:0.5,manganese:0.7,selenium:106,iodine:10,chromium:15,vitA:0,vitC:0,vitD:0,vitE:0.1,vitK:0.5,vitB1:10.4,vitB2:7.1,vitB3:39.8,vitB5:5.5,vitB6:9.7,vitB7:15,vitB9:2350,vitB12:90,choline:60}},
+  {id:"creatine",name:"Creatina / Creatine Monohydrate",emoji:"💊",cat:"SUPPLEMENTS",unit:"g",defaultQty:5,gramsPerUnit:1,per100:{kcal:0,protein:0,carbs:0,fat:0,fiber:0,satFat:0,sodium:0}},
+  {id:"whey_isolate",name:"Whey Protein Isolate",emoji:"🥛",cat:"PROTEIN",unit:"scoop",defaultQty:1,gramsPerUnit:30,per100:{kcal:360,protein:90,carbs:0,fat:0,fiber:0,satFat:0,sodium:160,calcium:450,phosphorus:220,magnesium:30,potassium:380,iron:0.2,zinc:0.1,selenium:25,iodine:12,vitB12:0.3,choline:80}},
+  {id:"spirulina_powder",name:"Espirulina en Polvo / Spirulina Powder",emoji:"🧪",cat:"SUPPLEMENTS",unit:"tsp",defaultQty:1,gramsPerUnit:5,per100:{kcal:290,protein:57.5,carbs:23.9,fat:7.7,fiber:3.6,satFat:2.7,sodium:1048,iron:28.5,magnesium:195,potassium:1363}},
+  {id:"spirulina_tablets",name:"Spirulina Comprimidos / Spirulina Tablets",emoji:"💊",cat:"SUPPLEMENTS",unit:"pill",defaultQty:4,gramsPerUnit:0.5,per100:{kcal:290,protein:57.0,carbs:24.0,fat:7.7,fiber:3.6,satFat:2.7,sodium:1050,iron:28.5,vitB12:0}},
+  {id:"kelp_powder_prama",name:"Algas Kelp en Polvo / Kelp Powder (Prama)",emoji:"🧂",cat:"SUPPLEMENTS",unit:"tsp",defaultQty:1,gramsPerUnit:3,per100:{kcal:43,protein:1.6,carbs:9.6,fat:0.6,fiber:1.3,satFat:0,sodium:233,iodine:15000,magnesium:120,calcium:168}},
+
+  // --- RAW CHICKEN & POULTRY ---
+  {id:"chicken_breast_skinless_raw",name:"Suprema / Skinless Chicken Breast (raw)",emoji:"🍗",cat:"POULTRY",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:120,protein:22.5,carbs:0,fat:2.6,fiber:0,satFat:0.6,omega3ala:0.02,omega3dha:0.03,sodium:45,calcium:5,phosphorus:196,magnesium:29,potassium:390,iron:0.4,zinc:0.8,copper:0.04,manganese:0.01,selenium:22,iodine:6,chromium:9,vitA:6,vitC:0,vitD:0.1,vitE:0.3,vitK:0,vitB1:0.07,vitB2:0.1,vitB3:11.2,vitB5:1.5,vitB6:0.6,vitB7:2,vitB9:4,vitB12:0.3,choline:85}},
+  {id:"chicken_breast_with_skin_raw",name:"Pechuga con Piel / Chicken Breast w/ Skin (raw)",emoji:"🍗",cat:"POULTRY",unit:"g",defaultQty:250,gramsPerUnit:1,per100:{kcal:172,protein:21.0,carbs:0,fat:9.2,fiber:0,satFat:2.6,omega3ala:0.05,omega3dha:0.03,sodium:48,calcium:6,phosphorus:180,magnesium:26,potassium:350,iron:0.5,zinc:0.8,copper:0.04,manganese:0.01,selenium:20,iodine:5,chromium:7,vitA:28,vitC:0,vitD:0.1,vitE:0.3,vitK:0,vitB1:0.06,vitB2:0.1,vitB3:9.8,vitB5:1.3,vitB6:0.5,vitB7:2,vitB9:4,vitB12:0.3,choline:78}},
+  {id:"chicken_thigh_skinless_raw",name:"Pata-Muslo sin Piel / Skinless Thigh (raw)",emoji:"🍗",cat:"POULTRY",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:121,protein:19.2,carbs:0,fat:4.5,fiber:0,satFat:1.2,omega3ala:0.03,omega3dha:0.02,sodium:75,calcium:9,phosphorus:172,magnesium:22,potassium:268,iron:1.1,zinc:1.9,copper:0.06,manganese:0.02,selenium:18,iodine:5,chromium:5,vitA:14,vitC:0,vitD:0.1,vitE:0.2,vitK:0,vitB1:0.08,vitB2:0.2,vitB3:5.2,vitB5:1.1,vitB6:0.35,vitB7:3,vitB9:7,vitB12:0.5,choline:68}},
+  {id:"chicken_leg_with_skin_raw",name:"Pata con Piel / Drumstick w/ Skin (raw edible)",emoji:"🍗",cat:"POULTRY",unit:"unit",defaultQty:2,gramsPerUnit:100,per100:{kcal:161,protein:18.5,carbs:0,fat:9.0,fiber:0,satFat:2.4,omega3ala:0.05,omega3dha:0.02,sodium:78,calcium:11,phosphorus:155,magnesium:20,potassium:240,iron:1.0,zinc:1.7,copper:0.06,manganese:0.01,selenium:17,iodine:4,chromium:4,vitA:35,vitC:0,vitD:0.2,vitE:0.3,vitK:0,vitB1:0.07,vitB2:0.18,vitB3:4.8,vitB5:1.0,vitB6:0.3,vitB7:2,vitB9:6,vitB12:0.5,choline:62}},
+  {id:"chicken_wings_with_skin_raw",name:"Alitas con Piel / Wings w/ Skin (raw edible)",emoji:"🪽",cat:"POULTRY",unit:"unit",defaultQty:4,gramsPerUnit:40,per100:{kcal:191,protein:17.5,carbs:0,fat:13.5,fiber:0,satFat:3.8,omega3ala:0.08,omega3dha:0.02,sodium:70,calcium:13,phosphorus:140,magnesium:18,potassium:210,iron:0.9,zinc:1.3,copper:0.05,manganese:0.01,selenium:19,iodine:4,chromium:3,vitA:45,vitC:0,vitD:0.2,vitE:0.4,vitK:0,vitB1:0.06,vitB2:0.15,vitB3:5.6,vitB5:0.9,vitB6:0.3,vitB7:2,vitB9:5,vitB12:0.4,choline:58}},
+  {id:"chicken_carcass_raw",name:"Carcasa / Chicken Carcass (raw base)",emoji:"🥣",cat:"POULTRY",unit:"g",defaultQty:500,gramsPerUnit:1,per100:{kcal:95,protein:12.0,carbs:0,fat:5.2,fiber:0,satFat:1.4,sodium:65,calcium:42,phosphorus:98,magnesium:14,potassium:150,iron:0.8,zinc:0.9,copper:0.04,manganese:0.03,selenium:11,iodine:2,vitA:12,vitC:0,vitD:0,vitE:0.1,vitK:0,vitB1:0.03,vitB2:0.08,vitB3:2.1,vitB5:0.4,vitB6:0.12,vitB7:1,vitB9:3,vitB12:0.2,choline:30}},
+  {id:"chicken_liver",name:"Hígado de Pollo / Chicken Liver (cooked)",emoji:"🍖",cat:"OFFAL",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:172,protein:27.4,carbs:0.9,fat:6.3,fiber:0,satFat:2.0,omega3ala:0.02,omega3dha:0.2,sodium:71,calcium:11,phosphorus:297,magnesium:25,potassium:230,iron:11.1,zinc:3.9,copper:4.0,manganese:0.36,selenium:63,iodine:12,chromium:10,vitA:3296,vitC:15,vitD:1.3,vitE:0.5,vitK:13,vitB1:0.25,vitB2:2.5,vitB3:9.7,vitB5:5.8,vitB6:0.8,vitB7:196,vitB9:590,vitB12:16.6,choline:290}},
+  {id:"chicken_hearts",name:"Corazones de Pollo / Chicken Hearts (cooked)",emoji:"❤️",cat:"OFFAL",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:185,protein:26.4,carbs:0.1,fat:8.6,fiber:0,satFat:2.6,omega3ala:0.04,omega3dha:0.18,sodium:79,calcium:12,phosphorus:240,magnesium:21,potassium:218,iron:6.2,zinc:7.3,copper:0.4,manganese:0.05,selenium:36,iodine:10,chromium:5,vitA:18,vitC:2,vitD:0.5,vitE:0.2,vitK:0,vitB1:0.15,vitB2:0.8,vitB3:4.2,vitB5:3.1,vitB6:0.2,vitB7:10,vitB9:23,vitB12:7.3,choline:188}},
+  {id:"pavita_cruda",name:"Suprema de Pavita / Turkey Breast (raw)",emoji:"🦃",cat:"POULTRY",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:105,protein:24.0,carbs:0,fat:1.0,fiber:0,satFat:0.3,sodium:50,calcium:12,phosphorus:210,magnesium:30,potassium:290,iron:1.1,zinc:1.5,selenium:30,vitB12:0.4,cholesterol:60}},
+
+  // --- RAW BEEF CUTS (CARNICERÍA) ---
+  {id:"ground_beef_90",name:"Picada Magra 90% / Lean Ground Beef (raw)",emoji:"🥩",cat:"BEEF",unit:"g",defaultQty:125,gramsPerUnit:1,per100:{kcal:176,protein:20,carbs:0,fat:10,fiber:0,satFat:4.2,omega3ala:0.05,omega3dha:0,sodium:66,calcium:12,phosphorus:175,magnesium:21,potassium:318,iron:2.6,zinc:4.8,copper:0.08,manganese:0.01,selenium:19,iodine:3,chromium:2,vitA:2,vitC:0,vitD:0.1,vitE:0.2,vitK:1.1,vitB1:0.05,vitB2:0.16,vitB3:4.8,vitB5:0.6,vitB6:0.36,vitB7:3,vitB9:9,vitB12:2.5,choline:70}},
+  {id:"asado_de_tira",name:"Asado de Tira / Short Ribs (raw edible)",emoji:"🥩",cat:"BEEF",unit:"g",defaultQty:250,gramsPerUnit:1,per100:{kcal:270,protein:18.2,carbs:0,fat:22.0,fiber:0,satFat:9.2,omega3ala:0.04,omega3dha:0,sodium:60,calcium:10,phosphorus:170,magnesium:18,potassium:290,iron:2.1,zinc:5.0,copper:0.08,manganese:0.01,selenium:18,iodine:3,chromium:2,vitA:2,vitC:0,vitD:0.1,vitE:0.2,vitK:1.1,vitB1:0.06,vitB2:0.16,vitB3:4.2,vitB5:0.6,vitB6:0.33,vitB7:2,vitB9:7,vitB12:2.2,choline:68}},
+  {id:"vacio_raw",name:"Vacío / Flank Steak (raw)",emoji:"🥩",cat:"BEEF",unit:"g",defaultQty:250,gramsPerUnit:1,per100:{kcal:218,protein:19.8,carbs:0,fat:15.4,fiber:0,satFat:6.5,omega3ala:0.03,omega3dha:0,sodium:55,calcium:9,phosphorus:185,magnesium:20,potassium:310,iron:2.3,zinc:4.5,copper:0.07,manganese:0.01,selenium:20,iodine:2,chromium:2,vitA:0,vitC:0,vitD:0.1,vitE:0.2,vitK:1.0,vitB1:0.05,vitB2:0.18,vitB3:4.5,vitB5:0.5,vitB6:0.35,vitB7:3,vitB9:8,vitB12:2.4,choline:72}},
+  {id:"entrana_raw",name:"Entraña / Skirt Steak (raw)",emoji:"🥩",cat:"BEEF",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:236,protein:18.5,carbs:0,fat:18.0,fiber:0,satFat:7.6,omega3ala:0.04,omega3dha:0,sodium:65,calcium:11,phosphorus:165,magnesium:17,potassium:285,iron:2.5,zinc:4.2,copper:0.08,manganese:0.01,selenium:17,iodine:3,chromium:1,vitA:0,vitC:0,vitD:0,vitE:0.1,vitK:0.8,vitB1:0.05,vitB2:0.15,vitB3:4.0,vitB5:0.5,vitB6:0.32,vitB7:2,vitB9:6,vitB12:2.1,choline:65}},
+  {id:"bife_de_chorizo_raw",name:"Bife de Chorizo / Sirloin (raw)",emoji:"🥩",cat:"BEEF",unit:"g",defaultQty:250,gramsPerUnit:1,per100:{kcal:198,protein:21.2,carbs:0,fat:12.6,fiber:0,satFat:5.2,omega3ala:0.03,omega3dha:0,sodium:54,calcium:12,phosphorus:195,magnesium:22,potassium:330,iron:2.2,zinc:4.6,copper:0.07,manganese:0.01,selenium:22,iodine:3,chromium:2,vitA:2,vitC:0,vitD:0.1,vitE:0.2,vitK:1.1,vitB1:0.06,vitB2:0.15,vitB3:5.0,vitB5:0.6,vitB6:0.40,vitB7:3,vitB9:9,vitB12:2.3,choline:75}},
+  {id:"lomo_raw",name:"Lomo / Tenderloin (raw)",emoji:"🥩",cat:"BEEF",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:136,protein:22.4,carbs:0,fat:5.2,fiber:0,satFat:2.1,omega3ala:0.01,omega3dha:0,sodium:50,calcium:8,phosphorus:210,magnesium:24,potassium:360,iron:2.4,zinc:3.8,copper:0.06,manganese:0.01,selenium:24,iodine:2,chromium:2,vitA:0,vitC:0,vitD:0.1,vitE:0.1,vitK:0.5,vitB1:0.07,vitB2:0.14,vitB3:5.4,vitB5:0.6,vitB6:0.43,vitB7:4,vitB9:10,vitB12:2.1,choline:82}},
+  {id:"nalga_raw",name:"Nalga / Top Round (raw)",emoji:"🥩",cat:"BEEF",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:127,protein:21.8,carbs:0,fat:4.5,fiber:0,satFat:1.8,omega3ala:0.01,omega3dha:0,sodium:58,calcium:7,phosphorus:205,magnesium:23,potassium:345,iron:2.1,zinc:4.0,copper:0.07,manganese:0.01,selenium:21,iodine:2,chromium:3,vitA:0,vitC:0,vitD:0,vitE:0.1,vitK:0.4,vitB1:0.06,vitB2:0.17,vitB3:5.1,vitB5:0.5,vitB6:0.38,vitB7:3,vitB9:9,vitB12:2.0,choline:78}},
+  {id:"bola_de_lomo_raw",name:"Bola de Lomo / Knuckle (raw)",emoji:"🥩",cat:"BEEF",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:139,protein:21.0,carbs:0,fat:6.1,fiber:0,satFat:2.4,sodium:56,calcium:8,phosphorus:198,magnesium:22,potassium:338,iron:2.2,zinc:4.1,copper:0.07,manganese:0.01,selenium:19,iodine:2,vitA:0,vitC:0,vitD:0.1,vitE:0.1,vitK:0.5,vitB1:0.06,vitB2:0.16,vitB3:4.9,vitB5:0.5,vitB6:0.36,vitB7:3,vitB9:8,vitB12:1.9,choline:74}},
+  {id:"ossobuco_raw",name:"Ossobuco / Shank (meat only, raw)",emoji:"🍲",cat:"BEEF",unit:"g",defaultQty:250,gramsPerUnit:1,per100:{kcal:147,protein:21.5,carbs:0,fat:6.8,fiber:0,satFat:2.8,omega3ala:0.01,omega3dha:0,sodium:62,calcium:11,phosphorus:190,magnesium:21,potassium:320,iron:2.6,zinc:6.1,copper:0.09,manganese:0.01,selenium:23,iodine:2,chromium:1,vitA:0,vitC:0,vitD:0,vitE:0.2,vitK:0.6,vitB1:0.05,vitB2:0.22,vitB3:4.1,vitB5:0.6,vitB6:0.31,vitB7:3,vitB9:7,vitB12:2.6,choline:70}},
+  {id:"roast_beef_raw",name:"Roast Beef / Chuck Roll (raw)",emoji:"🥩",cat:"BEEF",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:186,protein:19.4,carbs:0,fat:12.1,fiber:0,satFat:4.9,omega3ala:0.03,omega3dha:0,sodium:64,calcium:10,phosphorus:178,magnesium:19,potassium:302,iron:2.3,zinc:5.2,copper:0.08,manganese:0.01,selenium:21,iodine:3,chromium:2,vitA:4,vitC:0,vitD:0.1,vitE:0.2,vitK:1.1,vitB1:0.06,vitB2:0.16,vitB3:4.4,vitB5:0.6,vitB6:0.32,vitB7:2,vitB9:7,vitB12:2.5,choline:69}},
+  {id:"beef_liver_cooked",name:"Hígado de Vaca / Beef Liver (pan-fried)",emoji:"🥩",cat:"OFFAL",unit:"slice",defaultQty:1,gramsPerUnit:80,per100:{kcal:175,protein:27.0,carbs:5.2,fat:4.8,fiber:0,satFat:1.6,sodium:78,calcium:11,phosphorus:497,magnesium:22,potassium:350,iron:6.2,zinc:5.2,copper:14.6,manganese:0.4,selenium:36,vitA:9442,vitC:1.5,vitD:0.3,vitB12:83.0,vitB9:260,cholesterol:380}},
+  {id:"higado_vacuno_raw",name:"Hígado de Vaca / Beef Liver (raw)",emoji:"🥩",cat:"OFFAL",unit:"kg",defaultQty:0.5,gramsPerUnit:1000,per100:{kcal:135,protein:20.4,carbs:3.8,fat:3.6,fiber:0,satFat:1.2,sodium:69,calcium:5,phosphorus:387,magnesium:18,potassium:313,iron:4.9,zinc:4.0,copper:9.8,selenium:39,vitA:4968,vitD:0.4,vitB12:59.3,cholesterol:275}},
+  {id:"rinon_raw",name:"Riñón / Beef Kidney (raw)",emoji:"🥩",cat:"OFFAL",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:98,protein:16.5,carbs:0.5,fat:3.5,fiber:0,satFat:1.1,sodium:180,calcium:15,phosphorus:260,magnesium:20,potassium:280,iron:5.8,zinc:2.5,selenium:140,vitA:30,vitB12:25.0,cholesterol:350}},
+  {id:"lengua_vaca",name:"Lengua / Beef Tongue (cooked)",emoji:"👅",cat:"OFFAL",unit:"slice",defaultQty:2,gramsPerUnit:50,per100:{kcal:284,protein:19.3,carbs:0,fat:22.3,fiber:0,satFat:7.6,sodium:65,calcium:10,phosphorus:150,iron:2.6,zinc:4.1,vitB12:4.5,cholesterol:108}},
+  {id:"mondongo_cooked",name:"Mondongo / Beef Tripe (cooked)",emoji:"🍲",cat:"OFFAL",unit:"cup",defaultQty:1,gramsPerUnit:150,per100:{kcal:96,protein:15.0,carbs:0,fat:4.0,fiber:0,satFat:1.5,sodium:70,calcium:70,phosphorus:50,iron:0.6,zinc:1.2,vitB12:1.4,cholesterol:120}},
+
+  // --- RAW LAMB & GOAT ---
+  {id:"cordero_paleta",name:"Paleta de Cordero / Lamb Shoulder (raw)",emoji:"🍖",cat:"LAMB",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:255,protein:16.5,carbs:0,fat:20.5,fiber:0,satFat:8.8,omega3ala:0.15,omega3dha:0,sodium:65,calcium:18,phosphorus:160,magnesium:20,potassium:230,iron:1.7,zinc:3.8,copper:0.09,manganese:0.02,selenium:19,iodine:3,chromium:1,vitA:0,vitC:0,vitD:0.1,vitE:0.2,vitK:1.0,vitB1:0.09,vitB2:0.20,vitB3:5.5,vitB5:0.6,vitB6:0.12,vitB7:2,vitB9:4,vitB12:2.3,choline:65}},
+  {id:"cordero_pierna",name:"Pierna de Cordero / Lamb Leg (raw)",emoji:"🍗",cat:"LAMB",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:185,protein:19.5,carbs:0,fat:11.5,fiber:0,satFat:4.8,omega3ala:0.12,omega3dha:0,sodium:60,calcium:10,phosphorus:190,magnesium:24,potassium:300,iron:2.1,zinc:4.5,copper:0.10,manganese:0.02,selenium:23,iodine:3,chromium:1,vitA:0,vitC:0,vitD:0.1,vitE:0.2,vitK:1.0,vitB1:0.11,vitB2:0.22,vitB3:6.0,vitB5:0.7,vitB6:0.15,vitB7:2,vitB9:5,vitB12:2.6,choline:75}},
+  {id:"cordero_costeletas",name:"Costeletas de Cordero / Lamb Chops (raw edible)",emoji:"🥩",cat:"LAMB",unit:"unit",defaultQty:2,gramsPerUnit:80,per100:{kcal:280,protein:15.5,carbs:0,fat:24.0,fiber:0,satFat:10.5,omega3ala:0.20,omega3dha:0,sodium:68,calcium:22,phosphorus:150,magnesium:18,potassium:220,iron:1.6,zinc:3.2,copper:0.08,manganese:0.01,selenium:18,iodine:2,chromium:1,vitA:5,vitC:0,vitD:0.2,vitE:0.3,vitK:1.2,vitB1:0.08,vitB2:0.18,vitB3:5.0,vitB5:0.5,vitB6:0.10,vitB7:1,vitB9:3,vitB12:2.0,choline:60}},
+  {id:"cordero_vacio",name:"Vacío de Cordero / Lamb Flank (raw)",emoji:"🥓",cat:"LAMB",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:335,protein:14.0,carbs:0,fat:31.0,fiber:0,satFat:13.5,omega3ala:0.25,omega3dha:0,sodium:70,calcium:25,phosphorus:140,magnesium:16,potassium:200,iron:1.5,zinc:2.8,copper:0.07,manganese:0.01,selenium:15,iodine:2,chromium:1,vitA:0,vitC:0,vitD:0.3,vitE:0.4,vitK:2.0,vitB1:0.07,vitB2:0.15,vitB3:4.0,vitB5:0.4,vitB6:0.10,vitB7:1,vitB9:2,vitB12:1.8,choline:55}},
+  {id:"cordero_garron",name:"Garrón de Cordero / Lamb Shank (raw edible)",emoji:"🍖",cat:"LAMB",unit:"unit",defaultQty:1,gramsPerUnit:350,per100:{kcal:135,protein:20.0,carbs:0,fat:5.5,fiber:0,satFat:2.1,omega3ala:0.05,omega3dha:0,sodium:60,calcium:12,phosphorus:200,magnesium:25,potassium:320,iron:2.5,zinc:5.5,copper:0.12,manganese:0.02,selenium:25,iodine:4,chromium:2,vitA:0,vitC:0,vitD:0.1,vitE:0.1,vitK:0.5,vitB1:0.10,vitB2:0.25,vitB3:5.8,vitB5:0.6,vitB6:0.15,vitB7:2,vitB9:6,vitB12:2.8,choline:80}},
+  {id:"chivito_costillar",name:"Costillar de Chivito / Goat Ribs (raw)",emoji:"🐐",cat:"GAME",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:109,protein:20.0,carbs:0,fat:3.0,fiber:0,satFat:0.9,sodium:70,calcium:15,phosphorus:190,iron:3.2,zinc:4.5,vitB12:1.2,cholesterol:55}},
+  {id:"chivito_pierna",name:"Pierna de Chivito / Goat Leg (raw)",emoji:"🍖",cat:"GAME",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:145,protein:21.5,carbs:0,fat:6.5,fiber:0,satFat:2.0,sodium:65,calcium:12,phosphorus:200,iron:3.8,zinc:5.2,vitB12:1.3,cholesterol:65}},
+
+  // --- RAW PORK, OFFAL & FARM ---
+  {id:"pork_tenderloin",name:"Solomillo de Cerdo / Pork Tenderloin (raw)",emoji:"🥓",cat:"PORK",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:120,protein:22.3,carbs:0,fat:3.5,fiber:0,satFat:1.2,omega3ala:0.01,omega3dha:0,sodium:48,calcium:6,phosphorus:244,magnesium:25,potassium:389,iron:0.9,zinc:2.1,copper:0.07,manganese:0.01,selenium:34.2,iodine:3,chromium:2,vitA:0,vitC:0,vitD:0.4,vitE:0.2,vitK:0,vitB1:0.95,vitB2:0.32,vitB3:5.1,vitB5:0.7,vitB6:0.54,vitB7:4,vitB9:4,vitB12:0.6,choline:78}},
+  {id:"bondiola_raw",name:"Bondiola / Pork Neck (raw)",emoji:"🥩",cat:"PORK",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:220,protein:17.5,carbs:0,fat:16.5,fiber:0,satFat:5.8,sodium:55,calcium:12,phosphorus:185,magnesium:20,potassium:310,iron:1.3,zinc:2.8,selenium:25,vitB1:0.7,vitB12:0.7,cholesterol:70}},
+  {id:"solomillo_cerdo_raw",name:"Solomillo / Pork Tenderloin (raw)",emoji:"🥓",cat:"PORK",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:115,protein:21.0,carbs:0,fat:3.5,fiber:0,satFat:1.2,sodium:50,calcium:8,phosphorus:220,magnesium:26,potassium:380,iron:1.2,zinc:2.1,selenium:28,vitB1:0.9,vitB12:0.6,cholesterol:65}},
+  {id:"matambre_cerdo_raw",name:"Matambre de Cerdo / Rose Meat (raw)",emoji:"🍕",cat:"PORK",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:245,protein:16.5,carbs:0,fat:19.5,fiber:0,satFat:7.0,sodium:65,calcium:15,phosphorus:160,magnesium:18,potassium:250,iron:1.1,zinc:2.5,selenium:20,vitB1:0.6,vitB12:0.8,cholesterol:75}},
+  {id:"pechito_cerdo_raw",name:"Pechito de Cerdo / Pork Ribs (raw edible)",emoji:"🍖",cat:"PORK",unit:"g",defaultQty:250,gramsPerUnit:1,per100:{kcal:285,protein:15.0,carbs:0,fat:25.0,fiber:0,satFat:9.2,sodium:70,calcium:25,phosphorus:150,magnesium:16,potassium:230,iron:1.0,zinc:2.2,selenium:18,vitB1:0.5,vitB12:0.7,cholesterol:80}},
+  {id:"mollejas_raw",name:"Mollejas / Sweetbreads (raw)",emoji:"🥐",cat:"OFFAL",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:254,protein:14.0,carbs:0,fat:22.0,fiber:0,satFat:10.5,sodium:90,calcium:15,phosphorus:280,magnesium:18,potassium:250,iron:1.8,zinc:3.5,selenium:15,vitC:30,vitB12:1.5,cholesterol:250}},
+  {id:"chinchulin_raw",name:"Chinchulines / Small Intestine (raw)",emoji:"🥨",cat:"OFFAL",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:264,protein:12.0,carbs:0,fat:24.0,fiber:0,satFat:11.0,sodium:110,calcium:30,phosphorus:150,magnesium:12,potassium:150,iron:2.5,zinc:3.0,selenium:10,vitB12:4.0,cholesterol:190}},
+  {id:"morcilla_fria",name:"Morcilla / Blood Sausage (cold)",emoji:"🌭",cat:"PROCESSED",unit:"unit",defaultQty:1,gramsPerUnit:120,per100:{kcal:342,protein:14.0,carbs:4.0,fat:30.0,fiber:0,satFat:12.5,sodium:750,calcium:40,phosphorus:100,magnesium:15,potassium:80,iron:24.0,zinc:2.0,selenium:10,vitB12:1.0,cholesterol:100}},
+  {id:"conejo_raw",name:"Conejo / Rabbit (raw)",emoji:"🐇",cat:"GAME",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:130,protein:20.0,carbs:0,fat:5.5,fiber:0,satFat:1.6,sodium:45,calcium:20,phosphorus:210,magnesium:25,potassium:380,iron:2.3,zinc:1.8,selenium:22,vitB12:7.0,cholesterol:65}},
+  {id:"pato_raw",name:"Pato con Piel / Duck w/ skin (raw)",emoji:"🦆",cat:"GAME",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:207,protein:18.0,carbs:0,fat:15.0,fiber:0,satFat:5.0,sodium:60,calcium:12,phosphorus:190,magnesium:20,potassium:250,iron:2.7,zinc:1.9,selenium:18,vitA:50,vitB12:0.3,cholesterol:80}},
+  {id:"pavita_fiambre",name:"Pechuga de Pavita / Turkey Deli Slice",emoji:"🥪",cat:"PROCESSED",unit:"slice",defaultQty:2,gramsPerUnit:25,per100:{kcal:98,protein:18.5,carbs:2.0,fat:1.5,fiber:0,satFat:0.5,sodium:850,calcium:15,phosphorus:220,vitA:0,vitC:0,cholesterol:40}},
+  {id:"vizcacha_escabeche",name:"Vizcacha en Escabeche",emoji:"🏺",cat:"PROCESSED",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:285,protein:19.0,carbs:1.5,fat:22.0,fiber:0,satFat:3.5,sodium:450,calcium:30,phosphorus:150,vitA:10,vitC:2,cholesterol:50}},
+  {id:"ciervo_ahumado",name:"Ciervo Ahumado / Smoked Venison",emoji:"🦌",cat:"PROCESSED",unit:"slice",defaultQty:4,gramsPerUnit:20,per100:{kcal:135,protein:26.0,carbs:1.0,fat:2.5,fiber:0,satFat:0.8,sodium:950,calcium:20,phosphorus:230,iron:4.5,zinc:3.0,vitB12:2.0,cholesterol:65}},
+  {id:"jabali_ahumado",name:"Jabalí Ahumado / Smoked Boar",emoji:"🐗",cat:"PROCESSED",unit:"slice",defaultQty:4,gramsPerUnit:20,per100:{kcal:160,protein:24.0,carbs:0,fat:6.5,fiber:0,satFat:2.1,sodium:920,calcium:25,phosphorus:210,iron:2.0,zinc:2.8,vitB12:1.5,cholesterol:70}},
+  {id:"codorniz_huevos",name:"Huevos de Codorniz / Quail Eggs",emoji:"🥚",cat:"EGGS",unit:"unit",defaultQty:5,gramsPerUnit:10,per100:{kcal:158,protein:13.0,carbs:0.4,fat:11.0,fiber:0,satFat:3.6,sodium:140,calcium:64,phosphorus:226,iron:3.6,zinc:1.5,vitA:156,vitD:1.4,vitB12:1.6,cholesterol:844}},
+  {id:"ranas_toro",name:"Ranas Toro / Frog Legs (raw)",emoji:"🐸",cat:"GAME",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:73,protein:16.4,carbs:0,fat:0.3,fiber:0,satFat:0.1,sodium:58,calcium:18,phosphorus:147,iron:1.5,zinc:0.8,vitA:15,vitB12:0.4,cholesterol:50}},
+  {id:"ciervo_bife",name:"Bife de Ciervo / Venison Steak (raw)",emoji:"🦌",cat:"GAME",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:120,protein:23.0,carbs:0,fat:2.4,fiber:0,satFat:0.9,sodium:54,iron:3.4,zinc:2.1,vitB12:6.0,cholesterol:85}},
+  {id:"jabali_bondiola",name:"Bondiola de Jabalí / Wild Boar Neck (raw)",emoji:"🐗",cat:"GAME",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:160,protein:21.5,carbs:0,fat:7.5,fiber:0,satFat:2.2,sodium:60,iron:1.3,zinc:3.0,vitB12:0.7,cholesterol:70}},
+
+  // --- DELI, PROCESSED MEATS & SAUSAGES ---
+  {id:"chorizo_parrillero",name:"Chorizo Fresco / Fresh Sausage",emoji:"🌭",cat:"PROCESSED",unit:"unit",defaultQty:1,gramsPerUnit:120,per100:{kcal:333,protein:13.7,carbs:2.8,fat:29.2,fiber:0,satFat:10.1,sodium:950,calcium:18,phosphorus:140,iron:1.5,zinc:2.2,vitB12:1.0,cholesterol:72}},
+  {id:"salchicha_vienissima",name:"Salchicha Vieníssima / Hot Dog",emoji:"🌭",cat:"PROCESSED",unit:"unit",defaultQty:2,gramsPerUnit:37.5,per100:{kcal:237,protein:14.3,carbs:7.0,fat:17.0,fiber:0,satFat:5.7,sodium:1050,calcium:20,phosphorus:130,iron:1.5,zinc:1.0,cholesterol:45}},
+  {id:"salamin_picado_grueso",name:"Salamín Picado Grueso / Salami",emoji:"🥖",cat:"PROCESSED",unit:"slice",defaultQty:5,gramsPerUnit:5,per100:{kcal:415,protein:24.0,carbs:2.5,fat:34.0,fiber:0,satFat:14.5,sodium:1800,calcium:20,phosphorus:180,iron:1.8,zinc:3.5,vitB12:1.2,cholesterol:90}},
+  {id:"mortadela_paladini",name:"Mortadela / Bologna",emoji:"🥓",cat:"PROCESSED",unit:"slice",defaultQty:2,gramsPerUnit:20,per100:{kcal:285,protein:14.0,carbs:5.5,fat:23.0,fiber:0,satFat:8.5,sodium:1100,calcium:15,phosphorus:120,iron:1.1,zinc:2.0,vitB12:0.8,cholesterol:60}},
+  {id:"jamon_crudo",name:"Jamón Crudo / Prosciutto",emoji:"🍖",cat:"PROCESSED",unit:"slice",defaultQty:2,gramsPerUnit:15,per100:{kcal:235,protein:28.5,carbs:0.5,fat:12.5,fiber:0,satFat:4.5,sodium:2400,calcium:12,phosphorus:180,iron:1.5,zinc:3.0,vitB12:0.9,cholesterol:75}},
+  {id:"vienissima_standard",name:"Salchicha Vieníssima (Classic)",emoji:"🌭",cat:"PROCESSED",unit:"unit",defaultQty:2,gramsPerUnit:37.5,per100:{kcal:237,protein:14.3,carbs:7.0,fat:17.0,fiber:0,satFat:5.7,sodium:1050,calcium:20,phosphorus:130,iron:1.5,zinc:1.0,cholesterol:45}},
+  {id:"granja_iris_clasica",name:"Salchicha Granja Iris",emoji:"🌭",cat:"PROCESSED",unit:"unit",defaultQty:2,gramsPerUnit:33,per100:{kcal:224,protein:11.5,carbs:9.6,fat:16.0,fiber:0,satFat:5.7,sodium:980,calcium:15,phosphorus:120,iron:1.2,zinc:0.8,cholesterol:40}},
+  {id:"paladini_viena",name:"Salchicha Paladini",emoji:"🌭",cat:"PROCESSED",unit:"unit",defaultQty:2,gramsPerUnit:33.3,per100:{kcal:234,protein:12.0,carbs:6.4,fat:18.0,fiber:0,satFat:7.2,sodium:800,calcium:18,phosphorus:125,iron:1.3,zinc:1.1,cholesterol:50}},
+  {id:"patyviena_fun",name:"Salchicha Patyviena",emoji:"🌭",cat:"PROCESSED",unit:"unit",defaultQty:2,gramsPerUnit:35,per100:{kcal:245,protein:13.5,carbs:5.5,fat:18.5,fiber:0,satFat:6.5,sodium:1100,calcium:22,phosphorus:135,iron:1.4,zinc:0.9,cholesterol:48}},
+  {id:"salchicha_parrillera_paladini",name:"Salchicha Parrillera / Vacuum Grill",emoji:"🥨",cat:"PROCESSED",unit:"portion",defaultQty:1,gramsPerUnit:100,per100:{kcal:292,protein:15.4,carbs:0,fat:26.0,fiber:0,satFat:8.0,sodium:850,calcium:25,phosphorus:180,iron:1.8,zinc:3.0,cholesterol:75}},
+  {id:"chorizo_campo_austral",name:"Chorizo de Cerdo / Vacuum Sausage",emoji:"🌭",cat:"PROCESSED",unit:"unit",defaultQty:1,gramsPerUnit:90,per100:{kcal:310,protein:16.0,carbs:1.5,fat:27.0,fiber:0,satFat:10.5,sodium:920,calcium:20,phosphorus:170,iron:1.6,zinc:2.5,cholesterol:70}},
+  {id:"morcilla_bombon_cagnoli",name:"Morcilla Bombón / Mini Blood Sausage",emoji:"⚫",cat:"PROCESSED",unit:"unit",defaultQty:2,gramsPerUnit:40,per100:{kcal:360,protein:13.5,carbs:3.5,fat:32.0,fiber:0,satFat:13.0,sodium:780,calcium:35,phosphorus:110,iron:22.0,zinc:1.8,cholesterol:95}},
+
+  // --- FISH, SEAFOOD & MARINE ---
+  {id:"sardines",name:"Sardinas en Aceite / Sardines (drained)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:120,gramsPerUnit:1,per100:{kcal:208,protein:24.6,carbs:0,fat:11.5,fiber:0,satFat:1.5,omega3ala:0.1,omega3dha:1.5,sodium:505,calcium:382,phosphorus:490,magnesium:39,potassium:397,iron:2.9,zinc:1.7,copper:0.19,manganese:0.11,selenium:52,iodine:67,chromium:5,vitA:54,vitC:0,vitD:10.0,vitE:2.0,vitK:2.6,vitB1:0.1,vitB2:0.23,vitB3:5.2,vitB5:0.7,vitB6:0.2,vitB7:3,vitB9:11,vitB12:8.9,choline:75}},
+  {id:"hake",name:"Merluza / Hake (raw fillet)",emoji:"🐠",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:90,protein:18.5,carbs:0,fat:1.3,fiber:0,satFat:0.2,omega3ala:0.05,omega3dha:0.2,sodium:72,calcium:34,phosphorus:214,magnesium:35,potassium:432,iron:0.9,zinc:0.5,copper:0.03,manganese:0.02,selenium:36,iodine:50,chromium:3,vitA:16,vitC:0,vitD:5.4,vitE:0.4,vitK:0,vitB1:0.08,vitB2:0.12,vitB3:2.7,vitB5:0.3,vitB6:0.4,vitB7:2,vitB9:11,vitB12:1.5,choline:65}},
+  {id:"shrimp",name:"Camarones / Shrimp (raw)",emoji:"🍤",cat:"SEAFOOD",unit:"g",defaultQty:120,gramsPerUnit:1,per100:{kcal:85,protein:20.1,carbs:0,fat:0.5,fiber:0,satFat:0.1,omega3ala:0.01,omega3dha:0.12,sodium:566,calcium:64,phosphorus:214,magnesium:30,potassium:264,iron:0.5,zinc:1.3,copper:0.26,manganese:0.03,selenium:38,iodine:32,chromium:0,vitA:54,vitC:0,vitD:0.1,vitE:1.1,vitK:0,vitB1:0.03,vitB2:0.03,vitB3:2.6,vitB5:0.3,vitB6:0.1,vitB7:1,vitB9:3,vitB12:1.1,choline:135}},
+  {id:"squid_raw",name:"Calamar / Squid (raw)",emoji:"🦑",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:92,protein:15.6,carbs:3.1,fat:1.4,fiber:0,satFat:0.4,sodium:44,calcium:32,phosphorus:221,vitA:10,vitC:4,cholesterol:233}},
+  {id:"octopus_cooked",name:"Pulpo / Octopus (cooked)",emoji:"🐙",cat:"SEAFOOD",unit:"g",defaultQty:120,gramsPerUnit:1,per100:{kcal:164,protein:29.8,carbs:4.4,fat:2.1,fiber:0,satFat:0.5,sodium:460,calcium:106,phosphorus:280,vitA:25,vitC:8,cholesterol:95}},
+  {id:"mussels_cooked",name:"Mejillones / Mussels (steamed)",emoji:"🦪",cat:"SEAFOOD",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:172,protein:24.0,carbs:7.4,fat:4.5,fiber:0,satFat:0.9,sodium:370,calcium:33,phosphorus:285,vitA:45,vitC:13,cholesterol:50}},
+  {id:"rabas_fritas",name:"Rabas / Fried Calamari",emoji:"🍤",cat:"SEAFOOD",unit:"portion",defaultQty:1,gramsPerUnit:250,per100:{kcal:216,protein:13.0,carbs:14.0,fat:12.0,fiber:0.4,satFat:1.8,sodium:480,calcium:40,phosphorus:150,vitA:5,vitC:0,cholesterol:180}},
+  {id:"cornalitos_fritos",name:"Cornalitos Fritos / Fried Smelt",emoji:"🐟",cat:"SEAFOOD",unit:"portion",defaultQty:1,gramsPerUnit:200,per100:{kcal:253,protein:18.5,carbs:12.6,fat:14.2,fiber:0.8,satFat:2.5,sodium:570,calcium:200,phosphorus:250,vitA:30,vitC:0,cholesterol:110}},
+  {id:"anchovies_oil",name:"Anchoas en Aceite / Anchovies",emoji:"🐟",cat:"SEAFOOD",unit:"filet",defaultQty:4,gramsPerUnit:4,per100:{kcal:210,protein:28.9,carbs:0,fat:9.7,fiber:0,satFat:2.2,sodium:3668,calcium:232,phosphorus:252,vitA:15,vitC:0,cholesterol:85}},
+  {id:"kani_kama",name:"Kani Kama / Surimi Sticks",emoji:"🦀",cat:"SEAFOOD",unit:"stick",defaultQty:3,gramsPerUnit:18,per100:{kcal:99,protein:15.2,carbs:6.9,fat:0.9,fiber:0,satFat:0.1,sodium:143,calcium:9,phosphorus:282,vitA:2,vitC:0,cholesterol:30}},
+  {id:"gatuzo",name:"Gatuzo / Smooth-Hound (raw)",emoji:"🦈",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:105,protein:21.0,carbs:0,fat:2.3,fiber:0,satFat:0.5,sodium:75,calcium:15,phosphorus:210,vitA:10,vitC:0,cholesterol:45}},
+  {id:"pollo_de_mar",name:"Pollo de Mar / Angel Shark (raw)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:112,protein:19.5,carbs:0,fat:3.5,fiber:0,satFat:0.8,sodium:80,calcium:20,phosphorus:190,vitA:5,vitC:0,cholesterol:50}},
+  {id:"abadejo",name:"Abadejo / Pink Cusk-Eel (raw)",emoji:"🐠",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:82,protein:17.8,carbs:0,fat:0.8,fiber:0,satFat:0.1,sodium:60,calcium:30,phosphorus:180,vitA:15,vitC:0,cholesterol:40}},
+  {id:"brotola",name:"Brótola (raw fillet)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:88,protein:18.5,carbs:0,fat:1.2,fiber:0,satFat:0.2,sodium:70,calcium:25,phosphorus:195,vitA:10,vitC:0,cholesterol:45}},
+  {id:"lenguado",name:"Lenguado / Flounder (raw)",emoji:"🥞",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:86,protein:19.0,carbs:0,fat:1.0,fiber:0,satFat:0.2,sodium:80,calcium:18,phosphorus:185,vitA:5,vitC:0,cholesterol:50}},
+  {id:"pacu",name:"Pacú / River Steak (raw)",emoji:"🍖",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:245,protein:18.0,carbs:0,fat:18.5,fiber:0,satFat:4.5,sodium:55,calcium:15,phosphorus:210,vitA:20,vitC:0,cholesterol:65}},
+  {id:"surubi",name:"Surubí (raw)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:165,protein:19.5,carbs:0,fat:9.5,fiber:0,satFat:2.5,sodium:60,calcium:10,phosphorus:200,vitA:15,vitC:0,cholesterol:55}},
+  {id:"langostinos_crudos",name:"Langostinos / Red Shrimp (raw)",emoji:"🦐",cat:"SEAFOOD",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:95,protein:20.5,carbs:0,fat:1.1,fiber:0,satFat:0.2,sodium:140,calcium:50,phosphorus:220,vitA:0,vitC:2,cholesterol:160}},
+  {id:"mix_mariscos",name:"Cazuela Mix / Seafood Mix (frozen)",emoji:"🍲",cat:"SEAFOOD",unit:"cup",defaultQty:1,gramsPerUnit:150,per100:{kcal:105,protein:16.5,carbs:3.0,fat:2.5,fiber:0,satFat:0.5,sodium:320,calcium:40,phosphorus:190,vitA:20,vitC:1,cholesterol:110}},
+  {id:"pez_palo",name:"Pez Palo / Sandperch (raw)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:96,protein:20.1,carbs:0,fat:1.7,fiber:0,satFat:0.3,sodium:65,calcium:40,phosphorus:205,vitA:15,vitC:0,cholesterol:45}},
+  {id:"pescadilla",name:"Pescadilla / Whiting (raw)",emoji:"🎣",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:91,protein:18.5,carbs:0,fat:1.3,fiber:0,satFat:0.3,sodium:75,calcium:35,phosphorus:190,vitA:10,vitC:0,cholesterol:50}},
+  {id:"salmon_blanco",name:"Salmón Blanco / False Salmon (raw)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:98,protein:19.0,carbs:0,fat:1.9,fiber:0,satFat:0.4,sodium:80,calcium:25,phosphorus:210,vitA:10,vitC:0,cholesterol:55}},
+  {id:"corvina_rubia",name:"Corvina (raw)",emoji:"🐠",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:125,protein:19.5,carbs:0,fat:4.8,fiber:0,satFat:1.2,sodium:60,calcium:20,phosphorus:180,vitA:15,vitC:0,cholesterol:60}},
+  {id:"pejerrey_frito",name:"Pejerrey Frito / Fried Silverside",emoji:"🥣",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:245,protein:18.0,carbs:14.0,fat:13.5,fiber:0.5,satFat:2.1,sodium:350,calcium:80,phosphorus:220,vitA:5,vitC:0,cholesterol:95}},
+  {id:"boga_parrilla",name:"Boga a la Parrilla / Grilled River Fish",emoji:"🔥",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:210,protein:18.5,carbs:0,fat:15.0,fiber:0,satFat:4.5,sodium:50,calcium:15,phosphorus:190,vitA:20,vitC:0,cholesterol:70}},
+  {id:"trucha_patagonica",name:"Trucha Patagónica / Trout (raw)",emoji:"🦈",cat:"SEAFOOD",unit:"g",defaultQty:180,gramsPerUnit:1,per100:{kcal:148,protein:20.8,carbs:0,fat:6.6,fiber:0,satFat:1.1,sodium:45,calcium:25,phosphorus:240,vitA:60,vitC:2,cholesterol:60}},
+  {id:"besugo",name:"Besugo / Red Porgy (raw)",emoji:"🔴",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:112,protein:20.0,carbs:0,fat:3.0,fiber:0,satFat:0.7,sodium:70,calcium:40,phosphorus:210,vitA:10,vitC:0,cholesterol:50}},
+  {id:"cholgas",name:"Cholgas / Large Mussels",emoji:"🦪",cat:"SEAFOOD",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:115,protein:18.5,carbs:4.5,fat:2.5,fiber:0,satFat:0.4,sodium:320,calcium:50,phosphorus:230,vitA:30,vitC:5,cholesterol:45}},
+  {id:"vieiras",name:"Vieiras / Scallops",emoji:"🐚",cat:"SEAFOOD",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:88,protein:16.8,carbs:2.4,fat:0.8,fiber:0,satFat:0.1,sodium:390,calcium:35,phosphorus:200,vitA:5,vitC:0,cholesterol:35}},
+  {id:"salmon_pink_canned",name:"Pink Salmon / Salmón (canned)",emoji:"🥫",cat:"SEAFOOD",unit:"g",defaultQty:120,gramsPerUnit:1,per100:{kcal:138,protein:24.6,carbs:0,fat:4.5,fiber:0,satFat:0.8,omega3ala:0.1,omega3dha:0.9,sodium:380,calcium:260,phosphorus:320,magnesium:35,potassium:340,iron:1.0,zinc:0.8,vitA:15,vitC:0,vitD:14.0,vitB12:4.9,selenium:45,cholesterol:55}},
+  {id:"trout_rainbow_cooked",name:"Rainbow Trout (cooked)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:140,gramsPerUnit:1,per100:{kcal:174,protein:24.5,carbs:0,fat:8.5,fiber:0,satFat:1.8,omega3ala:0.2,omega3dha:1.0,sodium:55,calcium:50,phosphorus:270,magnesium:30,potassium:450,iron:0.4,zinc:0.7,vitA:60,vitC:1,vitD:15.5,vitB12:4.5,selenium:32,cholesterol:70}},
+  {id:"cod_atlantic_cooked",name:"Atlantic Cod (cooked)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:105,protein:22.8,carbs:0,fat:0.9,fiber:0,satFat:0.1,omega3ala:0,omega3dha:0.2,sodium:100,calcium:15,phosphorus:250,magnesium:40,potassium:460,iron:0.2,zinc:0.5,vitA:2,vitC:0,vitD:1.1,vitB12:2.1,selenium:46,cholesterol:55}},
+  {id:"merluza_raw",name:"Merluza / Hake (Raw Filet)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:81,protein:17.1,carbs:0,fat:1.3,fiber:0,satFat:0.3,omega3ala:0.1,omega3dha:0.3,sodium:85,calcium:33,phosphorus:142,magnesium:25,potassium:294,iron:1.1,zinc:0.4,iodine:27,selenium:30,vitA:10,vitD:1.0,vitB12:1.1,cholesterol:45}},
+  {id:"gatuzo_raw",name:"Gatuzo / Smooth-Hound (Raw Filet)",emoji:"🦈",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:72,protein:17.4,carbs:0,fat:0.2,fiber:0,satFat:0.1,sodium:75,calcium:15,phosphorus:181,magnesium:20,potassium:280,iron:0.8,zinc:0.5,iodine:20,selenium:25,vitA:5,vitD:0,vitB12:1.0,cholesterol:40}},
+  {id:"abadejo_raw",name:"Abadejo (Raw Filet)",emoji:"🐠",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:78,protein:17.8,carbs:0,fat:0.7,fiber:0,satFat:0.1,sodium:60,calcium:25,phosphorus:190,magnesium:30,potassium:350,iron:0.5,zinc:0.4,iodine:30,selenium:35,vitA:10,vitD:0.5,vitB12:1.5,cholesterol:40}},
+  {id:"salmon_rosado_raw",name:"Salmón Rosado (Raw)",emoji:"🍣",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:208,protein:20.4,carbs:0,fat:13.4,fiber:0,satFat:3.1,omega3ala:0.3,omega3dha:1.4,sodium:59,calcium:9,phosphorus:240,magnesium:27,potassium:363,iron:0.3,zinc:0.4,iodine:30,selenium:36,vitA:40,vitD:11.0,vitB12:3.2,cholesterol:55}},
+  {id:"trucha_raw",name:"Trucha Arcoíris (Raw)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:141,protein:20.5,carbs:0,fat:6.2,fiber:0,satFat:1.5,omega3ala:0.2,omega3dha:0.9,sodium:52,calcium:43,phosphorus:250,magnesium:31,potassium:480,iron:0.7,zinc:0.6,iodine:20,selenium:20,vitA:50,vitD:3.9,vitB12:4.0,cholesterol:59}},
+  {id:"mejillones_pelados_raw",name:"Mejillones Pelados (Raw/Thawed)",emoji:"🦪",cat:"SEAFOOD",unit:"cup",defaultQty:1,gramsPerUnit:150,per100:{kcal:95,protein:17.6,carbs:2.5,fat:1.6,fiber:0,satFat:0.3,sodium:286,calcium:26,phosphorus:197,magnesium:37,potassium:320,iron:3.9,zinc:1.6,iodine:100,selenium:45,vitA:45,vitD:0,vitB12:12.0,cholesterol:28}},
+  {id:"caballa_natural",name:"Caballa al Natural (Mackerel)",emoji:"🐟",cat:"SEAFOOD",unit:"can",defaultQty:1,gramsPerUnit:120,per100:{kcal:160,protein:24.0,carbs:0,fat:7.0,fiber:0,satFat:1.5,sodium:350,omega3dha:2.5,vitD:15.0,vitB12:8.5}},
+  {id:"jurel_natural",name:"Jurel al Natural (Jack Mackerel)",emoji:"🐟",cat:"SEAFOOD",unit:"can",defaultQty:1,gramsPerUnit:120,per100:{kcal:156,protein:23.0,carbs:0,fat:6.5,fiber:0,satFat:1.6,sodium:380,omega3dha:2.0,calcium:250}},
+  {id:"sardinas_tomate",name:"Sardinas en Salsa de Tomate",emoji:"🍅",cat:"SEAFOOD",unit:"can",defaultQty:1,gramsPerUnit:120,per100:{kcal:185,protein:21.0,carbs:2.0,fat:10.0,fiber:0,satFat:2.5,sodium:400,calcium:380,omega3dha:2.8,iron:2.9}},
+  {id:"tuna_can",name:"Atún al Natural / Tuna (Canned Water)",emoji:"🐟",cat:"SEAFOOD",unit:"g",defaultQty:120,gramsPerUnit:1,per100:{kcal:116,protein:25.5,carbs:0,fat:1.0,fiber:0,satFat:0.3,omega3ala:0.01,omega3dha:0.23,sodium:320,calcium:14,phosphorus:200,magnesium:25,potassium:200,iron:1.0,zinc:0.6,copper:0.06,manganese:0.02,selenium:80.4,iodine:25,chromium:0,vitA:15,vitC:0,vitD:1.7,vitE:0.5,vitK:0.1,vitB1:0.03,vitB2:0.1,vitB3:13.3,vitB5:0.2,vitB6:0.35,vitB7:0,vitB9:5,vitB12:2.5,choline:29}},
+
+  // --- EGGS ---
+  {id:"eggs",name:"Huevos Enteros / Eggs (whole, large)",emoji:"🥚",cat:"EGGS",unit:"eggs",defaultQty:3,gramsPerUnit:60,per100:{kcal:155,protein:13,carbs:1.1,fat:10.6,fiber:0,satFat:3.3,omega3ala:0.04,omega3dha:0.19,sodium:124,calcium:50,phosphorus:172,magnesium:10,potassium:126,iron:1.8,zinc:1.1,copper:0.07,manganese:0.04,selenium:30,iodine:53,chromium:5,vitA:160,vitC:0,vitD:2.0,vitE:1.1,vitK:0.3,vitB1:0.04,vitB2:0.46,vitB3:0.07,vitB5:1.4,vitB6:0.17,vitB7:25,vitB9:47,vitB12:1.1,choline:294}},
+  {id:"huevo_blanco_grande",name:"Huevo Blanco Grande (N°1)",emoji:"🥚",cat:"EGGS",unit:"unit",defaultQty:2,gramsPerUnit:50,per100:{kcal:143,protein:12.6,carbs:0.7,fat:9.5,fiber:0,satFat:3.1,sodium:142,cholesterol:372,vitD:2.0,vitA:160,vitB12:0.9}},
+  {id:"huevo_campo_color",name:"Huevo de Campo / Free Range",emoji:"🪺",cat:"EGGS",unit:"unit",defaultQty:2,gramsPerUnit:55,per100:{kcal:143,protein:12.6,carbs:0.7,fat:9.5,fiber:0,satFat:3.1,sodium:142,cholesterol:372,vitD:2.5,vitA:190,vitB12:1.0}},
+  {id:"claras_huevo_botella",name:"Claras de Huevo Líquidas / Egg Whites",emoji:"🥛",cat:"EGGS",unit:"ml",defaultQty:100,gramsPerUnit:1,per100:{kcal:48,protein:11.0,carbs:0.7,fat:0,fiber:0,satFat:0,sodium:166,potassium:163,cholesterol:0}},
+
+  // --- DAIRY (MILK, YOGURT, CHEESE) ---
+  {id:"milk_liquid",name:"Leche Entera / Whole Liquid Milk",emoji:"🥛",cat:"DAIRY",unit:"ml",defaultQty:250,gramsPerUnit:1,per100:{kcal:61,protein:3.2,carbs:4.8,fat:3.3,fiber:0,satFat:2.1,omega3ala:0.04,omega3dha:0,sodium:44,calcium:113,phosphorus:84,magnesium:11,potassium:150,iron:0.05,zinc:0.4,copper:0.01,manganese:0.003,selenium:3.7,iodine:18,chromium:1,vitA:46,vitC:0.9,vitD:0.8,vitE:0.07,vitK:0.3,vitB1:0.04,vitB2:0.18,vitB3:0.09,vitB5:0.35,vitB6:0.04,vitB7:3,vitB9:5,vitB12:0.45,choline:16}},
+  {id:"milk_powder",name:"Leche en Polvo / Skimmed Milk Powder",emoji:"🫙",cat:"DAIRY",unit:"tbsp",defaultQty:2,gramsPerUnit:8,per100:{kcal:357,protein:35,carbs:54.5,fat:0.8,fiber:0,satFat:0.5,omega3ala:0,omega3dha:0,sodium:540,calcium:1280,phosphorus:1030,magnesium:110,potassium:1700,iron:0.5,zinc:4.1,copper:0.05,manganese:0.03,selenium:30,iodine:430,chromium:8,vitA:270,vitC:8,vitD:0,vitE:0.1,vitK:1,vitB1:0.35,vitB2:1.25,vitB3:0.8,vitB5:3.5,vitB6:0.4,vitB7:15,vitB9:50,vitB12:3.8,choline:160}},
+  {id:"leche_entera_clasica",name:"Leche Entera Clásica 3% (LS)",emoji:"🥛",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:58,protein:3.0,carbs:4.7,fat:3.0,fiber:0,satFat:1.8,sodium:45,calcium:120,phosphorus:95,vitA:60,vitD:1.0,vitB2:0.17,vitB12:0.4}},
+  {id:"leche_en_polvo_entera",name:"Leche en Polvo Entera (LS)",emoji:"🥡",cat:"DAIRY",unit:"tbsp",defaultQty:2,gramsPerUnit:10,per100:{kcal:495,protein:26.0,carbs:38.0,fat:26.5,fiber:0,satFat:16.0,sodium:350,calcium:900,phosphorus:700,vitA:450,vitD:7.5}},
+  {id:"leche_descremada_clasica",name:"Leche Descremada 0% (LS)",emoji:"🥛",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:33,protein:3.1,carbs:4.8,fat:0.1,fiber:0,satFat:0.0,sodium:48,calcium:125,phosphorus:98,vitA:60,vitD:1.0,vitB2:0.17,vitB12:0.4}},
+  {id:"leche_liviana_1",name:"Leche Liviana 1% (LS - Orange)",emoji:"🥛",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:40,protein:3.0,carbs:4.7,fat:1.0,fiber:0,satFat:0.6,sodium:46,calcium:120,vitA:60,vitD:1.0}},
+  {id:"leche_zero_lactosa",name:"Leche Zero Lactosa (LS)",emoji:"🧬",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:40,protein:3.0,carbs:4.7,fat:1.0,fiber:0,satFat:0.6,sodium:46,calcium:120,vitA:60,vitD:1.0}},
+  {id:"coto_entera_liquid",name:"Leche Entera (Coto)",emoji:"🥛",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:58,protein:3.0,carbs:4.7,fat:3.0,fiber:0,satFat:1.9,sodium:45,calcium:115,phosphorus:90,vitA:60,vitD:1.0}},
+  {id:"coto_descremada_liquid",name:"Leche Descremada (Coto 1.5%)",emoji:"🥛",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:44,protein:3.0,carbs:4.8,fat:1.5,fiber:0,satFat:1.0,sodium:48,calcium:115,vitA:60,vitD:1.0}},
+  {id:"dia_entera_liquid",name:"Leche Entera Larga Vida (Dia)",emoji:"🥛",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:59,protein:3.0,carbs:4.6,fat:3.0,fiber:0,satFat:1.9,sodium:50,calcium:120,vitA:60,vitD:1.0}},
+  {id:"dia_polvo_descremada",name:"Leche en Polvo Descremada (Dia)",emoji:"🥡",cat:"DAIRY",unit:"tbsp",defaultQty:2,gramsPerUnit:10,per100:{kcal:358,protein:34.0,carbs:52.0,fat:1.5,fiber:0,satFat:1.0,sodium:550,calcium:1100,phosphorus:950,vitA:600,vitD:10}},
+  {id:"carrefour_descremada",name:"Leche Descremada (Carrefour)",emoji:"🥛",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:41,protein:3.1,carbs:4.7,fat:1.0,fiber:0,satFat:0.6,sodium:46,calcium:120,vitA:60,vitD:1.0}},
+  {id:"ls_protein_milk",name:"Leche Protein 50% (La Serenísima)",emoji:"💪",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:37,protein:4.6,carbs:4.6,fat:0,fiber:0,satFat:0,sodium:55,calcium:150,phosphorus:110,vitA:60,vitD:1.0}},
+  {id:"ls_almendras_sin_azucar",name:"Leche de Almendras (Sin Azúcar)",emoji:"🌰",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:13,protein:0.4,carbs:0.4,fat:1.1,fiber:0.4,satFat:0,sodium:30,calcium:120,vitA:60,vitD:1.0,vitB12:0.4,vitE:1.0}},
+  {id:"ls_hierro_milk",name:"Leche con Hierro (La Serenísima)",emoji:"⚙️",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:42,protein:3.0,carbs:4.7,fat:1.5,fiber:0,satFat:0.9,sodium:46,calcium:120,iron:1.2,vitC:15,vitA:60,vitD:1.0}},
+  {id:"ls_protein_46g",name:"Leche Protein 46g (LS Red)",emoji:"🔴",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:37,protein:4.6,carbs:4.6,fat:0,fiber:0,satFat:0,sodium:55,calcium:150,phosphorus:110,vitA:60,vitC:1.5,vitD:1.0,vitB2:0.20,vitB12:0.5,cholesterol:0}},
+  {id:"ls_protein_52g",name:"Leche Protein 52g (LS Black)",emoji:"⚫",cat:"DAIRY",unit:"ml",defaultQty:200,gramsPerUnit:1,per100:{kcal:41,protein:5.2,carbs:4.6,fat:0,fiber:0,satFat:0,sodium:58,calcium:160,phosphorus:120,vitA:60,vitC:1.5,vitD:1.2,vitB2:0.22,vitB12:0.6,cholesterol:0}},
+  {id:"ls_protein_polvo",name:"Leche Protein en Polvo (LS)",emoji:"🥡",cat:"DAIRY",unit:"tbsp",defaultQty:2,gramsPerUnit:10,per100:{kcal:348,protein:46.0,carbs:39.0,fat:1.0,fiber:0,satFat:0,sodium:550,calcium:1500,phosphorus:1100,vitA:600,vitC:15,vitD:10.0}},
   
-  { id: "ground_beef_90", name: "Picada Magra 90% / Lean Ground Beef (raw)", emoji: "🥩", cat: "BEEF", unit: "g", defaultQty: 125, gramsPerUnit: 125, per100: { kcal: 176, protein: 20.0, carbs: 0, fat: 10.0, fiber: 0, satFat: 4.2, sodium: 66, calcium: 12, iron: 2.6, zinc: 4.8, vitB12: 2.5, choline: 70 } },
-  { id: "asado_de_tira", name: "Asado de Tira / Short Ribs (raw edible)", emoji: "🥩", cat: "BEEF", unit: "g", defaultQty: 250, gramsPerUnit: 250, per100: { kcal: 270, protein: 18.2, carbs: 0, fat: 22.0, fiber: 0, satFat: 9.2, sodium: 60, calcium: 10, iron: 2.1, zinc: 5.0, vitB12: 2.2, choline: 68 } },
-  { id: "vacio_raw", name: "Vacío / Flank Steak (raw)", emoji: "🥩", cat: "BEEF", unit: "g", defaultQty: 250, gramsPerUnit: 250, per100: { kcal: 218, protein: 19.8, carbs: 0, fat: 15.4, fiber: 0, satFat: 6.5, sodium: 55, calcium: 9, iron: 2.3, zinc: 4.5, vitB12: 2.4, choline: 72 } },
-  { id: "entrana_raw", name: "Entraña / Skirt Steak (raw)", emoji: "🥩", cat: "BEEF", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 236, protein: 18.5, carbs: 0, fat: 18.0, fiber: 0, satFat: 7.6, sodium: 65, calcium: 11, iron: 2.5, zinc: 4.2, vitB12: 2.1, choline: 65 } },
-  { id: "bife_de_chorizo_raw", name: "Bife de Chorizo / Strip Steak (raw)", emoji: "🥩", cat: "BEEF", unit: "g", defaultQty: 250, gramsPerUnit: 250, per100: { kcal: 198, protein: 21.2, carbs: 0, fat: 12.6, fiber: 0, satFat: 5.2, sodium: 54, calcium: 12, iron: 2.2, zinc: 4.6, vitB12: 2.3, choline: 75 } },
-  { id: "lomo_raw", name: "Lomo / Tenderloin (raw)", emoji: "🥩", cat: "BEEF", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 136, protein: 22.4, carbs: 0, fat: 5.2, fiber: 0, satFat: 2.1, sodium: 50, calcium: 8, iron: 2.4, zinc: 3.8, vitB12: 2.1, choline: 82 } },
-  { id: "nalga_raw", name: "Nalga / Top Round (raw)", emoji: "🥩", cat: "BEEF", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 127, protein: 21.8, carbs: 0, fat: 4.5, fiber: 0, satFat: 1.8, sodium: 58, calcium: 7, iron: 2.1, zinc: 4.0, vitB12: 2.0, choline: 78 } },
-  { id: "bola_de_lomo_raw", name: "Bola de Lomo / Knuckle (raw)", emoji: "🥩", cat: "BEEF", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 139, protein: 21.0, carbs: 0, fat: 6.1, fiber: 0, satFat: 2.4, sodium: 56, calcium: 8, iron: 2.2, zinc: 4.1, vitB12: 1.9, choline: 74 } },
-  { id: "ossobuco_raw", name: "Ossobuco / Shank Meat (raw edible)", emoji: "🍲", cat: "BEEF", unit: "g", defaultQty: 250, gramsPerUnit: 250, per100: { kcal: 147, protein: 21.5, carbs: 0, fat: 6.8, fiber: 0, satFat: 2.8, sodium: 62, calcium: 11, iron: 2.6, zinc: 6.1, vitB12: 2.6, choline: 70 } },
-  { id: "roast_beef_raw", name: "Roast Beef / Chuck Roll (raw)", emoji: "🥩", cat: "BEEF", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 186, protein: 19.4, carbs: 0, fat: 12.1, fiber: 0, satFat: 4.9, sodium: 64, calcium: 10, iron: 2.3, zinc: 5.2, vitB12: 2.5, choline: 69 } },
-  { id: "beef_liver_raw", name: "Hígado de Vaca / Beef Liver (raw ⚠️ VitA Warning)", emoji: "🥩", cat: "OFFAL", unit: "g", defaultQty: 100, gramsPerUnit: 100, per100: { kcal: 135, protein: 20.4, carbs: 3.8, fat: 3.6, fiber: 0, satFat: 1.2, sodium: 69, calcium: 5, iron: 4.9, zinc: 4.0, vitA: 4968, vitC: 1.3, vitB12: 59.3, choline: 418 } },
-  { id: "kidney_raw", name: "Riñón / Beef Kidney (raw)", emoji: "🥩", cat: "OFFAL", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 98, protein: 16.5, carbs: 0.5, fat: 3.5, fiber: 0, satFat: 1.1, sodium: 180, calcium: 15, iron: 5.8, zinc: 2.5, vitA: 30, vitB12: 25.0 } },
-  { id: "tongue_cooked", name: "Lengua de Vaca / Beef Tongue (cooked)", emoji: "👅", cat: "OFFAL", unit: "slice", defaultQty: 2, gramsPerUnit: 50, per100: { kcal: 284, protein: 19.3, carbs: 0, fat: 22.3, fiber: 0, satFat: 7.6, sodium: 65, calcium: 10, iron: 2.6, zinc: 4.1, vitB12: 4.5 } },
-  { id: "tripe_cooked", name: "Mondongo / Beef Tripe (cooked)", emoji: "🍲", cat: "OFFAL", unit: "cup", defaultQty: 1, gramsPerUnit: 150, per100: { kcal: 96, protein: 15.0, carbs: 0, fat: 4.0, fiber: 0, satFat: 1.5, sodium: 70, calcium: 70, iron: 0.6, zinc: 1.2, vitB12: 1.4 } },
+  {id:"yogurisimo_griego_natural",name:"Yogurísimo Estilo Griego Natural",emoji:"🏺",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:190,per100:{kcal:81,protein:6.3,carbs:6.8,fat:3.2,fiber:0,satFat:2.1,sodium:45,calcium:160}},
+  {id:"yogurisimo_griego_frutilla",name:"Yogurísimo Griego Frutilla",emoji:"🍓",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:140,per100:{kcal:105,protein:5.4,carbs:16.0,fat:2.1,fiber:0,satFat:1.3,sodium:40,calcium:130}},
+  {id:"dahi_natural_vidrio",name:"Dahi Natural (Glass Jar)",emoji:"🥛",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:200,per100:{kcal:98,protein:4.5,carbs:6.0,fat:6.2,fiber:0,satFat:4.1,sodium:50,calcium:150}},
+  {id:"kay_griego_real",name:"Kay Yogur Griego (Strained)",emoji:"🇬🇷",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:170,per100:{kcal:58,protein:10.0,carbs:4.0,fat:0.0,fiber:0,satFat:0,sodium:35,calcium:120}},
+  {id:"tregar_natural_clasico",name:"Yogur Tregar Natural (Endulzado)",emoji:"🥣",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:140,per100:{kcal:79,protein:5.3,carbs:7.9,fat:3.0,fiber:0,satFat:1.9,sodium:55,calcium:140}},
+  {id:"yogurisimo_firme_vainilla",name:"Yogurísimo Firme (Vainilla)",emoji:"🍮",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:120,per100:{kcal:92,protein:3.4,carbs:16.0,fat:1.5,fiber:0,satFat:0.9,sodium:60,calcium:110}},
+  {id:"yogurisimo_bebible_frutilla",name:"Yogurísimo Bebible",emoji:"🧃",cat:"DAIRY",unit:"glass",defaultQty:1,gramsPerUnit:250,per100:{kcal:78,protein:2.9,carbs:13.5,fat:1.5,fiber:0,satFat:1.0,sodium:50,calcium:100}},
+  {id:"ser_bebible_descremado",name:"Ser Bebible Descremado (0%)",emoji:"👙",cat:"DAIRY",unit:"glass",defaultQty:1,gramsPerUnit:250,per100:{kcal:36,protein:3.2,carbs:5.5,fat:0.1,fiber:0,satFat:0,sodium:45,calcium:110}},
+  {id:"ser_pro_mas",name:"Ser Pro-Mas (Protein Yogurt)",emoji:"🏋️",cat:"DAIRY",unit:"bottle",defaultQty:1,gramsPerUnit:190,per100:{kcal:71,protein:7.9,carbs:7.4,fat:1.5,fiber:0,satFat:0.9,sodium:60,calcium:180}},
+  {id:"yogurade_natural",name:"Yogurade (High Protein)",emoji:"⚡",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:160,per100:{kcal:58,protein:10.6,carbs:3.5,fat:0.2,fiber:0,satFat:0,sodium:50,calcium:180}},
+  {id:"ser_firme_vainilla",name:"Yogur Ser Firme",emoji:"🍮",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:190,per100:{kcal:42,protein:4.3,carbs:5.8,fat:0,fiber:0,satFat:0,sodium:65,calcium:120,vitD:1.0,vitB12:0.4}},
+  {id:"ser_natural_batido",name:"Yogur Ser Natural (Sin Endulzar)",emoji:"🥣",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:175,per100:{kcal:66,protein:5.4,carbs:8.6,fat:1.1,fiber:0,satFat:0.6,sodium:69,calcium:162,phosphorus:110}},
+  {id:"ser_bebible_sachet",name:"Ser Bebible (Sachet 1L)",emoji:"🥤",cat:"DAIRY",unit:"glass",defaultQty:1,gramsPerUnit:200,per100:{kcal:27,protein:3.2,carbs:3.5,fat:0,fiber:0,satFat:0,sodium:45,calcium:110,vitA:60,vitD:1.0,vitB12:0.4}},
+  {id:"carrefour_0_natural",name:"Yogur Carrefour 0% Natural",emoji:"⚪",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:125,per100:{kcal:36,protein:3.9,carbs:4.9,fat:0.6,fiber:0,satFat:0,sodium:44,calcium:120}},
+  {id:"carrefour_firme_clasico",name:"Yogur Firme Carrefour",emoji:"🥣",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:125,per100:{kcal:85,protein:3.0,carbs:14.0,fat:1.9,fiber:0,satFat:1.2,sodium:50,calcium:100}},
+  {id:"carrefour_bebible_descremado",name:"Yogur Bebible Descremado (Carrefour)",emoji:"🧃",cat:"DAIRY",unit:"glass",defaultQty:1,gramsPerUnit:200,per100:{kcal:34,protein:2.9,carbs:5.5,fat:0.1,fiber:0,satFat:0,sodium:45,calcium:105}},
+  {id:"dia_cremoso_batido",name:"Yogur Dia Cremoso",emoji:"🥣",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:120,per100:{kcal:92,protein:3.2,carbs:13.5,fat:2.8,fiber:0,satFat:1.8,sodium:55,calcium:110}},
+  {id:"dia_bebible_descremado",name:"Yogur Bebible Descremado (Dia)",emoji:"🥛",cat:"DAIRY",unit:"glass",defaultQty:1,gramsPerUnit:200,per100:{kcal:35,protein:2.8,carbs:5.8,fat:0.1,fiber:0,satFat:0,sodium:50,calcium:100}},
+  {id:"coto_firme_descremado",name:"Yogur Firme Descremado (Coto)",emoji:"🍮",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:125,per100:{kcal:43,protein:3.5,carbs:7.0,fat:0.1,fiber:0,satFat:0,sodium:50,calcium:115}},
+  {id:"coto_entero_bebible",name:"Yogur Bebible Entero (Coto)",emoji:"🧃",cat:"DAIRY",unit:"glass",defaultQty:1,gramsPerUnit:200,per100:{kcal:72,protein:2.8,carbs:12.0,fat:1.5,fiber:0,satFat:0.9,sodium:55,calcium:105}},
+  {id:"dia_yogur_frutilla",name:"Yogur Dia Frutilla (Entero)",emoji:"🍓",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:120,per100:{kcal:92,protein:3.2,carbs:13.5,fat:2.8,fiber:0,satFat:1.8,sodium:55,calcium:110}},
+  {id:"dia_yogur_vainilla",name:"Yogur Dia Vainilla (Entero)",emoji:"🍦",cat:"DAIRY",unit:"pot",defaultQty:1,gramsPerUnit:120,per100:{kcal:92,protein:3.2,carbs:13.5,fat:2.8,fiber:0,satFat:1.8,sodium:55,calcium:110}},
 
-  { id: "pork_loin_raw", name: "Carré de Cerdo / Pork Loin (raw)", emoji: "🥩", cat: "PORK", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 143, protein: 21.2, carbs: 0, fat: 6.1, fiber: 0, satFat: 2.1, sodium: 48, calcium: 6, iron: 0.9, zinc: 2.1, vitB12: 0.6, choline: 78 } },
-  { id: "bondiola_raw", name: "Bondiola / Pork Neck (raw)", emoji: "🥩", cat: "PORK", unit: "g", defaultQty: 200, gramsPerUnit: 250, per100: { kcal: 220, protein: 17.5, carbs: 0, fat: 16.5, fiber: 0, satFat: 5.8, sodium: 55, calcium: 12, iron: 1.3, zinc: 2.8, vitB12: 0.7, choline: 75 } },
-  { id: "solomillo_cerdo", name: "Solomillo / Pork Tenderloin (raw)", emoji: "🥓", cat: "PORK", unit: "g", defaultQty: 200, gramsPerUnit: 300, per100: { kcal: 115, protein: 21.0, carbs: 0, fat: 3.5, fiber: 0, satFat: 1.2, sodium: 50, calcium: 8, iron: 1.2, zinc: 2.1, vitB12: 0.6 } },
-  { id: "matambre_cerdo", name: "Matambre de Cerdo / Rose Meat (raw)", emoji: "🍕", cat: "PORK", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 245, protein: 16.5, carbs: 0, fat: 19.5, fiber: 0, satFat: 7.0, sodium: 65, calcium: 15, iron: 1.1, zinc: 2.5, vitB12: 0.8 } },
-  { id: "pechito_cerdo", name: "Pechito de Cerdo / Pork Ribs (raw edible)", emoji: "🍖", cat: "PORK", unit: "g", defaultQty: 250, gramsPerUnit: 150, per100: { kcal: 285, protein: 15.0, carbs: 0, fat: 25.0, fiber: 0, satFat: 9.2, sodium: 70, calcium: 25, iron: 1.0, zinc: 2.2, vitB12: 0.7 } },
+  {id:"queso_cremosa_la_serenisima",name:"Queso Cremoso (La Serenísima)",emoji:"🧀",cat:"DAIRY",unit:"g",defaultQty:30,gramsPerUnit:1,per100:{kcal:293,protein:18.0,carbs:0.5,fat:24.5,fiber:0,satFat:15.5,sodium:480,calcium:510,phosphorus:380,magnesium:20,potassium:85,iron:0.1,zinc:2.2,selenium:12,iodine:30,vitA:190,vitC:0,vitD:0.2,vitE:0.3,vitK:1.5,vitB1:0.03,vitB2:0.30,vitB12:1.1,choline:16}},
+  {id:"muzzarella_barra_barraza",name:"Muzzarella en Barra (Barraza)",emoji:"🍕",cat:"DAIRY",unit:"slice",defaultQty:2,gramsPerUnit:20,per100:{kcal:295,protein:21.5,carbs:1.5,fat:22.5,fiber:0,satFat:14.2,sodium:550,calcium:680,phosphorus:460,magnesium:22,potassium:90,iron:0.2,zinc:2.8,selenium:14,iodine:35,vitA:210,vitC:0,vitD:0.3,vitE:0.3,vitK:1.8,vitB1:0.03,vitB2:0.35,vitB12:1.3,choline:15}},
+  {id:"ricotta_entera_tregar",name:"Ricotta Entera (Tregar)",emoji:"🥣",cat:"DAIRY",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:130,protein:11.2,carbs:3.0,fat:8.1,fiber:0,satFat:5.1,sodium:110,calcium:210,phosphorus:160,magnesium:11,potassium:105,iron:0.1,zinc:0.9,selenium:9,iodine:12,vitA:90,vitC:0,vitD:0.1,vitE:0.1,vitK:0.5,vitB1:0.02,vitB2:0.18,vitB12:0.6,choline:14}},
+  {id:"queso_tybo_paladini",name:"Queso Tybo / Máquina (Paladini)",emoji:"🥪",cat:"DAIRY",unit:"slice",defaultQty:2,gramsPerUnit:20,per100:{kcal:339,protein:24.0,carbs:1.0,fat:26.5,fiber:0,satFat:17.1,sodium:620,calcium:710,phosphorus:490,magnesium:25,potassium:80,iron:0.2,zinc:3.2,selenium:15,iodine:32,vitA:240,vitC:0,vitD:0.4,vitE:0.4,vitK:2.0,vitB1:0.04,vitB2:0.38,vitB12:1.4,choline:16}},
+  {id:"queso_mar_del_plata",name:"Queso Mar del Plata",emoji:"🧀",cat:"DAIRY",unit:"g",defaultQty:30,gramsPerUnit:1,per100:{kcal:360,protein:25.5,carbs:1.5,fat:28.0,fiber:0,satFat:18.2,sodium:680,calcium:760,phosphorus:510,magnesium:28,potassium:75,iron:0.3,zinc:3.5,selenium:16,iodine:38,vitA:260,vitC:0,vitD:0.5,vitE:0.4,vitK:2.2,vitB1:0.04,vitB2:0.40,vitB12:1.5,choline:17}},
+  {id:"queso_reggianito_la_serenisima",name:"Queso Reggianito (LS)",emoji:"🍝",cat:"DAIRY",unit:"tbsp",defaultQty:1,gramsPerUnit:8,per100:{kcal:386,protein:32.5,carbs:2.0,fat:27.5,fiber:0,satFat:18.5,sodium:890,calcium:1120,phosphorus:690,magnesium:34,potassium:95,iron:0.4,zinc:4.1,selenium:22,iodine:45,vitA:290,vitC:0,vitD:0.6,vitE:0.5,vitK:2.5,vitB1:0.04,vitB2:0.42,vitB12:1.8,choline:19}},
+  {id:"queso_sardo_tregar",name:"Queso Sardo (Tregar)",emoji:"🪨",cat:"DAIRY",unit:"g",defaultQty:30,gramsPerUnit:1,per100:{kcal:380,protein:29.0,carbs:1.8,fat:28.5,fiber:0,satFat:19.1,sodium:950,calcium:980,phosphorus:620,magnesium:30,potassium:90,iron:0.3,zinc:3.9,selenium:20,iodine:42,vitA:270,vitC:0,vitD:0.5,vitE:0.4,vitK:2.4,vitB1:0.03,vitB2:0.39,vitB12:1.6,choline:18}},
+  {id:"casancrem_clasico",name:"Casancrem Clásico (LS)",emoji:"🥯",cat:"DAIRY",unit:"tbsp",defaultQty:1,gramsPerUnit:30,per100:{kcal:245,protein:6.0,carbs:4.5,fat:23.0,fiber:0,satFat:14.5,sodium:90,calcium:110}},
+  {id:"casancrem_light",name:"Casancrem Light (Green)",emoji:"📉",cat:"DAIRY",unit:"tbsp",defaultQty:1,gramsPerUnit:30,per100:{kcal:126,protein:7.5,carbs:5.5,fat:8.0,fiber:0,satFat:5.1,sodium:100,calcium:120}},
 
-  { id: "cordero_paleta", name: "Paleta de Cordero / Lamb Shoulder (raw)", emoji: "🍖", cat: "LAMB", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 255, protein: 16.5, carbs: 0, fat: 20.5, fiber: 0, satFat: 8.8, sodium: 65, calcium: 18, iron: 1.7, zinc: 3.8, vitB12: 2.3, choline: 65 } },
-  { id: "cordero_pierna", name: "Pierna de Cordero / Lamb Leg (raw)", emoji: "🍗", cat: "LAMB", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 185, protein: 19.5, carbs: 0, fat: 11.5, fiber: 0, satFat: 4.8, sodium: 60, calcium: 10, iron: 2.1, zinc: 4.5, vitB12: 2.6, choline: 75 } },
-  { id: "cordero_costeletas", name: "Costeletas de Cordero / Lamb Chops (raw)", emoji: "🥩", cat: "LAMB", unit: "unit", defaultQty: 2, gramsPerUnit: 80, per100: { kcal: 280, protein: 15.5, carbs: 0, fat: 24.0, fiber: 0, satFat: 10.5, sodium: 68, calcium: 22, iron: 1.6, zinc: 3.2, vitB12: 2.0 } },
-  { id: "cordero_vacio", name: "Vacío de Cordero / Lamb Flank (raw)", emoji: "🥓", cat: "LAMB", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 335, protein: 14.0, carbs: 0, fat: 31.0, fiber: 0, satFat: 13.5, sodium: 70, calcium: 25, iron: 1.5, zinc: 2.8, vitB12: 1.8 } },
-  { id: "cordero_garron", name: "Garrón de Cordero / Lamb Shank (raw)", emoji: "🍖", cat: "LAMB", unit: "unit", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 135, protein: 20.0, carbs: 0, fat: 5.5, fiber: 0, satFat: 2.1, sodium: 60, calcium: 12, iron: 2.5, zinc: 5.5, vitB12: 2.8 } },
+  // --- NUTS, SEEDS & PEANUT BUTTERS ---
+  {id:"peanuts",name:"Maní / Peanuts (dry)",emoji:"🥜",cat:"NUTS",unit:"g",defaultQty:25,gramsPerUnit:1,per100:{kcal:567,protein:25.8,carbs:16.1,fat:49.2,fiber:8.5,satFat:6.8,omega3ala:0.003,omega3dha:0,sodium:18,calcium:92,phosphorus:376,magnesium:168,potassium:705,iron:4.6,zinc:3.3,copper:1.1,manganese:1.93,selenium:7.2,iodine:5,chromium:12,vitA:0,vitC:0,vitD:0,vitE:8.3,vitK:0,vitB1:0.64,vitB2:0.14,vitB3:12.1,vitB5:1.77,vitB6:0.35,vitB7:34,vitB9:240,vitB12:0,choline:52}},
+  {id:"walnuts",name:"Nueces / Walnuts",emoji:"🪨",cat:"NUTS",unit:"g",defaultQty:15,gramsPerUnit:1,per100:{kcal:654,protein:15.2,carbs:13.7,fat:65.2,fiber:6.7,satFat:6.1,omega3ala:9.1,omega3dha:0,sodium:2,calcium:98,phosphorus:346,magnesium:158,potassium:441,iron:2.9,zinc:3.1,copper:1.6,manganese:3.4,selenium:4.9,iodine:2,chromium:8,vitA:1,vitC:1.3,vitD:0,vitE:0.7,vitK:2.7,vitB1:0.34,vitB2:0.15,vitB3:1.1,vitB5:0.57,vitB6:0.54,vitB7:6,vitB9:98,vitB12:0,choline:39}},
+  {id:"raisins",name:"Pasas / Raisins",emoji:"🍇",cat:"NUTS",unit:"g",defaultQty:15,gramsPerUnit:1,per100:{kcal:299,protein:3.1,carbs:79.2,fat:0.5,fiber:3.7,satFat:0.1,omega3ala:0.01,omega3dha:0,sodium:11,calcium:50,phosphorus:101,magnesium:32,potassium:749,iron:1.9,zinc:0.2,copper:0.3,manganese:0.3,selenium:0.6,iodine:5,chromium:3,vitA:0,vitC:2.3,vitD:0,vitE:0.1,vitK:3.5,vitB1:0.1,vitB2:0.12,vitB3:0.77,vitB5:0.1,vitB6:0.17,vitB7:2,vitB9:5,vitB12:0,choline:11}},
+  {id:"peanut_butter",name:"Mantequilla de Maní / Peanut Butter",emoji:"🫙",cat:"NUTS",unit:"tbsp",defaultQty:1,gramsPerUnit:30,per100:{kcal:630,protein:25,carbs:20,fat:50,fiber:5,satFat:10,omega3ala:0.003,omega3dha:0,sodium:429,calcium:43,phosphorus:338,magnesium:154,potassium:558,iron:1.9,zinc:2.5,copper:0.44,manganese:1.9,selenium:4.1,iodine:4,chromium:10,vitA:0,vitC:0,vitD:0,vitE:6.3,vitK:0.3,vitB1:0.15,vitB2:0.11,vitB3:13.7,vitB5:1.2,vitB6:0.2,vitB7:38,vitB9:87,vitB12:0,choline:52}},
+  {id:"almonds",name:"Almendras / Almonds (raw)",emoji:"🌰",cat:"NUTS",unit:"g",defaultQty:30,gramsPerUnit:1.2,per100:{kcal:579,protein:21.2,carbs:21.6,fat:49.9,fiber:12.5,satFat:3.8,omega3ala:0,omega3dha:0,sodium:1,calcium:269,phosphorus:481,magnesium:270,potassium:733,iron:3.7,zinc:3.1,copper:1.0,manganese:2.2,selenium:4.1,iodine:0,chromium:0,vitA:0,vitC:0,vitD:0,vitE:25.6,vitK:0,vitB1:0.2,vitB2:1.1,vitB3:3.6,vitB5:0.5,vitB6:0.1,vitB7:4,vitB9:44,vitB12:0,choline:52}},
+  {id:"chia_seeds",name:"Semillas de Chía / Chia Seeds (dry)",emoji:"🫘",cat:"NUTS",unit:"g",defaultQty:15,gramsPerUnit:1,per100:{kcal:486,protein:16.5,carbs:42.1,fat:30.7,fiber:34.4,satFat:3.3,omega3ala:17.8,omega3dha:0,sodium:16,calcium:631,phosphorus:860,magnesium:335,potassium:407,iron:7.7,zinc:4.6,copper:0.9,manganese:2.7,selenium:55.2,iodine:0,chromium:0,vitA:5,vitC:1.6,vitD:0,vitE:0.5,vitK:0,vitB1:0.62,vitB2:0.17,vitB3:8.8,vitB5:0.9,vitB6:0.01,vitB7:0,vitB9:49,vitB12:0,choline:78}},
+  {id:"pumpkin_seeds",name:"Semillas de Zapallo / Pumpkin Seeds",emoji:"🎃",cat:"NUTS",unit:"g",defaultQty:25,gramsPerUnit:1,per100:{kcal:559,protein:30.2,carbs:10.7,fat:49.1,fiber:6.0,satFat:8.7,omega3ala:0.12,omega3dha:0,sodium:7,calcium:46,phosphorus:1233,magnesium:592,potassium:809,iron:8.8,zinc:7.8,copper:1.3,manganese:4.5,selenium:9.4,iodine:0,chromium:0,vitA:1,vitC:1.9,vitD:0,vitE:0.6,vitK:4.5,vitB1:0.27,vitB2:0.15,vitB3:5.0,vitB5:0.8,vitB6:0.14,vitB7:0,vitB9:58,vitB12:0,choline:63}},
+  {id:"mix_frutos_secos",name:"Mix Frutos Secos (Sin Pasas)",emoji:"🥜",cat:"NUTS",unit:"g",defaultQty:30,gramsPerUnit:1,per100:{kcal:605,protein:18.0,carbs:15.0,fat:54.0,fiber:9.0,satFat:5.0,sodium:5,magnesium:180}},
+  {id:"mani_king_natural",name:"Pasta de Maní Natural (Mani King)",emoji:"👑",cat:"FATS",unit:"tbsp",defaultQty:1,gramsPerUnit:20,per100:{kcal:585,protein:24.0,carbs:11.0,fat:49.0,fiber:8.5,satFat:6.5,sodium:0,vitE:8.0}},
+  {id:"mani_king_dulce",name:"Pasta de Maní Endulzada (Mani King)",emoji:"🍯",cat:"FATS",unit:"tbsp",defaultQty:1,gramsPerUnit:20,per100:{kcal:550,protein:20.0,carbs:25.0,fat:42.0,fiber:6.0,satFat:5.5,sodium:50}},
 
-  { id: "chivito_costillar", name: "Costillar de Chivito / Goat Ribs (raw)", emoji: "🐐", cat: "GAME", unit: "g", defaultQty: 200, gramsPerUnit: 150, per100: { kcal: 109, protein: 20.0, carbs: 0, fat: 3.0, fiber: 0, satFat: 0.9, sodium: 70, calcium: 15, iron: 3.2, zinc: 4.5, vitB12: 1.2 } },
-  { id: "chivito_pierna", name: "Pierna de Chivito / Goat Leg (raw)", emoji: "🍖", cat: "GAME", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 145, protein: 21.5, carbs: 0, fat: 6.5, fiber: 0, satFat: 2.0, sodium: 65, calcium: 12, iron: 3.8, zinc: 5.2, vitB12: 1.3 } },
-  { id: "conejo_raw", name: "Conejo / Rabbit (raw)", emoji: "🐇", cat: "GAME", unit: "g", defaultQty: 200, gramsPerUnit: 300, per100: { kcal: 130, protein: 20.0, carbs: 0, fat: 5.5, fiber: 0, satFat: 1.6, sodium: 45, calcium: 20, iron: 2.3, zinc: 1.8, vitB12: 7.0 } },
-  { id: "pato_raw", name: "Pato con Piel / Duck w/ Skin (raw)", emoji: "🦆", cat: "GAME", unit: "g", defaultQty: 200, gramsPerUnit: 250, per100: { kcal: 207, protein: 18.0, carbs: 0, fat: 15.0, fiber: 0, satFat: 5.0, sodium: 60, calcium: 12, iron: 2.7, zinc: 1.9, vitB12: 0.3 } },
-  { id: "ciervo_bife", name: "Bife de Ciervo / Venison Steak (raw)", emoji: "🦌", cat: "GAME", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 120, protein: 23.0, carbs: 0, fat: 2.4, fiber: 0, satFat: 0.9, sodium: 54, calcium: 10, iron: 3.4, zinc: 2.1, vitB12: 6.0 } },
-  { id: "jabali_bondiola", name: "Bondiola de Jabalí / Wild Boar Neck (raw)", emoji: "🐗", cat: "GAME", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 160, protein: 21.5, carbs: 0, fat: 7.5, fiber: 0, satFat: 2.2, sodium: 60, calcium: 20, iron: 1.3, zinc: 3.0, vitB12: 0.7 } },
+  // --- GRAINS, RICE, PASTA & BREADS ---
+  {id:"oats_instant",name:"Avena Instantánea / Instant Oats",emoji:"🥣",cat:"GRAINS",unit:"g",defaultQty:60,gramsPerUnit:1,per100:{kcal:371,protein:13.2,carbs:67.7,fat:7.0,fiber:10.1,satFat:1.3,omega3ala:0.11,omega3dha:0,sodium:49,calcium:52,phosphorus:410,magnesium:138,potassium:429,iron:4.7,zinc:4.0,copper:0.4,manganese:4.9,selenium:28,iodine:8,chromium:20,vitA:0,vitC:0,vitD:0,vitE:0.7,vitK:2,vitB1:0.6,vitB2:0.14,vitB3:0.96,vitB5:1.35,vitB6:0.1,vitB7:24,vitB9:32,vitB12:0,choline:40}},
+  {id:"oat_bran",name:"Salvado de Avena / Oat Bran",emoji:"🌾",cat:"GRAINS",unit:"g",defaultQty:50,gramsPerUnit:1,per100:{kcal:350,protein:17.3,carbs:66.2,fat:7.0,fiber:15.4,satFat:1.3,omega3ala:0.11,omega3dha:0,sodium:4,calcium:58,phosphorus:734,magnesium:235,potassium:566,iron:5.4,zinc:3.1,copper:0.3,manganese:5.6,selenium:45,iodine:6,chromium:22,vitA:0,vitC:0,vitD:0,vitE:1.7,vitK:3,vitB1:1.17,vitB2:0.22,vitB3:4.0,vitB5:2.0,vitB6:0.21,vitB7:18,vitB9:52,vitB12:0,choline:32}},
+  {id:"rice_white",name:"Arroz Blanco / White Rice (dry)",emoji:"🍚",cat:"GRAINS",unit:"g",defaultQty:75,gramsPerUnit:1,per100:{kcal:349,protein:6.7,carbs:79.3,fat:0.6,fiber:2.8,satFat:0.2,omega3ala:0.02,omega3dha:0,sodium:5,calcium:28,phosphorus:115,magnesium:35,potassium:115,iron:4.3,zinc:1.1,copper:0.2,manganese:1.5,selenium:15,iodine:2,chromium:5,vitA:0,vitC:0,vitD:0,vitE:0.1,vitK:0.4,vitB1:0.58,vitB2:0.05,vitB3:5.2,vitB5:1.6,vitB6:0.16,vitB7:6,vitB9:8,vitB12:0,choline:16}},
+  {id:"brown_rice",name:"Arroz Integral / Brown Rice (dry)",emoji:"🌾",cat:"GRAINS",unit:"g",defaultQty:75,gramsPerUnit:1,per100:{kcal:362,protein:7.5,carbs:76.2,fat:2.7,fiber:3.4,satFat:0.5,omega3ala:0.04,omega3dha:0,sodium:4,calcium:33,phosphorus:264,magnesium:143,potassium:268,iron:1.8,zinc:2.0,copper:0.22,manganese:3.7,selenium:24,iodine:0,chromium:0,vitA:0,vitC:0,vitD:0,vitE:0.6,vitK:0.6,vitB1:0.41,vitB2:0.05,vitB3:4.3,vitB5:1.5,vitB6:0.51,vitB7:0,vitB9:20,vitB12:0,choline:18}},
+  {id:"quinoa",name:"Quinoa (dry/uncooked)",emoji:"🌾",cat:"GRAINS",unit:"g",defaultQty:50,gramsPerUnit:1,per100:{kcal:368,protein:14.1,carbs:64.2,fat:6.1,fiber:7.0,satFat:0.7,omega3ala:0.26,omega3dha:0,sodium:5,calcium:47,phosphorus:457,magnesium:197,potassium:563,iron:4.6,zinc:3.1,copper:0.6,manganese:2.0,selenium:0,iodine:0,chromium:0,vitA:1,vitC:0,vitD:0,vitE:2.4,vitK:0,vitB1:0.36,vitB2:0.32,vitB3:1.5,vitB5:0.7,vitB6:0.5,vitB7:0,vitB9:184,vitB12:0,choline:70}},
+  {id:"polenta_presto_pronta",name:"Polenta Presto Pronta (Arcor)",emoji:"🥣",cat:"GRAINS",unit:"g",defaultQty:50,gramsPerUnit:1,per100:{kcal:340,protein:7.0,carbs:78.0,fat:0.8,fiber:2.2,satFat:0,sodium:0}},
+  {id:"arroz_gallo_oro",name:"Arroz Gallo Oro (Parboil)",emoji:"🍚",cat:"GRAINS",unit:"g",defaultQty:50,gramsPerUnit:1,per100:{kcal:332,protein:7.0,carbs:76.0,fat:0,fiber:0,satFat:0,sodium:0,vitB1:0.4,vitB3:3.5}},
+  {id:"arroz_yamani_integral",name:"Arroz Yamaní (Integral)",emoji:"🌾",cat:"GRAINS",unit:"g",defaultQty:50,gramsPerUnit:1,per100:{kcal:338,protein:8.0,carbs:72.0,fat:2.0,fiber:4.0,satFat:0.5,sodium:0}},
+  {id:"arroz_doble_carolina",name:"Arroz Doble Carolina",emoji:"🍛",cat:"GRAINS",unit:"g",defaultQty:50,gramsPerUnit:1,per100:{kcal:344,protein:6.5,carbs:79.0,fat:0,fiber:0.5,satFat:0,sodium:0}},
+  {id:"arroz_gallo_integral",name:"Arroz Gallo Integral (T10 Minutos)",emoji:"🌾",cat:"GRAINS",unit:"g",defaultQty:50,gramsPerUnit:1,per100:{kcal:348,protein:7.5,carbs:72.0,fat:2.2,fiber:4.5,satFat:0.5,sodium:0}},
+  {id:"pasta_dry",name:"Pasta (Dry Semolina)",emoji:"🍝",cat:"GRAINS",unit:"g",defaultQty:80,gramsPerUnit:1,per100:{kcal:371,protein:13.0,carbs:73,fat:1.5,fiber:3.2,satFat:0.3,omega3ala:0.02,omega3dha:0,sodium:6,calcium:21,phosphorus:189,magnesium:53,potassium:223,iron:3.3,zinc:1.4,copper:0.3,manganese:0.9,selenium:73,iodine:0,chromium:2,vitA:0,vitC:0,vitD:0,vitE:0.1,vitK:0.1,vitB1:0.7,vitB2:0.4,vitB3:5.0,vitB5:0.5,vitB6:0.1,vitB7:1,vitB9:240,vitB12:0,choline:0}},
+  {id:"fideos_lucchetti",name:"Tallarines Lucchetti (Dry)",emoji:"🍝",cat:"GRAINS",unit:"g",defaultQty:80,gramsPerUnit:1,per100:{kcal:342,protein:11.0,carbs:72.0,fat:1.4,fiber:3.2,satFat:0,sodium:12}},
+  {id:"fideos_matarazzo",name:"Spaghetti Matarazzo (Trigo Candeal)",emoji:"🍝",cat:"GRAINS",unit:"g",defaultQty:80,gramsPerUnit:1,per100:{kcal:354,protein:12.5,carbs:73.0,fat:1.6,fiber:3.4,satFat:0.3,sodium:10}},
+  {id:"fideos_don_vicente",name:"Tallarines al Huevo (Don Vicente)",emoji:"🍝",cat:"GRAINS",unit:"g",defaultQty:80,gramsPerUnit:1,per100:{kcal:375,protein:13.5,carbs:70.0,fat:4.2,fiber:3.0,satFat:1.1,sodium:30,cholesterol:95}},
+  {id:"fideos_frescos_lasaltena",name:"Fideos Frescos al Huevo (La Salteña)",emoji:"🧊",cat:"GRAINS",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:278,protein:9.5,carbs:52.0,fat:3.2,fiber:2.0,satFat:0.8,sodium:110}},
+  {id:"barilla_spaghetti_n5",name:"Spaghetti N°5 (Barilla)",emoji:"🇮🇹",cat:"GRAINS",unit:"g",defaultQty:80,gramsPerUnit:1,per100:{kcal:359,protein:12.5,carbs:71.2,fat:2.0,fiber:3.0,satFat:0.5,sodium:0}},
+  {id:"fideos_terrabusi",name:"Tallarines/Spaghetti (Terrabusi)",emoji:"🍜",cat:"GRAINS",unit:"g",defaultQty:80,gramsPerUnit:1,per100:{kcal:340,protein:11.0,carbs:71.0,fat:1.1,fiber:3.0,satFat:0,sodium:10}},
+  {id:"fideos_canale",name:"Fideos Secos (Canale)",emoji:"🍝",cat:"GRAINS",unit:"g",defaultQty:80,gramsPerUnit:1,per100:{kcal:332,protein:10.5,carbs:70.0,fat:1.0,fiber:2.8,satFat:0,sodium:15}},
+  {id:"fucchettini_pasta",name:"Fucchettini / Dedalitos (Soup Pasta)",emoji:"🍜",cat:"GRAINS",unit:"cup",defaultQty:0.5,gramsPerUnit:80,per100:{kcal:342,protein:11.0,carbs:72.0,fat:1.4,fiber:3.0,satFat:0,sodium:10}},
 
-  // 2. DELI, PROCESSED MEATS & SAUSAGES
-  { id: "chorizo_parrillero", name: "Chorizo Fresco / Fresh Pork Sausage", emoji: "🌭", cat: "PROCESSED", unit: "unit", defaultQty: 1, gramsPerUnit: 120, per100: { kcal: 333, protein: 13.7, carbs: 2.8, fat: 29.2, fiber: 0, satFat: 10.1, sodium: 950, calcium: 18, iron: 1.5, zinc: 2.2, vitB12: 1.0 } },
-  { id: "morcilla_fria", name: "Morcilla / Blood Sausage (cold)", emoji: "🌭", cat: "PROCESSED", unit: "unit", defaultQty: 1, gramsPerUnit: 120, per100: { kcal: 342, protein: 14.0, carbs: 4.0, fat: 30.0, fiber: 0, satFat: 12.5, sodium: 750, calcium: 40, iron: 24.0, zinc: 2.0, vitB12: 1.0 } },
-  { id: "salchicha_parrillera", name: "Salchicha Parrillera / Thin Sausage Grill", emoji: "🥨", cat: "PROCESSED", unit: "portion", defaultQty: 1, gramsPerUnit: 100, per100: { kcal: 292, protein: 15.4, carbs: 0, fat: 26.0, fiber: 0, satFat: 8.0, sodium: 850, calcium: 25, iron: 1.8, zinc: 3.0 } },
-  { id: "chorizo_campo_austral", name: "Chorizo de Cerdo (Vacuum Pack)", emoji: "🌭", cat: "PROCESSED", unit: "unit", defaultQty: 1, gramsPerUnit: 90, per100: { kcal: 310, protein: 16.0, carbs: 1.5, fat: 27.0, fiber: 0, satFat: 10.5, sodium: 920, calcium: 20, iron: 1.6, zinc: 2.5 } },
-  { id: "morcilla_bombon", name: "Morcilla Bombón / Mini Blood Sausage", emoji: "⚫", cat: "PROCESSED", unit: "unit", defaultQty: 2, gramsPerUnit: 40, per100: { kcal: 360, protein: 13.5, carbs: 3.5, fat: 32.0, fiber: 0, satFat: 13.0, sodium: 780, calcium: 35, iron: 22.0, zinc: 1.8 } },
-  
-  { id: "salchicha_vienissima", name: "Salchicha Vieníssima / Hot Dog", emoji: "🌭", cat: "PROCESSED", unit: "unit", defaultQty: 2, gramsPerUnit: 37.5, per100: { kcal: 237, protein: 14.3, carbs: 7.0, fat: 17.0, fiber: 0, satFat: 5.7, sodium: 1050, calcium: 20, iron: 1.5, zinc: 1.0 } },
-  { id: "salchicha_iris", name: "Salchicha Granja Iris / Budget Hot Dog", emoji: "🌭", cat: "PROCESSED", unit: "unit", defaultQty: 2, gramsPerUnit: 33, per100: { kcal: 224, protein: 11.5, carbs: 9.6, fat: 16.0, fiber: 0, satFat: 5.7, sodium: 980, calcium: 15, iron: 1.2, zinc: 0.8 } },
-  { id: "salchicha_paladini", name: "Salchicha Paladini / Premium Hot Dog", emoji: "🌭", cat: "PROCESSED", unit: "unit", defaultQty: 2, gramsPerUnit: 33.3, per100: { kcal: 234, protein: 12.0, carbs: 6.4, fat: 18.0, fiber: 0, satFat: 7.2, sodium: 800, calcium: 18, iron: 1.3, zinc: 1.1 } },
-  { id: "salchicha_patyviena", name: "Salchicha Patyviena / Standard Hot Dog", emoji: "🌭", cat: "PROCESSED", unit: "unit", defaultQty: 2, gramsPerUnit: 35, per100: { kcal: 245, protein: 13.5, carbs: 5.5, fat: 18.5, fiber: 0, satFat: 6.5, sodium: 1100, calcium: 22, iron: 1.4, zinc: 0.9 } },
+  {id:"bread_whole",name:"Pan Integral / Whole Wheat Bread",emoji:"🍞",cat:"BAKERY",unit:"slice",defaultQty:2,gramsPerUnit:35,per100:{kcal:265,protein:13.0,carbs:43.0,fat:4.2,fiber:7.0,satFat:0.7,omega3ala:0.1,omega3dha:0,sodium:450,calcium:161,phosphorus:212,magnesium:76,potassium:250,iron:2.5,zinc:1.7,copper:0.2,manganese:2.0,selenium:29,iodine:0,chromium:1,vitA:0,vitC:0,vitD:0,vitE:0.3,vitK:3.0,vitB1:0.35,vitB2:0.18,vitB3:4.5,vitB5:0.6,vitB6:0.2,vitB7:0,vitB9:50,vitB12:0,choline:15}},
+  {id:"bimbo_blanco_tradicional",name:"Pan Bimbo Blanco Tradicional",emoji:"🍞",cat:"BAKERY",unit:"slice",defaultQty:2,gramsPerUnit:25,per100:{kcal:258,protein:9.6,carbs:46.0,fat:3.2,fiber:1.0,satFat:0.8,sodium:480,calcium:120,iron:2.5,vitB1:0.3,vitB2:0.2,vitB9:150}},
+  {id:"fargo_lacteado_blanco",name:"Pan Fargo Lacteado (Original)",emoji:"🍞",cat:"BAKERY",unit:"slice",defaultQty:2,gramsPerUnit:28,per100:{kcal:248,protein:10.7,carbs:44.6,fat:3.0,fiber:0,satFat:1.0,sodium:450,calcium:80,phosphorus:100}},
+  {id:"lactal_blanco_mesa",name:"Pan Lactal de Mesa (Original)",emoji:"🍞",cat:"BAKERY",unit:"slice",defaultQty:2,gramsPerUnit:25,per100:{kcal:252,protein:6.2,carbs:46.0,fat:4.6,fiber:0,satFat:1.6,sodium:490,calcium:60}},
+  {id:"lactal_salvado",name:"Pan Lactal con Salvado",emoji:"🌾",cat:"BAKERY",unit:"slice",defaultQty:2,gramsPerUnit:25,per100:{kcal:226,protein:11.0,carbs:38.0,fat:3.4,fiber:6.9,satFat:0.6,sodium:450,iron:3.0}},
+  {id:"fargo_integral_doble",name:"Pan Fargo Doble Integral",emoji:"🥖",cat:"BAKERY",unit:"slice",defaultQty:2,gramsPerUnit:29.5,per100:{kcal:242,protein:13.0,carbs:40.6,fat:3.0,fiber:5.6,satFat:0.8,sodium:420}},
+  {id:"bimbo_integral_natural",name:"Pan Bimbo Integral 100% Natural",emoji:"🌾",cat:"BAKERY",unit:"slice",defaultQty:2,gramsPerUnit:25,per100:{kcal:240,protein:12.0,carbs:42.0,fat:3.0,fiber:5.5,satFat:0.5,sodium:400}},
+  {id:"bimbo_artesano",name:"Pan Bimbo Artesano (Original)",emoji:"🥯",cat:"BAKERY",unit:"slice",defaultQty:1,gramsPerUnit:34,per100:{kcal:276,protein:9.4,carbs:47.0,fat:5.3,fiber:2.4,satFat:2.6,sodium:480}},
+  {id:"bimbo_artesano_hamburguesa",name:"Pan Artesano Hamburguesa (Bimbo)",emoji:"🍔",cat:"BAKERY",unit:"bun",defaultQty:1,gramsPerUnit:63,per100:{kcal:271,protein:7.9,carbs:47.6,fat:5.6,fiber:2.5,satFat:2.8,sodium:500}},
+  {id:"fargo_rodajas_finas_blanco",name:"Fargo Rodajas Finas (Blanco)",emoji:"📏",cat:"BAKERY",unit:"slice",defaultQty:2,gramsPerUnit:21.5,per100:{kcal:260,protein:10.2,carbs:48.8,fat:2.8,fiber:0,satFat:0.9}},
+  {id:"fargo_rodajas_finas_salvado",name:"Fargo Rodajas Finas (Salvado)",emoji:"📏",cat:"BAKERY",unit:"slice",defaultQty:3,gramsPerUnit:19,per100:{kcal:254,protein:10.1,carbs:47.3,fat:2.6,fiber:5.5}},
+  {id:"pan_felipe",name:"Pan Felipe / Flautita (Bakery)",emoji:"🥖",cat:"BAKERY",unit:"unit",defaultQty:2,gramsPerUnit:60,per100:{kcal:262,protein:9.2,carbs:55.0,fat:0.6,fiber:2.5,satFat:0.1,sodium:580,calcium:20,phosphorus:95,potassium:115,iron:1.8}},
+  {id:"pan_mignon",name:"Pan Mignon / Mignoncito (Bakery)",emoji:"🥖",cat:"BAKERY",unit:"unit",defaultQty:4,gramsPerUnit:25,per100:{kcal:268,protein:9.5,carbs:56.0,fat:0.7,fiber:2.6,satFat:0.1,sodium:600}},
+  {id:"pan_frances_tirita",name:"Pan Francés (Baggette/Tira)",emoji:"🥖",cat:"BAKERY",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:258,protein:9.0,carbs:54.5,fat:0.5,fiber:2.4,satFat:0.1,sodium:560}},
+  {id:"pan_felipe_con_grasa",name:"Flautita / Felipe con Grasa",emoji:"🥖",cat:"BAKERY",unit:"unit",defaultQty:2,gramsPerUnit:65,per100:{kcal:296,protein:8.5,carbs:51.0,fat:6.5,fiber:2.0,satFat:2.8,sodium:540,cholesterol:15}},
+  {id:"pan_lactal_artesanal",name:"Pan Lactal de Panadería (Fresh)",emoji:"🍞",cat:"BAKERY",unit:"slice",defaultQty:2,gramsPerUnit:35,per100:{kcal:284,protein:9.1,carbs:49.0,fat:5.7,fiber:1.8,satFat:3.1,sodium:490,calcium:45}},
+  {id:"pan_viena_bakery",name:"Pan de Viena Artesanal (Panchos/Burgers)",emoji:"🍔",cat:"BAKERY",unit:"unit",defaultQty:1,gramsPerUnit:60,per100:{kcal:288,protein:8.8,carbs:52.0,fat:4.9,fiber:1.5,satFat:2.2,sodium:460}},
 
-  { id: "salamin_picado_grueso", name: "Salamín Picado Grueso / Salami", emoji: "🥖", cat: "PROCESSED", unit: "slice", defaultQty: 5, gramsPerUnit: 5, per100: { kcal: 415, protein: 24.0, carbs: 2.5, fat: 34.0, fiber: 0, satFat: 14.5, sodium: 1800, calcium: 20, iron: 1.8, zinc: 3.5, vitB12: 1.2 } },
-  { id: "mortadela_paladini", name: "Mortadela / Bologna", emoji: "🥓", cat: "PROCESSED", unit: "slice", defaultQty: 2, gramsPerUnit: 20, per100: { kcal: 285, protein: 14.0, carbs: 5.5, fat: 23.0, fiber: 0, satFat: 8.5, sodium: 1100, calcium: 15, iron: 1.1, zinc: 2.0, vitB12: 0.8 } },
-  { id: "jamon_crudo", name: "Jamón Crudo / Prosciutto", emoji: "🍖", cat: "PROCESSED", unit: "slice", defaultQty: 2, gramsPerUnit: 15, per100: { kcal: 235, protein: 28.5, carbs: 0.5, fat: 12.5, fiber: 0, satFat: 4.5, sodium: 2400, calcium: 12, iron: 1.5, zinc: 3.0, vitB12: 0.9 } },
-  { id: "pavita_fiambre", name: "Pechuga de Pavita / Turkey Deli Slice", emoji: "🥪", cat: "PROCESSED", unit: "slice", defaultQty: 2, gramsPerUnit: 25, per100: { kcal: 98, protein: 18.5, carbs: 2.0, fat: 1.5, fiber: 0, satFat: 0.5, sodium: 850, calcium: 15 } },
-  { id: "vizcacha_escabeche", name: "Vizcacha en Escabeche / Pickled Vizcacha", emoji: "🏺", cat: "PROCESSED", unit: "g", defaultQty: 100, gramsPerUnit: 100, per100: { kcal: 285, protein: 19.0, carbs: 1.5, fat: 22.0, fiber: 0, satFat: 3.5, sodium: 450, calcium: 30, vitA: 10, vitC: 2 } },
-  { id: "ciervo_ahumado", name: "Ciervo Ahumado / Smoked Venison", emoji: "🦌", cat: "PROCESSED", unit: "slice", defaultQty: 4, gramsPerUnit: 20, per100: { kcal: 135, protein: 26.0, carbs: 1.0, fat: 2.5, fiber: 0, satFat: 0.8, sodium: 950, calcium: 20, iron: 4.5, zinc: 3.0, vitB12: 2.0 } },
-  { id: "jabali_ahumado", name: "Jabalí Ahumado / Smoked Boar", emoji: "🐗", cat: "PROCESSED", unit: "slice", defaultQty: 4, gramsPerUnit: 20, per100: { kcal: 160, protein: 24.0, carbs: 0, fat: 6.5, fiber: 0, satFat: 2.1, sodium: 920, calcium: 25, iron: 2.0, zinc: 2.8, vitB12: 1.5 } },
+  // --- VEGETABLES, ROOTS & FRUITS ---
+  {id:"cabbage",name:"Repollo / Cabbage (raw)",emoji:"🥬",cat:"VEGETABLES",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:25,protein:1.3,carbs:5.8,fat:0.1,fiber:2.5,satFat:0,omega3ala:0.02,omega3dha:0,sodium:18,calcium:40,phosphorus:26,magnesium:12,potassium:170,iron:0.5,zinc:0.2,copper:0.02,manganese:0.16,selenium:0.3,iodine:1,chromium:2,vitA:5,vitC:36.6,vitD:0,vitE:0.15,vitK:76,vitB1:0.06,vitB2:0.04,vitB3:0.23,vitB5:0.21,vitB6:0.12,vitB7:1,vitB9:53,vitB12:0,choline:10}},
+  {id:"acelga_raw",name:"Acelga / Swiss Chard (raw)",emoji:"🌿",cat:"VEGETABLES",unit:"bundle",defaultQty:1,gramsPerUnit:500,per100:{kcal:19,protein:1.8,carbs:3.7,fat:0.2,fiber:1.6,satFat:0,omega3ala:0.09,omega3dha:0,sodium:213,calcium:51,phosphorus:46,magnesium:81,potassium:549,iron:1.8,zinc:0.4,copper:0.18,manganese:0.37,selenium:0.9,iodine:5,chromium:1,vitA:306,vitC:30,vitD:0,vitE:1.9,vitK:830,vitB1:0.04,vitB2:0.09,vitB3:0.4,vitB5:0.17,vitB6:0.1,vitB7:2,vitB9:14,vitB12:0,choline:18}},
+  {id:"rucula_raw",name:"Rúcula / Arugula (raw)",emoji:"🍃",cat:"VEGETABLES",unit:"bundle",defaultQty:1,gramsPerUnit:150,per100:{kcal:25,protein:2.6,carbs:3.7,fat:0.7,fiber:1.6,satFat:0,sodium:27,calcium:160,potassium:369,vitA:119,vitK:108}},
+  {id:"espinaca_raw",name:"Espinaca / Spinach (raw)",emoji:"🥗",cat:"VEGETABLES",unit:"bundle",defaultQty:1,gramsPerUnit:300,per100:{kcal:23,protein:2.9,carbs:3.6,fat:0.4,fiber:2.2,satFat:0,omega3ala:0.1,omega3dha:0,sodium:79,calcium:99,phosphorus:49,magnesium:79,potassium:558,iron:2.7,zinc:0.5,copper:0.1,manganese:0.9,selenium:1,iodine:3,chromium:0,vitA:469,vitC:28,vitD:0,vitE:2.0,vitK:483,vitB1:0.08,vitB2:0.19,vitB3:0.7,vitB5:0.1,vitB6:0.2,vitB7:4,vitB9:194,vitB12:0,choline:18}},
+  {id:"zapallo_anco",name:"Zapallo Anco / Butternut Squash",emoji:"🎃",cat:"VEGETABLES",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:45,protein:1.0,carbs:11.7,fat:0.1,fiber:2.0,satFat:0,sodium:4,calcium:48,potassium:352,vitA:532,vitC:21}},
+  {id:"zapallo_cabutia",name:"Zapallo Cabutia (Tetsukabuto)",emoji:"🎃",cat:"VEGETABLES",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:55,protein:1.5,carbs:13.5,fat:0.2,fiber:2.5,satFat:0,sodium:5,calcium:35,potassium:340,vitA:600}},
+  {id:"batata_buenos_aires",name:"Batata / Sweet Potato (Purple Skin)",emoji:"🍠",cat:"VEGETABLES",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:86,protein:1.6,carbs:20.1,fat:0.1,fiber:3.0,satFat:0,omega3ala:0,omega3dha:0,sodium:55,calcium:30,phosphorus:47,magnesium:25,potassium:337,iron:0.6,zinc:0.3,copper:0.15,manganese:0.3,selenium:0.6,iodine:2,chromium:6,vitA:709,vitC:2.4,vitD:0,vitE:0.26,vitK:1.8,vitB1:0.08,vitB2:0.06,vitB3:0.5,vitB5:0.8,vitB6:0.2,vitB7:2,vitB9:11,vitB12:0,choline:13}},
+  {id:"mandioca_raw",name:"Mandioca / Yuca (Cassava)",emoji:"🪵",cat:"VEGETABLES",unit:"g",defaultQty:200,gramsPerUnit:1,per100:{kcal:160,protein:1.4,carbs:38.1,fat:0.3,fiber:1.8,satFat:0.1,sodium:14,calcium:16,potassium:271,vitC:20}},
+  {id:"berro_raw",name:"Berro / Watercress (raw)",emoji:"🌱",cat:"VEGETABLES",unit:"bundle",defaultQty:1,gramsPerUnit:100,per100:{kcal:11,protein:2.3,carbs:1.3,fat:0.1,fiber:0.5,satFat:0,sodium:41,calcium:120,potassium:330,vitA:160,vitC:43,vitK:250}},
+  {id:"champignones_raw",name:"Champignones (White Button, raw)",emoji:"🍄",cat:"VEGETABLES",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:22,protein:3.1,carbs:3.3,fat:0.3,fiber:1.0,satFat:0,sodium:5,potassium:318,vitD:0.2,selenium:9}},
+  {id:"portobellos_raw",name:"Portobellos (Brown, raw)",emoji:"🍄",cat:"VEGETABLES",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:22,protein:2.5,carbs:4.3,fat:0.2,fiber:1.3,satFat:0,sodium:6,potassium:364,vitD:0.3,selenium:18}},
+  {id:"cebolla_comun",name:"Cebolla / Onion (raw)",emoji:"🧅",cat:"VEGETABLES",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:40,protein:1.1,carbs:9.3,fat:0.1,fiber:1.7,satFat:0,sodium:4,vitC:7.4}},
+  {id:"ajo_diente",name:"Ajo / Garlic (raw)",emoji:"🧄",cat:"VEGETABLES",unit:"clove",defaultQty:1,gramsPerUnit:5,per100:{kcal:149,protein:6.4,carbs:33.0,fat:0.5,fiber:2.1,satFat:0.1,sodium:17}},
+  {id:"morron_rojo",name:"Morrón Rojo (Red Bell Pepper)",emoji:"🫑",cat:"VEGETABLES",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:31,protein:1.0,carbs:6.0,fat:0.3,fiber:2.1,satFat:0,sodium:4,vitC:128,vitA:157}},
+  {id:"cebolla_verdeo",name:"Cebolla de Verdeo (Spring Onion)",emoji:"🥬",cat:"VEGETABLES",unit:"g",defaultQty:50,gramsPerUnit:1,per100:{kcal:32,protein:1.8,carbs:7.3,fat:0.2,fiber:2.6,satFat:0,sodium:16,vitK:207}},
+  {id:"perejil_fresco",name:"Perejil (Parsley, fresh)",emoji:"🌿",cat:"VEGETABLES",unit:"tbsp",defaultQty:1,gramsPerUnit:4,per100:{kcal:36,protein:3.0,carbs:6.3,fat:0.8,fiber:3.3,satFat:0,sodium:56,vitK:1640,vitC:133}},
+  {id:"jengibre_raiz",name:"Jengibre (Ginger Root, raw)",emoji:"🫚",cat:"VEGETABLES",unit:"thumb",defaultQty:1,gramsPerUnit:10,per100:{kcal:80,protein:1.8,carbs:17.8,fat:0.8,fiber:2.0,satFat:0.2,sodium:13}},
 
-  // 3. EGGS
-  { id: "eggs_whole", name: "Huevos Enteros / Whole Eggs (large)", emoji: "🥚", cat: "EGGS", unit: "eggs", defaultQty: 3, gramsPerUnit: 60, per100: { kcal: 155, protein: 13.0, carbs: 1.1, fat: 10.6, fiber: 0, satFat: 3.3, omega3ala: 0.04, omega3dha: 0.19, sodium: 124, calcium: 50, iron: 1.8, zinc: 1.1, vitA: 160, vitD: 2.0, vitB12: 1.1, choline: 294 } },
-  { id: "huevo_blanco", name: "Huevo Blanco / White Egg (N°1 Industrial)", emoji: "🥚", cat: "EGGS", unit: "unit", defaultQty: 2, gramsPerUnit: 50, per100: { kcal: 143, protein: 12.6, carbs: 0.7, fat: 9.5, fiber: 0, satFat: 3.1, sodium: 142, vitA: 160, vitD: 2.0, vitB12: 0.9 } },
-  { id: "huevo_campo", name: "Huevo de Campo / Free Range Egg", emoji: "🪺", cat: "EGGS", unit: "unit", defaultQty: 2, gramsPerUnit: 55, per100: { kcal: 143, protein: 12.6, carbs: 0.7, fat: 9.5, fiber: 0, satFat: 3.1, sodium: 142, vitA: 190, vitD: 2.5, vitB12: 1.0 } },
-  { id: "codorniz_huevos", name: "Huevos de Codorniz / Quail Eggs", emoji: "🥚", cat: "EGGS", unit: "unit", defaultQty: 5, gramsPerUnit: 10, per100: { kcal: 158, protein: 13.0, carbs: 0.4, fat: 11.0, fiber: 0, satFat: 3.6, sodium: 140, calcium: 64, iron: 3.6, zinc: 1.5, vitA: 156, vitD: 1.4, vitB12: 1.6 } },
-  { id: "claras_huevo_liq", name: "Claras de Huevo / Liquid Egg Whites", emoji: "🥛", cat: "EGGS", unit: "ml", defaultQty: 100, gramsPerUnit: 100, per100: { kcal: 48, protein: 11.0, carbs: 0.7, fat: 0, fiber: 0, satFat: 0, sodium: 166, potassium: 163 } },
+  {id:"banana",name:"Banana (raw)",emoji:"🍌",cat:"FRUIT",unit:"g",defaultQty:118,gramsPerUnit:1,per100:{kcal:89,protein:1.1,carbs:22.8,fat:0.3,fiber:2.6,satFat:0.1,omega3ala:0,omega3dha:0,sodium:1,calcium:5,phosphorus:22,magnesium:27,potassium:358,iron:0.3,zinc:0.1,copper:0.1,manganese:0.27,selenium:1,iodine:1,chromium:1,vitA:3,vitC:8.7,vitD:0,vitE:0.1,vitK:0.5,vitB1:0.03,vitB2:0.07,vitB3:0.6,vitB5:0.3,vitB6:0.37,vitB7:1,vitB9:20,vitB12:0,choline:10}},
+  {id:"manzana_deliciosa",name:"Manzana Red Delicious (Roja)",emoji:"🍎",cat:"FRUIT",unit:"unit",defaultQty:1,gramsPerUnit:180,per100:{kcal:52,protein:0.3,carbs:13.8,fat:0.2,fiber:2.4}},
+  {id:"manzana_verde",name:"Manzana Verde (Granny Smith)",emoji:"🍏",cat:"FRUIT",unit:"unit",defaultQty:1,gramsPerUnit:150,per100:{kcal:50,protein:0.4,carbs:13.0,fat:0.2,fiber:2.8}},
+  {id:"mandarina_criolla",name:"Mandarina (Criolla)",emoji:"🍊",cat:"FRUIT",unit:"unit",defaultQty:2,gramsPerUnit:80,per100:{kcal:53,protein:0.8,carbs:13.3,fat:0.3,fiber:1.8,vitC:26}},
+  {id:"strawberries",name:"Frutillas / Strawberries (raw)",emoji:"🍓",cat:"FRUIT",unit:"g",defaultQty:150,gramsPerUnit:1,per100:{kcal:32,protein:0.7,carbs:7.7,fat:0.3,fiber:2.0,satFat:0,omega3ala:0.07,omega3dha:0,sodium:1,calcium:16,phosphorus:24,magnesium:13,potassium:153,iron:0.4,zinc:0.1,copper:0.05,manganese:0.39,selenium:0.4,iodine:1,chromium:0,vitA:1,vitC:58.8,vitD:0,vitE:0.29,vitK:2.2,vitB1:0.02,vitB2:0.02,vitB3:0.4,vitB5:0.13,vitB6:0.05,vitB7:0,vitB9:24,vitB12:0,choline:5.7}},
+  {id:"frambuesas_congeladas",name:"Frambuesas / Raspberries",emoji:"🍇",cat:"FRUIT",unit:"cup",defaultQty:1,gramsPerUnit:125,per100:{kcal:52,protein:1.2,carbs:11.9,fat:0.7,fiber:6.5,satFat:0,sodium:1,vitC:26}},
+  {id:"moras_congeladas",name:"Moras / Blackberries",emoji:"🍇",cat:"FRUIT",unit:"cup",defaultQty:1,gramsPerUnit:140,per100:{kcal:43,protein:1.4,carbs:9.6,fat:0.5,fiber:5.3,satFat:0,sodium:1,vitC:21}},
+  {id:"blueberries",name:"Arándanos / Blueberries (raw)",emoji:"🫐",cat:"FRUIT",unit:"g",defaultQty:148,gramsPerUnit:1,per100:{kcal:57,protein:0.7,carbs:14.5,fat:0.3,fiber:2.4,satFat:0,omega3ala:0.06,omega3dha:0,sodium:1,calcium:6,phosphorus:12,magnesium:6,potassium:77,iron:0.3,zinc:0.16,copper:0.06,manganese:0.34,selenium:0.1,iodine:0,chromium:0,vitA:3,vitC:9.7,vitD:0,vitE:0.57,vitK:19.3,vitB1:0.04,vitB2:0.04,vitB3:0.4,vitB5:0.1,vitB6:0.05,vitB7:0,vitB9:6,vitB12:0,choline:6}},
 
-  // 4. FISH & SEAFOOD
-  { id: "hake_raw", name: "Merluza / Hake (raw fillet)", emoji: "🐠", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 90, protein: 18.5, carbs: 0, fat: 1.3, fiber: 0, satFat: 0.2, omega3dha: 0.2, sodium: 72, calcium: 34, iron: 0.9, zinc: 0.5, vitD: 5.4, vitB12: 1.5, choline: 65 } },
-  { id: "gatuzo_raw", name: "Gatuzo / Smooth-Hound Shark (raw fillet)", emoji: "🦈", cat: "SEAFOOD", unit: "g", defaultQty: 200, gramsPerUnit: 150, per100: { kcal: 72, protein: 17.4, carbs: 0, fat: 0.2, fiber: 0, satFat: 0.1, sodium: 75, calcium: 15, iron: 0.8, zinc: 0.5, vitB12: 1.0 } },
-  { id: "abadejo_raw", name: "Abadejo / Pink Cusk-Eel (raw fillet)", emoji: "🐠", cat: "SEAFOOD", unit: "g", defaultQty: 200, gramsPerUnit: 150, per100: { kcal: 78, protein: 17.8, carbs: 0, fat: 0.7, fiber: 0, satFat: 0.1, sodium: 60, calcium: 25, iron: 0.5, zinc: 0.4, vitD: 0.5, vitB12: 1.5 } },
-  { id: "brotola_raw", name: "Brótola (raw fillet)", emoji: "🐟", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 88, protein: 18.5, carbs: 0, fat: 1.2, fiber: 0, satFat: 0.2, sodium: 70, calcium: 25, vitA: 10 } },
-  { id: "lenguado_raw", name: "Lenguado / Flounder (raw fillet)", emoji: "🥞", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 120, per100: { kcal: 86, protein: 19.0, carbs: 0, fat: 1.0, fiber: 0, satFat: 0.2, sodium: 80, calcium: 18, vitA: 5 } },
-  { id: "pollo_de_mar", name: "Pollo de Mar / Angel Shark (raw)", emoji: "🐟", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 112, protein: 19.5, carbs: 0, fat: 3.5, fiber: 0, satFat: 0.8, sodium: 80, calcium: 20, vitA: 5 } },
-  { id: "pez_palo", name: "Pez Palo / Sandperch (raw)", emoji: "🐟", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 96, protein: 20.1, carbs: 0, fat: 1.7, fiber: 0, satFat: 0.3, sodium: 65, calcium: 40, vitA: 15 } },
-  { id: "pescadilla", name: "Pescadilla / Small Whiting (raw)", emoji: "🎣", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 91, protein: 18.5, carbs: 0, fat: 1.3, fiber: 0, satFat: 0.3, sodium: 75, calcium: 35, vitA: 10 } },
-  { id: "salmon_blanco", name: "Salmón Blanco / Fake Salmon (raw)", emoji: "🐟", cat: "SEAFOOD", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 98, protein: 19.0, carbs: 0, fat: 1.9, fiber: 0, satFat: 0.4, sodium: 80, calcium: 25, vitA: 10 } },
-  
-  { id: "salmon_rosado_raw", name: "Salmón Rosado / Atlantic Salmon (raw)", emoji: "🍣", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 200, per100: { kcal: 208, protein: 20.4, carbs: 0, fat: 13.4, fiber: 0, satFat: 3.1, omega3dha: 1.4, sodium: 59, calcium: 9, iron: 0.3, zinc: 0.4, vitD: 11.0, vitB12: 3.2, choline: 90 } },
-  { id: "trucha_raw", name: "Trucha Arcoíris / Rainbow Trout (raw)", emoji: "🐟", cat: "SEAFOOD", unit: "g", defaultQty: 180, gramsPerUnit: 180, per100: { kcal: 141, protein: 20.5, carbs: 0, fat: 6.2, fiber: 0, satFat: 1.5, omega3dha: 0.9, sodium: 52, calcium: 43, iron: 0.7, zinc: 0.6, vitD: 3.9, vitB12: 4.0 } },
-  { id: "trout_rainbow_cooked", name: "Trucha Arcoíris / Rainbow Trout (cooked)", emoji: "🐟", cat: "SEAFOOD", unit: "g", defaultQty: 140, gramsPerUnit: 150, per100: { kcal: 174, protein: 24.5, carbs: 0, fat: 8.5, fiber: 0, satFat: 1.8, omega3dha: 1.0, sodium: 55, calcium: 50, iron: 0.4, zinc: 0.7, vitD: 15.5, vitB12: 4.5 } },
-  { id: "cod_atlantic_cooked", name: "Bacalao / Atlantic Cod (cooked)", emoji: "🐟", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 105, protein: 22.8, carbs: 0, fat: 0.9, fiber: 0, satFat: 0.1, sodium: 100, calcium: 15, iron: 0.2, zinc: 0.5, vitD: 1.1, vitB12: 2.1 } },
-  
-  { id: "corvina_rubia", name: "Corvina Rubia (raw)", emoji: "🐠", cat: "SEAFOOD", unit: "g", defaultQty: 200, gramsPerUnit: 250, per100: { kcal: 125, protein: 19.5, carbs: 0, fat: 4.8, fiber: 0, satFat: 1.2, sodium: 60, calcium: 20, vitA: 15 } },
-  { id: "pejerrey_frito", name: "Pejerrey Frito / Fried Silverside", emoji: "🥣", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 50, per100: { kcal: 245, protein: 18.0, carbs: 14.0, fat: 13.5, fiber: 0.5, satFat: 2.1, sodium: 350, calcium: 80, vitA: 5 } },
-  { id: "boga_parrilla", name: "Boga a la Parrilla / Grilled River Fish", emoji: "🔥", cat: "SEAFOOD", unit: "g", defaultQty: 200, gramsPerUnit: 250, per100: { kcal: 210, protein: 18.5, carbs: 0, fat: 15.0, fiber: 0, satFat: 4.5, sodium: 50, calcium: 15, vitA: 20 } },
-  { id: "pacu_raw", name: "Pacú / Freshwater Steak (raw)", emoji: "🍖", cat: "SEAFOOD", unit: "g", defaultQty: 200, gramsPerUnit: 250, per100: { kcal: 245, protein: 18.0, carbs: 0, fat: 18.5, fiber: 0, satFat: 4.5, sodium: 55, calcium: 15, vitA: 20 } },
-  { id: "surubi_raw", name: "Surubí (raw)", emoji: "🐟", cat: "SEAFOOD", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 165, protein: 19.5, carbs: 0, fat: 9.5, fiber: 0, satFat: 2.5, sodium: 60, calcium: 10, vitA: 15 } },
-  { id: "besugo", name: "Besugo / Red Porgy (raw)", emoji: "🔴", cat: "SEAFOOD", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 112, protein: 20.0, carbs: 0, fat: 3.0, fiber: 0, satFat: 0.7, sodium: 70, calcium: 40, vitA: 10 } },
+  // --- FATS, OILS, PASTES, CONDIMENTS & JUICES ---
+  {id:"palta_hass",name:"Palta Hass (Black/Rough Skin)",emoji:"🥑",cat:"FATS",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:160,protein:2.0,carbs:8.5,fat:14.7,fiber:6.7,satFat:2.1,potassium:485,vitE:2.1,vitB9:81}},
+  {id:"palta_torres",name:"Palta Torres / Lula (Green/Smooth Skin)",emoji:"🥑",cat:"FATS",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:120,protein:1.8,carbs:9.0,fat:10.0,fiber:5.0,satFat:1.5,potassium:350,vitE:1.5}},
+  {id:"aceitunas_verdes",name:"Aceitunas Verdes / Green Olives",emoji:"🫒",cat:"FATS",unit:"unit",defaultQty:5,gramsPerUnit:5,per100:{kcal:145,protein:1.0,carbs:3.8,fat:15.3,fiber:3.3,satFat:2.0,sodium:1556,calcium:52,vitE:3.8}},
+  {id:"oil_blend",name:"Oil Blend (olive/sunflower)",emoji:"🫙",cat:"FATS",unit:"tbsp",defaultQty:1.5,gramsPerUnit:14,per100:{kcal:884,protein:0,carbs:0,fat:100,fiber:0,satFat:14,omega3ala:0.7,omega3dha:0,sodium:0,calcium:1,phosphorus:2,magnesium:0,potassium:1,iron:0.1,zinc:0,copper:0,manganese:0,selenium:0,iodine:0,chromium:0,vitA:0,vitC:0,vitD:0,vitE:9.1,vitK:60,vitB1:0,vitB2:0,vitB3:0,vitB5:0,vitB6:0,vitB7:0,vitB9:0,vitB12:0,choline:0}},
+  {id:"aceite_girasol_natura",name:"Aceite de Girasol (Natura/Cocinero)",emoji:"🌻",cat:"FATS",unit:"tbsp",defaultQty:1,gramsPerUnit:14,per100:{kcal:884,protein:0,carbs:0,fat:100,fiber:0,satFat:11.0,sodium:0,vitE:41}},
+  {id:"olive_oil",name:"Olive Oil (Extra Virgin)",emoji:"🫒",cat:"FATS",unit:"tbsp",defaultQty:1,gramsPerUnit:14,per100:{kcal:884,protein:0,carbs:0,fat:100,fiber:0,satFat:13.8,omega3ala:0.76,omega3dha:0,sodium:2,calcium:1,phosphorus:0,magnesium:0,potassium:1,iron:0.6,zinc:0,copper:0,manganese:0,selenium:0,iodine:0,chromium:0,vitA:0,vitC:0,vitD:0,vitE:14.4,vitK:60.2,vitB1:0,vitB2:0,vitB3:0,vitB5:0,vitB6:0,vitB7:0,vitB9:0,vitB12:0,choline:0.3}},
+  {id:"soy_sauce",name:"Soy Sauce (Menoyo)",emoji:"🍶",cat:"CONDIMENTS",unit:"tbsp",defaultQty:1,gramsPerUnit:15,per100:{kcal:60,protein:6.5,carbs:5.6,fat:0.1,fiber:0.8,satFat:0,omega3ala:0,omega3dha:0,sodium:5493,calcium:19,phosphorus:130,magnesium:40,potassium:435,iron:2.4,zinc:0.5,copper:0.08,manganese:0.5,selenium:1,iodine:2,chromium:2,vitA:0,vitC:0,vitD:0,vitE:0,vitK:0,vitB1:0.04,vitB2:0.12,vitB3:0.5,vitB5:0.2,vitB6:0.2,vitB7:0,vitB9:20,vitB12:0,choline:5}},
+  {id:"tomato_sauce",name:"Tomato Sauce / Salsa",emoji:"🍅",cat:"CONDIMENTS",unit:"tbsp",defaultQty:3,gramsPerUnit:15,per100:{kcal:29,protein:1.5,carbs:6.0,fat:0.3,fiber:1.5,satFat:0.04,omega3ala:0.01,omega3dha:0,sodium:380,calcium:18,phosphorus:32,magnesium:16,potassium:380,iron:0.7,zinc:0.3,copper:0.12,manganese:0.15,selenium:0.5,iodine:2,chromium:2,vitA:28,vitC:14,vitD:0,vitE:0.4,vitK:5,vitB1:0.04,vitB2:0.04,vitB3:1.2,vitB5:0.22,vitB6:0.1,vitB7:1,vitB9:16,vitB12:0,choline:10}},
+  {id:"extracto_tomate",name:"Extracto de Tomate (Concentrado)",emoji:"🥫",cat:"CONDIMENTS",unit:"tbsp",defaultQty:1,gramsPerUnit:16,per100:{kcal:82,protein:4.3,carbs:18.9,fat:0.4,fiber:4.0,satFat:0,sodium:60}},
+  {id:"honey",name:"Miel / Honey",emoji:"🍯",cat:"CONDIMENTS",unit:"tsp",defaultQty:1,gramsPerUnit:7,per100:{kcal:331,protein:0.3,carbs:82.4,fat:0,fiber:0.2,satFat:0,omega3ala:0,omega3dha:0,sodium:4,calcium:6,phosphorus:4,magnesium:2,potassium:52,iron:0.4,zinc:0.2,copper:0.04,manganese:0.08,selenium:0.8,iodine:1,chromium:0,vitA:0,vitC:0.5,vitD:0,vitE:0,vitK:0,vitB1:0.04,vitB2:0.04,vitB3:0.1,vitB5:0.07,vitB6:0.02,vitB7:0,vitB9:2,vitB12:0,choline:2}},
+  {id:"jugo_limon_natural",name:"Jugo de Limón (Squeezed)",emoji:"🍋",cat:"CONDIMENTS",unit:"lemon",defaultQty:0.5,gramsPerUnit:45,per100:{kcal:22,protein:0.4,carbs:6.9,fat:0.2,fiber:0.3,satFat:0,sodium:1,vitC:39}},
+  {id:"jugo_lima_natural",name:"Jugo de Lima (Squeezed)",emoji:"🍋",cat:"CONDIMENTS",unit:"lime",defaultQty:1,gramsPerUnit:30,per100:{kcal:25,protein:0.4,carbs:8.4,fat:0.1,fiber:0.4,satFat:0,sodium:2,vitC:30}},
+  {id:"curcuma_polvo",name:"Cúrcuma (Turmeric Powder)",emoji:"🧡",cat:"CONDIMENTS",unit:"tsp",defaultQty:1,gramsPerUnit:3,per100:{kcal:312,protein:9.7,carbs:67.0,fat:3.3,fiber:22.7,satFat:1.8,sodium:27}},
+  {id:"dulce_batata_esnaola",name:"Dulce de Batata (Esnaola/Arcor)",emoji:"🍠",cat:"PANTRY",unit:"slice",defaultQty:1,gramsPerUnit:50,per100:{kcal:273,protein:1.0,carbs:67.0,fat:0,fiber:2.5,satFat:0,sodium:35}},
+  {id:"dulce_batata_chocolate",name:"Dulce de Batata con Chocolate",emoji:"🍫",cat:"PANTRY",unit:"slice",defaultQty:1,gramsPerUnit:50,per100:{kcal:285,protein:1.5,carbs:66.0,fat:1.2,fiber:3.0,satFat:0.6,sodium:40}},
+  {id:"dulce_membrillo_esnaola",name:"Dulce de Membrillo (Esnaola)",emoji:"🟥",cat:"PANTRY",unit:"slice",defaultQty:1,gramsPerUnit:50,per100:{kcal:268,protein:0.5,carbs:66.5,fat:0,fiber:4.5,satFat:0,sodium:25}},
+  {id:"ddl_colonial_ls",name:"Dulce de Leche Colonial (La Serenísima)",emoji:"🐮",cat:"PANTRY",unit:"tbsp",defaultQty:1,gramsPerUnit:25,per100:{kcal:315,protein:7.0,carbs:55.0,fat:7.5,fiber:0,satFat:4.5,sodium:130,calcium:280}},
+  {id:"ddl_clasico_ls",name:"Dulce de Leche Clásico (La Serenísima)",emoji:"🍯",cat:"PANTRY",unit:"tbsp",defaultQty:1,gramsPerUnit:25,per100:{kcal:308,protein:7.0,carbs:56.0,fat:6.0,fiber:0,satFat:3.8,sodium:120,calcium:270}},
+  {id:"ddl_repostero_san_ignacio",name:"Dulce de Leche Repostero (San Ignacio)",emoji:"🎂",cat:"PANTRY",unit:"tbsp",defaultQty:1,gramsPerUnit:25,per100:{kcal:310,protein:6.5,carbs:58.0,fat:5.8,fiber:0,satFat:3.5,sodium:140}},
+  {id:"ddl_ser_light",name:"Dulce de Leche Ser (Light/Diet)",emoji:"📉",cat:"PANTRY",unit:"tbsp",defaultQty:1,gramsPerUnit:25,per100:{kcal:268,protein:7.5,carbs:52.0,fat:1.5,fiber:2.0,satFat:0.9,sodium:110}},
+  {id:"jugo_naranja_exprimidor",name:"Jugo de Naranja (Fresh Squeezed)",emoji:"🍊",cat:"BEVERAGES",unit:"glass",defaultQty:1,gramsPerUnit:200,per100:{kcal:45,protein:0.7,carbs:10.4,fat:0.2,fiber:0.2,satFat:0,sodium:1,vitC:50}},
+  {id:"jugo_citric_naranja",name:"Jugo Citric Naranja (Commercial)",emoji:"🧃",cat:"BEVERAGES",unit:"glass",defaultQty:1,gramsPerUnit:200,per100:{kcal:44,protein:0.6,carbs:10.4,fat:0,fiber:0,satFat:0,sodium:5}},
+  {id:"jugo_cepita_manzana",name:"Jugo Cepita Manzana",emoji:"🧃",cat:"BEVERAGES",unit:"glass",defaultQty:1,gramsPerUnit:200,per100:{kcal:48,protein:0,carbs:12.0,fat:0,fiber:0,satFat:0,sodium:10}},
+  {id:"yerba_playadito",name:"Yerba Mate (Playadito - Dry leaves used)",emoji:"🧉",cat:"BEVERAGES",unit:"g",defaultQty:50,gramsPerUnit:1,per100:{kcal:64,protein:1.8,carbs:14.4,fat:0,fiber:0,satFat:0,sodium:0,magnesium:40,potassium:120}},
+  {id:"ades_natural_soy",name:"Ades Natural (Soy Milk)",emoji:"🫘",cat:"DAIRY",unit:"glass",defaultQty:1,gramsPerUnit:200,per100:{kcal:42,protein:2.5,carbs:4.5,fat:1.6,fiber:0,satFat:0.2,sodium:90,calcium:120,vitD:1.0}},
+  {id:"silk_almond_unsweet",name:"Silk Almendras (Sin Azúcar)",emoji:"🌰",cat:"DAIRY",unit:"glass",defaultQty:1,gramsPerUnit:200,per100:{kcal:14,protein:0.4,carbs:0.3,fat:1.2,fiber:0.2,satFat:0,sodium:45,calcium:140,vitE:2.0,vitB12:0.4}},
 
-  { id: "sardines_oil", name: "Sardinas en Aceite / Sardines in oil (drained)", emoji: "🐟", cat: "SEAFOOD", unit: "g", defaultQty: 120, gramsPerUnit: 120, per100: { kcal: 208, protein: 24.6, carbs: 0, fat: 11.5, fiber: 0, satFat: 1.5, omega3dha: 1.5, sodium: 505, calcium: 382, iron: 2.9, zinc: 1.7, vitD: 10.0, vitB12: 8.9, choline: 75 } },
-  { id: "sardinas_tomate", name: "Sardinas en Tomate / Sardines in Tomato", emoji: "🍅", cat: "SEAFOOD", unit: "can", defaultQty: 1, gramsPerUnit: 120, per100: { kcal: 185, protein: 21.0, carbs: 2.0, fat: 10.0, fiber: 0, satFat: 2.5, omega3dha: 2.8, sodium: 400, calcium: 380, iron: 2.9, zinc: 1.5, vitD: 8.5 } },
-  { id: "tuna_water", name: "Atún al Natural / Tuna in Water (drained)", emoji: "🐟", cat: "SEAFOOD", unit: "g", defaultQty: 120, gramsPerUnit: 120, per100: { kcal: 116, protein: 25.5, carbs: 0, fat: 1.0, fiber: 0, satFat: 0.3, omega3dha: 0.23, sodium: 320, calcium: 14, iron: 1.0, zinc: 0.6, vitD: 1.7, vitB12: 2.5, choline: 29 } },
-  { id: "caballa_natural", name: "Caballa al Natural / Mackerel (drained)", emoji: "🐟", cat: "SEAFOOD", unit: "can", defaultQty: 1, gramsPerUnit: 120, per100: { kcal: 160, protein: 24.0, carbs: 0, fat: 7.0, fiber: 0, satFat: 1.5, omega3dha: 2.5, sodium: 350, calcium: 200, iron: 2.0, zinc: 0.8, vitD: 15.0, vitB12: 8.5 } },
-  { id: "jurel_natural", name: "Jurel al Natural / Jack Mackerel (drained)", emoji: "🐟", cat: "SEAFOOD", unit: "can", defaultQty: 1, gramsPerUnit: 120, per100: { kcal: 156, protein: 23.0, carbs: 0, fat: 6.5, fiber: 0, satFat: 1.6, omega3dha: 1.8, sodium: 380, calcium: 250, iron: 1.8, zinc: 0.7, vitD: 12.0 } },
-  { id: "salmon_pink_canned", name: "Salmón Rosado en Lata / Pink Salmon (canned)", emoji: "🥫", cat: "SEAFOOD", unit: "g", defaultQty: 120, gramsPerUnit: 170, per100: { kcal: 138, protein: 24.6, carbs: 0, fat: 4.5, fiber: 0, satFat: 0.8, omega3dha: 0.9, sodium: 380, calcium: 260, iron: 1.0, zinc: 0.8, vitD: 14.0, vitB12: 4.9 } },
-  { id: "anchovies_oil", name: "Anchoas en Aceite / Anchovies in oil", emoji: "🐟", cat: "SEAFOOD", unit: "filet", defaultQty: 4, gramsPerUnit: 4, per100: { kcal: 210, protein: 28.9, carbs: 0, fat: 9.7, fiber: 0, satFat: 2.2, sodium: 3668, calcium: 232, vitA: 15 } },
-  
-  { id: "squid_raw", name: "Calamar / Squid (raw)", emoji: "🦑", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 100, per100: { kcal: 92, protein: 15.6, carbs: 3.1, fat: 1.4, fiber: 0, satFat: 0.4, sodium: 44, calcium: 32, vitC: 4 } },
-  { id: "rabas_fritas", name: "Rabas Fritas / Fried Calamari", emoji: "🍤", cat: "SEAFOOD", unit: "portion", defaultQty: 1, gramsPerUnit: 250, per100: { kcal: 216, protein: 13.0, carbs: 14.0, fat: 12.0, fiber: 0.4, satFat: 1.8, sodium: 480, calcium: 40, vitA: 5 } },
-  { id: "octopus_cooked", name: "Pulpo / Octopus (cooked)", emoji: "🐙", cat: "SEAFOOD", unit: "g", defaultQty: 120, gramsPerUnit: 150, per100: { kcal: 164, protein: 29.8, carbs: 4.4, fat: 2.1, fiber: 0, satFat: 0.5, sodium: 460, calcium: 106, vitA: 25, vitC: 8 } },
-  { id: "shrimp_raw", name: "Camarones / Shrimp (raw)", emoji: "🍤", cat: "SEAFOOD", unit: "g", defaultQty: 120, gramsPerUnit: 120, per100: { kcal: 85, protein: 20.1, carbs: 0, fat: 0.5, fiber: 0, satFat: 0.1, omega3dha: 0.12, sodium: 566, calcium: 64, iron: 0.5, zinc: 1.3, vitA: 54, vitB12: 1.1, choline: 135 } },
-  { id: "langostinos_raw", name: "Langostinos Argentinos (raw, peeled)", emoji: "🦐", cat: "SEAFOOD", unit: "g", defaultQty: 100, gramsPerUnit: 25, per100: { kcal: 95, protein: 20.5, carbs: 0, fat: 1.1, fiber: 0, satFat: 0.2, sodium: 140, calcium: 50, vitC: 2 } },
-  { id: "mussels_cooked", name: "Mejillones / Mussels (steamed)", emoji: "🦪", cat: "SEAFOOD", unit: "g", defaultQty: 100, gramsPerUnit: 10, per100: { kcal: 172, protein: 24.0, carbs: 7.4, fat: 4.5, fiber: 0, satFat: 0.9, sodium: 370, calcium: 33, vitA: 45, vitC: 13 } },
-  { id: "mejillones_pelados_raw", name: "Mejillones Pelados / Peeled Mussels (raw/thawed)", emoji: "🦪", cat: "SEAFOOD", unit: "cup", defaultQty: 1, gramsPerUnit: 150, per100: { kcal: 95, protein: 17.6, carbs: 2.5, fat: 1.6, fiber: 0, satFat: 0.3, sodium: 286, calcium: 26, iron: 3.9, zinc: 1.6, vitA: 45, vitB12: 12.0 } },
-  { id: "cholgas", name: "Cholgas / Large Mussels", emoji: "🦪", cat: "SEAFOOD", unit: "g", defaultQty: 100, gramsPerUnit: 20, per100: { kcal: 115, protein: 18.5, carbs: 4.5, fat: 2.5, fiber: 0, satFat: 0.4, sodium: 320, calcium: 50, vitA: 30, vitC: 5 } },
-  { id: "vieiras", name: "Vieiras / Scallops", emoji: "🐚", cat: "SEAFOOD", unit: "g", defaultQty: 100, gramsPerUnit: 15, per100: { kcal: 88, protein: 16.8, carbs: 2.4, fat: 0.8, fiber: 0, satFat: 0.1, sodium: 390, calcium: 35, vitA: 5 } },
-  { id: "mix_mariscos", name: "Cazuela Mix Mariscos (frozen)", emoji: "🍲", cat: "SEAFOOD", unit: "cup", defaultQty: 1, gramsPerUnit: 150, per100: { kcal: 105, protein: 16.5, carbs: 3.0, fat: 2.5, fiber: 0, satFat: 0.5, sodium: 320, calcium: 40, vitA: 20, vitC: 1 } },
-  { id: "cornalitos_fritos", name: "Cornalitos Fritos / Fried Smelt", emoji: "🐟", cat: "SEAFOOD", unit: "portion", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 253, protein: 18.5, carbs: 12.6, fat: 14.2, fiber: 0.8, satFat: 2.5, sodium: 570, calcium: 200, vitA: 30 } },
-  { id: "kani_kama", name: "Kani Kama / Surimi Sticks", emoji: "🦀", cat: "SEAFOOD", unit: "stick", defaultQty: 3, gramsPerUnit: 18, per100: { kcal: 99, protein: 15.2, carbs: 6.9, fat: 0.9, fiber: 0, satFat: 0.1, sodium: 143, calcium: 9, vitA: 2 } },
-  { id: "ranas_toro", name: "Ranas Toro / Frog Legs (raw)", emoji: "🐸", cat: "SEAFOOD", unit: "g", defaultQty: 150, gramsPerUnit: 100, per100: { kcal: 73, protein: 16.4, carbs: 0, fat: 0.3, fiber: 0, satFat: 0.1, sodium: 58, calcium: 18, iron: 1.5, zinc: 0.8, vitA: 15, vitB12: 0.4 } },
+  // --- PLANT-BASED MEAT, MARINE ASIAN & SNACKS ---
+  {id:"notburger_original",name:"NotBurger (NotCo)",emoji:"🍔",cat:"PLANT_BASED",unit:"unit",defaultQty:1,gramsPerUnit:100,per100:{kcal:233,protein:16.0,carbs:5.0,fat:17.0,fiber:5.0,satFat:10.2,sodium:399,calcium:60}},
+  {id:"notmila_original",name:"NotMila (NotCo)",emoji:"🌭",cat:"PLANT_BASED",unit:"unit",defaultQty:1,gramsPerUnit:110,per100:{kcal:245,protein:13.0,carbs:22.0,fat:12.0,fiber:4.5,satFat:1.5,sodium:450}},
+  {id:"vegetalex_milanesa_soja",name:"Milanesa de Soja (Vegetalex)",emoji:"🫓",cat:"PLANT_BASED",unit:"unit",defaultQty:1,gramsPerUnit:85,per100:{kcal:148,protein:13.0,carbs:16.5,fat:3.5,fiber:3.5,satFat:0.5,sodium:380}},
+  {id:"vegetalex_medallon_verdura",name:"Medallón de Verdura (Vegetalex)",emoji:"🥦",cat:"PLANT_BASED",unit:"unit",defaultQty:1,gramsPerUnit:75,per100:{kcal:125,protein:3.0,carbs:18.0,fat:4.5,fiber:3.7,satFat:0.5,sodium:304}},
+  {id:"tofu_soyana",name:"Tofu Orgánico (Soyana)",emoji:"🧊",cat:"PLANT_BASED",unit:"g",defaultQty:100,gramsPerUnit:1,per100:{kcal:146,protein:17.0,carbs:2.4,fat:9.0,fiber:0,satFat:1.2,sodium:10,calcium:150}},
+  {id:"pasta_porotos_negros",name:"Pasta de Porotos Negros (Black Bean)",emoji:"🍝",cat:"PLANT_BASED",unit:"g",defaultQty:80,gramsPerUnit:1,per100:{kcal:330,protein:23.0,carbs:55.0,fat:2.0,fiber:14.0,satFat:0,sodium:5,iron:6.0}},
+  {id:"alga_kombu_dried",name:"Alga Kombu (Laminaria - Tiras Secas)",emoji:"🍲",cat:"PANTRY",unit:"strip",defaultQty:1,gramsPerUnit:10,per100:{kcal:246,protein:7.9,carbs:49.7,fat:0.6,fiber:7.5,satFat:0.1,sodium:680,potassium:6100,iodine:295000,calcium:800}},
+  {id:"alga_wakame_dried",name:"Alga Wakame Deshidratada",emoji:"🥣",cat:"PANTRY",unit:"tbsp",defaultQty:1,gramsPerUnit:5,per100:{kcal:138,protein:18.0,carbs:41.8,fat:4.0,fiber:40.0,satFat:0,sodium:6600,calcium:660,magnesium:400,vitA:100,vitB9:196}},
+  {id:"alga_nori_sheet_premium",name:"Alga Nori (Sushi Gold/Silver)",emoji:"🍙",cat:"PANTRY",unit:"sheet",defaultQty:1,gramsPerUnit:2.5,per100:{kcal:350,protein:40.0,carbs:40.0,fat:5.0,fiber:35.0,satFat:0,sodium:50,iodine:2000,vitC:20,vitA:500}},
+  {id:"agar_agar_powder",name:"Agar-Agar (Polvo/Gelificante)",emoji:"🍮",cat:"PANTRY",unit:"tsp",defaultQty:1,gramsPerUnit:4,per100:{kcal:306,protein:6.2,carbs:80.9,fat:0.3,fiber:7.7,satFat:0,sodium:102,calcium:625,iron:21}},
+  {id:"bizcochos_arroz_gallo",name:"Bizcochos de Arroz (Gallo Snacks)",emoji:"🍘",cat:"SNACKS",unit:"packet",defaultQty:1,gramsPerUnit:20,per100:{kcal:396,protein:6.5,carbs:82.0,fat:4.5,fiber:1.0,satFat:0.5,sodium:350}},
+  {id:"chocobar_gallo",name:"ChocoBar (Gallo Rice Bar)",emoji:"🍫",cat:"SNACKS",unit:"bar",defaultQty:1,gramsPerUnit:20,per100:{kcal:495,protein:5.5,carbs:65.0,fat:23.0,fiber:2.0,satFat:14.0,sodium:80}},
+  {id:"criollitas_original",name:"Criollitas (Galletitas de Agua)",emoji:"🍪",cat:"BAKERY",unit:"unit",defaultQty:5,gramsPerUnit:5.5,per100:{kcal:435,protein:11.0,carbs:68.0,fat:13.0,fiber:3.0,satFat:6.0,sodium:850}},
+  {id:"lays_clasicas",name:"Lays Clásicas (Potato Chips)",emoji:"🥔",cat:"SNACKS",unit:"pack_small",defaultQty:1,gramsPerUnit:34,per100:{kcal:545,protein:6.5,carbs:53.0,fat:34.0,fiber:4.5,satFat:5.0,sodium:650}},
+  {id:"pringles_original",name:"Pringles (Original)",emoji:"🥔",cat:"SNACKS",unit:"can_small",defaultQty:1,gramsPerUnit:40,per100:{kcal:515,protein:4.0,carbs:51.0,fat:33.0,fiber:2.7,satFat:9.0,sodium:500}},
 
-  // 5. DAIRY (MILKS)
-  { id: "leche_entera_clasica", name: "Leche Entera Clásica / Whole Milk (La Serenísima)", emoji: "🥛", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 58, protein: 3.0, carbs: 4.7, fat: 3.0, fiber: 0, satFat: 1.8, sodium: 45, calcium: 120, vitA: 60, vitD: 1.0, vitB12: 0.4 } },
-  { id: "leche_descremada_clasica", name: "Leche Descremada / Skim Milk (La Serenísima 0%)", emoji: "🥛", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 33, protein: 3.1, carbs: 4.8, fat: 0.1, fiber: 0, satFat: 0, sodium: 48, calcium: 125, vitA: 60, vitD: 1.0, vitB12: 0.4 } },
-  { id: "leche_liviana_1", name: "Leche Liviana 1% / Low Fat Milk (La Serenísima)", emoji: "🥛", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 40, protein: 3.0, carbs: 4.7, fat: 1.0, fiber: 0, satFat: 0.6, sodium: 46, calcium: 120, vitA: 60, vitD: 1.0 } },
-  { id: "leche_zero_lactosa", name: "Leche Zero Lactosa / Lactose-Free Milk", emoji: "🧬", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 40, protein: 3.0, carbs: 4.7, fat: 1.0, fiber: 0, satFat: 0.6, sodium: 46, calcium: 120, vitA: 60, vitD: 1.0 } },
-  { id: "leche_hierro", name: "Leche con Hierro / Iron-Fortified Milk", emoji: "⚙️", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 42, protein: 3.0, carbs: 4.7, fat: 1.5, fiber: 0, satFat: 0.9, sodium: 46, calcium: 120, iron: 1.2, vitA: 60, vitC: 15, vitD: 1.0 } },
-  { id: "ls_protein_46g", name: "Leche Protein 46g / High Protein Milk (Red)", emoji: "🔴", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 37, protein: 4.6, carbs: 4.6, fat: 0, fiber: 0, satFat: 0, sodium: 55, calcium: 150, vitA: 60, vitC: 1.5, vitD: 1.0, vitB12: 0.5 } },
-  { id: "ls_protein_52g", name: "Leche Protein 52g / Max Protein Milk (Black)", emoji: "⚫", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 41, protein: 5.2, carbs: 4.6, fat: 0, fiber: 0, satFat: 0, sodium: 58, calcium: 160, vitA: 60, vitC: 1.5, vitD: 1.2, vitB12: 0.6 } },
-  { id: "leche_en_polvo_entera", name: "Leche en Polvo Entera / Whole Milk Powder", emoji: "🥡", cat: "MILK", unit: "tbsp", defaultQty: 2, gramsPerUnit: 10, per100: { kcal: 495, protein: 26.0, carbs: 38.0, fat: 26.5, fiber: 0, satFat: 16.0, sodium: 350, calcium: 900, vitA: 450, vitD: 7.5 } },
-  { id: "dia_polvo_descremada", name: "Leche en Polvo Descremada / Skim Milk Powder", emoji: "🥡", cat: "MILK", unit: "tbsp", defaultQty: 2, gramsPerUnit: 10, per100: { kcal: 358, protein: 34.0, carbs: 52.0, fat: 1.5, fiber: 0, satFat: 1.0, sodium: 550, calcium: 1100, vitA: 600, vitD: 10.0 } },
-  { id: "ls_protein_polvo", name: "Leche Protein en Polvo / Protein Milk Powder", emoji: "🥡", cat: "MILK", unit: "tbsp", defaultQty: 2, gramsPerUnit: 10, per100: { kcal: 348, protein: 46.0, carbs: 39.0, fat: 1.0, fiber: 0, satFat: 0, sodium: 550, calcium: 1500, vitA: 600, vitC: 15, vitD: 10.0 } },
-  
-  { id: "coto_entera_liquid", name: "Leche Entera Coto / Whole Milk", emoji: "🥛", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 58, protein: 3.0, carbs: 4.7, fat: 3.0, fiber: 0, satFat: 1.9, sodium: 45, calcium: 115, vitA: 60, vitD: 1.0 } },
-  { id: "coto_descremada_liquid", name: "Leche Descremada Coto / Skim Milk (1.5%)", emoji: "🥛", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 44, protein: 3.0, carbs: 4.8, fat: 1.5, fiber: 0, satFat: 1.0, sodium: 48, calcium: 115, vitA: 60, vitD: 1.0 } },
-  { id: "dia_entera_liquid", name: "Leche Entera Dia / Whole Milk", emoji: "🥛", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 59, protein: 3.0, carbs: 4.6, fat: 3.0, fiber: 0, satFat: 1.9, sodium: 50, calcium: 120, vitA: 60, vitD: 1.0 } },
-  { id: "carrefour_descremada", name: "Leche Descremada Carrefour / Skim Milk", emoji: "🥛", cat: "MILK", unit: "ml", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 41, protein: 3.1, carbs: 4.7, fat: 1.0, fiber: 0, satFat: 0.6, sodium: 46, calcium: 120, vitA: 60, vitD: 1.0 } },
-
-  // 6. DAIRY (YOGURTS)
-  { id: "yogurisimo_griego_natural", name: "Yogurísimo Griego Natural / Greek-Style Yogurt", emoji: "🏺", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 190, per100: { kcal: 81, protein: 6.3, carbs: 6.8, fat: 3.2, fiber: 0, satFat: 2.1, sodium: 45, calcium: 160 } },
-  { id: "yogurisimo_griego_frutilla", name: "Yogurísimo Griego Frutilla / Strawberry Greek", emoji: "🍓", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 140, per100: { kcal: 105, protein: 5.4, carbs: 16.0, fat: 2.1, fiber: 0, satFat: 1.3, sodium: 40, calcium: 130 } },
-  { id: "dahi_natural", name: "Dahi Natural / Whole Milk Glass Jar Yogurt", emoji: "🥛", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 98, protein: 4.5, carbs: 6.0, fat: 6.2, fiber: 0, satFat: 4.1, sodium: 50, calcium: 150 } },
-  { id: "kay_griego", name: "Kay Yogur Griego / True Strained Greek Yogurt", emoji: "🇬🇷", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 170, per100: { kcal: 58, protein: 10.0, carbs: 4.0, fat: 0, fiber: 0, satFat: 0, sodium: 35, calcium: 120 } },
-  { id: "tregar_natural", name: "Yogur Tregar Natural / Firm Yogurt", emoji: "🥣", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 140, per100: { kcal: 79, protein: 5.3, carbs: 7.9, fat: 3.0, fiber: 0, satFat: 1.9, sodium: 55, calcium: 140 } },
-  { id: "yogurisimo_firme", name: "Yogurísimo Firme Vainilla / Sweetened Firm Yogurt", emoji: "🍮", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 120, per100: { kcal: 92, protein: 3.4, carbs: 16.0, fat: 1.5, fiber: 0, satFat: 0.9, sodium: 60, calcium: 110 } },
-  { id: "yogurisimo_bebible", name: "Yogurísimo Bebible / Drinkable Yogurt", emoji: "🧃", cat: "YOGURT", unit: "glass", defaultQty: 1, gramsPerUnit: 250, per100: { kcal: 78, protein: 2.9, carbs: 13.5, fat: 1.5, fiber: 0, satFat: 1.0, sodium: 50, calcium: 100 } },
-  { id: "ser_bebible", name: "Ser Bebible Descremado / Diet Drinkable Yogurt", emoji: "👙", cat: "YOGURT", unit: "glass", defaultQty: 1, gramsPerUnit: 250, per100: { kcal: 36, protein: 3.2, carbs: 5.5, fat: 0.1, fiber: 0, satFat: 0, sodium: 45, calcium: 110 } },
-  { id: "ser_pro_mas", name: "Ser Pro-Mas / Protein Yogurt", emoji: "🏋️", cat: "YOGURT", unit: "bottle", defaultQty: 1, gramsPerUnit: 190, per100: { kcal: 71, protein: 7.9, carbs: 7.4, fat: 1.5, fiber: 0, satFat: 0.9, sodium: 60, calcium: 180 } },
-  { id: "yogurade", name: "Yogurade / High Protein Yogurt", emoji: "⚡", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 160, per100: { kcal: 58, protein: 10.6, carbs: 3.5, fat: 0.2, fiber: 0, satFat: 0, sodium: 50, calcium: 180 } },
-  
-  { id: "ser_firme", name: "Ser Firme Vainilla / Ser Diet Yogurt", emoji: "🍮", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 190, per100: { kcal: 42, protein: 4.3, carbs: 5.8, fat: 0, fiber: 0, satFat: 0, sodium: 65, calcium: 120, vitD: 1.0, vitB12: 0.4 } },
-  { id: "ser_natural", name: "Ser Natural Batido / Ser Plain Yogurt", emoji: "🥣", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 175, per100: { kcal: 66, protein: 5.4, carbs: 8.6, fat: 1.1, fiber: 0, satFat: 0.6, sodium: 69, calcium: 162 } },
-  { id: "carrefour_0_natural", name: "Yogur Carrefour 0% Natural / Plain Skim Yogurt", emoji: "⚪", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 125, per100: { kcal: 36, protein: 3.9, carbs: 4.9, fat: 0.6, fiber: 0, sat satFat: 0, sodium: 44, calcium: 120 } },
-  { id: "carrefour_firme", name: "Yogur Firme Carrefour / Standard Yogurt", emoji: "🥣", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 125, per100: { kcal: 85, protein: 3.0, carbs: 14.0, fat: 1.9, fiber: 0, satFat: 1.2, sodium: 50, calcium: 100 } },
-  { id: "carrefour_bebible", name: "Yogur Bebible Descremado Carrefour", emoji: "🧃", cat: "YOGURT", unit: "glass", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 34, protein: 2.9, carbs: 5.5, fat: 0.1, fiber: 0, satFat: 0, sodium: 45, calcium: 105 } },
-  { id: "dia_cremoso", name: "Yogur Dia Cremoso / Dia Creamy Yogurt", emoji: "🥣", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 120, per100: { kcal: 92, protein: 3.2, carbs: 13.5, fat: 2.8, fiber: 0, satFat: 1.8, sodium: 55, calcium: 110 } },
-  { id: "dia_bebible", name: "Yogur Bebible Descremado Dia", emoji: "🥛", cat: "YOGURT", unit: "glass", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 35, protein: 2.8, carbs: 5.8, fat: 0.1, fiber: 0, satFat: 0, sodium: 50, calcium: 100 } },
-  { id: "dia_yogur_frutilla", name: "Yogur Dia Frutilla / Dia Strawberry", emoji: "🍓", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 120, per100: { kcal: 92, protein: 3.2, carbs: 13.5, fat: 2.8, fiber: 0, satFat: 1.8, sodium: 55, calcium: 110 } },
-  { id: "dia_yogur_vainilla", name: "Yogur Dia Vainilla / Dia Vanilla", emoji: "🍦", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 120, per100: { kcal: 92, protein: 3.2, carbs: 13.5, fat: 2.8, fiber: 0, satFat: 1.8, sodium: 55, calcium: 110 } },
-  { id: "coto_firme_0", name: "Yogur Firme Descremado Coto", emoji: "🍮", cat: "YOGURT", unit: "pot", defaultQty: 1, gramsPerUnit: 125, per100: { kcal: 43, protein: 3.5, carbs: 7.0, fat: 0.1, fiber: 0, satFat: 0, sodium: 50, calcium: 115 } },
-  { id: "coto_entero_beb", name: "Yogur Bebible Entero Coto", emoji: "🧃", cat: "YOGURT", unit: "glass", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 72, protein: 2.8, carbs: 12.0, fat: 1.5, fiber: 0, satFat: 0.9, sodium: 55, calcium: 105 } },
-
-  // 7. DAIRY (CHEESES & SPREADS)
-  { id: "queso_cremoso", name: "Queso Cremoso / Soft Creamy Cheese (La Serenísima)", emoji: "🧀", cat: "CHEESE", unit: "g", defaultQty: 30, gramsPerUnit: 30, per100: { kcal: 293, protein: 18.0, carbs: 0.5, fat: 24.5, fiber: 0, satFat: 15.5, sodium: 480, calcium: 510, iron: 0.1, zinc: 2.2, vitA: 190, vitD: 0.2, vitB12: 1.1, choline: 16 } },
-  { id: "muzzarella", name: "Muzzarella en Barra / Mozzarella Brick (Barraza)", emoji: "🍕", cat: "CHEESE", unit: "slice", defaultQty: 2, gramsPerUnit: 20, per100: { kcal: 295, protein: 21.5, carbs: 1.5, fat: 22.5, fiber: 0, satFat: 14.2, sodium: 550, calcium: 680, iron: 0.2, zinc: 2.8, vitA: 210, vitD: 0.3, vitB12: 1.3, choline: 15 } },
-  { id: "ricotta", name: "Ricotta Entera / Whole Ricotta (Tregar)", emoji: "🥣", cat: "CHEESE", unit: "g", defaultQty: 100, gramsPerUnit: 100, per100: { kcal: 130, protein: 11.2, carbs: 3.0, fat: 8.1, fiber: 0, satFat: 5.1, sodium: 110, calcium: 210, iron: 0.1, zinc: 0.9, vitA: 90, vitD: 0.1, vitB12: 0.6, choline: 14 } },
-  { id: "queso_tybo", name: "Queso Tybo / Tybo Slicing Cheese (Paladini)", emoji: "🥪", cat: "CHEESE", unit: "slice", defaultQty: 2, gramsPerUnit: 20, per100: { kcal: 339, protein: 24.0, carbs: 1.0, fat: 26.5, fiber: 0, satFat: 17.1, sodium: 620, calcium: 710, iron: 0.2, zinc: 3.2, vitA: 240, vitD: 0.4, vitB12: 1.4, choline: 16 } },
-  { id: "queso_mar_del_plata", name: "Queso Mar del Plata / Mar del Plata Cheese", emoji: "🧀", cat: "CHEESE", unit: "g", defaultQty: 30, gramsPerUnit: 30, per100: { kcal: 360, protein: 25.5, carbs: 1.5, fat: 28.0, fiber: 0, satFat: 18.2, sodium: 680, calcium: 760, iron: 0.3, zinc: 3.5, vitA: 260, vitD: 0.5, vitB12: 1.5, choline: 17 } },
-  { id: "queso_reggianito", name: "Queso Reggianito / Grated Reggianito", emoji: "🍝", cat: "CHEESE", unit: "tbsp", defaultQty: 1, gramsPerUnit: 8, per100: { kcal: 386, protein: 32.5, carbs: 2.0, fat: 27.5, fiber: 0, satFat: 18.5, sodium: 890, calcium: 1120, iron: 0.4, zinc: 4.1, vitA: 290, vitD: 0.6, vitB12: 1.8, choline: 19 } },
-  { id: "queso_sardo", name: "Queso Sardo / Sardo Cheese (Tregar)", emoji: "🪨", cat: "CHEESE", unit: "g", defaultQty: 30, gramsPerUnit: 30, per100: { kcal: 380, protein: 29.0, carbs: 1.8, fat: 28.5, fiber: 0, satFat: 19.1, sodium: 950, calcium: 980, iron: 0.3, zinc: 3.9, vitA: 270, vitD: 0.5, vitB12: 1.6, choline: 18 } },
-  { id: "casancrem_clasico", name: "Casancrem Clásico / Classic Cream Cheese", emoji: "🥯", cat: "CHEESE", unit: "tbsp", defaultQty: 1, gramsPerUnit: 30, per100: { kcal: 245, protein: 6.0, carbs: 4.5, fat: 23.0, fiber: 0, satFat: 14.5, sodium: 90, calcium: 110 } },
-  { id: "casancrem_light", name: "Casancrem Light / Light Cream Cheese", emoji: "📉", cat: "CHEESE", unit: "tbsp", defaultQty: 1, gramsPerUnit: 30, per100: { kcal: 126, protein: 7.5, carbs: 5.5, fat: 8.0, fiber: 0, satFat: 5.1, sodium: 100, calcium: 120 } },
-
-  // 8. DRY PROTEINS & LEGUMES
-  { id: "soja_texturizada", name: "Soja Texturizada / Textured Soy Protein (dry)", emoji: "🫘", cat: "LEGUMES", unit: "g", defaultQty: 60, gramsPerUnit: 60, per100: { kcal: 366, protein: 51.0, carbs: 33.0, fat: 3.3, fiber: 17.5, satFat: 0.5, omega3ala: 0.3, sodium: 20, calcium: 280, iron: 8.5, zinc: 4.2, vitA: 2, vitE: 0.5, vitK: 9 } },
-  { id: "lentils_dry", name: "Lentejas / Lentils (dry)", emoji: "🫘", cat: "LEGUMES", unit: "g", defaultQty: 40, gramsPerUnit: 40, per100: { kcal: 352, protein: 25.0, carbs: 60.0, fat: 1.1, fiber: 15.6, satFat: 0.2, omega3ala: 0.1, sodium: 6, calcium: 56, iron: 6.5, zinc: 3.3, vitA: 1, vitC: 4.4 } },
-  { id: "arvejas_dry", name: "Arvejas Partidas / Split Peas (dry)", emoji: "🟢", cat: "LEGUMES", unit: "g", defaultQty: 30, gramsPerUnit: 30, per100: { kcal: 341, protein: 24.0, carbs: 60.0, fat: 1.1, fiber: 26.0, satFat: 0.2, omega3ala: 0.1, sodium: 15, calcium: 55, iron: 5.1, zinc: 3.0, vitA: 2, vitC: 1.8 } },
-  { id: "garbanzos_dry", name: "Garbanzos / Chickpeas (dry)", emoji: "🟡", cat: "LEGUMES", unit: "g", defaultQty: 60, gramsPerUnit: 60, per100: { kcal: 364, protein: 19.3, carbs: 60.7, fat: 6.0, fiber: 17.4, satFat: 0.6, sodium: 24, calcium: 105, iron: 6.2, zinc: 3.4 } },
-  { id: "levadura_nutricional", name: "Levadura Nutricional / Nutritional Yeast (Bragg)", emoji: "🟡", cat: "LEGUMES", unit: "tbsp", defaultQty: 2, gramsPerUnit: 8, per100: { kcal: 368, protein: 50.0, carbs: 29.0, fat: 5.8, fiber: 24.0, satFat: 0.8, omega3ala: 0.1, sodium: 100, calcium: 30, iron: 8.0, zinc: 9.4, vitB12: 90.0, choline: 60 } },
-
-  // 9. NUTS, SEEDS & PEANUT BUTTERS
-  { id: "peanuts", name: "Maní / Peanuts (raw/dry)", emoji: "🥜", cat: "NUTS", unit: "g", defaultQty: 25, gramsPerUnit: 25, per100: { kcal: 567, protein: 25.8, carbs: 16.1, fat: 49.2, fiber: 8.5, satFat: 6.8, sodium: 18, calcium: 92, iron: 4.6, zinc: 3.3, vitE: 8.3, choline: 52 } },
-  { id: "walnuts", name: "Nueces / Walnuts", emoji: "🪨", cat: "NUTS", unit: "g", defaultQty: 15, gramsPerUnit: 15, per100: { kcal: 654, protein: 15.2, carbs: 13.7, fat: 65.2, fiber: 6.7, satFat: 6.1, omega3ala: 9.1, sodium: 2, calcium: 98, iron: 2.9, zinc: 3.1, vitC: 1.3, vitE: 0.7, choline: 39 } },
-  { id: "almonds", name: "Almendras / Almonds (raw)", emoji: "🌰", cat: "NUTS", unit: "g", defaultQty: 30, gramsPerUnit: 1.2, per100: { kcal: 579, protein: 21.2, carbs: 21.6, fat: 49.9, fiber: 12.5, satFat: 3.8, sodium: 1, calcium: 269, iron: 3.7, zinc: 3.1, vitE: 25.6 } },
-  { id: "raisins", name: "Pasas / Raisins", emoji: "🍇", cat: "NUTS", unit: "g", defaultQty: 15, gramsPerUnit: 15, per100: { kcal: 299, protein: 3.1, carbs: 79.2, fat: 0.5, fiber: 3.7, satFat: 0.1, sodium: 11, calcium: 50, iron: 1.9, zinc: 0.2, vitC: 2.3, vitE: 0.1, choline: 11 } },
-  { id: "chia_seeds", name: "Semillas de Chía / Chia Seeds (dry)", emoji: "🫘", cat: "NUTS", unit: "g", defaultQty: 15, gramsPerUnit: 15, per100: { kcal: 486, protein: 16.5, carbs: 42.1, fat: 30.7, fiber: 34.4, satFat: 3.3, omega3ala: 17.8, sodium: 16, calcium: 631, iron: 7.7, zinc: 4.6 } },
-  { id: "pumpkin_seeds", name: "Semillas de Zapallo / Pumpkin Seeds", emoji: "🎃", cat: "NUTS", unit: "g", defaultQty: 25, gramsPerUnit: 25, per100: { kcal: 559, protein: 30.2, carbs: 10.7, fat: 49.1, fiber: 6.0, satFat: 8.7, sodium: 7, calcium: 46, iron: 8.8, zinc: 7.8 } },
-  { id: "peanut_butter", name: "Mantequilla de Maní / Peanut Butter", emoji: "🫙", cat: "NUTS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 30, per100: { kcal: 630, protein: 25.0, carbs: 20.0, fat: 50.0, fiber: 5.0, satFat: 10.0, sodium: 429, calcium: 43, iron: 1.9, zinc: 2.5, vitE: 6.3, choline: 52 } },
-  { id: "mani_king_natural", name: "Pasta de Maní Natural / Peanut Paste (Mani King)", emoji: "👑", cat: "NUTS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 20, per100: { kcal: 585, protein: 24.0, carbs: 11.0, fat: 49.0, fiber: 8.5, satFat: 6.5, sodium: 0, vitE: 8.0 } },
-  { id: "mani_king_dulce", name: "Pasta de Maní Endulzada / Sweetened Peanut Paste", emoji: "🍯", cat: "NUTS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 20, per100: { kcal: 550, protein: 20.0, carbs: 25.0, fat: 42.0, fiber: 6.0, satFat: 5.5, sodium: 50 } },
-  { id: "mix_frutos_secos", name: "Mix Frutos Secos / Mixed Nuts", emoji: "🥜", cat: "NUTS", unit: "g", defaultQty: 30, gramsPerUnit: 30, per100: { kcal: 605, protein: 18.0, carbs: 15.0, fat: 54.0, fiber: 9.0, satFat: 5.0, sodium: 5 } },
-
-  // 10. GRAINS, RICE, PASTA & POLENTA
-  { id: "oats_instant", name: "Avena Instantánea / Instant Oats", emoji: "🥣", cat: "GRAINS", unit: "g", defaultQty: 60, gramsPerUnit: 60, per100: { kcal: 371, protein: 13.2, carbs: 67.7, fat: 7.0, fiber: 10.1, satFat: 1.3, sodium: 49, calcium: 52, iron: 4.7, zinc: 4.0, vitE: 0.7, choline: 40 } },
-  { id: "oat_bran", name: "Salvado de Avena / Oat Bran", emoji: "🌾", cat: "GRAINS", unit: "g", defaultQty: 50, gramsPerUnit: 50, per100: { kcal: 350, protein: 17.3, carbs: 66.2, fat: 7.0, fiber: 15.4, satFat: 1.3, sodium: 4, calcium: 58, iron: 5.4, zinc: 3.1, vitE: 1.7, choline: 32 } },
-  { id: "white_rice", name: "Arroz Blanco / White Rice (dry)", emoji: "🍚", cat: "GRAINS", unit: "g", defaultQty: 75, gramsPerUnit: 75, per100: { kcal: 349, protein: 6.7, carbs: 79.3, fat: 0.6, fiber: 2.8, satFat: 0.2, sodium: 5, calcium: 28, iron: 4.3, zinc: 1.1, vitE: 0.1, choline: 16 } },
-  { id: "brown_rice", name: "Arroz Integral / Brown Rice (dry)", emoji: "🌾", cat: "GRAINS", unit: "g", defaultQty: 75, gramsPerUnit: 75, per100: { kcal: 362, protein: 7.5, carbs: 76.2, fat: 2.7, fiber: 3.4, satFat: 0.5, sodium: 4, calcium: 33, iron: 1.8, zinc: 2.0 } },
-  { id: "quinoa", name: "Quinoa (dry)", emoji: "🌾", cat: "GRAINS", unit: "g", defaultQty: 50, gramsPerUnit: 50, per100: { kcal: 368, protein: 14.1, carbs: 64.2, fat: 6.1, fiber: 7.0, satFat: 0.7, sodium: 5, calcium: 47, iron: 4.6, zinc: 3.1 } },
-  { id: "arroz_gallo_oro", name: "Arroz Gallo Oro / Parboil Rice (dry)", emoji: "🍚", cat: "GRAINS", unit: "g", defaultQty: 50, gramsPerUnit: 50, per100: { kcal: 332, protein: 7.0, carbs: 76.0, fat: 0, fiber: 0, satFat: 0, sodium: 0 } },
-  { id: "arroz_yamani", name: "Arroz Yamaní / Yamani Brown Rice (dry)", emoji: "🌾", cat: "GRAINS", unit: "g", defaultQty: 50, gramsPerUnit: 50, per100: { kcal: 338, protein: 8.0, carbs: 72.0, fat: 2.0, fiber: 4.0, satFat: 0.5, sodium: 0 } },
-  { id: "arroz_doble_carolina", name: "Arroz Doble Carolina / Risotto Rice (dry)", emoji: "🍛", cat: "GRAINS", unit: "g", defaultQty: 50, gramsPerUnit: 50, per100: { kcal: 344, protein: 6.5, carbs: 79.0, fat: 0, fiber: 0.5, satFat: 0, sodium: 0 } },
-  { id: "arroz_gallo_integral", name: "Arroz Gallo Integral / Gallo Brown Rice (dry)", emoji: "🌾", cat: "GRAINS", unit: "g", defaultQty: 50, gramsPerUnit: 50, per100: { kcal: 348, protein: 7.5, carbs: 72.0, fat: 2.2, fiber: 4.5, satFat: 0.5, sodium: 0 } },
-  
-  { id: "pasta_dry", name: "Fideos de Sémola / Semolina Pasta (dry)", emoji: "🍝", cat: "PASTA", unit: "g", defaultQty: 80, gramsPerUnit: 80, per100: { kcal: 371, protein: 13.0, carbs: 73.0, fat: 1.5, fiber: 3.2, satFat: 0.3, sodium: 6, calcium: 21, iron: 3.3, zinc: 1.4 } },
-  { id: "fideos_lucchetti", name: "Tallarines Lucchetti / Lucchetti Pasta (dry)", emoji: "🍝", cat: "PASTA", unit: "g", defaultQty: 80, gramsPerUnit: 80, per100: { kcal: 342, protein: 11.0, carbs: 72.0, fat: 1.4, fiber: 3.2, satFat: 0, sodium: 12 } },
-  { id: "fideos_matarazzo", name: "Spaghetti Matarazzo / Matarazzo Pasta (dry)", emoji: "🍝", cat: "PASTA", unit: "g", defaultQty: 80, gramsPerUnit: 80, per100: { kcal: 354, protein: 12.5, carbs: 73.0, fat: 1.6, fiber: 3.4, satFat: 0.3, sodium: 10 } },
-  { id: "fideos_don_vicente", name: "Tallarines al Huevo / Egg Pasta Don Vicente", emoji: "🍝", cat: "PASTA", unit: "g", defaultQty: 80, gramsPerUnit: 80, per100: { kcal: 375, protein: 13.5, carbs: 70.0, fat: 4.2, fiber: 3.0, satFat: 1.1, sodium: 30 } },
-  { id: "fideos_lasaltena", name: "Fideos Frescos / Fresh Egg Pasta (La Salteña)", emoji: "🧊", cat: "PASTA", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 278, protein: 9.5, carbs: 52.0, fat: 3.2, fiber: 2.0, satFat: 0.8, sodium: 110 } },
-  { id: "barilla_spaghetti", name: "Spaghetti N°5 / Barilla Spaghetti (dry)", emoji: "🇮🇹", cat: "PASTA", unit: "g", defaultQty: 80, gramsPerUnit: 80, per100: { kcal: 359, protein: 12.5, carbs: 71.2, fat: 2.0, fiber: 3.0, satFat: 0.5, sodium: 0 } },
-  { id: "fideos_terrabusi", name: "Tallarines Terrabusi / Terrabusi Pasta (dry)", emoji: "🍜", cat: "PASTA", unit: "g", defaultQty: 80, gramsPerUnit: 80, per100: { kcal: 340, protein: 11.0, carbs: 71.0, fat: 1.1, fiber: 3.0, satFat: 0, sodium: 10 } },
-  { id: "fideos_canale", name: "Fideos Secos Canale / Canale Pasta (dry)", emoji: "🍝", cat: "PASTA", unit: "g", defaultQty: 80, gramsPerUnit: 80, per100: { kcal: 332, protein: 10.5, carbs: 70.0, fat: 1.0, fiber: 2.8, satFat: 0, sodium: 15 } },
-  { id: "fucchettini", name: "Fucchettini / Soup Pasta (dry)", emoji: "🍜", cat: "PASTA", unit: "cup", defaultQty: 0.5, gramsPerUnit: 80, per100: { kcal: 342, protein: 11.0, carbs: 72.0, fat: 1.4, fiber: 3.0, satFat: 0, sodium: 10 } },
-  { id: "black_bean_pasta", name: "Pasta de Porotos Negros / Black Bean Pasta", emoji: "🍝", cat: "PLANT_BASED", unit: "g", defaultQty: 80, gramsPerUnit: 80, per100: { kcal: 330, protein: 23.0, carbs: 55.0, fat: 2.0, fiber: 14.0, satFat: 0, sodium: 5, iron: 6.0 } },
-  
-  { id: "polenta_presto_pronta", name: "Polenta Presto Pronta / Instant Polenta (dry)", emoji: "🥣", cat: "GRAINS", unit: "g", defaultQty: 50, gramsPerUnit: 50, per100: { kcal: 340, protein: 7.0, carbs: 78.0, fat: 0.8, fiber: 2.2, satFat: 0, sodium: 0 } },
-
-  // 11. BREADS (BAKERY & PACKAGED)
-  { id: "bimbo_blanco", name: "Pan Bimbo Blanco / White Sliced Bread", emoji: "🍞", cat: "BREAD", unit: "slice", defaultQty: 2, gramsPerUnit: 25, per100: { kcal: 258, protein: 9.6, carbs: 46.0, fat: 3.2, fiber: 1.0, satFat: 0.8, sodium: 480, calcium: 120, iron: 2.5 } },
-  { id: "fargo_lacteado", name: "Pan Fargo Lacteado / Milk White Bread", emoji: "🍞", cat: "BREAD", unit: "slice", defaultQty: 2, gramsPerUnit: 28, per100: { kcal: 248, protein: 10.7, carbs: 44.6, fat: 3.0, fiber: 0, satFat: 1.0, sodium: 450, calcium: 80 } },
-  { id: "lactal_blanco", name: "Pan Lactal de Mesa / Standard White Bread", emoji: "🍞", cat: "BREAD", unit: "slice", defaultQty: 2, gramsPerUnit: 25, per100: { kcal: 252, protein: 6.2, carbs: 46.0, fat: 4.6, fiber: 0, satFat: 1.6, sodium: 490, calcium: 60 } },
-  { id: "lactal_salvado", name: "Pan Lactal con Salvado / Bran Sliced Bread", emoji: "🌾", cat: "BREAD", unit: "slice", defaultQty: 2, gramsPerUnit: 25, per100: { kcal: 226, protein: 11.0, carbs: 38.0, fat: 3.4, fiber: 6.9, satFat: 0.6, sodium: 450, iron: 3.0 } },
-  { id: "fargo_integral", name: "Pan Fargo Doble Integral / Double Wheat Bread", emoji: "🥖", cat: "BREAD", unit: "slice", defaultQty: 2, gramsPerUnit: 29.5, per100: { kcal: 242, protein: 13.0, carbs: 40.6, fat: 3.0, fiber: 5.6, satFat: 0.8, sodium: 420 } },
-  { id: "bimbo_integral", name: "Pan Bimbo Integral / 100% Wheat Bread", emoji: "🌾", cat: "BREAD", unit: "slice", defaultQty: 2, gramsPerUnit: 25, per100: { kcal: 240, protein: 12.0, carbs: 42.0, fat: 3.0, fiber: 5.5, satFat: 0.5, sodium: 400 } },
-  { id: "bimbo_artesano", name: "Pan Bimbo Artesano / Artisan Thick Slice", emoji: "🥯", cat: "BREAD", unit: "slice", defaultQty: 1, gramsPerUnit: 34, per100: { kcal: 276, protein: 9.4, carbs: 47.0, fat: 5.3, fiber: 2.4, satFat: 2.6, sodium: 480 } },
-  { id: "bimbo_artesano_hamburguesa", name: "Pan Artesano Hamburguesa / Artisan Burger Bun", emoji: "🍔", cat: "BREAD", unit: "bun", defaultQty: 1, gramsPerUnit: 63, per100: { kcal: 271, protein: 7.9, carbs: 47.6, fat: 5.6, fiber: 2.5, satFat: 2.8, sodium: 500 } },
-  { id: "fargo_rodajas_finas_blanco", name: "Fargo Rodajas Finas (Blanco) / Thin Sliced White", emoji: "📏", cat: "BREAD", unit: "slice", defaultQty: 2, gramsPerUnit: 21.5, per100: { kcal: 260, protein: 10.2, carbs: 48.8, fat: 2.8, fiber: 0, satFat: 0.9 } },
-  { id: "fargo_rodajas_finas_salvado", name: "Fargo Rodajas Finas (Salvado) / Thin Sliced Bran", emoji: "📏", cat: "BREAD", unit: "slice", defaultQty: 3, gramsPerUnit: 19, per100: { kcal: 254, protein: 10.1, carbs: 47.3, fat: 2.6, fiber: 5.5 } },
-  { id: "bread_whole", name: "Pan Integral / Generic Whole Wheat Bread", emoji: "🍞", cat: "BREAD", unit: "slice", defaultQty: 2, gramsPerUnit: 35, per100: { kcal: 265, protein: 13.0, carbs: 43.0, fat: 4.2, fiber: 7.0, satFat: 0.7, sodium: 450, calcium: 161, iron: 2.5, zinc: 1.7 } },
-  
-  { id: "pan_felipe", name: "Pan Felipe / Flautita (Crispy Bakery Roll)", emoji: "🥖", cat: "BREAD", unit: "unit", defaultQty: 2, gramsPerUnit: 60, per100: { kcal: 262, protein: 9.2, carbs: 55.0, fat: 0.6, fiber: 2.5, satFat: 0.1, sodium: 580, calcium: 20, iron: 1.8 } },
-  { id: "pan_mignon", name: "Pan Mignon / Mini Bakery Roll", emoji: "🥖", cat: "BREAD", unit: "unit", defaultQty: 4, gramsPerUnit: 25, per100: { kcal: 268, protein: 9.5, carbs: 56.0, fat: 0.7, fiber: 2.6, satFat: 0.1, sodium: 600 } },
-  { id: "pan_frances_tirita", name: "Pan Francés / Baguette (Bakery)", emoji: "🥖", cat: "BREAD", unit: "g", defaultQty: 100, gramsPerUnit: 100, per100: { kcal: 258, protein: 9.0, carbs: 54.5, fat: 0.5, fiber: 2.4, satFat: 0.1, sodium: 560 } },
-  { id: "pan_felipe_grasa", name: "Flautita con Grasa / Soft Fatty Bakery Roll", emoji: "🥖", cat: "BREAD", unit: "unit", defaultQty: 2, gramsPerUnit: 65, per100: { kcal: 296, protein: 8.5, carbs: 51.0, fat: 6.5, fiber: 2.0, satFat: 2.8, sodium: 540 } },
-  { id: "pan_lactal_artesanal", name: "Pan Lactal de Panadería / Fresh Bakery Sliced Bread", emoji: "🍞", cat: "BREAD", unit: "slice", defaultQty: 2, gramsPerUnit: 35, per100: { kcal: 284, protein: 9.1, carbs: 49.0, fat: 5.7, fiber: 1.8, satFat: 3.1, sodium: 490, calcium: 45 } },
-  { id: "pan_viena_bakery", name: "Pan de Viena Artesanal / Fresh Bakery Bun", emoji: "🍔", cat: "BREAD", unit: "unit", defaultQty: 1, gramsPerUnit: 60, per100: { kcal: 288, protein: 8.8, carbs: 52.0, fat: 4.9, fiber: 1.5, satFat: 2.2, sodium: 460 } },
-
-  // 12. VEGETABLES
-  { id: "cabbage", name: "Repollo / Cabbage (raw)", emoji: "🥬", cat: "VEGETABLES", unit: "g", defaultQty: 150, gramsPerUnit: 150, per100: { kcal: 25, protein: 1.3, carbs: 5.8, fat: 0.1, fiber: 2.5, satFat: 0, sodium: 18, calcium: 40, iron: 0.5, zinc: 0.2, vitA: 5, vitC: 36.6, vitK: 76 } },
-  { id: "acelga_raw", name: "Acelga / Swiss Chard (raw)", emoji: "🌿", cat: "VEGETABLES", unit: "bundle", defaultQty: 1, gramsPerUnit: 500, per100: { kcal: 19, protein: 1.8, carbs: 3.7, fat: 0.2, fiber: 1.6, satFat: 0, sodium: 213, calcium: 51, iron: 1.8, vitA: 306, vitC: 30, vitK: 830 } },
-  { id: "rucula_raw", name: "Rúcula / Arugula (raw)", emoji: "🍃", cat: "VEGETABLES", unit: "bundle", defaultQty: 1, gramsPerUnit: 150, per100: { kcal: 25, protein: 2.6, carbs: 3.7, fat: 0.7, fiber: 1.6, satFat: 0, sodium: 27, calcium: 160, vitA: 119, vitK: 108 } },
-  { id: "espinaca_raw", name: "Espinaca / Spinach (raw)", emoji: "🥗", cat: "VEGETABLES", unit: "bundle", defaultQty: 1, gramsPerUnit: 300, per100: { kcal: 23, protein: 2.9, carbs: 3.6, fat: 0.4, fiber: 2.2, satFat: 0, sodium: 79, calcium: 99, iron: 2.7, vitA: 469, vitC: 28 } },
-  { id: "zapallo_anco", name: "Zapallo Anco / Butternut Squash (raw)", emoji: "🎃", cat: "VEGETABLES", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 45, protein: 1.0, carbs: 11.7, fat: 0.1, fiber: 2.0, satFat: 0, sodium: 4, calcium: 48, vitA: 532, vitC: 21 } },
-  { id: "zapallo_cabutia", name: "Zapallo Cabutia / Tetsukabuto Squash (raw)", emoji: "🎃", cat: "VEGETABLES", unit: "g", defaultQty: 200, gramsPerUnit: 200, per100: { kcal: 55, protein: 1.5, carbs: 13.5, fat: 0.2, fiber: 2.5, satFat: 0, sodium: 5, calcium: 35, vitA: 600 } },
-  { id: "batata_raw", name: "Batata / Sweet Potato (raw)", emoji: "🍠", cat: "VEGETABLES", unit: "g", defaultQty: 200, gramsPerUnit: 250, per100: { kcal: 86, protein: 1.6, carbs: 20.1, fat: 0.1, fiber: 3.0, satFat: 0, sodium: 55, calcium: 30, vitA: 709, vitC: 2.4 } },
-  { id: "mandioca_raw", name: "Mandioca / Yuca / Cassava (raw)", emoji: "🪵", cat: "VEGETABLES", unit: "g", defaultQty: 200, gramsPerUnit: 300, per100: { kcal: 160, protein: 1.4, carbs: 38.1, fat: 0.3, fiber: 1.8, satFat: 0.1, sodium: 14, calcium: 16, vitC: 20 } },
-  { id: "berro_raw", name: "Berro / Watercress (raw)", emoji: "🌱", cat: "VEGETABLES", unit: "bundle", defaultQty: 1, gramsPerUnit: 100, per100: { kcal: 11, protein: 2.3, carbs: 1.3, fat: 0.1, fiber: 0.5, satFat: 0, sodium: 41, calcium: 120, vitA: 160, vitC: 43, vitK: 250 } },
-  { id: "champignones", name: "Champignones / Button Mushrooms (raw)", emoji: "🍄", cat: "VEGETABLES", unit: "g", defaultQty: 150, gramsPerUnit: 20, per100: { kcal: 22, protein: 3.1, carbs: 3.3, fat: 0.3, fiber: 1.0, satFat: 0, sodium: 5, vitC: 2.1, vitD: 0.2 } },
-  { id: "portobellos", name: "Portobellos / Brown Mushrooms (raw)", emoji: "🍄", cat: "VEGETABLES", unit: "g", defaultQty: 150, gramsPerUnit: 40, per100: { kcal: 22, protein: 2.5, carbs: 4.3, fat: 0.2, fiber: 1.3, satFat: 0, sodium: 6, vitD: 0.3 } },
-  { id: "cebolla", name: "Cebolla / Onion (raw)", emoji: "🧅", cat: "VEGETABLES", unit: "g", defaultQty: 100, gramsPerUnit: 150, per100: { kcal: 40, protein: 1.1, carbs: 9.3, fat: 0.1, fiber: 1.7, satFat: 0, sodium: 4, vitC: 7.4 } },
-  { id: "ajo", name: "Ajo / Garlic (raw)", emoji: "🧄", cat: "VEGETABLES", unit: "clove", defaultQty: 1, gramsPerUnit: 5, per100: { kcal: 149, protein: 6.4, carbs: 33.0, fat: 0.5, fiber: 2.1, satFat: 0.1, sodium: 17, calcium: 181, vitC: 31 } },
-  { id: "morron_rojo", name: "Morrón Rojo / Red Bell Pepper (raw)", emoji: "🫑", cat: "VEGETABLES", unit: "g", defaultQty: 100, gramsPerUnit: 200, per100: { kcal: 31, protein: 1.0, carbs: 6.0, fat: 0.3, fiber: 2.1, satFat: 0, sodium: 4, calcium: 7, vitA: 157, vitC: 128 } },
-  { id: "cebolla_verdeo", name: "Cebolla de Verdeo / Spring Onion (raw)", emoji: "🥬", cat: "VEGETABLES", unit: "g", defaultQty: 50, gramsPerUnit: 50, per100: { kcal: 32, protein: 1.8, carbs: 7.3, fat: 0.2, fiber: 2.6, satFat: 0, sodium: 16, vitA: 50, vitC: 18.8, vitK: 207 } },
-  { id: "perejil", name: "Perejil / Parsley (fresh)", emoji: "🌿", cat: "VEGETABLES", unit: "tbsp", defaultQty: 1, gramsPerUnit: 4, per100: { kcal: 36, protein: 3.0, carbs: 6.3, fat: 0.8, fiber: 3.3, satFat: 0, sodium: 56, vitA: 421, vitC: 133, vitK: 1640 } },
-  { id: "jengibre", name: "Jengibre / Ginger Root (raw)", emoji: "🫚", cat: "VEGETABLES", unit: "thumb", defaultQty: 1, gramsPerUnit: 10, per100: { kcal: 80, protein: 1.8, carbs: 17.8, fat: 0.8, fiber: 2.0, satFat: 0.2, sodium: 13, vitC: 5 } },
-  
-  // 13. FRUITS
-  { id: "banana", name: "Banana (raw)", emoji: "🍌", cat: "FRUITS", unit: "g", defaultQty: 118, gramsPerUnit: 118, per100: { kcal: 89, protein: 1.1, carbs: 22.8, fat: 0.3, fiber: 2.6, satFat: 0.1, sodium: 1, calcium: 5, iron: 0.3, vitA: 3, vitC: 8.7 } },
-  { id: "frutillas", name: "Frutillas / Strawberries (raw)", emoji: "🍓", cat: "FRUITS", unit: "g", defaultQty: 100, gramsPerUnit: 150, per100: { kcal: 32, protein: 0.7, carbs: 7.7, fat: 0.3, fiber: 2.0, satFat: 0, sodium: 1, calcium: 16, vitC: 58.8 } },
-  { id: "arandanos", name: "Arándanos / Blueberries (raw)", emoji: "🫐", cat: "FRUITS", unit: "g", defaultQty: 100, gramsPerUnit: 148, per100: { kcal: 57, protein: 0.7, carbs: 14.5, fat: 0.3, fiber: 2.4, satFat: 0, sodium: 1, calcium: 6, vitC: 9.7, vitK: 19.3 } },
-  { id: "frambuesas_congeladas", name: "Frambuesas / Raspberries (frozen)", emoji: "🍇", cat: "FRUITS", unit: "cup", defaultQty: 1, gramsPerUnit: 125, per100: { kcal: 52, protein: 1.2, carbs: 11.9, fat: 0.7, fiber: 6.5, satFat: 0, sodium: 1, vitC: 26 } },
-  { id: "moras_congeladas", name: "Moras / Blackberries (frozen)", emoji: "🍇", cat: "FRUITS", unit: "cup", defaultQty: 1, gramsPerUnit: 140, per100: { kcal: 43, protein: 1.4, carbs: 9.6, fat: 0.5, fiber: 5.3, satFat: 0, sodium: 1, vitC: 21 } },
-  { id: "manzana_deliciosa", name: "Manzana Red Delicious / Red Apple (raw)", emoji: "🍎", cat: "FRUITS", unit: "unit", defaultQty: 1, gramsPerUnit: 180, per100: { kcal: 52, protein: 0.3, carbs: 13.8, fat: 0.2, fiber: 2.4, satFat: 0, sodium: 1, vitC: 4.6 } },
-  { id: "manzana_verde", name: "Manzana Verde / Granny Smith Apple (raw)", emoji: "🍏", cat: "FRUITS", unit: "unit", defaultQty: 1, gramsPerUnit: 150, per100: { kcal: 50, protein: 0.4, carbs: 13.0, fat: 0.2, fiber: 2.8, satFat: 0, sodium: 1, vitC: 4.0 } },
-  { id: "mandarina_criolla", name: "Mandarina / Mandarin (raw)", emoji: "🍊", cat: "FRUITS", unit: "unit", defaultQty: 2, gramsPerUnit: 80, per100: { kcal: 53, protein: 0.8, carbs: 13.3, fat: 0.3, fiber: 1.8, satFat: 0, sodium: 1, vitC: 26 } },
-
-  // 14. FATTY FRUITS & OILS
-  { id: "palta_hass", name: "Palta Hass / Hass Avocado", emoji: "🥑", cat: "FATS", unit: "g", defaultQty: 100, gramsPerUnit: 150, per100: { kcal: 160, protein: 2.0, carbs: 8.5, fat: 14.7, fiber: 6.7, satFat: 2.1, sodium: 7, vitA: 7, vitC: 10, vitE: 2.1 } },
-  { id: "palta_torres", name: "Palta Torres / Smooth Green Avocado", emoji: "🥑", cat: "FATS", unit: "g", defaultQty: 100, gramsPerUnit: 300, per100: { kcal: 120, protein: 1.8, carbs: 9.0, fat: 10.0, fiber: 5.0, satFat: 1.5, sodium: 7, vitE: 1.5 } },
-  { id: "aceitunas_verdes", name: "Aceitunas Verdes / Green Olives", emoji: "🫒", cat: "FATS", unit: "unit", defaultQty: 5, gramsPerUnit: 5, per100: { kcal: 145, protein: 1.0, carbs: 3.8, fat: 15.3, fiber: 3.3, satFat: 2.0, sodium: 1556, calcium: 52, vitE: 3.8 } },
-  { id: "oil_blend", name: "Mezcla de Aceites / Oil Blend (Olive/Sunflower)", emoji: "🫙", cat: "FATS", unit: "tbsp", defaultQty: 1.5, gramsPerUnit: 14, per100: { kcal: 884, protein: 0, carbs: 0, fat: 100, fiber: 0, satFat: 14.0, omega3ala: 0.7, sodium: 0, vitE: 9.1, vitK: 60 } },
-  { id: "aceite_girasol", name: "Aceite de Girasol / Sunflower Oil", emoji: "🌻", cat: "FATS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 14, per100: { kcal: 884, protein: 0, carbs: 0, fat: 100, fiber: 0, satFat: 11.0, omega3ala: 0.07, sodium: 0, vitE: 41.0 } },
-  { id: "olive_oil", name: "Aceite de Oliva / Extra Virgin Olive Oil", emoji: "🫒", cat: "FATS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 14, per100: { kcal: 884, protein: 0, carbs: 0, fat: 100, fiber: 0, satFat: 13.8, omega3ala: 0.76, sodium: 2, vitE: 14.4, vitK: 60.2 } },
-
-  // 15. CONDIMENTS, PASTES & SWEETS
-  { id: "soy_sauce", name: "Salsa de Soja / Soy Sauce (Menoyo)", emoji: "🍶", cat: "CONDIMENTS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 15, per100: { kcal: 60, protein: 6.5, carbs: 5.6, fat: 0.1, fiber: 0.8, satFat: 0, sodium: 5493, calcium: 19, iron: 2.4 } },
-  { id: "tomato_sauce", name: "Salsa de Tomate / Tomato Sauce", emoji: "🍅", cat: "CONDIMENTS", unit: "tbsp", defaultQty: 3, gramsPerUnit: 15, per100: { kcal: 29, protein: 1.5, carbs: 6.0, fat: 0.3, fiber: 1.5, satFat: 0.04, sodium: 380, calcium: 18, iron: 0.7, vitA: 28, vitC: 14 } },
-  { id: "extracto_tomate", name: "Extracto de Tomate / Tomato Paste", emoji: "🥫", cat: "CONDIMENTS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 16, per100: { kcal: 82, protein: 4.3, carbs: 18.9, fat: 0.4, fiber: 4.0, satFat: 0, sodium: 60, calcium: 37, iron: 3.9, vitA: 60, vitC: 21 } },
-  { id: "honey", name: "Miel / Honey", emoji: "🍯", cat: "CONDIMENTS", unit: "tsp", defaultQty: 1, gramsPerUnit: 7, per100: { kcal: 331, protein: 0.3, carbs: 82.4, fat: 0, fiber: 0.2, satFat: 0, sodium: 4, calcium: 6, iron: 0.4, vitC: 0.5 } },
-  { id: "jugo_limon", name: "Jugo de Limón / Squeezed Lemon Juice", emoji: "🍋", cat: "CONDIMENTS", unit: "lemon", defaultQty: 0.5, gramsPerUnit: 45, per100: { kcal: 22, protein: 0.4, carbs: 6.9, fat: 0.2, fiber: 0.3, satFat: 0, sodium: 1, calcium: 6, vitC: 39 } },
-  { id: "jugo_lima", name: "Jugo de Lima / Squeezed Lime Juice", emoji: "🍋", cat: "CONDIMENTS", unit: "lime", defaultQty: 1, gramsPerUnit: 30, per100: { kcal: 25, protein: 0.4, carbs: 8.4, fat: 0.1, fiber: 0.4, satFat: 0, sodium: 2, calcium: 10, vitC: 30 } },
-  { id: "curcuma", name: "Cúrcuma / Turmeric Powder", emoji: "🧡", cat: "CONDIMENTS", unit: "tsp", defaultQty: 1, gramsPerUnit: 3, per100: { kcal: 312, protein: 9.7, carbs: 67.0, fat: 3.3, fiber: 22.7, satFat: 1.8, sodium: 27, calcium: 183, iron: 41.4, vitC: 25.9 } },
-  { id: "ddl_colonial", name: "Dulce de Leche Colonial / Premium DDL", emoji: "🐮", cat: "SWEETS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 25, per100: { kcal: 315, protein: 7.0, carbs: 55.0, fat: 7.5, fiber: 0, satFat: 4.5, sodium: 130, calcium: 280 } },
-  { id: "ddl_clasico", name: "Dulce de Leche Clásico / Classic DDL", emoji: "🍯", cat: "SWEETS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 25, per100: { kcal: 308, protein: 7.0, carbs: 56.0, fat: 6.0, fiber: 0, satFat: 3.8, sodium: 120, calcium: 270 } },
-  { id: "ddl_repostero", name: "Dulce de Leche Repostero / Baker's DDL", emoji: "🎂", cat: "SWEETS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 25, per100: { kcal: 310, protein: 6.5, carbs: 58.0, fat: 5.8, fiber: 0, satFat: 3.5, sodium: 140 } },
-  { id: "ddl_ser", name: "Dulce de Leche Ser / Diet DDL", emoji: "📉", cat: "SWEETS", unit: "tbsp", defaultQty: 1, gramsPerUnit: 25, per100: { kcal: 268, protein: 7.5, carbs: 52.0, fat: 1.5, fiber: 2.0, satFat: 0.9, sodium: 110 } },
-  { id: "dulce_batata", name: "Dulce de Batata / Sweet Potato Paste", emoji: "🍠", cat: "SWEETS", unit: "slice", defaultQty: 1, gramsPerUnit: 50, per100: { kcal: 273, protein: 1.0, carbs: 67.0, fat: 0, fiber: 2.5, satFat: 0, sodium: 35 } },
-  { id: "dulce_batata_choc", name: "Dulce de Batata con Chocolate", emoji: "🍫", cat: "SWEETS", unit: "slice", defaultQty: 1, gramsPerUnit: 50, per100: { kcal: 285, protein: 1.5, carbs: 66.0, fat: 1.2, fiber: 3.0, satFat: 0.6, sodium: 40 } },
-  { id: "dulce_membrillo", name: "Dulce de Membrillo / Quince Paste", emoji: "🟥", cat: "SWEETS", unit: "slice", defaultQty: 1, gramsPerUnit: 50, per100: { kcal: 268, protein: 0.5, carbs: 66.5, fat: 0, fiber: 4.5, satFat: 0, sodium: 25 } },
-
-  // 16. BEVERAGES
-  { id: "jugo_naranja_exprimidor", name: "Jugo de Naranja / Fresh Squeezed Orange Juice", emoji: "🍊", cat: "BEVERAGES", unit: "glass", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 45, protein: 0.7, carbs: 10.4, fat: 0.2, fiber: 0.2, satFat: 0, sodium: 1, vitC: 50 } },
-  { id: "jugo_citric_naranja", name: "Jugo Citric Naranja / Citric Orange Juice", emoji: "🧃", cat: "BEVERAGES", unit: "glass", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 44, protein: 0.6, carbs: 10.4, fat: 0, fiber: 0, satFat: 0, sodium: 5, vitC: 45 } },
-  { id: "jugo_cepita_manzana", name: "Jugo Cepita Manzana / Apple Juice", emoji: "🧃", cat: "BEVERAGES", unit: "glass", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 48, protein: 0.1, carbs: 12.0, fat: 0, fiber: 0, satFat: 0, sodium: 10, vitC: 2 } },
-  { id: "yerba_mate", name: "Yerba Mate / Mate Extract", emoji: "🧉", cat: "BEVERAGES", unit: "g", defaultQty: 50, gramsPerUnit: 50, per100: { kcal: 64, protein: 1.8, carbs: 14.4, fat: 0, fiber: 0, satFat: 0, sodium: 0 } },
-  { id: "ades_soy", name: "Ades Natural / Soy Milk Beverage", emoji: "🫘", cat: "BEVERAGES", unit: "glass", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 42, protein: 2.5, carbs: 4.5, fat: 1.6, fiber: 0, satFat: 0.2, sodium: 90, calcium: 120, vitD: 1.0 } },
-  { id: "silk_almond", name: "Silk Almendras / Almond Milk (Unsweetened)", emoji: "🌰", cat: "BEVERAGES", unit: "glass", defaultQty: 1, gramsPerUnit: 200, per100: { kcal: 14, protein: 0.4, carbs: 0.3, fat: 1.2, fiber: 0.2, satFat: 0, sodium: 45, calcium: 140, vitE: 2.0, vitB12: 0.4 } },
-
-  // 17. PLANT-BASED MEAT ALTERNATIVES
-  { id: "notburger", name: "NotBurger / Plant-Based Burger (NotCo)", emoji: "🍔", cat: "VEGAN", unit: "unit", defaultQty: 1, gramsPerUnit: 100, per100: { kcal: 233, protein: 16.0, carbs: 5.0, fat: 17.0, fiber: 5.0, satFat: 10.2, sodium: 399, calcium: 60 } },
-  { id: "notmila", name: "NotMila / Plant-Based Milanesa (NotCo)", emoji: "🌭", cat: "VEGAN", unit: "unit", defaultQty: 1, gramsPerUnit: 110, per100: { kcal: 245, protein: 13.0, carbs: 22.0, fat: 12.0, fiber: 4.5, satFat: 1.5, sodium: 450 } },
-  { id: "vegetalex_soja", name: "Milanesa de Soja / Soy Patty (Vegetalex)", emoji: "🫓", cat: "VEGAN", unit: "unit", defaultQty: 1, gramsPerUnit: 85, per100: { kcal: 148, protein: 13.0, carbs: 16.5, fat: 3.5, fiber: 3.5, satFat: 0.5, sodium: 380 } },
-  { id: "vegetalex_verdura", name: "Medallón de Verdura / Veggie Patty (Vegetalex)", emoji: "🥦", cat: "VEGAN", unit: "unit", defaultQty: 1, gramsPerUnit: 75, per100: { kcal: 125, protein: 3.0, carbs: 18.0, fat: 4.5, fiber: 3.7, satFat: 0.5, sodium: 304 } },
-  { id: "tofu", name: "Tofu Orgánico / Firm Tofu (Soyana)", emoji: "🧊", cat: "VEGAN", unit: "g", defaultQty: 100, gramsPerUnit: 100, per100: { kcal: 146, protein: 17.0, carbs: 2.4, fat: 9.0, fiber: 0, satFat: 1.2, sodium: 10, calcium: 150 } },
-
-  // 18. MEALS, PREPARED FOODS & FAST FOOD
-  { id: "emp_carne_rotiseria", name: "Empanada Carne / Large Beef Empanada", emoji: "🥟", cat: "MEALS", unit: "unit", defaultQty: 1, gramsPerUnit: 110, per100: { kcal: 287, protein: 10.0, carbs: 29.1, fat: 14.5, fiber: 1.5, satFat: 5.5, sodium: 450, calcium: 20 } },
-  { id: "emp_jyq_rotiseria", name: "Empanada Jamón y Queso / Large Ham & Cheese Empanada", emoji: "🧀", cat: "MEALS", unit: "unit", defaultQty: 1, gramsPerUnit: 110, per100: { kcal: 295, protein: 11.0, carbs: 25.5, fat: 16.5, fiber: 1.0, satFat: 8.5, sodium: 520, calcium: 180 } },
-  { id: "emp_pollo_rotiseria", name: "Empanada Pollo / Large Chicken Empanada", emoji: "🍗", cat: "MEALS", unit: "unit", defaultQty: 1, gramsPerUnit: 110, per100: { kcal: 265, protein: 12.5, carbs: 28.0, fat: 11.5, fiber: 1.2, satFat: 3.5, sodium: 410, calcium: 25 } },
-  { id: "emp_carne_frozen", name: "Empanada Carne / Standard Frozen Beef Empanada", emoji: "🥟", cat: "MEALS", unit: "unit", defaultQty: 1, gramsPerUnit: 80, per100: { kcal: 260, protein: 9.3, carbs: 28.0, fat: 12.0, fiber: 1.5, satFat: 4.5, sodium: 430, calcium: 15 } },
-  { id: "emp_humita", name: "Empanada Humita / Corn Empanada", emoji: "🌽", cat: "MEALS", unit: "unit", defaultQty: 1, gramsPerUnit: 80, per100: { kcal: 242, protein: 6.5, carbs: 32.0, fat: 10.0, fiber: 2.5, satFat: 4.0, sodium: 380, calcium: 40 } },
-  { id: "emp_verdura", name: "Empanada Verdura / Swiss Chard Empanada", emoji: "🥬", cat: "MEALS", unit: "unit", defaultQty: 1, gramsPerUnit: 80, per100: { kcal: 235, protein: 7.0, carbs: 26.0, fat: 11.5, fiber: 3.0, satFat: 4.5, sodium: 400, calcium: 80 } },
-  { id: "emp_cheeseburger", name: "Empanada Cheeseburger / Empa's World", emoji: "🍔", cat: "MEALS", unit: "unit", defaultQty: 1, gramsPerUnit: 85, per100: { kcal: 295, protein: 11.5, carbs: 26.0, fat: 16.5, fiber: 1.0, satFat: 7.5, sodium: 620, calcium: 110 } },
-  { id: "emp_carne_picante", name: "Empanada Carne Picante / Spicy Beef Empanada", emoji: "🌶️", cat: "MEALS", unit: "unit", defaultQty: 1, gramsPerUnit: 85, per100: { kcal: 255, protein: 10.0, carbs: 28.5, fat: 11.0, fiber: 1.5, satFat: 4.0, sodium: 480, calcium: 15 } },
-  { id: "sand_miga_jyq", name: "Sandwich de Miga / Crumb Sandwich (Ham & Cheese)", emoji: "🍞", cat: "MEALS", unit: "unit", defaultQty: 1, gramsPerUnit: 110, per100: { kcal: 280, protein: 9.5, carbs: 28.0, fat: 14.5, fiber: 1.0, satFat: 6.0, sodium: 550, calcium: 90 } },
-  { id: "matambre_arrollado", name: "Matambre Arrollado / Cold Cut Matambre", emoji: "🥩", cat: "MEALS", unit: "slice", defaultQty: 2, gramsPerUnit: 40, per100: { kcal: 215, protein: 18.5, carbs: 1.0, fat: 15.0, fiber: 0.2, satFat: 6.5, sodium: 650, calcium: 15 } },
-  { id: "matambre_pizza", name: "Matambre a la Pizza / Hot Matambre with Cheese", emoji: "🍕", cat: "MEALS", unit: "portion", defaultQty: 1, gramsPerUnit: 250, per100: { kcal: 290, protein: 22.0, carbs: 2.5, fat: 21.5, fiber: 0.5, satFat: 9.0, sodium: 480, calcium: 180 } },
-  { id: "milanesa_carne_fried", name: "Milanesa de Carne / Fried Beef Milanesa", emoji: "🥓", cat: "MEALS", unit: "unit", defaultQty: 1, gramsPerUnit: 150, per100: { kcal: 285, protein: 16.0, carbs: 18.0, fat: 16.5, fiber: 1.0, satFat: 4.0, sodium: 320, calcium: 20 } },
-  { id: "lengua_vinagreta", name: "Lengua a la Vinagreta / Pickled Tongue", emoji: "👅", cat: "MEALS", unit: "portion", defaultQty: 1, gramsPerUnit: 150, per100: { kcal: 295, protein: 16.0, carbs: 2.0, fat: 24.0, fiber: 0.5, satFat: 6.5, sodium: 350, iron: 2.4, vitB12: 4.0 } },
-  
-  { id: "mcd_cuarto", name: "Doble Cuarto de Libra / Double Quarter Pounder", emoji: "🍔", cat: "FAST_FOOD", unit: "unit", defaultQty: 1, gramsPerUnit: 270, per100: { kcal: 285, protein: 18.1, carbs: 13.3, fat: 17.4, fiber: 1.0, satFat: 8.5, sodium: 460, calcium: 180 } },
-  { id: "mcd_bigmac", name: "Big Mac", emoji: "🍔", cat: "FAST_FOOD", unit: "unit", defaultQty: 1, gramsPerUnit: 202, per100: { kcal: 257, protein: 11.8, carbs: 20.5, fat: 13.6, fiber: 1.5, satFat: 5.5, sodium: 430, calcium: 110 } },
-  { id: "mcd_doblequeso", name: "Doble Queso / Double Cheeseburger", emoji: "🧀", cat: "FAST_FOOD", unit: "unit", defaultQty: 1, gramsPerUnit: 156, per100: { kcal: 282, protein: 16.0, carbs: 21.1, fat: 15.3, fiber: 1.0, satFat: 7.5, sodium: 510, calcium: 160 } },
-  { id: "mostaza_mega_doble", name: "Mega Deluxe Doble / Mega Burger (Mostaza)", emoji: "🥓", cat: "FAST_FOOD", unit: "unit", defaultQty: 1, gramsPerUnit: 340, per100: { kcal: 275, protein: 14.5, carbs: 22.0, fat: 15.5, fiber: 1.2, satFat: 7.0, sodium: 480, calcium: 120 } },
-  { id: "mostaza_mega_cuarto", name: "Mega Cuarto XL / Mega Quarter (Mostaza)", emoji: "🦶", cat: "FAST_FOOD", unit: "unit", defaultQty: 1, gramsPerUnit: 230, per100: { kcal: 260, protein: 13.0, carbs: 24.0, fat: 13.5, fiber: 1.0, satFat: 6.0, sodium: 450, calcium: 110 } },
-  { id: "burger_completa", name: "Hamburguesa Completa / Complete Bodegón Burger", emoji: "🍳", cat: "FAST_FOOD", unit: "unit", defaultQty: 1, gramsPerUnit: 350, per100: { kcal: 245, protein: 13.5, carbs: 18.0, fat: 14.0, fiber: 0.8, satFat: 5.0, sodium: 380, calcium: 90 } },
-
-  // 19. PIZZA
-  { id: "pizza_fugazzeta", name: "Fugazzeta Rellena / Stuffed Onion Pizza (Guerrin)", emoji: "🧀", cat: "PIZZA", unit: "slice", defaultQty: 1, gramsPerUnit: 300, per100: { kcal: 315, protein: 14.5, carbs: 28.0, fat: 16.0, fiber: 1.2, satFat: 9.5, sodium: 650, calcium: 380 } },
-  { id: "pizza_muzza_molde", name: "Muzzarella al Molde / Thick Crust Pizza", emoji: "🍕", cat: "PIZZA", unit: "slice", defaultQty: 1, gramsPerUnit: 220, per100: { kcal: 290, protein: 13.5, carbs: 31.0, fat: 12.5, fiber: 1.5, satFat: 7.0, sodium: 580, calcium: 290 } },
-  { id: "pizza_muzza_delivery", name: "Muzzarella Delivery / Standard Thin Pizza", emoji: "🍕", cat: "PIZZA", unit: "slice", defaultQty: 2, gramsPerUnit: 140, per100: { kcal: 265, protein: 11.0, carbs: 32.0, fat: 10.5, fiber: 1.5, satFat: 5.0, sodium: 520, calcium: 180 } },
-  { id: "pizza_napolitana", name: "Pizza Napolitana / Tomato & Garlic Pizza", emoji: "🍅", cat: "PIZZA", unit: "slice", defaultQty: 2, gramsPerUnit: 155, per100: { kcal: 255, protein: 10.5, carbs: 30.0, fat: 10.5, fiber: 2.0, satFat: 4.8, sodium: 540, calcium: 170 } },
-  { id: "pizza_calabresa", name: "Pizza Calabresa / Pepperoni Pizza", emoji: "🌭", cat: "PIZZA", unit: "slice", defaultQty: 2, gramsPerUnit: 150, per100: { kcal: 295, protein: 13.0, carbs: 29.0, fat: 14.5, fiber: 1.5, satFat: 6.5, sodium: 780, calcium: 180 } },
-  { id: "pizza_ugis", name: "Muzzarella Ugi's / Economy Pizza", emoji: "🍕", cat: "PIZZA", unit: "slice", defaultQty: 2, gramsPerUnit: 110, per100: { kcal: 270, protein: 9.0, carbs: 35.0, fat: 10.0, fiber: 1.2, satFat: 4.0, sodium: 600, calcium: 90 } },
-  { id: "pizza_borde", name: "Pizza Borde Relleno / Stuffed Crust Pizza", emoji: "🍕", cat: "PIZZA", unit: "slice", defaultQty: 2, gramsPerUnit: 140, per100: { kcal: 285, protein: 12.5, carbs: 31.0, fat: 13.0, fiber: 1.8, satFat: 6.5, sodium: 580, calcium: 220 } },
-  { id: "faina", name: "Fainá / Chickpea Flour Slice", emoji: "🟡", cat: "PIZZA", unit: "slice", defaultQty: 1, gramsPerUnit: 100, per100: { kcal: 185, protein: 6.5, carbs: 24.0, fat: 7.5, fiber: 3.5, satFat: 1.0, sodium: 220, calcium: 15 } },
-
-  // 20. SNACKS (KIOSKO)
-  { id: "bizcochos_arroz", name: "Bizcochos de Arroz / Rice Cakes (Gallo)", emoji: "🍘", cat: "SNACKS", unit: "packet", defaultQty: 1, gramsPerUnit: 20, per100: { kcal: 396, protein: 6.5, carbs: 82.0, fat: 4.5, fiber: 1.0, satFat: 0.5, sodium: 350 } },
-  { id: "chocobar", name: "ChocoBar / Chocolate Rice Bar (Gallo)", emoji: "🍫", cat: "SNACKS", unit: "bar", defaultQty: 1, gramsPerUnit: 20, per100: { kcal: 495, protein: 5.5, carbs: 65.0, fat: 23.0, fiber: 2.0, satFat: 14.0, sodium: 80 } },
-  { id: "criollitas", name: "Criollitas / Water Crackers", emoji: "🍪", cat: "SNACKS", unit: "unit", defaultQty: 5, gramsPerUnit: 5.5, per100: { kcal: 435, protein: 11.0, carbs: 68.0, fat: 13.0, fiber: 3.0, satFat: 6.0, sodium: 850 } },
-  { id: "lays_clasicas", name: "Lays Clásicas / Potato Chips", emoji: "🥔", cat: "SNACKS", unit: "pack", defaultQty: 1, gramsPerUnit: 34, per100: { kcal: 545, protein: 6.5, carbs: 53.0, fat: 34.0, fiber: 4.5, satFat: 5.0, sodium: 650 } },
-  { id: "pringles", name: "Pringles Original / Stacked Chips", emoji: "🥔", cat: "SNACKS", unit: "can", defaultQty: 1, gramsPerUnit: 40, per100: { kcal: 515, protein: 4.0, carbs: 51.0, fat: 33.0, fiber: 2.7, satFat: 9.0, sodium: 500 } },
-
-  // 21. MARINE ALGAE & SUPPLEMENTS
-  { id: "kelp_powder", name: "Algas Kelp en Polvo / Kelp Powder", emoji: "🧂", cat: "SUPPLEMENTS", unit: "tsp", defaultQty: 1, gramsPerUnit: 3, per100: { kcal: 43, protein: 1.6, carbs: 9.6, fat: 0.6, fiber: 1.3, satFat: 0, sodium: 233, iodine: 15000, magnesium: 120, calcium: 168 } },
-  { id: "spirulina_tablets", name: "Spirulina Comprimidos / Spirulina Tablets", emoji: "💊", cat: "SUPPLEMENTS", unit: "pill", defaultQty: 4, gramsPerUnit: 0.5, per100: { kcal: 290, protein: 57.0, carbs: 24.0, fat: 7.7, fiber: 3.6, satFat: 2.7, sodium: 1050, iron: 28.5 } },
-  { id: "agar_agar", name: "Agar-Agar / Seaweed Gelatin", emoji: "🍮", cat: "PANTRY", unit: "tsp", defaultQty: 1, gramsPerUnit: 4, per100: { kcal: 306, protein: 6.2, carbs: 80.9, fat: 0.3, fiber: 7.7, satFat: 0, sodium: 102, calcium: 625, iron: 21 } },
-  { id: "kombu", name: "Alga Kombu / Dried Kombu Seaweed", emoji: "🍲", cat: "PANTRY", unit: "strip", defaultQty: 1, gramsPerUnit: 10, per100: { kcal: 246, protein: 7.9, carbs: 49.7, fat: 0.6, fiber: 7.5, satFat: 0.1, sodium: 680, iodine: 295000, calcium: 800 } },
-  { id: "wakame", name: "Alga Wakame / Dried Wakame Seaweed", emoji: "🥣", cat: "PANTRY", unit: "tbsp", defaultQty: 1, gramsPerUnit: 5, per100: { kcal: 138, protein: 18.0, carbs: 41.8, fat: 4.0, fiber: 40.0, satFat: 0, sodium: 6600, calcium: 660, magnesium: 400 } },
-  { id: "nori", name: "Alga Nori / Nori Sushi Sheet", emoji: "🍙", cat: "PANTRY", unit: "sheet", defaultQty: 1, gramsPerUnit: 2.5, per100: { kcal: 350, protein: 40.0, carbs: 40.0, fat: 5.0, fiber: 35.0, satFat: 0, sodium: 50, iodine: 2000, vitC: 20, vitA: 500 } }
+  // --- FAST FOOD & PREPARED MEALS (EMPANADAS, BURGERS, PIZZA) ---
+  {id:"emp_carne_lg",name:"Empanada Carne (Rotisería/Large)",emoji:"🥟",cat:"MEALS",unit:"unit",defaultQty:1,gramsPerUnit:110,per100:{kcal:287,protein:10.0,carbs:29.1,fat:14.5,fiber:1.5,satFat:5.5,sodium:450,calcium:20,phosphorus:110,vitA:10,vitC:0,cholesterol:45}},
+  {id:"emp_jyq_lg",name:"Empanada Jamón y Queso (Rotisería)",emoji:"🧀",cat:"MEALS",unit:"unit",defaultQty:1,gramsPerUnit:110,per100:{kcal:295,protein:11.0,carbs:25.5,fat:16.5,fiber:1.0,satFat:8.5,sodium:520,calcium:180,phosphorus:150,vitA:60,vitC:0,cholesterol:50}},
+  {id:"emp_pollo_lg",name:"Empanada Pollo (Rotisería)",emoji:"🍗",cat:"MEALS",unit:"unit",defaultQty:1,gramsPerUnit:110,per100:{kcal:265,protein:12.5,carbs:28.0,fat:11.5,fiber:1.2,satFat:3.5,sodium:410,calcium:25,phosphorus:130,vitA:15,vitC:1,cholesterol:40}},
+  {id:"emp_carne_std",name:"Empanada Carne (Standard/Frozen)",emoji:"🥟",cat:"MEALS",unit:"unit",defaultQty:1,gramsPerUnit:80,per100:{kcal:260,protein:9.3,carbs:28.0,fat:12.0,fiber:1.5,satFat:4.5,sodium:430,calcium:15,phosphorus:90,vitA:5,vitC:0,cholesterol:35}},
+  {id:"emp_humita_std",name:"Empanada Humita (Corn/Standard)",emoji:"🌽",cat:"MEALS",unit:"unit",defaultQty:1,gramsPerUnit:80,per100:{kcal:242,protein:6.5,carbs:32.0,fat:10.0,fiber:2.5,satFat:4.0,sodium:380,calcium:40,phosphorus:80,vitA:20,vitC:2,cholesterol:25}},
+  {id:"emp_verdura_std",name:"Empanada Verdura/Acelga (Standard)",emoji:"🥬",cat:"MEALS",unit:"unit",defaultQty:1,gramsPerUnit:80,per100:{kcal:235,protein:7.0,carbs:26.0,fat:11.5,fiber:3.0,satFat:4.5,sodium:400,calcium:80,phosphorus:90,vitA:80,vitC:4,cholesterol:30}},
+  {id:"sand_miga_jyq",name:"Sandwich de Miga (Jamón y Queso)",emoji:"🍞",cat:"MEALS",unit:"unit",defaultQty:1,gramsPerUnit:110,per100:{kcal:280,protein:9.5,carbs:28.0,fat:14.5,fiber:1.0,satFat:6.0,sodium:550,calcium:90,phosphorus:110,vitA:20,vitC:0,cholesterol:35}},
+  {id:"matambre_arrollado",name:"Matambre Arrollado (Cold Cut)",emoji:"🥩",cat:"PROTEIN",unit:"slice",defaultQty:2,gramsPerUnit:40,per100:{kcal:215,protein:18.5,carbs:1.0,fat:15.0,fiber:0.2,satFat:6.5,sodium:650,calcium:15,phosphorus:160,vitA:30,vitC:1,cholesterol:60}},
+  {id:"matambre_pizza",name:"Matambre a la Pizza (Hot Dish)",emoji:"🍕",cat:"MEALS",unit:"portion",defaultQty:1,gramsPerUnit:250,per100:{kcal:290,protein:22.0,carbs:2.5,fat:21.5,fiber:0.5,satFat:9.0,sodium:480,calcium:180,phosphorus:250,vitA:60,vitC:3,cholesterol:80}},
+  {id:"milanesa_carne",name:"Milanesa de Carne (Fried)",emoji:"🥓",cat:"PROTEIN",unit:"unit",defaultQty:1,gramsPerUnit:150,per100:{kcal:285,protein:16.0,carbs:18.0,fat:16.5,fiber:1.0,satFat:4.0,sodium:320,calcium:20,phosphorus:180,vitA:0,vitC:0,cholesterol:65}},
+  {id:"empa_cheeseburger",name:"Empanada Cheeseburger (Empa's World)",emoji:"🍔",cat:"MEALS",unit:"unit",defaultQty:1,gramsPerUnit:85,per100:{kcal:295,protein:11.5,carbs:26.0,fat:16.5,fiber:1.0,satFat:7.5,sodium:620,calcium:110,phosphorus:140,vitA:40,vitC:1,cholesterol:45}},
+  {id:"empa_carne_picante_ew",name:"Empanada Carne Picante (Empa's World)",emoji:"🌶️",cat:"MEALS",unit:"unit",defaultQty:1,gramsPerUnit:85,per100:{kcal:255,protein:10.0,carbs:28.5,fat:11.0,fiber:1.5,satFat:4.0,sodium:480,calcium:15,phosphorus:95,vitA:10,vitC:2,cholesterol:35}},
+  {id:"pizza_borde_relleno",name:"Pizza Stuffed Crust (Muzza)",emoji:"🍕",cat:"MEALS",unit:"slice",defaultQty:2,gramsPerUnit:140,per100:{kcal:285,protein:12.5,carbs:31.0,fat:13.0,fiber:1.8,satFat:6.5,sodium:580,calcium:220,phosphorus:260,vitA:80,vitC:0,cholesterol:40}},
+  {id:"mcd_doble_cuarto",name:"Doble Cuarto de Libra con Queso (McD)",emoji:"🍔",cat:"FAST_FOOD",unit:"unit",defaultQty:1,gramsPerUnit:270,per100:{kcal:285,protein:18.1,carbs:13.3,fat:17.4,fiber:1.0,satFat:8.5,sodium:460,calcium:180,phosphorus:240,vitA:40,vitC:0,cholesterol:95}},
+  {id:"mcd_big_mac",name:"Big Mac (McD)",emoji:"🍔",cat:"FAST_FOOD",unit:"unit",defaultQty:1,gramsPerUnit:202,per100:{kcal:257,protein:11.8,carbs:20.5,fat:13.6,fiber:1.5,satFat:5.5,sodium:430,calcium:110,phosphorus:130,vitA:20,vitC:1,cholesterol:35}},
+  {id:"mcd_doble_carne_doble_queso",name:"Doble Carne Doble Queso (McD)",emoji:"🧀",cat:"FAST_FOOD",unit:"unit",defaultQty:1,gramsPerUnit:156,per100:{kcal:282,protein:16.0,carbs:21.1,fat:15.3,fiber:1.0,satFat:7.5,sodium:510,calcium:160,phosphorus:210,vitA:35,vitC:0,cholesterol:70}},
+  {id:"mostaza_mega_deluxe_doble",name:"Mega Deluxe Doble (Mostaza)",emoji:"🥓",cat:"FAST_FOOD",unit:"unit",defaultQty:1,gramsPerUnit:340,per100:{kcal:275,protein:14.5,carbs:22.0,fat:15.5,fiber:1.2,satFat:7.0,sodium:480,calcium:120,phosphorus:190,vitA:30,vitC:2,cholesterol:80}},
+  {id:"mostaza_mega_cuarto",name:"Mega Cuarto XL (Mostaza)",emoji:"🦶",cat:"FAST_FOOD",unit:"unit",defaultQty:1,gramsPerUnit:230,per100:{kcal:260,protein:13.0,carbs:24.0,fat:13.5,fiber:1.0,satFat:6.0,sodium:450,calcium:110,phosphorus:160,vitA:25,vitC:0,cholesterol:60}},
+  {id:"arg_burger_completa",name:"Hamburguesa Completa (Bodegón)",emoji:"🍳",cat:"MEALS",unit:"unit",defaultQty:1,gramsPerUnit:350,per100:{kcal:245,protein:13.5,carbs:18.0,fat:14.0,fiber:0.8,satFat:5.0,sodium:380,calcium:90,phosphorus:170,vitA:60,vitC:3,cholesterol:110}},
+  {id:"fugazzeta_rellena",name:"Fugazzeta Rellena (La Mezzetta/Guerrin)",emoji:"🧀",cat:"PIZZA",unit:"slice",defaultQty:1,gramsPerUnit:300,per100:{kcal:315,protein:14.5,carbs:28.0,fat:16.0,fiber:1.2,satFat:9.5,sodium:650,calcium:380,phosphorus:290,vitA:90,vitC:2,cholesterol:55}},
+  {id:"muzza_molde_guerrin",name:"Muzzarella al Molde (Guerrin/Kentucky)",emoji:"🍕",cat:"PIZZA",unit:"slice",defaultQty:1,gramsPerUnit:220,per100:{kcal:290,protein:13.5,carbs:31.0,fat:12.5,fiber:1.5,satFat:7.0,sodium:580,calcium:290,phosphorus:220,vitA:60,vitC:1,cholesterol:40}},
+  {id:"faina_traditional",name:"Fainá (Porción Tradicional)",emoji:"🟡",cat:"SIDES",unit:"slice",defaultQty:1,gramsPerUnit:100,per100:{kcal:185,protein:6.5,carbs:24.0,fat:7.5,fiber:3.5,satFat:1.0,sodium:220,calcium:15,phosphorus:80,vitA:0,vitC:0,cholesterol:0}},
+  {id:"muzza_delivery",name:"Muzzarella (Standard Delivery)",emoji:"🍕",cat:"PIZZA",unit:"slice",defaultQty:2,gramsPerUnit:140,per100:{kcal:265,protein:11.0,carbs:32.0,fat:10.5,fiber:1.5,satFat:5.0,sodium:520,calcium:180,phosphorus:150,vitA:40,vitC:1,cholesterol:25}},
+  {id:"napolitana_delivery",name:"Pizza Napolitana (with Garlic)",emoji:"🍅",cat:"PIZZA",unit:"slice",defaultQty:2,gramsPerUnit:155,per100:{kcal:255,protein:10.5,carbs:30.0,fat:10.5,fiber:2.0,satFat:4.8,sodium:540,calcium:170,phosphorus:140,vitA:50,vitC:5,cholesterol:25}},
+  {id:"calabresa_delivery",name:"Pizza Calabresa (Longaniza)",emoji:"🌭",cat:"PIZZA",unit:"slice",defaultQty:2,gramsPerUnit:150,per100:{kcal:295,protein:13.0,carbs:29.0,fat:14.5,fiber:1.5,satFat:6.5,sodium:780,calcium:180,phosphorus:160,vitA:40,vitC:0,cholesterol:45}},
+  {id:"ugis_muzza",name:"Muzzarella (Ugi's/Fábrica Style)",emoji:"🍕",cat:"PIZZA",unit:"slice",defaultQty:2,gramsPerUnit:110,per100:{kcal:270,protein:9.0,carbs:35.0,fat:10.0,fiber:1.2,satFat:4.0,sodium:600,calcium:90,phosphorus:100,vitA:10,vitC:0,cholesterol:20}},
+  {id:"lengua_vinagreta_prep",name:"Lengua a la Vinagreta (Prepared)",emoji:"👅",cat:"MEALS",unit:"portion",defaultQty:1,gramsPerUnit:150,per100:{kcal:295,protein:16.0,carbs:2.0,fat:24.0,fiber:0.5,satFat:6.5,sodium:350,iron:2.4,vitB12:4.0}}
 ];
 
-// Dynamic Array Count for the UI Header
+// ── DOM / INIT SCRIPT ──
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById('db-count').textContent = INGREDIENTS.length;
+  loadLoadout();
 });
 
 const QUICK_RECIPES = [
   {
-    name:"🧠 MemoryPalace Focus Bowl",
-    emoji:"🧠",
+    name:"🧠 M29 Focus Deploy",
+    emoji:"💻",
     macros:"478kcal · 31g prot · Rapid Digestion",
     ingredients:[{id:"oats_instant",qty:60}, {id:"ls_protein_46g",qty:200}, {id:"mani_king_natural",qty:1}, {id:"frambuesas_congeladas",qty:125}]
   },
   {
-    name:"⚽ Post-Match Parrilla",
-    emoji:"⚽",
+    name:"⚽ Post-Match Quad Grill",
+    emoji:"🥩",
     macros:"568kcal · 49g prot · Muscle Recovery",
-    ingredients:[{id:"lomo_raw",qty:200}, {id:"batata_raw",qty:250}, {id:"cebolla",qty:100}, {id:"morron_rojo",qty:100}, {id:"aceite_girasol",qty:1}]
+    ingredients:[{id:"lomo_raw",qty:200}, {id:"batata_buenos_aires",qty:250}, {id:"cebolla_comun",qty:100}, {id:"morron_rojo",qty:100}, {id:"aceite_girasol_natura",qty:1}]
   },
   {
-    name:"🍲 Deep-Work Bodegón Stew",
+    name:"🍲 CABA Winter Bodegón",
     emoji:"🍲",
     macros:"435kcal · 53g prot · High Iron",
-    ingredients:[{id:"lentils_dry",qty:60}, {id:"chicken_breast_raw",qty:150}, {id:"extracto_tomate",qty:1}, {id:"ajo",qty:1}, {id:"acelga_raw",qty:150}]
+    ingredients:[{id:"lentils",qty:60}, {id:"chicken_breast_skinless_raw",qty:150}, {id:"extracto_tomate",qty:1}, {id:"ajo_diente",qty:1}, {id:"acelga_raw",qty:150}]
   },
   {
-    name:"🍕 Quad-Roommate Pizza Night",
-    emoji:"🍕",
-    macros:"610kcal · 32g prot · Friday Classic",
-    ingredients:[{id:"muzzarella",qty:3}, {id:"tomato_sauce",qty:3}, {id:"ajo",qty:2}, {id:"pan_felipe",qty:1}]
+    name:"🍝 Black Bean Pasta Hack",
+    emoji:"🍝",
+    macros:"540kcal · 45g prot · Max Yield",
+    ingredients:[{id:"pasta_porotos_negros",qty:80}, {id:"chicken_breast_skinless_raw",qty:100}, {id:"tomato_sauce",qty:3}, {id:"queso_reggianito_la_serenisima",qty:1}]
   },
   {
-    name:"📉 CABA Diet Cheat",
+    name:"🧉 Late Night Kiosko Track",
     emoji:"📉",
     macros:"280kcal · 14g prot · Sweet Tooth",
-    ingredients:[{id:"bizcochos_arroz",qty:1}, {id:"casancrem_light",qty:2}, {id:"ddl_ser",qty:1}]
-  },
-  {
-    name:"🍱 Creative Sushi Bowl",
-    emoji:"🍱",
-    macros:"510kcal · 38g prot · Omega-3",
-    ingredients:[{id:"arroz_gallo_oro",qty:50}, {id:"salmon_rosado_raw",qty:150}, {id:"nori",qty:1}, {id:"soy_sauce",qty:1}, {id:"cebolla_verdeo",qty:30}]
-  },
-  {
-    name:"🧉 Tarde de Estudio",
-    emoji:"🧉",
-    macros:"220kcal · 11g prot · Energy",
-    ingredients:[{id:"yerba_mate",qty:50}, {id:"mix_frutos_secos",qty:30}]
-  },
-  {
-    name:"🥩 Domingo Asado Prep",
-    emoji:"🥩",
-    macros:"715kcal · 48g prot · Real Argentina",
-    ingredients:[{id:"bondiola_raw",qty:200}, {id:"chorizo_parrillero",qty:1}, {id:"morron_rojo",qty:150}]
+    ingredients:[{id:"bizcochos_arroz_gallo",qty:1}, {id:"casancrem_light",qty:2}, {id:"ddl_ser_light",qty:1}]
   }
 ];
 
-// ── STATE ──
+// ── STATE & FILTERS ──
 let selected = {}; // id -> qty
-
-// ── INIT ──
-const CATS_ORDER = ['ALL','POULTRY','BEEF','PORK','LAMB','GAME','OFFAL','PROCESSED','SEAFOOD','EGGS','MILK','YOGURT','CHEESE','LEGUMES','NUTS','GRAINS','PASTA','BREAD','VEGETABLES','FRUITS','FATS','CONDIMENTS','SWEETS','BEVERAGES','VEGAN','MEALS','FAST_FOOD','PIZZA','SNACKS','SUPPLEMENTS','PANTRY'];
+const CATS_ORDER = ['ALL','POULTRY','BEEF','PORK','LAMB','GAME','OFFAL','PROCESSED','SEAFOOD','EGGS','DAIRY','LEGUMES','NUTS','GRAINS','BAKERY','VEGETABLES','FRUIT','FATS','CONDIMENTS','PANTRY','BEVERAGES','PLANT_BASED','MEALS','FAST_FOOD','PIZZA','SNACKS','SUPPLEMENTS'];
 let activeCat = 'ALL';
 
 function init(){
@@ -577,7 +565,7 @@ function init(){
   CATS_ORDER.forEach(c => {
     const b = document.createElement('button');
     b.className = 'cb' + (c==='ALL'?' on':'');
-    b.textContent = c;
+    b.textContent = c.replace('_',' ');
     b.onclick = () => { activeCat=c; document.querySelectorAll('.cb').forEach(x=>x.classList.remove('on')); b.classList.add('on'); filter(); };
     cDiv.appendChild(b);
   });
@@ -602,21 +590,21 @@ function renderList(arr){
   arr.forEach(ing => {
     const el = document.createElement('div');
     el.className = 'iitem' + (selected[ing.id]!==undefined?' sel':'');
-    el.innerHTML = `<span class="iem">${ing.emoji}</span>
-      <div class="iin"><div class="iname">${ing.name}</div>
-      <div class="imeta">${ing.per100.kcal}kcal · ${ing.per100.protein}g prot per 100g</div></div>
-      <span class="iprot">${ing.per100.protein}g</span>`;
+    el.innerHTML = `
+      <div class="iem">${ing.emoji}</div>
+      <div class="iin">
+        <div class="iname">${ing.name}</div>
+        <div class="imeta">${ing.per100.kcal} kcal · ${ing.per100.protein}g prot per 100g</div>
+      </div>
+      <div class="iprot">${ing.per100.protein}g</div>`;
     el.onclick = () => toggleIng(ing);
     div.appendChild(el);
   });
 }
 
 function toggleIng(ing){
-  if(selected[ing.id]!==undefined){
-    delete selected[ing.id];
-  } else {
-    selected[ing.id] = ing.defaultQty;
-  }
+  if(selected[ing.id]!==undefined){ delete selected[ing.id]; } else { selected[ing.id] = ing.defaultQty; }
+  saveLoadout();
   renderChips();
   renderNutrients();
   filter();
@@ -630,7 +618,6 @@ function renderChips(){
   ids.forEach(id => {
     const ing = INGREDIENTS.find(i=>i.id===id);
     if(!ing) return;
-    // UI logic uses the English name snippet for the chip
     const chipText = ing.name.split('/')[1] ? ing.name.split('/')[1].trim().split(' ').slice(0,2).join(' ') : ing.name.split(' ')[0];
     const chip = document.createElement('div');
     chip.className = 'chip';
@@ -647,11 +634,13 @@ function renderChips(){
 
 function updateQty(id, val){
   selected[id] = val;
+  saveLoadout();
   renderNutrients();
 }
 
 function removeIng(id){
   delete selected[id];
+  saveLoadout();
   renderChips();
   renderNutrients();
   filter();
@@ -659,6 +648,7 @@ function removeIng(id){
 
 function clearAll(){
   selected = {};
+  saveLoadout();
   renderChips();
   renderNutrients();
   filter();
@@ -731,13 +721,13 @@ function renderRecipes(){
     card.innerHTML=`<span class="rem">${r.emoji}</span><div class="rname">${r.name}</div><div class="rmac">${r.macros}</div>`;
     card.onclick=()=>{
       r.ingredients.forEach(({id,qty}) => { selected[id]=qty; });
-      renderChips(); renderNutrients(); filter();
+      saveLoadout(); renderChips(); renderNutrients(); filter();
     };
     div.appendChild(card);
   });
 }
 
-init();
+setTimeout(() => { init(); if(Object.keys(selected).length) renderChips(); }, 100);
 </script>
 </body>
 </html>
