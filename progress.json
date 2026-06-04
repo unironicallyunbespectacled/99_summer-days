@@ -23,9 +23,10 @@
     "app_2": true,
     "app_3": true,
     "water_3": true,
-    "nuts": true
+    "nuts": true,
+    "screens_off": true
   },
-  "sday_1_score": 48,
+  "sday_1_score": 49,
   "sday_2_done": {
     "shower_am": true,
     "skincare_am": true,
