@@ -18,9 +18,11 @@
     "ma_muaythai": true,
     "ma_tkd_old": true,
     "ma_mobility_old": true,
-    "jp_main": true
+    "jp_main": true,
+    "app_1": true,
+    "app_2": true
   },
-  "sday_1_score": 40,
+  "sday_1_score": 44,
   "sday_2_done": {
     "shower_am": true,
     "skincare_am": true,
