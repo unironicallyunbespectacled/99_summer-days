@@ -16,9 +16,10 @@
     "imm1e": true,
     "creatine": true,
     "ma_muaythai": true,
-    "ma_tkd_old": true
+    "ma_tkd_old": true,
+    "ma_mobility_old": true
   },
-  "sday_1_score": 33,
+  "sday_1_score": 34,
   "sday_2_done": {
     "shower_am": true,
     "skincare_am": true,
