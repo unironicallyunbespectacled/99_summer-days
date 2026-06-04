@@ -13,7 +13,8 @@
     "jp_bonus": false,
     "imm1b": true,
     "imm1d": true,
-    "imm1e": true
+    "imm1e": true,
+    "creatine": true
   },
   "sday_1_score": 30,
   "sday_2_done": {
