@@ -25,9 +25,10 @@
     "water_3": true,
     "nuts": true,
     "screens_off": true,
-    "sleep": true
+    "sleep": true,
+    "es_main": true
   },
-  "sday_1_score": 53,
+  "sday_1_score": 56,
   "sday_2_done": {
     "shower_am": true,
     "skincare_am": true,
