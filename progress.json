@@ -226,7 +226,8 @@
     "jp_bonus": true,
     "jp_main": true,
     "en_main": true,
-    "en_bonus": true
+    "en_bonus": true,
+    "sleep": true
   },
-  "sday_28_score": 52
+  "sday_28_score": 56
 }
