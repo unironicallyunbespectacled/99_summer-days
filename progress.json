@@ -144,6 +144,10 @@
     "whatsapp": true
   },
   "sday_7_score": 9,
+  "sday_8_done": {
+    "shower_am": true
+  },
+  "sday_8_score": 3,
   "sday_10_done": {
     "church_mass": true,
     "church_leave": true,
