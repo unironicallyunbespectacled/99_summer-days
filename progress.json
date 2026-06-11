@@ -154,9 +154,11 @@
     "app_1": true,
     "app_2": true,
     "app_3": true,
-    "water_2": true
+    "water_2": true,
+    "main_cook": true,
+    "main_eat": true
   },
-  "sday_8_score": 19,
+  "sday_8_score": 23,
   "sday_10_done": {
     "church_mass": true,
     "church_leave": true,
