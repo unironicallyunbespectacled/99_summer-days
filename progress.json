@@ -150,9 +150,12 @@
     "cook_bfast": true,
     "eat_bfast": true,
     "water_1": true,
-    "creatine": true
+    "creatine": true,
+    "app_1": true,
+    "app_2": true,
+    "app_3": true
   },
-  "sday_8_score": 10,
+  "sday_8_score": 18,
   "sday_10_done": {
     "church_mass": true,
     "church_leave": true,
