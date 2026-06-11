@@ -164,7 +164,8 @@
     "ma_hip_1": true,
     "ma_hip_2": true,
     "ma_hip_5": true,
-    "main_cook": true
+    "main_cook": true,
+    "water_2": true
   },
   "sday_28_score": 15
 }
