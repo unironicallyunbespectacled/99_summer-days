@@ -229,8 +229,9 @@
     "en_bonus": true,
     "sleep": true,
     "screens_off": true,
-    "skincare_pm": true,
-    "shower_pm": true
+    "skincare_pm": false,
+    "shower_pm": false,
+    "whatsapp": true
   },
-  "sday_28_score": 61
+  "sday_28_score": 59
 }
