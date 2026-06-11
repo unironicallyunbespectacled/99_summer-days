@@ -157,7 +157,13 @@
     "cook_bfast": true,
     "eat_bfast": true,
     "water_1": true,
-    "creatine": true
+    "creatine": true,
+    "ma_tkd_1": true,
+    "ma_tkd_2": true,
+    "ma_tkd_3": true,
+    "ma_hip_1": true,
+    "ma_hip_2": true,
+    "ma_hip_5": true
   },
-  "sday_28_score": 7
+  "sday_28_score": 12
 }
