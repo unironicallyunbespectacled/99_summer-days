@@ -28,7 +28,7 @@
     "sleep": true,
     "es_main": false
   },
-  "sday_1_score": 13,
+  "sday_1_score": 53,
   "sday_2_done": {
     "shower_am": true,
     "skincare_am": true,
@@ -64,7 +64,7 @@
     "zh_main": false,
     "typing_main": true
   },
-  "sday_4_score": 19,
+  "sday_4_score": 17,
   "sday_5_done": {
     "shower_am": true,
     "skincare_am": true,
@@ -92,7 +92,7 @@
     "screens_off": true,
     "sleep": true
   },
-  "sday_5_score": 6,
+  "sday_5_score": 43,
   "sday_6_done": {
     "imm6a": true,
     "imm6b": true,
@@ -150,8 +150,8 @@
   },
   "sday_10_score": 30,
   "sday_28_done": {
-    "ma_hip_4": false,
-    "ma_hip_3": false
+    "ma_hip_4": true,
+    "ma_hip_3": true
   },
-  "sday_28_score": 0
+  "sday_28_score": 1
 }
