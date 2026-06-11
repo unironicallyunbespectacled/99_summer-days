@@ -102,9 +102,12 @@
     "main_eat": true,
     "nuts": true,
     "screens_off": true,
-    "sleep": true
+    "sleep": true,
+    "imm3a": true,
+    "imm3b": true,
+    "imm3c": true
   },
-  "sday_5_score": 43,
+  "sday_5_score": 50,
   "sday_6_done": {
     "imm6a": true,
     "imm6b": true,
