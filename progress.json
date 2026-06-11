@@ -150,8 +150,8 @@
   },
   "sday_10_score": 30,
   "sday_28_done": {
-    "ma_hip_4": true,
-    "ma_hip_3": true
+    "ma_hip_4": false,
+    "ma_hip_3": false
   },
-  "sday_28_score": 1
+  "sday_28_score": 0
 }
