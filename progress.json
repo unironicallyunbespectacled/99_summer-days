@@ -235,7 +235,12 @@
     "water_3": true,
     "main_eat": true,
     "shower_am": true,
-    "skincare_am": true
+    "skincare_am": true,
+    "judo_ushiro": true,
+    "judo_yoko_l": true,
+    "judo_yoko_r": true,
+    "judo_mae": true,
+    "judo_mawari": true
   },
-  "sday_28_score": 66
+  "sday_28_score": 73
 }
