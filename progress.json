@@ -26,9 +26,11 @@
     "nuts": true,
     "screens_off": true,
     "sleep": true,
-    "es_main": false
+    "es_main": false,
+    "ma_karate_old": true,
+    "ma_ukemi_old": true
   },
-  "sday_1_score": 53,
+  "sday_1_score": 54,
   "sday_2_done": {
     "shower_am": true,
     "skincare_am": true,
