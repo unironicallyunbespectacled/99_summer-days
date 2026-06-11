@@ -69,9 +69,14 @@
     "screens_off": true,
     "sleep": true,
     "zh_main": false,
-    "typing_main": true
+    "typing_main": true,
+    "imm2a": true,
+    "imm2b": true,
+    "imm3a": true,
+    "imm3b": true,
+    "imm3c": true
   },
-  "sday_4_score": 17,
+  "sday_4_score": 33,
   "sday_5_done": {
     "shower_am": true,
     "skincare_am": true,
