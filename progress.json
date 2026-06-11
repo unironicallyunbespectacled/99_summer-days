@@ -227,7 +227,8 @@
     "jp_main": true,
     "en_main": true,
     "en_bonus": true,
-    "sleep": true
+    "sleep": true,
+    "screens_off": true
   },
-  "sday_28_score": 56
+  "sday_28_score": 58
 }
