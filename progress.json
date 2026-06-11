@@ -209,7 +209,24 @@
     "ma_hip_2": true,
     "ma_hip_5": true,
     "main_cook": true,
-    "water_2": true
+    "water_2": true,
+    "kk_thu_bonus": true,
+    "kk_thu": true,
+    "vi_thu_bonus": true,
+    "vi_thu": true,
+    "ur_bonus": true,
+    "ur_main": true,
+    "ko_bonus": true,
+    "ko_main": true,
+    "typing_bonus": true,
+    "typing_main": true,
+    "es_bonus": true,
+    "es_journal": true,
+    "es_main": true,
+    "jp_bonus": true,
+    "jp_main": true,
+    "en_main": true,
+    "en_bonus": true
   },
-  "sday_28_score": 15
+  "sday_28_score": 52
 }
