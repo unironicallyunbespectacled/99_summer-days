@@ -36,9 +36,11 @@
     "eat_bfast": true,
     "water_1": true,
     "app_1": true,
-    "app_2": true
+    "app_2": true,
+    "imm2a": true,
+    "imm2b": true
   },
-  "sday_2_score": 15,
+  "sday_2_score": 21,
   "sday_3_done": {
     "shower_am": true,
     "skincare_am": true,
