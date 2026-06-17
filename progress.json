@@ -248,7 +248,12 @@
     "skincare_am": true,
     "cook_bfast": true,
     "eat_bfast": true,
-    "water_1": true
+    "water_1": true,
+    "uba_alarm": true,
+    "uba_leave": true,
+    "uba_class": true,
+    "uba_speak": false,
+    "uba_return": true
   },
-  "sday_34_score": 8
+  "sday_34_score": 14
 }
