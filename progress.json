@@ -252,8 +252,9 @@
     "uba_alarm": true,
     "uba_leave": true,
     "uba_class": true,
-    "uba_speak": false,
-    "uba_return": true
+    "uba_speak": true,
+    "uba_return": true,
+    "laundry_wed": true
   },
-  "sday_34_score": 14
+  "sday_34_score": 17
 }
