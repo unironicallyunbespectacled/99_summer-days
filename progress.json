@@ -258,9 +258,11 @@
     "main_cook": true,
     "main_eat": true,
     "water_3": true,
-    "water_2": true
+    "water_2": true,
+    "screens_off": true,
+    "sleep": true
   },
-  "sday_34_score": 22,
+  "sday_34_score": 27,
   "sday_35_done": {
     "cook_bfast": true,
     "eat_bfast": true,
