@@ -260,5 +260,16 @@
     "water_3": true,
     "water_2": true
   },
-  "sday_34_score": 22
+  "sday_34_score": 22,
+  "sday_35_done": {
+    "cook_bfast": true,
+    "eat_bfast": true,
+    "water_1": true,
+    "ma_hip_1": true,
+    "ma_hip_2": true,
+    "ma_hip_3": true,
+    "ma_hip_4": true,
+    "ma_stretch_1": true
+  },
+  "sday_35_score": 7
 }
