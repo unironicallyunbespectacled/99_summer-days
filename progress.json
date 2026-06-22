@@ -295,7 +295,12 @@
     "ma_hip_4": true,
     "ma_hip_3": true,
     "ma_hip_2": true,
-    "ma_hip_1": true
+    "ma_hip_1": true,
+    "uba_return": true,
+    "uba_speak": true,
+    "uba_class": true,
+    "uba_leave": true,
+    "uba_alarm": true
   },
-  "sday_39_score": 15
+  "sday_39_score": 23
 }
