@@ -284,7 +284,10 @@
     "skincare_am": true,
     "cook_bfast": true,
     "water_1": true,
-    "eat_bfast": true
+    "eat_bfast": true,
+    "ma_tkd_1": true,
+    "ma_tkd_2": true,
+    "ma_tkd_3": true
   },
-  "sday_39_score": 8
+  "sday_39_score": 11
 }
