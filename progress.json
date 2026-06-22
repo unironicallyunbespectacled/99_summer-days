@@ -278,5 +278,10 @@
     "screens_off": true,
     "sleep": true
   },
-  "sday_38_score": 5
+  "sday_38_score": 5,
+  "sday_39_done": {
+    "shower_am": false,
+    "skincare_am": true
+  },
+  "sday_39_score": 1
 }
