@@ -273,5 +273,10 @@
     "ma_hip_4": true,
     "ma_stretch_1": true
   },
-  "sday_35_score": 7
+  "sday_35_score": 7,
+  "sday_38_done": {
+    "screens_off": true,
+    "sleep": true
+  },
+  "sday_38_score": 5
 }
