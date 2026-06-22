@@ -280,8 +280,11 @@
   },
   "sday_38_score": 5,
   "sday_39_done": {
-    "shower_am": false,
-    "skincare_am": true
+    "shower_am": true,
+    "skincare_am": true,
+    "cook_bfast": true,
+    "water_1": true,
+    "eat_bfast": true
   },
-  "sday_39_score": 1
+  "sday_39_score": 8
 }
