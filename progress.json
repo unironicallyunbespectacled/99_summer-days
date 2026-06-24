@@ -302,5 +302,13 @@
     "uba_leave": true,
     "uba_alarm": true
   },
-  "sday_39_score": 23
+  "sday_39_score": 23,
+  "sday_41_done": {
+    "uba_alarm": true,
+    "uba_leave": true,
+    "uba_class": true,
+    "uba_speak": true,
+    "uba_return": true
+  },
+  "sday_41_score": 7
 }
