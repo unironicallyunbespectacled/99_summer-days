@@ -310,5 +310,10 @@
     "uba_speak": true,
     "uba_return": true
   },
-  "sday_41_score": 7
+  "sday_41_score": 7,
+  "sday_42_done": {
+    "cook_bfast": true,
+    "eat_bfast": true
+  },
+  "sday_42_score": 4
 }
