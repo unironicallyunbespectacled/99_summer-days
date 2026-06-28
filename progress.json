@@ -321,5 +321,13 @@
     "water_2": true,
     "water_3": true
   },
-  "sday_42_score": 10
+  "sday_42_score": 10,
+  "sday_44_done": {
+    "shower_am": true,
+    "skincare_am": true,
+    "cook_bfast": true,
+    "eat_bfast": true,
+    "water_1": true
+  },
+  "sday_44_score": 9
 }
