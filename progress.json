@@ -346,7 +346,11 @@
     "call_home": true,
     "cook_bfast": true,
     "eat_bfast": true,
-    "water_1": true
+    "water_1": true,
+    "main_eat": true,
+    "main_cook": true,
+    "water_2": true,
+    "water_3": true
   },
-  "sday_45_score": 9
+  "sday_45_score": 14
 }
