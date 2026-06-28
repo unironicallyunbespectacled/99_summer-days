@@ -343,7 +343,10 @@
     "typing_main": true,
     "typing_bonus": true,
     "ro_sun_bonus": false,
-    "call_home": true
+    "call_home": true,
+    "cook_bfast": true,
+    "eat_bfast": true,
+    "water_1": true
   },
-  "sday_45_score": 5
+  "sday_45_score": 9
 }
