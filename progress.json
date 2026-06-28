@@ -341,7 +341,9 @@
   "sday_44_score": 22,
   "sday_45_done": {
     "typing_main": true,
-    "typing_bonus": true
+    "typing_bonus": true,
+    "ro_sun_bonus": false,
+    "call_home": true
   },
-  "sday_45_score": 3
+  "sday_45_score": 5
 }
