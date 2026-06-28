@@ -334,7 +334,9 @@
     "water_3": true,
     "water_2": true,
     "main_eat": true,
-    "main_cook": true
+    "main_cook": true,
+    "typing_main": true,
+    "typing_bonus": true
   },
-  "sday_44_score": 19
+  "sday_44_score": 22
 }
