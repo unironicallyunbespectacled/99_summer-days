@@ -331,7 +331,10 @@
     "skincare_pm": true,
     "shower_pm": true,
     "whatsapp": true,
-    "water_3": true
+    "water_3": true,
+    "water_2": true,
+    "main_eat": true,
+    "main_cook": true
   },
-  "sday_44_score": 14
+  "sday_44_score": 19
 }
