@@ -372,7 +372,10 @@
     "ro_sat": true,
     "ro_sat_bonus": true,
     "uk_sat": true,
-    "uk_sat_bonus": true
+    "uk_sat_bonus": true,
+    "chess_puzzle": true,
+    "chess_game": true,
+    "chess_bonus": true
   },
-  "sday_51_score": 32
+  "sday_51_score": 37
 }
