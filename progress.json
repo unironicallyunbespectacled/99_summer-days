@@ -380,7 +380,8 @@
     "main_eat": true,
     "water_2": true,
     "water_3": true,
-    "whatsapp": true
+    "whatsapp": true,
+    "en_main": false
   },
   "sday_51_score": 44
 }
