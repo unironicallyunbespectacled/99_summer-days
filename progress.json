@@ -381,7 +381,9 @@
     "water_2": true,
     "water_3": true,
     "whatsapp": true,
-    "en_main": false
+    "en_main": false,
+    "leetcode": true,
+    "leetcode_bonus": true
   },
-  "sday_51_score": 44
+  "sday_51_score": 49
 }
