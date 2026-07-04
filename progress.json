@@ -359,7 +359,20 @@
   "sday_51_done": {
     "cook_bfast": true,
     "eat_bfast": true,
-    "water_1": true
+    "water_1": true,
+    "jp_sat": true,
+    "jp_sat_bonus": true,
+    "es_main": true,
+    "es_journal": true,
+    "es_bonus": true,
+    "typing_main": true,
+    "typing_bonus": true,
+    "yue_sat": true,
+    "yue_sat_bonus": true,
+    "ro_sat": true,
+    "ro_sat_bonus": true,
+    "uk_sat": true,
+    "uk_sat_bonus": true
   },
-  "sday_51_score": 5
+  "sday_51_score": 32
 }
