@@ -385,5 +385,13 @@
     "leetcode": true,
     "leetcode_bonus": true
   },
-  "sday_51_score": 49
+  "sday_51_score": 49,
+  "sday_54_done": {
+    "shower_am": true,
+    "skincare_am": true,
+    "cook_bfast": true,
+    "eat_bfast": true,
+    "water_1": true
+  },
+  "sday_54_score": 8
 }
