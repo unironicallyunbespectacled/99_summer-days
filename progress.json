@@ -397,7 +397,12 @@
     "main_eat": true,
     "main_cook": true,
     "feria_go": true,
-    "feria_speak": true
+    "feria_speak": true,
+    "uba_leave": true,
+    "uba_alarm": true,
+    "uba_class": true,
+    "uba_speak": true,
+    "uba_return": true
   },
-  "sday_54_score": 16
+  "sday_54_score": 24
 }
