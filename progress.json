@@ -395,7 +395,8 @@
     "water_3": true,
     "water_2": true,
     "main_eat": true,
-    "main_cook": true
+    "main_cook": true,
+    "feria_go": true
   },
-  "sday_54_score": 13
+  "sday_54_score": 15
 }
