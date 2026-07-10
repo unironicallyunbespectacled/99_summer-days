@@ -404,5 +404,13 @@
     "uba_speak": true,
     "uba_return": true
   },
-  "sday_54_score": 24
+  "sday_54_score": 24,
+  "sday_57_done": {
+    "shower_am": true,
+    "skincare_am": true,
+    "cook_bfast": true,
+    "eat_bfast": true,
+    "water_1": true
+  },
+  "sday_57_score": 9
 }
