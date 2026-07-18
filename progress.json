@@ -413,5 +413,13 @@
     "water_1": true,
     "jp_main": true
   },
-  "sday_57_score": 14
+  "sday_57_score": 14,
+  "sday_65_done": {
+    "shower_am": true,
+    "skincare_am": true,
+    "cook_bfast": true,
+    "eat_bfast": true,
+    "water_1": true
+  },
+  "sday_65_score": 9
 }
