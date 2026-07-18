@@ -420,7 +420,8 @@
     "cook_bfast": true,
     "eat_bfast": true,
     "water_1": true,
-    "jp_sat": true
+    "jp_sat": true,
+    "jp_sat_bonus": true
   },
-  "sday_65_score": 13
+  "sday_65_score": 15
 }
